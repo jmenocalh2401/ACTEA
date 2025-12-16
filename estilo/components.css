@@ -1,0 +1,634 @@
+/**
+ * ============================================================================
+ * ACTEA - COMPONENTS CSS
+ * ============================================================================
+ * 
+ * Componentes UI reutilizables del sitio.
+ * Cada componente es modular e independiente.
+ * 
+ * Incluye:
+ * - Cards (tarjetas de rutas/eventos)
+ * - Botones (primario con efecto ripple)
+ * - Formularios (inputs, mensajes de feedback)
+ * - Icon boxes (cajas con iconos)
+ * - Event items (items de eventos)
+ * - Newsletter (sección suscripción)
+ * - Breadcrumbs (migas de pan)
+ * - Tooltips (información emergente)
+ * - Skeleton loading (estados de carga)
+ * 
+ * USADO EN: Todas las páginas según necesidad
+ * ============================================================================
+ */
+
+
+/* ============================================================================
+   CARDS (TARJETAS)
+   ============================================================================
+   
+   Tarjetas para mostrar rutas, eventos, actividades.
+   Estructura: imagen + cuerpo con título y metadata.
+   Incluye efecto hover de elevación.
+   
+   USADO EN: Carrusel de rutas, listado de rutas, novedades
+   ============================================================================ */
+
+/* Contenedor principal de la tarjeta */
+/* USADO EN: <article class="c-card"> */
+.c-card {
+    /* Ancho fijo para carrusel horizontal */
+    flex: 0 0 300px;
+
+    /* Snap para carrusel con scroll */
+    scroll-snap-align: center;
+
+    /* Fondo y bordes */
+    background: var(--c-pure-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+
+    /* Sombra suave para elevación */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    /* Transición para efecto hover */
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    /* Borde sutil */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Efecto hover: Elevación de la tarjeta */
+.c-card:hover {
+    /* Mueve la tarjeta hacia arriba */
+    transform: translateY(-8px);
+
+    /* Aumenta la sombra para efecto de profundidad */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Contenedor de imagen/icono de la tarjeta */
+/* USADO EN: <figure class="c-card__img"> */
+.c-card__img {
+    /* Altura fija para consistencia */
+    height: 200px;
+
+    /* Gradiente de fondo cuando no hay imagen */
+    background: linear-gradient(135deg, var(--c-teal), var(--c-green));
+
+    /* Centrado del icono */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icono dentro del placeholder de imagen */
+.c-card__img .material-symbols-outlined {
+    font-size: 4rem;
+    color: var(--c-pure-white);
+}
+
+/* Cuerpo de la tarjeta (contenido textual) */
+/* USADO EN: <div class="c-card__body"> */
+.c-card__body {
+    padding: 1.5rem;
+}
+
+/* Título de la tarjeta */
+/* USADO EN: <h3 class="c-card__title"> */
+.c-card__title {
+    font-family: 'Righteous', sans-serif;
+    font-size: 1.25rem;
+    color: var(--c-teal);
+    margin-bottom: 1rem;
+}
+
+/* Contenedor de metadata (distancia, tiempo, dificultad) */
+/* USADO EN: <div class="c-card__meta"> */
+.c-card__meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--c-text-light);
+}
+
+/* Item individual de metadata */
+/* USADO EN: <span class="c-card__meta-item"> */
+.c-card__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* Icono dentro de metadata */
+.c-card__meta-item .material-symbols-outlined {
+    font-size: 1.25rem;
+    color: var(--c-green);
+}
+
+
+/* ============================================================================
+   BOTÓN PRIMARIO
+   ============================================================================
+   
+   Botón de llamada a la acción (CTA) principal.
+   Incluye efecto ripple en click.
+   
+   USADO EN: Hero, cards, formularios, secciones CTA
+   ============================================================================ */
+
+/* Botón primario base */
+/* USADO EN: <button class="c-btn-primary"> o <a class="c-btn-primary"> */
+.c-btn-primary {
+    /* Display inline-block para compatibilidad con enlaces */
+    display: inline-block;
+
+    /* Color de fondo lima (color de acento) */
+    background: var(--c-lime);
+
+    /* Texto oscuro para contraste */
+    color: var(--c-black);
+
+    /* Tipografía */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+
+    /* Padding generoso para área de click */
+    padding: 1rem 2.5rem;
+
+    /* Forma de píldora */
+    border-radius: 50px;
+
+    /* Sin borde por defecto */
+    border: none;
+    cursor: pointer;
+
+    /* Estilo de texto */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    /* Transiciones para hover */
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+
+    /* -------------------------------------------------------------------------
+       EFECTO RIPPLE (Preparación)
+       position: relative y overflow: hidden son necesarios para
+       el pseudo-elemento ::after que crea el efecto ripple.
+    ------------------------------------------------------------------------- */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Estado hover del botón primario */
+.c-btn-primary:hover {
+    /* Cambia a verde más oscuro */
+    background: var(--c-green);
+
+    /* Texto blanco para contraste */
+    color: var(--c-pure-white);
+
+    /* Elevación con movimiento hacia arriba */
+    transform: translateY(-3px);
+
+    /* Sombra más pronunciada */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Pseudo-elemento para efecto ripple */
+.c-btn-primary::after {
+    content: '';
+    position: absolute;
+
+    /* Centrado */
+    top: 50%;
+    left: 50%;
+
+    /* Tamaño inicial cero */
+    width: 0;
+    height: 0;
+
+    /* Círculo semi-transparente */
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+
+    /* Centrado del círculo */
+    transform: translate(-50%, -50%);
+
+    /* Transición para expansión */
+    transition: width 0.4s, height 0.4s;
+}
+
+/* Efecto ripple al hacer click (estado :active) */
+.c-btn-primary:active::after {
+    /* Expande el círculo */
+    width: 300px;
+    height: 300px;
+}
+
+
+/* ============================================================================
+   FORMULARIOS
+   ============================================================================
+   
+   Estilos para inputs y mensajes de feedback.
+   
+   USADO EN: Newsletter, formulario de contacto
+   ============================================================================ */
+
+/* Input de texto/email genérico */
+/* USADO EN: <input class="c-input"> o <textarea class="c-input"> */
+.c-input {
+    width: 100%;
+    padding: 1rem;
+
+    /* Sin borde por defecto (se añade en contextos específicos) */
+    border: none;
+    border-radius: var(--radius-md);
+
+    font-size: 1rem;
+}
+
+/* Estados de validación de inputs */
+
+/* Estado de éxito (input válido) */
+.c-input--success {
+    /* Borde verde con !important para sobrescribir otros estilos */
+    border: 2px solid var(--c-green) !important;
+
+    /* Fondo con tinte verde muy suave */
+    background: rgba(59, 143, 76, 0.05);
+}
+
+/* Estado de error (input inválido) */
+.c-input--error {
+    /* Borde rojo */
+    border: 2px solid #D32F2F !important;
+
+    /* Fondo con tinte rojo muy suave */
+    background: rgba(211, 47, 47, 0.05);
+}
+
+/* Mensajes de feedback del formulario */
+/* USADO EN: <div class="c-form-message"> */
+.c-form-message {
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin-top: 1rem;
+    font-weight: 600;
+
+    /* Layout con icono */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Mensaje de éxito */
+.c-form-message--success {
+    background: rgba(59, 143, 76, 0.1);
+    color: var(--c-green);
+    border: 1px solid var(--c-green);
+}
+
+/* Mensaje de error */
+.c-form-message--error {
+    background: rgba(211, 47, 47, 0.1);
+    color: #D32F2F;
+    border: 1px solid #D32F2F;
+}
+
+
+/* ============================================================================
+   ICON BOXES (CAJAS CON ICONOS)
+   ============================================================================
+   
+   Cajas cuadradas con icono y texto.
+   Usadas para categorías de actividades.
+   Incluye efecto hover de inversión de colores.
+   
+   USADO EN: Grid de actividades en index.html
+   ============================================================================ */
+
+/* Contenedor de icon box */
+/* USADO EN: <a class="c-icon-box"> */
+.c-icon-box {
+    /* Proporción cuadrada 1:1 */
+    aspect-ratio: 1;
+
+    /* Fondo y bordes */
+    background: var(--c-pure-white);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius-lg);
+
+    /* Centrado del contenido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+
+    /* Transición para hover */
+    transition: all 0.3s;
+}
+
+/* Estado hover: Inversión de colores */
+.c-icon-box:hover {
+    /* Fondo teal */
+    background: var(--c-teal);
+    border-color: var(--c-teal);
+}
+
+/* Cambio de color de icono y texto en hover */
+.c-icon-box:hover .material-symbols-outlined,
+.c-icon-box:hover h4 {
+    color: var(--c-pure-white);
+}
+
+/* Icono dentro de icon box */
+.c-icon-box .material-symbols-outlined {
+    font-size: 2.5rem;
+    color: var(--c-teal);
+    transition: color 0.3s;
+}
+
+/* Título dentro de icon box */
+.c-icon-box h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--c-black);
+    transition: color 0.3s;
+    margin: 0;
+}
+
+
+/* ============================================================================
+   EVENT ITEMS (ITEMS DE EVENTOS)
+   ============================================================================
+   
+   Componente para listar eventos con fecha y descripción.
+   Incluye indicador visual lateral (borde izquierdo).
+   
+   USADO EN: Sección "Próximos Eventos" en index.html
+   ============================================================================ */
+
+/* Item individual de evento */
+/* USADO EN: <article class="c-event-item"> */
+.c-event-item {
+    /* Indicador visual: borde izquierdo verde lima */
+    border-left: 4px solid var(--c-lime);
+
+    /* Padding izquierdo para separar del borde */
+    padding-left: 1.5rem;
+
+    /* Espaciado entre eventos */
+    margin-top: 2rem;
+}
+
+/* Fecha del evento */
+/* USADO EN: <span class="c-event-item__date"> */
+.c-event-item__date {
+    font-size: 0.85rem;
+
+    /* Mayúsculas para fechas */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: var(--c-text-light);
+}
+
+/* Título del evento */
+/* USADO EN: <h3 class="c-event-item__title"> */
+.c-event-item__title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+    color: var(--c-black);
+}
+
+
+/* ============================================================================
+   NEWSLETTER (SECCIÓN DE SUSCRIPCIÓN)
+   ============================================================================
+   
+   Bloque para capturar emails de suscriptores.
+   Fondo oscuro (teal) con texto claro.
+   
+   USADO EN: index.html antes del footer
+   ============================================================================ */
+
+/* Contenedor de newsletter */
+/* USADO EN: <aside class="c-newsletter"> */
+.c-newsletter {
+    /* Fondo teal corporativo */
+    background: var(--c-teal);
+
+    /* Texto claro */
+    color: var(--c-pure-white);
+
+    /* Espaciado interno */
+    padding: var(--s-lg);
+    border-radius: var(--radius-lg);
+
+    /* Separación del contenido anterior */
+    margin-top: var(--s-lg);
+}
+
+/* Título de newsletter - Override de color */
+.c-newsletter h3 {
+    color: var(--c-pure-white);
+}
+
+/* Párrafo de newsletter */
+.c-newsletter p {
+    /* Blanco con transparencia para jerarquía visual */
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+/* Botón dentro de newsletter */
+.c-newsletter .c-btn-primary {
+    width: 100%;
+    margin-top: 1rem;
+
+    /* Colores adaptados al fondo oscuro */
+    background: var(--c-lime);
+    color: var(--c-black);
+}
+
+
+/* ============================================================================
+   BREADCRUMBS (MIGAS DE PAN)
+   ============================================================================
+   
+   Navegación secundaria que muestra la ruta jerárquica.
+   Mejora la orientación del usuario y el SEO.
+   
+   USADO EN: Páginas internas (rutas, novedades, actividades, información)
+   ============================================================================ */
+
+/* Contenedor de breadcrumbs */
+/* USADO EN: <nav class="c-breadcrumbs"> */
+.c-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--c-text-light);
+    margin-bottom: 1.5rem;
+
+    /* Permite wrap en pantallas pequeñas */
+    flex-wrap: wrap;
+}
+
+/* Enlaces de breadcrumbs */
+.c-breadcrumbs a {
+    color: var(--c-teal);
+}
+
+/* Hover en enlaces */
+.c-breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+/* Separador entre niveles (›) */
+/* USADO EN: <span class="c-breadcrumbs__separator"> */
+.c-breadcrumbs__separator {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+/* Página actual (último elemento, sin enlace) */
+/* USADO EN: <span class="c-breadcrumbs__current"> */
+.c-breadcrumbs__current {
+    color: var(--c-black);
+    font-weight: 600;
+}
+
+
+/* ============================================================================
+   TOOLTIPS (INFORMACIÓN EMERGENTE)
+   ============================================================================
+   
+   Mostrar información adicional al hacer hover.
+   Implementado con CSS puro usando ::before/::after.
+   
+   USADO EN: Metadata de cards (distancia, duración, dificultad)
+   ============================================================================ */
+
+/* Elemento con tooltip */
+/* USADO EN: <span class="c-tooltip" data-tooltip="Texto del tooltip"> */
+.c-tooltip {
+    position: relative;
+
+    /* Cursor de ayuda indica información disponible */
+    cursor: help;
+}
+
+/* Caja del tooltip (pseudo-elemento) */
+.c-tooltip::after {
+    /* Contenido desde atributo data-tooltip */
+    content: attr(data-tooltip);
+
+    /* Posicionamiento sobre el elemento */
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Estilo del tooltip */
+    background: var(--c-black);
+    color: var(--c-white);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+
+    /* Oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+
+    z-index: 10;
+    margin-bottom: 5px;
+}
+
+/* Flecha del tooltip (triángulo apuntando hacia abajo) */
+.c-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Triángulo CSS usando bordes */
+    border: 5px solid transparent;
+    border-top-color: var(--c-black);
+
+    /* Oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+
+    /* Ajuste de posición para conectar con la caja */
+    margin-bottom: -5px;
+}
+
+/* Mostrar tooltip en hover */
+.c-tooltip:hover::after,
+.c-tooltip:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ============================================================================
+   SKELETON LOADING (ESTADOS DE CARGA)
+   ============================================================================
+   
+   Placeholders animados mientras se carga el contenido.
+   Mejora la percepción de rendimiento.
+   
+   USADO EN: Carga inicial de cards, imágenes, texto
+   ============================================================================ */
+
+/* Clase base para skeleton */
+/* USADO EN: <div class="skeleton skeleton-text"> */
+.skeleton {
+    /* Gradiente animado que simula carga */
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+
+    /* Animación de barrido */
+    animation: skeleton-loading 1.5s infinite;
+
+    border-radius: var(--radius-md);
+}
+
+/* Animación de skeleton */
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Variante para líneas de texto */
+.skeleton-text {
+    height: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Variante para títulos */
+.skeleton-title {
+    height: 1.5rem;
+    width: 60%;
+    margin-bottom: 1rem;
+}
+
+/* Variante para imágenes */
+.skeleton-img {
+    height: 200px;
+}

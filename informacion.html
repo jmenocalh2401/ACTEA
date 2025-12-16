@@ -1,23 +1,63 @@
 <!DOCTYPE html>
+<!--
+============================================================================
+ACTEA - PÁGINA DE INFORMACIÓN (informacion.html)
+============================================================================
+
+Página con información útil: preguntas frecuentes y formulario de contacto.
+
+ESTRUCTURA HTML5 SEMÁNTICA:
+- <header>: Cargado dinámicamente desde components/header.html
+- <main>: Contenido principal
+  - <nav class="c-breadcrumbs">: Navegación de migas de pan
+  - <section id="faq">: Preguntas frecuentes con <details>/<summary>
+  - <section id="contacto">: Formulario de contacto
+- <footer>: Cargado dinámicamente desde components/footer.html
+
+NOTA SOBRE <details>/<summary>:
+- Elementos HTML5 nativos para acordeón
+- No requieren JavaScript para funcionar
+- Semánticamente correctos para Q&A
+
+ESTILOS:
+- main.css: Estilos base, componentes, layout
+- pages/informacion.css: Estilos específicos (FAQ, formulario)
+
+============================================================================
+-->
 <html lang="es-ES">
 
     <head>
+        <!-- 
+        ====================================
+        META TAGS
+        ====================================
+        -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Información útil sobre ACTEA: preguntas frecuentes, cómo contactarnos y datos sobre el Valle de Campoo.">
         <title>Información - ACTEA</title>
-        <link rel="stylesheet" href="estilo/estilos.css">
+
+        <!-- 
+        ====================================
+        ESTILOS CSS
+        ====================================
+        -->
+        <link rel="stylesheet" href="estilo/main.css">
+        <link rel="stylesheet" href="estilo/pages/informacion.css">
     </head>
 
     <body>
+        <!-- Skip link -->
         <a href="#main-content" class="visually-hidden">Saltar al contenido principal</a>
-
+        <!-- HEADER -->
         <header class="c-header">
             <nav class="u-container c-header__inner">
                 <a href="index.html" class="c-logo" aria-label="ACTEA Inicio">
                     <span class="material-symbols-outlined" style="font-size: 2rem;">landscape</span>
                     <span class="c-logo__text">ACTEA</span>
                 </a>
-
                 <ul class="c-nav">
                     <li class="c-nav__list">
                         <a href="rutas.html" class="c-nav__link">Rutas</a>
@@ -26,7 +66,6 @@
                         <a href="rutas.html#mapa" class="c-nav__link">Mapa</a>
                     </li>
                 </ul>
-
                 <div class="c-header-tools">
                     <button class="c-header-tools__btn" aria-label="Cambiar tema">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
@@ -44,7 +83,6 @@
                         <span class="c-header-tools__lang">ES</span>
                     </button>
                 </div>
-
                 <input type="checkbox" id="menu-toggle">
                 <label for="menu-toggle" class="c-menu-btn" aria-label="Abrir menú">
                     <span class="material-symbols-outlined" style="font-size: 2rem;">menu</span>
@@ -54,65 +92,146 @@
                     <a href="novedades.html" class="c-mobile-nav__link">Calendario</a>
                     <a href="actividades.html" class="c-mobile-nav__link">Actividades</a>
                     <a href="rutas.html#mapa" class="c-mobile-nav__link">Mapa</a>
-                    <label for="menu-toggle" class="c-mobile-nav__close"><span class="material-symbols-outlined"
-                            style="font-size: 2rem;">close</span></label>
+                    <label for="menu-toggle" class="c-mobile-nav__close">
+                        <span class="material-symbols-outlined" style="font-size: 2rem;">close</span>
+                    </label>
                 </div>
             </nav>
         </header>
 
+        <!-- 
+        ====================================
+        CONTENIDO PRINCIPAL
+        ====================================
+        -->
         <main id="main-content" class="l-section u-container">
-            <!-- Breadcrumbs -->
+
+            <!-- 
+            ====================================
+            BREADCRUMBS (Migas de pan)
+            ====================================
+            -->
             <nav class="c-breadcrumbs" aria-label="Migas de pan">
                 <a href="index.html">Inicio</a>
-                <span class="c-breadcrumbs__separator">›</span>
-                <span class="c-breadcrumbs__current">Información</span>
+                <span class="c-breadcrumbs__separator" aria-hidden="true">›</span>
+                <span class="c-breadcrumbs__current" aria-current="page">Información</span>
             </nav>
 
+            <!-- Título principal (h1 único) -->
             <h1>Información Útil</h1>
 
+            <!-- 
+            ====================================
+            SECCIÓN: PREGUNTAS FRECUENTES (FAQ)
+            ====================================
+            Element: <section>
+            id="faq" para navegación con ancla
+            
+            Usamos <details>/<summary> de HTML5:
+            - <details>: Contenedor expandible
+            - <summary>: Título clickable (siempre visible)
+            - Resto del contenido: visible solo cuando está abierto
+            
+            VENTAJAS:
+            - Funciona sin JavaScript
+            - Semánticamente correcto
+            - Accesible por defecto
+            -->
             <section id="faq" style="margin-bottom: 4rem;">
                 <h2>Preguntas Frecuentes</h2>
-                <div
-                    style="background: var(--c-pure-white); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden; margin-top: 1.5rem;">
-                    <details style="padding: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                        <summary style="font-weight: 700; cursor: pointer;">¿Cuándo es la mejor época para visitar?
+
+                <div class="c-faq">
+                    <!-- 
+                    Pregunta 1
+                    <details> crea el contenedor expandible
+                    <summary> es el título clickable
+                    -->
+                    <details class="c-faq__item">
+                        <summary class="c-faq__question">
+                            ¿Cuándo es la mejor época para visitar?
                         </summary>
-                        <p style="margin-top: 1rem; color: var(--c-text-light);">Todo el año tiene su encanto. Nieve en
-                            invierno, flores en primavera, clima suave en verano y colores ocres en otoño.</p>
+                        <p>
+                            Todo el año tiene su encanto. Nieve en invierno,
+                            flores en primavera, clima suave en verano y
+                            colores ocres en otoño.
+                        </p>
                     </details>
-                    <details style="padding: 1.5rem;">
-                        <summary style="font-weight: 700; cursor: pointer;">¿Son las rutas aptas para niños?</summary>
-                        <p style="margin-top: 1rem; color: var(--c-text-light);">Sí, las rutas de nivel 'Fácil' como el
-                            Nacimiento del Ebro están perfectamente adaptadas para familias.</p>
+
+                    <!-- Pregunta 2 -->
+                    <details class="c-faq__item">
+                        <summary class="c-faq__question">
+                            ¿Son las rutas aptas para niños?
+                        </summary>
+                        <p>
+                            Sí, las rutas de nivel 'Fácil' como el Nacimiento
+                            del Ebro están perfectamente adaptadas para familias.
+                        </p>
                     </details>
                 </div>
             </section>
 
+            <!-- 
+            ====================================
+            SECCIÓN: FORMULARIO DE CONTACTO
+            ====================================
+            Element: <section>
+            id="contacto" para navegación con ancla
+            
+            Formulario con:
+            - Campo nombre (texto)
+            - Campo email (validación nativa)
+            - Campo mensaje (textarea)
+            - Botón de envío
+            - Mensaje de feedback
+            -->
             <section id="contacto">
                 <h2>Contacto</h2>
-                <form id="contact-form" action="#" method="POST"
-                    style="max-width: 600px; display: grid; gap: 1.5rem; margin-top: 1.5rem;"
+
+                <!-- 
+                Formulario de contacto
+                - action="#": En producción iría a un endpoint real
+                - method="POST": Envío seguro de datos
+                - onsubmit: Demo que muestra mensaje de éxito
+                -->
+                <form id="contact-form" action="#" method="POST" class="c-contact-form"
                     onsubmit="event.preventDefault(); this.querySelector('.c-form-message').style.display='flex';">
-                    <div>
-                        <label for="nombre"
-                            style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Nombre</label>
-                        <input type="text" id="nombre" class="c-input" required
-                            style="border: 1px solid rgba(0,0,0,0.1);">
+                    <!-- 
+                    Campo: Nombre
+                    <label> asociado a <input> mediante for/id
+                    -->
+                    <div class="c-form-group">
+                        <label for="nombre" class="c-form-label">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="c-input" required>
                     </div>
-                    <div>
-                        <label for="email-contact"
-                            style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Email</label>
-                        <input type="email" id="email-contact" class="c-input" required
-                            style="border: 1px solid rgba(0,0,0,0.1);">
+
+                    <!-- 
+                    Campo: Email
+                    type="email" proporciona validación nativa
+                    -->
+                    <div class="c-form-group">
+                        <label for="email-contact" class="c-form-label">Email</label>
+                        <input type="email" id="email-contact" name="email" class="c-input" required>
                     </div>
-                    <div>
-                        <label for="mensaje"
-                            style="display: block; font-weight: 700; margin-bottom: 0.5rem;">Mensaje</label>
-                        <textarea id="mensaje" rows="5" class="c-input" required
-                            style="border: 1px solid rgba(0,0,0,0.1); width: 100%;"></textarea>
+
+                    <!-- 
+                    Campo: Mensaje
+                    <textarea> para texto multilínea
+                    rows define altura inicial
+                    -->
+                    <div class="c-form-group">
+                        <label for="mensaje" class="c-form-label">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" class="c-input" required></textarea>
                     </div>
-                    <button type="submit" class="c-btn-primary" style="justify-self: start;">Enviar Mensaje</button>
-                    <!-- Form Feedback -->
+
+                    <!-- Botón de envío -->
+                    <button type="submit" class="c-btn-primary">
+                        Enviar Mensaje
+                    </button>
+
+                    <!-- 
+                    Mensaje de feedback
+                    Oculto por defecto, se muestra tras envío exitoso
+                    -->
                     <div class="c-form-message c-form-message--success" style="display: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
                             fill="currentColor">
@@ -124,61 +243,15 @@
             </section>
         </main>
 
-        <footer class="c-footer">
-            <div class="u-container">
-                <div class="c-footer__grid">
-                    <div class="c-footer__col">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <span class="material-symbols-outlined"
-                                style="font-size: 2rem; color: var(--c-lime);">landscape</span>
-                            <span
-                                style="font-family: 'Righteous', sans-serif; font-size: 1.5rem; color: var(--c-lime);">ACTEA</span>
-                        </div>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--c-white);">Alto Campoo Todo el Año.
-                        </p>
-                        <div class="c-footer__socials" style="margin-top: 1.5rem;">
-                            <a href="#" class="c-footer__social-link" aria-label="Facebook"><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
-                                </svg></a>
-                            <a href="#" class="c-footer__social-link" aria-label="Instagram"><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
-                                </svg></a>
-                        </div>
-                    </div>
-                    <div class="c-footer__col">
-                        <h4>Enlaces</h4>
-                        <ul>
-                            <li><a href="rutas.html">Rutas</a></li>
-                            <li><a href="novedades.html">Calendario</a></li>
-                            <li><a href="actividades.html">Actividades</a></li>
-                        </ul>
-                    </div>
-                    <div class="c-footer__col">
-                        <h4>Info</h4>
-                        <ul>
-                            <li><a href="informacion.html#faq">FAQ</a></li>
-                            <li><a href="informacion.html#contacto">Contacto</a></li>
-                        </ul>
-                    </div>
-                    <div class="c-footer__col">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacidad</a></li>
-                            <li><a href="#">Términos</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div
-                    style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: rgba(255,255,255,0.6);">
-                    © 2024 ACTEA</div>
-            </div>
-        </footer>
+        <!-- 
+        ====================================
+        FOOTER (Carga Dinámica)
+        ====================================
+        -->
+        <div id="footer-placeholder"></div>
+
+        <!-- JavaScript -->
+        <script src="js/components.js"></script>
     </body>
 
 </html>

@@ -1,0 +1,111 @@
+/**
+ * ============================================================================
+ * ACTEA - ANIMATIONS CSS
+ * ============================================================================
+ * 
+ * Animaciones y micro-interacciones.
+ * Mejoran la experiencia de usuario con feedback visual.
+ * 
+ * Incluye:
+ * - fadeInUp: Aparición con desplazamiento hacia arriba
+ * - skeleton-loading: Efecto de carga (definido en components.css)
+ * - Animaciones automáticas para componentes
+ * 
+ * NOTA: skeleton-loading está en components.css por dependencia
+ * 
+ * USADO EN: Todas las páginas (aplicado automáticamente a componentes)
+ * ============================================================================
+ */
+
+
+/* ============================================================================
+   KEYFRAMES - DEFINICIÓN DE ANIMACIONES
+   ============================================================================ */
+
+/**
+ * fadeInUp
+ * --------
+ * Animación de entrada: el elemento aparece desplazándose hacia arriba
+ * mientras pasa de transparente a opaco.
+ * 
+ * Uso ideal: Elementos que entran en viewport, carga de contenido.
+ * 
+ * Estados:
+ * - from: Invisible (opacity: 0) y desplazado 20px hacia abajo
+ * - to: Visible (opacity: 1) y en posición final
+ */
+@keyframes fadeInUp {
+    from {
+        /* Estado inicial: invisible y desplazado */
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        /* Estado final: visible y en posición */
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ============================================================================
+   CLASES DE ANIMACIÓN APLICABLES
+   ============================================================================ */
+
+/**
+ * .animate-fade-in
+ * ----------------
+ * Clase utilitaria para aplicar fadeInUp manualmente.
+ * Puede añadirse a cualquier elemento que necesite animación de entrada.
+ * 
+ * Propiedades:
+ * - Duración: 0.6s (moderada, no demasiado lenta)
+ * - Timing: ease-out (desaceleración natural)
+ * - Fill mode: forwards (mantiene estado final)
+ * 
+ * USADO EN: Elementos dinámicos, contenido cargado via JS
+ */
+.animate-fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+
+/* ============================================================================
+   ANIMACIONES AUTOMÁTICAS EN COMPONENTES
+   ============================================================================
+   
+   Estos componentes tienen animación fadeInUp por defecto.
+   La animación se ejecuta cuando el elemento se renderiza.
+   
+   Para animaciones basadas en scroll (Intersection Observer),
+   se requiere JavaScript adicional.
+   ============================================================================ */
+
+/**
+ * Animación automática para:
+ * - .c-card: Tarjetas de rutas/eventos
+ * - .c-event-item: Items de eventos
+ * - .c-icon-box: Cajas de iconos/categorías
+ * 
+ * Duración más corta (0.5s) para respuesta rápida.
+ */
+.c-card,
+.c-event-item,
+.c-icon-box {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+
+/* ============================================================================
+   NOTAS SOBRE RENDIMIENTO
+   ============================================================================
+   
+   Las animaciones usan transform y opacity, que son propiedades
+   "baratas" para animar porque no causan reflow/repaint.
+   
+   - transform: Usa composición de capas (GPU accelerated)
+   - opacity: Solo afecta a la capa del elemento
+   
+   Evitar animar: width, height, margin, padding (causan reflow)
+   ============================================================================ */

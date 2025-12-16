@@ -1,0 +1,307 @@
+/**
+ * ============================================================================
+ * ACTEA - HEADER CSS
+ * ============================================================================
+ * 
+ * Estilos del encabezado principal del sitio.
+ * Incluye:
+ * - Header sticky con sombra
+ * - Logo con icono y texto
+ * - Navegación desktop
+ * - Herramientas (tema, idioma)
+ * - Menú móvil (hamburguesa) con CSS only
+ * 
+ * USADO EN: Todas las páginas (componente header.html)
+ * ============================================================================
+ */
+
+
+/* ============================================================================
+   HEADER PRINCIPAL
+   ============================================================================ */
+
+/* Contenedor principal del header */
+/* USADO EN: <header class="c-header"> */
+.c-header {
+    /* Fondo blanco sólido para contraste con contenido */
+    background: var(--c-pure-white);
+
+    /* Altura fija definida en variables (80px) */
+    height: var(--header-height);
+
+    /* -------------------------------------------------------------------------
+       POSICIONAMIENTO STICKY
+       El header se mantiene fijo en la parte superior al hacer scroll.
+       - position: sticky requiere top para funcionar
+       - z-index alto para estar sobre el contenido
+    ------------------------------------------------------------------------- */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    /* Sombra sutil para separación visual del contenido */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+    /* Flexbox para centrar verticalmente el contenido */
+    display: flex;
+    align-items: center;
+}
+
+/* Contenedor interno del header (hijo de u-container) */
+/* USADO EN: <nav class="u-container c-header__inner"> */
+.c-header__inner {
+    width: 100%;
+    display: flex;
+
+    /* Distribuye espacio: logo a la izquierda, nav y tools a la derecha */
+    justify-content: space-between;
+
+    /* Alineación vertical centrada */
+    align-items: center;
+}
+
+
+/* ============================================================================
+   LOGO
+   ============================================================================ */
+
+/* Contenedor del logo (enlace a home) */
+/* USADO EN: <a href="index.html" class="c-logo"> */
+.c-logo {
+    display: flex;
+    align-items: center;
+
+    /* Color corporativo teal */
+    color: var(--c-teal);
+}
+
+/* Texto del logo junto al icono */
+/* USADO EN: <span class="c-logo__text">ACTEA</span> */
+.c-logo__text {
+    /* Fuente display para branding */
+    font-family: 'Righteous', sans-serif;
+    font-size: 1.5rem;
+
+    /* Separación del icono */
+    margin-left: 0.5rem;
+
+    /* Espaciado entre letras para estilo display */
+    letter-spacing: 1px;
+}
+
+
+/* ============================================================================
+   NAVEGACIÓN DESKTOP
+   ============================================================================
+   
+   Visible solo en pantallas >= 768px.
+   Oculta en móvil donde se usa c-mobile-nav.
+   ============================================================================ */
+
+/* Contenedor de navegación principal */
+/* USADO EN: <ul class="c-nav"> */
+.c-nav {
+    /* Oculto por defecto (móvil) */
+    display: none;
+}
+
+/* Responsive: Mostrar navegación en tablets/desktop */
+@media (min-width: 768px) {
+    .c-nav {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Lista de enlaces de navegación */
+    /* USADO EN: <li class="c-nav__list"> */
+    .c-nav__list {
+        display: flex;
+
+        /* Elimina bullets de la lista */
+        list-style: none;
+
+        /* Espaciado entre items */
+        gap: 1.5rem;
+    }
+
+    /* Enlaces individuales de navegación */
+    /* USADO EN: <a href="..." class="c-nav__link"> */
+    .c-nav__link {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--c-text-body);
+
+        /* Texto en mayúsculas para estilo nav */
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        /* Padding vertical para área de click */
+        padding: 0.5rem 0;
+
+        /* -------------------------------------------------------------------------
+           INDICADOR DE PÁGINA ACTIVA
+           Borde inferior transparente por defecto, visible en hover/active.
+           Transición suave para el efecto.
+        ------------------------------------------------------------------------- */
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s;
+    }
+
+    /* Estados hover y página activa */
+    .c-nav__link:hover,
+    .c-nav__link--active {
+        /* Cambia color a teal corporativo */
+        color: var(--c-teal);
+
+        /* Muestra indicador verde lima */
+        border-bottom-color: var(--c-lime);
+    }
+}
+
+
+/* ============================================================================
+   HERRAMIENTAS DEL HEADER (Tema, Idioma)
+   ============================================================================ */
+
+/* Contenedor de botones de herramientas */
+/* USADO EN: <div class="c-header-tools"> */
+.c-header-tools {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Botones de herramientas (tema oscuro, selector idioma) */
+/* USADO EN: <button class="c-header-tools__btn"> */
+.c-header-tools__btn {
+    /* Reset de estilos de botón */
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    /* Color y padding */
+    color: var(--c-teal);
+    padding: 0.5rem;
+
+    /* Flexbox para centrar icono SVG */
+    display: flex;
+    align-items: center;
+}
+
+/* Texto indicador de idioma actual */
+/* USADO EN: <span class="c-header-tools__lang">ES</span> */
+.c-header-tools__lang {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: var(--c-teal);
+}
+
+
+/* ============================================================================
+   MENÚ MÓVIL (CSS ONLY - Sin JavaScript)
+   ============================================================================
+   
+   Sistema de menú hamburguesa usando el "checkbox hack":
+   - Input checkbox oculto controla el estado
+   - Label actúa como botón visible
+   - Selector :checked activa/desactiva el menú
+   
+   Ventaja: Funciona sin JavaScript
+   ============================================================================ */
+
+/* Input checkbox oculto (controlador del menú) */
+/* USADO EN: <input type="checkbox" id="menu-toggle"> */
+#menu-toggle {
+    display: none;
+}
+
+/* Botón hamburguesa visible por defecto en móvil */
+/* USADO EN: <label for="menu-toggle" class="c-menu-btn"> */
+.c-menu-btn {
+    cursor: pointer;
+    color: var(--c-teal);
+    display: flex;
+    align-items: center;
+
+    /* Asegurar visibilidad con padding y dimensiones mínimas */
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+}
+
+/* Panel del menú móvil (fullscreen overlay) */
+/* USADO EN: <div class="c-mobile-nav"> */
+.c-mobile-nav {
+    /* Posición fija cubriendo toda la pantalla bajo el header */
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+
+    /* Fondo blanco sólido */
+    background: var(--c-pure-white);
+
+    /* -------------------------------------------------------------------------
+       ESTADO CERRADO (por defecto)
+       El menú está fuera de pantalla a la derecha.
+       transform: translateX(100%) lo mueve completamente fuera.
+    ------------------------------------------------------------------------- */
+    transform: translateX(100%);
+
+    /* Transición suave para apertura/cierre */
+    transition: transform 0.3s ease-in-out;
+
+    /* Layout centrado para los enlaces */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* z-index menor que header para que quede debajo */
+    z-index: 99;
+
+    /* Espaciado entre enlaces */
+    gap: 2rem;
+}
+
+/* Estado abierto del menú (cuando checkbox está checked) */
+/* El selector hermano ~ conecta el checkbox con el menú */
+#menu-toggle:checked~.c-mobile-nav {
+    /* Vuelve a posición visible (translateX(0)) */
+    transform: translateX(0);
+}
+
+/* Enlaces del menú móvil */
+/* USADO EN: <a href="..." class="c-mobile-nav__link"> */
+.c-mobile-nav__link {
+    /* Fuente display grande para fácil tap */
+    font-family: 'Righteous', sans-serif;
+    font-size: 1.75rem;
+    color: var(--c-teal);
+}
+
+/* Botón cerrar menú móvil */
+/* USADO EN: <label for="menu-toggle" class="c-mobile-nav__close"> */
+.c-mobile-nav__close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+}
+
+/* Responsive: Ocultar menú móvil en desktop */
+@media (min-width: 768px) {
+
+    /* Ocultar botón hamburguesa */
+    .c-menu-btn {
+        display: none;
+    }
+
+    /* Ocultar panel móvil completamente */
+    .c-mobile-nav {
+        display: none;
+    }
+}

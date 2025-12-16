@@ -1,0 +1,96 @@
+/**
+ * ============================================================================
+ * ACTEA - INDEX PAGE CSS
+ * ============================================================================
+ * 
+ * Estilos específicos para la página principal (index.html).
+ * Contiene componentes únicos de esta página.
+ * 
+ * Incluye:
+ * - Hero section con imagen de fondo
+ * 
+ * USADO EN: index.html únicamente
+ * ============================================================================
+ */
+
+
+/* ============================================================================
+   HERO SECTION
+   ============================================================================
+   
+   Sección principal de bienvenida con imagen de fondo.
+   Ocupa 70% del viewport height.
+   Incluye overlay oscuro para legibilidad del texto.
+   
+   USADO EN: <section class="c-hero"> en index.html
+   ============================================================================ */
+
+/* Contenedor de la sección hero */
+/* USADO EN: <section class="c-hero"> */
+.c-hero {
+    /* Altura: 70% del viewport */
+    min-height: 70vh;
+
+    /* -------------------------------------------------------------------------
+       IMAGEN DE FONDO CON OVERLAY VERDE
+       
+       Técnica: Gradiente + imagen
+       - Overlay: Verde (--c-green: #3B8F4C) con 20% de opacidad
+       - Imagen: hero.jpg centrada y cubriendo todo el espacio
+       
+       La transparencia del 20% permite ver la imagen claramente
+       mientras añade un tinte verde corporativo.
+    ------------------------------------------------------------------------- */
+    background:
+        linear-gradient(to bottom, rgba(59, 143, 76, 0.2), rgba(59, 143, 76, 0.2)),
+        url('/img/hero.jpg') center/cover no-repeat;
+
+    /* Centrado del contenido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* Padding interno */
+    padding: var(--s-lg);
+
+    /* Posicionamiento para el pseudo-elemento de overlay adicional si se necesita */
+    position: relative;
+}
+
+/* Contenedor del contenido del hero */
+/* USADO EN: <article class="c-hero__content"> */
+.c-hero__content {
+    /* Ancho máximo para legibilidad */
+    max-width: 700px;
+}
+
+/* Título principal del hero */
+/* USADO EN: <h1 class="c-hero__title"> */
+.c-hero__title {
+    /* Override de color para texto sobre fondo con overlay claro */
+    color: var(--c-pure-white);
+
+    /* Tamaño grande para impacto visual */
+    font-size: 3rem;
+
+    /* Sombra de texto más intensa para legibilidad con overlay 20% */
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.5),
+        0 4px 20px rgba(0, 0, 0, 0.4);
+
+    margin-bottom: 1rem;
+}
+
+/* Subtítulo del hero */
+/* USADO EN: <p class="c-hero__subtitle"> */
+.c-hero__subtitle {
+    /* Color claro con peso ligero */
+    color: var(--c-white);
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+
+    /* Sombra para legibilidad */
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}

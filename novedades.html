@@ -1,16 +1,52 @@
 <!DOCTYPE html>
+<!--
+============================================================================
+ACTEA - PÁGINA DE NOVEDADES/CALENDARIO (novedades.html)
+============================================================================
+
+Página que muestra las últimas noticias y eventos del sitio.
+Presenta tarjetas de noticias con fechas destacadas.
+
+ESTRUCTURA HTML5 SEMÁNTICA:
+- <header>: Cargado dinámicamente desde components/header.html
+- <main>: Contenido principal
+  - <nav class="c-breadcrumbs">: Navegación de migas de pan
+  - Grid de <article>: Cada noticia es contenido autocontenido
+- <footer>: Cargado dinámicamente desde components/footer.html
+
+ESTILOS:
+- main.css: Estilos base, componentes, layout
+- pages/novedades.css: Estilos específicos (grid de noticias, badges)
+
+============================================================================
+-->
 <html lang="es-ES">
 
     <head>
+        <!-- 
+        ====================================
+        META TAGS
+        ====================================
+        -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Últimas novedades y eventos en el Valle de Campoo. Calendario de actividades y noticias de ACTEA.">
         <title>Calendario - ACTEA</title>
-        <link rel="stylesheet" href="estilo/estilos.css">
+
+        <!-- 
+        ====================================
+        ESTILOS CSS
+        ====================================
+        -->
+        <link rel="stylesheet" href="estilo/main.css">
+        <link rel="stylesheet" href="estilo/pages/novedades.css">
     </head>
 
     <body>
+        <!-- Skip link -->
         <a href="#main-content" class="visually-hidden">Saltar al contenido principal</a>
-
+        <!-- HEADER -->
         <header class="c-header">
             <nav class="u-container c-header__inner">
                 <a href="index.html" class="c-logo" aria-label="ACTEA Inicio">
@@ -18,121 +54,152 @@
                     <span class="c-logo__text">ACTEA</span>
                 </a>
                 <ul class="c-nav">
-                    <li class="c-nav__list"><a href="rutas.html" class="c-nav__link">Rutas</a><a href="novedades.html"
-                            class="c-nav__link c-nav__link--active">Calendario</a><a href="actividades.html"
-                            class="c-nav__link">Actividades</a><a href="rutas.html#mapa" class="c-nav__link">Mapa</a>
+                    <li class="c-nav__list">
+                        <a href="rutas.html" class="c-nav__link">Rutas</a>
+                        <a href="novedades.html" class="c-nav__link c-nav__link--active">Calendario</a>
+                        <a href="actividades.html" class="c-nav__link">Actividades</a>
+                        <a href="rutas.html#mapa" class="c-nav__link">Mapa</a>
                     </li>
                 </ul>
-                <div class="c-header-tools"><button class="c-header-tools__btn" aria-label="Cambiar tema"><svg
-                            xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
+                <div class="c-header-tools">
+                    <button class="c-header-tools__btn" aria-label="Cambiar tema">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
                             fill="currentColor">
                             <path
                                 d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z" />
-                        </svg></button><button class="c-header-tools__btn" aria-label="Seleccionar idioma"><svg
-                            xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
+                        </svg>
+                    </button>
+                    <button class="c-header-tools__btn" aria-label="Seleccionar idioma">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
                             fill="currentColor">
                             <path
                                 d="m476-80 182-480h84L924-80h-84l-43-122H603L560-80h-84ZM160-200l-56-56 202-202q-35-35-63.5-80T190-640h84q20 39 40 68t48 58q33-33 68.5-92.5T480-720H40v-80h280v-80h80v80h280v80H560q-20 76-63 140t-103 124l88 88-28 78-96-98-172 168Zm420-120h144l-72-204-72 204Z" />
-                        </svg><span class="c-header-tools__lang">ES</span></button></div>
-                <input type="checkbox" id="menu-toggle"><label for="menu-toggle" class="c-menu-btn"
-                    aria-label="Abrir menú"><span class="material-symbols-outlined"
-                        style="font-size: 2rem;">menu</span></label>
-                <div class="c-mobile-nav"><a href="rutas.html" class="c-mobile-nav__link">Rutas</a><a
-                        href="novedades.html" class="c-mobile-nav__link">Calendario</a><a href="actividades.html"
-                        class="c-mobile-nav__link">Actividades</a><a href="rutas.html#mapa"
-                        class="c-mobile-nav__link">Mapa</a><label for="menu-toggle" class="c-mobile-nav__close"><span
-                            class="material-symbols-outlined" style="font-size: 2rem;">close</span></label></div>
+                        </svg>
+                        <span class="c-header-tools__lang">ES</span>
+                    </button>
+                </div>
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="c-menu-btn" aria-label="Abrir menú">
+                    <span class="material-symbols-outlined" style="font-size: 2rem;">menu</span>
+                </label>
+                <div class="c-mobile-nav">
+                    <a href="rutas.html" class="c-mobile-nav__link">Rutas</a>
+                    <a href="novedades.html" class="c-mobile-nav__link">Calendario</a>
+                    <a href="actividades.html" class="c-mobile-nav__link">Actividades</a>
+                    <a href="rutas.html#mapa" class="c-mobile-nav__link">Mapa</a>
+                    <label for="menu-toggle" class="c-mobile-nav__close">
+                        <span class="material-symbols-outlined" style="font-size: 2rem;">close</span>
+                    </label>
+                </div>
             </nav>
         </header>
 
+        <!-- 
+        ====================================
+        CONTENIDO PRINCIPAL
+        ====================================
+        -->
         <main id="main-content" class="l-section u-container">
-            <nav class="c-breadcrumbs" aria-label="Migas de pan"><a href="index.html">Inicio</a><span
-                    class="c-breadcrumbs__separator">›</span><span class="c-breadcrumbs__current">Calendario</span>
+
+            <!-- 
+            ====================================
+            BREADCRUMBS (Migas de pan)
+            ====================================
+            -->
+            <nav class="c-breadcrumbs" aria-label="Migas de pan">
+                <a href="index.html">Inicio</a>
+                <span class="c-breadcrumbs__separator" aria-hidden="true">›</span>
+                <span class="c-breadcrumbs__current" aria-current="page">Calendario</span>
             </nav>
+
+            <!-- Título principal (h1 único) -->
             <h1>Novedades y Eventos</h1>
-            <div style="display: grid; gap: 3rem; margin-top: 2rem;">
-                <article class="c-card" style="flex: 0 0 auto;">
-                    <figure class="c-card__img" style="height: 250px;"><span class="material-symbols-outlined"
-                            style="font-size: 4rem;">calendar_month</span></figure>
+
+            <!-- 
+            ====================================
+            GRID DE NOVEDADES
+            ====================================
+            Cada noticia/evento es un <article> autocontenido.
+            -->
+            <div class="c-news-grid">
+
+                <!-- 
+                ====================================
+                NOTICIA 1: Inscripciones Invernales
+                ====================================
+                Element: <article>
+                Las noticias son contenido autocontenido que podría
+                republicarse independientemente (RSS, redes sociales).
+                -->
+                <article class="c-card">
+                    <!-- Área de imagen/icono -->
+                    <figure class="c-card__img">
+                        <span class="material-symbols-outlined" style="font-size: 4rem;">calendar_month</span>
+                    </figure>
+
+                    <!-- Cuerpo de la tarjeta -->
                     <div class="c-card__body">
-                        <span
-                            style="display: inline-block; background: var(--c-lime); color: var(--c-black); padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">10
-                            DIC 2024</span>
+                        <!-- 
+                        Badge de fecha
+                        Usamos <time> para semántica y datetime para máquinas
+                        -->
+                        <time class="c-date-badge c-date-badge--primary" datetime="2024-12-10">
+                            10 DIC 2024
+                        </time>
+
                         <h3 class="c-card__title">Inscripciones Invernales Abiertas</h3>
-                        <p style="margin-top: 1rem; color: var(--c-text-light);">Ya puedes apuntarte a todas las
-                            actividades de la temporada. Desde cursos de iniciación al esquí de travesía hasta raquetas
-                            nocturnas bajo las estrellas.</p>
-                        <a href="#" class="c-btn-primary" style="margin-top: 1.5rem;">Más información</a>
+
+                        <p style="margin-top: 1rem; color: var(--c-text-light);">
+                            Ya puedes apuntarte a todas las actividades de la temporada.
+                            Desde cursos de iniciación al esquí de travesía hasta raquetas
+                            nocturnas bajo las estrellas.
+                        </p>
+
+                        <a href="#" class="c-btn-primary" style="margin-top: 1.5rem;">
+                            Más información
+                        </a>
                     </div>
                 </article>
-                <article class="c-card" style="flex: 0 0 auto;">
-                    <figure class="c-card__img" style="height: 250px;"><span class="material-symbols-outlined"
-                            style="font-size: 4rem;">flag</span></figure>
+
+                <!-- 
+                ====================================
+                NOTICIA 2: Nueva Ruta "Los Pastores"
+                ====================================
+                -->
+                <article class="c-card">
+                    <figure class="c-card__img">
+                        <span class="material-symbols-outlined" style="font-size: 4rem;">flag</span>
+                    </figure>
+
                     <div class="c-card__body">
-                        <span
-                            style="display: inline-block; background: var(--c-teal); color: var(--c-pure-white); padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">05
-                            DIC 2024</span>
+                        <time class="c-date-badge c-date-badge--secondary" datetime="2024-12-05">
+                            05 DIC 2024
+                        </time>
+
                         <h3 class="c-card__title">Nueva Ruta: "Los Pastores"</h3>
-                        <p style="margin-top: 1rem; color: var(--c-text-light);">Hemos finalizado el balizamiento de la
-                            histórica ruta que une los pueblos altos del valle. 10km de pura historia y tradición.</p>
-                        <a href="#" class="c-btn-primary" style="margin-top: 1.5rem;">Ver Ficha Técnica</a>
+
+                        <p style="margin-top: 1rem; color: var(--c-text-light);">
+                            Hemos finalizado el balizamiento de la histórica ruta que une
+                            los pueblos altos del valle. 10km de pura historia y tradición.
+                        </p>
+
+                        <a href="#" class="c-btn-primary" style="margin-top: 1.5rem;">
+                            Ver Ficha Técnica
+                        </a>
                     </div>
                 </article>
             </div>
         </main>
 
-        <footer class="c-footer">
-            <div class="u-container">
-                <div class="c-footer__grid">
-                    <div class="c-footer__col">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;"><span
-                                class="material-symbols-outlined"
-                                style="font-size: 2rem; color: var(--c-lime);">landscape</span><span
-                                style="font-family: 'Righteous', sans-serif; font-size: 1.5rem; color: var(--c-lime);">ACTEA</span>
-                        </div>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--c-white);">Alto Campoo Todo el Año.
-                        </p>
-                        <div class="c-footer__socials" style="margin-top: 1.5rem;"><a href="#"
-                                class="c-footer__social-link" aria-label="Facebook"><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
-                                </svg></a><a href="#" class="c-footer__social-link" aria-label="Instagram"><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
-                                </svg></a></div>
-                    </div>
-                    <div class="c-footer__col">
-                        <h4>Enlaces</h4>
-                        <ul>
-                            <li><a href="rutas.html">Rutas</a></li>
-                            <li><a href="novedades.html">Calendario</a></li>
-                            <li><a href="actividades.html">Actividades</a></li>
-                        </ul>
-                    </div>
-                    <div class="c-footer__col">
-                        <h4>Info</h4>
-                        <ul>
-                            <li><a href="informacion.html#faq">FAQ</a></li>
-                            <li><a href="informacion.html#contacto">Contacto</a></li>
-                        </ul>
-                    </div>
-                    <div class="c-footer__col">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacidad</a></li>
-                            <li><a href="#">Términos</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div
-                    style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: rgba(255,255,255,0.6);">
-                    © 2024 ACTEA</div>
-            </div>
-        </footer>
+        <!-- 
+        ====================================
+        FOOTER (Carga Dinámica)
+        ====================================
+        -->
+        <div id="footer-placeholder"></div>
+
+        <!-- JavaScript -->
+        <script src="js/components.js"></script>
     </body>
 
 </html>

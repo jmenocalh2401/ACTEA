@@ -1,0 +1,230 @@
+/**
+ * ============================================================================
+ * ACTEA - FOOTER CSS
+ * ============================================================================
+ * 
+ * Estilos del pie de página del sitio.
+ * Diseñado para cumplir WCAG AAA en contraste de colores.
+ * 
+ * Incluye:
+ * - Footer con fondo oscuro
+ * - Grid de columnas responsive
+ * - Enlaces de navegación
+ * - Iconos de redes sociales
+ * - Copyright
+ * 
+ * USADO EN: Todas las páginas (componente footer.html)
+ * ============================================================================
+ */
+
+
+/* ============================================================================
+   FOOTER PRINCIPAL
+   ============================================================================ */
+
+/* Contenedor principal del footer */
+/* USADO EN: <footer class="c-footer"> */
+.c-footer {
+    /* Fondo negro corporativo */
+    background: var(--c-black);
+
+    /* Texto claro sobre fondo oscuro */
+    color: var(--c-white);
+
+    /* Espaciado generoso arriba, menor abajo */
+    padding: var(--s-xl) 0 var(--s-lg);
+}
+
+
+/* ============================================================================
+   LOGO DEL FOOTER
+   ============================================================================ */
+
+/* Contenedor del logo centrado */
+/* USADO EN: <div class="c-footer__logo"> (versión simplificada) */
+.c-footer__logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Icono del logo en footer */
+.c-footer__logo .material-symbols-outlined {
+    font-size: 3rem;
+
+    /* Color de acento lime para destacar */
+    color: var(--c-lime);
+}
+
+/* Tagline/eslogan bajo el logo */
+/* USADO EN: <p class="c-footer__tagline"> */
+.c-footer__tagline {
+    /* Color blanco para AAA: #F0F0F0 sobre #161616 = 14.8:1 */
+    color: var(--c-white);
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+
+/* ============================================================================
+   NAVEGACIÓN DEL FOOTER (Versión simple)
+   ============================================================================ */
+
+/* Contenedor de enlaces de navegación */
+/* USADO EN: <nav class="c-footer__nav"> */
+.c-footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+
+    /* Línea separadora sutil */
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Enlaces de navegación del footer */
+.c-footer__nav a {
+    /* Color AAA: Contraste total sobre fondo negro */
+    color: var(--c-white);
+
+    transition: color 0.2s;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* Estados hover y focus para enlaces */
+.c-footer__nav a:hover,
+.c-footer__nav a:focus {
+    /* Cambia a color de acento lime */
+    color: var(--c-lime);
+
+    /* Subrayado para mejor accesibilidad */
+    text-decoration: underline;
+}
+
+
+/* ============================================================================
+   GRID DE COLUMNAS DEL FOOTER
+   ============================================================================
+   
+   Layout multi-columna para organizar:
+   - Columna 1: Logo y redes sociales (más ancha)
+   - Columnas 2-4: Enlaces rápidos, info, legal
+   
+   Mobile: Una columna centrada
+   Desktop: Grid 2fr 1fr 1fr 1fr
+   ============================================================================ */
+
+/* Grid contenedor de columnas */
+/* USADO EN: <div class="c-footer__grid"> */
+.c-footer__grid {
+    display: grid;
+
+    /* Mobile: Una columna */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    /* Texto centrado en móvil */
+    text-align: center;
+}
+
+/* Responsive: Grid de 4 columnas en desktop */
+@media (min-width: 768px) {
+    .c-footer__grid {
+        /* Primera columna más ancha (logo + descripción) */
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+
+        /* Texto alineado a la izquierda */
+        text-align: left;
+    }
+}
+
+/* Columnas individuales del footer */
+/* USADO EN: <div class="c-footer__col"> */
+.c-footer__col h4 {
+    /* Color de acento para títulos de columna */
+    color: var(--c-lime);
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+
+    /* Estilo mayúsculas para encabezados */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Lista de enlaces dentro de columnas */
+.c-footer__col ul {
+    list-style: none;
+}
+
+/* Items de lista con espaciado */
+.c-footer__col li {
+    margin-bottom: 0.75rem;
+}
+
+/* Enlaces dentro de las columnas */
+.c-footer__col a {
+    color: var(--c-white);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+/* Hover en enlaces de columnas */
+.c-footer__col a:hover {
+    color: var(--c-lime);
+}
+
+
+/* ============================================================================
+   ICONOS DE REDES SOCIALES
+   ============================================================================ */
+
+/* Contenedor de iconos sociales */
+/* USADO EN: <div class="c-footer__socials"> */
+.c-footer__socials {
+    display: flex;
+    gap: 1rem;
+
+    /* Centrado en móvil */
+    justify-content: center;
+}
+
+/* Responsive: Alineación izquierda en desktop */
+@media (min-width: 768px) {
+    .c-footer__socials {
+        justify-content: flex-start;
+    }
+}
+
+/* Botones/enlaces de redes sociales */
+/* USADO EN: <a href="#" class="c-footer__social-link"> */
+.c-footer__social-link {
+    /* Forma circular */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    /* Fondo semi-transparente */
+    background: rgba(255, 255, 255, 0.1);
+
+    /* Centrado del icono SVG */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Color del icono */
+    color: var(--c-white);
+
+    /* Transición para hover */
+    transition: all 0.2s;
+}
+
+/* Hover en iconos sociales */
+.c-footer__social-link:hover {
+    /* Fondo lime con icono negro */
+    background: var(--c-lime);
+    color: var(--c-black);
+}
