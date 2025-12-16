@@ -439,7 +439,7 @@ a:hover {
 }
 
 .l-section--alt {
-    background: var(--c-pure-white);
+    background: var(--bg-surface);
 }
 
 /* CAROUSEL (Route Cards) */
@@ -585,7 +585,7 @@ a:hover {
 
 .c-icon-box {
     aspect-ratio: 1;
-    background: var(--c-pure-white);
+    background: var(--bg-surface);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: var(--radius-lg);
     display: flex;
