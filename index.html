@@ -1,23 +1,84 @@
 <!DOCTYPE html>
+<!--
+============================================================================
+ACTEA - PÁGINA PRINCIPAL (index.html)
+============================================================================
+
+Página de inicio del sitio web ACTEA (Alto Campoo Todo el Año).
+Presenta las rutas destacadas, próximos eventos y actividades disponibles.
+
+ESTRUCTURA HTML5 SEMÁNTICA:
+- <header>: Cargado dinámicamente desde components/header.html
+- <main>: Contenido principal único de esta página
+  - <section>: Agrupa contenido temático (hero, rutas, eventos, etc.)
+  - <article>: Contenido autocontenido y reutilizable (cards, eventos)
+  - <aside>: Contenido relacionado tangencialmente (newsletter)
+  - <figure>: Contenedor para imágenes/iconos con significado
+- <footer>: Cargado dinámicamente desde components/footer.html
+
+ACCESIBILIDAD (WCAG AAA):
+- Skip link para saltar al contenido principal
+- Roles ARIA donde corresponde
+- Contraste de colores cumple 7:1 mínimo
+- Navegación por teclado habilitada
+
+SEO:
+- Meta descripción incluida
+- Estructura de headings jerárquica (h1 > h2 > h3)
+- Un solo <h1> por página
+
+ESTILOS:
+- main.css: Estilos base, componentes, layout
+- pages/index.css: Estilos específicos de esta página (hero)
+
+============================================================================
+-->
 <html lang="es-ES">
 
     <head>
+        <!-- 
+        ====================================
+        META TAGS
+        ====================================
+        -->
+        <!-- Codificación de caracteres UTF-8 para soporte de acentos y ñ -->
         <meta charset="UTF-8">
+
+        <!-- Viewport responsive para dispositivos móviles -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Meta descripción para SEO -->
+        <meta name="description"
+            content="ACTEA - Alto Campoo Todo el Año. Descubre las mejores rutas de montaña, actividades y eventos en el Valle de Campoo, Cantabria.">
+
+        <!-- Título de la página (SEO) -->
         <title>ACTEA - Alto Campoo Todo el Año</title>
-        <link rel="stylesheet" href="estilo/estilos.css">
+
+        <!-- 
+        ====================================
+        ESTILOS CSS
+        ====================================
+        -->
+        <!-- CSS principal (importa todos los módulos) -->
+        <link rel="stylesheet" href="estilo/main.css">
+
+        <!-- CSS específico de esta página (hero section) -->
+        <link rel="stylesheet" href="estilo/pages/index.css">
     </head>
 
     <body>
+        <!-- Skip link para accesibilidad -->
         <a href="#main-content" class="visually-hidden">Saltar al contenido principal</a>
 
+        <!-- HEADER PRINCIPAL -->
         <header class="c-header">
             <nav class="u-container c-header__inner">
+                <!-- Logo -->
                 <a href="index.html" class="c-logo" aria-label="ACTEA Inicio">
                     <span class="material-symbols-outlined" style="font-size: 2rem;">landscape</span>
                     <span class="c-logo__text">ACTEA</span>
                 </a>
-
+                <!-- Navegación Desktop -->
                 <ul class="c-nav">
                     <li class="c-nav__list">
                         <a href="rutas.html" class="c-nav__link">Rutas</a>
@@ -26,7 +87,7 @@
                         <a href="rutas.html#mapa" class="c-nav__link">Mapa</a>
                     </li>
                 </ul>
-
+                <!-- Herramientas -->
                 <div class="c-header-tools">
                     <button class="c-header-tools__btn" aria-label="Cambiar tema">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
@@ -44,12 +105,11 @@
                         <span class="c-header-tools__lang">ES</span>
                     </button>
                 </div>
-
+                <!-- Menú Móvil CSS-only -->
                 <input type="checkbox" id="menu-toggle">
                 <label for="menu-toggle" class="c-menu-btn" aria-label="Abrir menú">
                     <span class="material-symbols-outlined" style="font-size: 2rem;">menu</span>
                 </label>
-
                 <div class="c-mobile-nav">
                     <a href="rutas.html" class="c-mobile-nav__link">Rutas</a>
                     <a href="novedades.html" class="c-mobile-nav__link">Calendario</a>
@@ -62,29 +122,81 @@
             </nav>
         </header>
 
+        <!-- 
+        ====================================
+        CONTENIDO PRINCIPAL
+        ====================================
+        Element: <main>
+        - id="main-content" para skip link
+        - Contiene todo el contenido único de esta página
+        -->
         <main id="main-content">
-            <!-- HERO SECTION -->
+
+            <!-- 
+            ====================================
+            SECCIÓN HERO
+            ====================================
+            Element: <section>
+            Clase: .c-hero
+            
+            Primera sección visible con:
+            - Imagen de fondo con overlay
+            - Título principal (único h1 de la página)
+            - Subtítulo descriptivo
+            - CTA (Call to Action) para explorar rutas
+            
+            El contenido está en <article> porque es autocontenido
+            y podría mostrarse independientemente.
+            -->
             <section class="c-hero">
                 <article class="c-hero__content animate-fade-in">
+                    <!-- 
+                    Título principal (h1)
+                    - Solo uno por página según mejores prácticas SEO
+                    - Describe el propósito principal del sitio
+                    -->
                     <h1 class="c-hero__title">Vive el Valle de Campoo</h1>
-                    <p class="c-hero__subtitle">Naturaleza salvaje, tradición milenaria y aventura sin límites. Tu
-                        próxima escapada empieza aquí.</p>
+
+                    <!-- Subtítulo con propuesta de valor -->
+                    <p class="c-hero__subtitle">
+                        Naturaleza salvaje, tradición milenaria y aventura sin límites.
+                        Tu próxima escapada empieza aquí.
+                    </p>
+
+                    <!-- Botón CTA principal -->
                     <a href="rutas.html" class="c-btn-primary">Explorar Rutas</a>
                 </article>
             </section>
 
-            <!-- CAROUSEL: RUTAS DESTACADAS -->
+            <!-- 
+            ====================================
+            SECCIÓN: RUTAS DESTACADAS
+            ====================================
+            Element: <section>
+            Clase: .l-section
+            
+            Carrusel horizontal con tarjetas de rutas populares.
+            Cada ruta es un <article> porque es contenido independiente.
+            -->
             <section class="l-section u-container">
+                <!-- Título de sección (h2) -->
                 <h2>Rutas Destacadas</h2>
 
+                <!-- 
+                Wrapper del carrusel
+                Contiene: flechas de navegación, carrusel scrollable, dots
+                -->
                 <div class="c-carousel-wrapper">
-                    <!-- Carousel Arrows -->
+
+                    <!-- Flecha izquierda (anterior) -->
                     <button class="c-carousel-arrow c-carousel-arrow--left" aria-label="Anterior">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
                             fill="currentColor">
                             <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
                         </svg>
                     </button>
+
+                    <!-- Flecha derecha (siguiente) -->
                     <button class="c-carousel-arrow c-carousel-arrow--right" aria-label="Siguiente">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
                             fill="currentColor">
@@ -92,15 +204,34 @@
                         </svg>
                     </button>
 
+                    <!-- 
+                    Contenedor scrollable del carrusel
+                    - tabindex="0" permite foco para navegación por teclado
+                    - role="region" y aria-label para accesibilidad
+                    -->
                     <div class="c-carousel" tabindex="0" role="region" aria-label="Carrusel de rutas">
-                        <!-- Card 1 -->
+
+                        <!-- 
+                        ====================================
+                        TARJETA: Ruta del Ebro
+                        ====================================
+                        Element: <article>
+                        - Contenido autocontenido sobre una ruta específica
+                        - <figure> para el área de imagen/icono
+                        -->
                         <article class="c-card">
+                            <!-- Área de imagen/icono -->
                             <figure class="c-card__img">
                                 <span class="material-symbols-outlined">hiking</span>
                             </figure>
+
+                            <!-- Cuerpo de la tarjeta -->
                             <div class="c-card__body">
                                 <h3 class="c-card__title">Ruta del Ebro</h3>
+
+                                <!-- Metadata con tooltips -->
                                 <div class="c-card__meta">
+                                    <!-- Distancia -->
                                     <span class="c-card__meta-item c-tooltip" data-tooltip="Distancia total">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960"
                                             width="20" fill="currentColor">
@@ -109,6 +240,8 @@
                                         </svg>
                                         12 km
                                     </span>
+
+                                    <!-- Duración -->
                                     <span class="c-card__meta-item c-tooltip" data-tooltip="Duración estimada">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960"
                                             width="20" fill="currentColor">
@@ -117,6 +250,8 @@
                                         </svg>
                                         3h
                                     </span>
+
+                                    <!-- Dificultad -->
                                     <span class="c-card__meta-item c-tooltip" data-tooltip="Nivel de dificultad">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960"
                                             width="20" fill="currentColor">
@@ -129,7 +264,11 @@
                             </div>
                         </article>
 
-                        <!-- Card 2 -->
+                        <!-- 
+                        ====================================
+                        TARJETA: Pico Tres Mares
+                        ====================================
+                        -->
                         <article class="c-card">
                             <figure class="c-card__img">
                                 <span class="material-symbols-outlined">landscape</span>
@@ -165,7 +304,11 @@
                             </div>
                         </article>
 
-                        <!-- Card 3 -->
+                        <!-- 
+                        ====================================
+                        TARJETA: Bosque de Saja
+                        ====================================
+                        -->
                         <article class="c-card">
                             <figure class="c-card__img">
                                 <span class="material-symbols-outlined">forest</span>
@@ -201,7 +344,11 @@
                             </div>
                         </article>
 
-                        <!-- Card 4 -->
+                        <!-- 
+                        ====================================
+                        TARJETA: Nacimiento Ebro
+                        ====================================
+                        -->
                         <article class="c-card">
                             <figure class="c-card__img">
                                 <span class="material-symbols-outlined">water_drop</span>
@@ -238,43 +385,76 @@
                         </article>
                     </div>
 
-                    <!-- Carousel Dots -->
-                    <div class="c-carousel-dots">
-                        <button class="c-carousel-dot c-carousel-dot--active" aria-label="Tarjeta 1"></button>
-                        <button class="c-carousel-dot" aria-label="Tarjeta 2"></button>
-                        <button class="c-carousel-dot" aria-label="Tarjeta 3"></button>
-                        <button class="c-carousel-dot" aria-label="Tarjeta 4"></button>
-                    </div>
+                    <!-- Indicadores de posición (dots) -->
+                    <nav class="c-carousel-dots" aria-label="Navegación del carrusel">
+                        <button class="c-carousel-dot c-carousel-dot--active" aria-label="Ir a tarjeta 1"></button>
+                        <button class="c-carousel-dot" aria-label="Ir a tarjeta 2"></button>
+                        <button class="c-carousel-dot" aria-label="Ir a tarjeta 3"></button>
+                        <button class="c-carousel-dot" aria-label="Ir a tarjeta 4"></button>
+                    </nav>
                 </div>
             </section>
 
-            <!-- EVENTS SECTION -->
+            <!-- 
+            ====================================
+            SECCIÓN: PRÓXIMOS EVENTOS
+            ====================================
+            Element: <section>
+            Clase: .c-events
+            
+            Lista de eventos próximos con fecha y descripción.
+            -->
             <section class="c-events u-container">
                 <h2>Próximos Eventos</h2>
+
+                <!-- 
+                Evento 1: Festival de Otoño
+                Element: <article> - contenido autocontenido
+                -->
                 <article class="c-event-item">
-                    <span class="c-event-item__date">15 Nov 2025</span>
+                    <time class="c-event-item__date" datetime="2025-11-15">15 Nov 2025</time>
                     <h3 class="c-event-item__title">Festival de Otoño</h3>
                     <p>Talleres, gastronomía y música en vivo para disfrutar de los colores del valle con toda la
                         familia.</p>
                 </article>
+
+                <!-- 
+                Evento 2: Apertura Temporada de Nieve
+                -->
                 <article class="c-event-item">
-                    <span class="c-event-item__date">10 Dic 2024</span>
+                    <time class="c-event-item__date" datetime="2024-12-10">10 Dic 2024</time>
                     <h3 class="c-event-item__title">Apertura Temporada de Nieve</h3>
                     <p>El telesilla abre sus puertas. ¡Ven a inaugurar la temporada con nosotros!</p>
                 </article>
             </section>
 
-            <!-- NEWSLETTER SECTION -->
+            <!-- 
+            ====================================
+            SECCIÓN: NEWSLETTER
+            ====================================
+            Element: <section> con <aside>
+            
+            <aside> es apropiado porque es contenido relacionado
+            tangencialmente (no es el contenido principal).
+            -->
             <section class="l-section u-container">
                 <aside class="c-newsletter">
                     <h3>Mantente informado</h3>
                     <p>Recibe las mejores rutas, eventos y ofertas especiales en tu correo.</p>
+
+                    <!-- 
+                    Formulario de suscripción
+                    - preventDefault evita recarga (demo)
+                    - Muestra mensaje de éxito al enviar
+                    -->
                     <form id="newsletter-form"
                         onsubmit="event.preventDefault(); this.querySelector('.c-form-message').style.display='flex';">
+                        <!-- Label oculto para accesibilidad -->
                         <label for="email" class="visually-hidden">Email</label>
                         <input type="email" id="email" class="c-input" placeholder="Tu correo electrónico" required>
                         <button type="submit" class="c-btn-primary">Subscribirse</button>
-                        <!-- Form Feedback Message -->
+
+                        <!-- Mensaje de feedback (oculto por defecto) -->
                         <div class="c-form-message c-form-message--success" style="display: none;">
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
                                 fill="currentColor">
@@ -286,109 +466,65 @@
                 </aside>
             </section>
 
-            <!-- ACTIVITY GRID -->
+            <!-- 
+            ====================================
+            SECCIÓN: GRID DE ACTIVIDADES
+            ====================================
+            Element: <section>
+            
+            Grid de iconos enlazados a diferentes categorías
+            de actividades disponibles.
+            -->
             <section class="l-section u-container">
                 <h2 style="text-align: center;">Qué más hacer en Campoo</h2>
-                <div class="l-grid-4" style="margin-top: 2rem;">
+
+                <!-- Grid de 4 columnas (2 en móvil) -->
+                <nav class="l-grid-4" style="margin-top: 2rem;" aria-label="Categorías de actividades">
+                    <!-- 
+                    Cada icon-box es un enlace a la página de actividades.
+                    Usamos <a> directamente porque el objetivo es navegación.
+                    -->
                     <a href="actividades.html" class="c-icon-box">
                         <span class="material-symbols-outlined">museum</span>
                         <h4>Culturales</h4>
                     </a>
+
                     <a href="actividades.html" class="c-icon-box">
                         <span class="material-symbols-outlined">visibility</span>
                         <h4>Avistamientos</h4>
                     </a>
+
                     <a href="actividades.html" class="c-icon-box">
                         <span class="material-symbols-outlined">pets</span>
                         <h4>Hípica</h4>
                     </a>
+
                     <a href="actividades.html" class="c-icon-box">
                         <span class="material-symbols-outlined">bedtime</span>
                         <h4>Observatorio</h4>
                     </a>
-                </div>
+                </nav>
             </section>
         </main>
 
-        <!-- IMPROVED FOOTER (Columns + Social) -->
-        <footer class="c-footer">
-            <div class="u-container">
-                <div class="c-footer__grid">
-                    <!-- Column 1: About -->
-                    <div class="c-footer__col">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <span class="material-symbols-outlined"
-                                style="font-size: 2rem; color: var(--c-lime);">landscape</span>
-                            <span
-                                style="font-family: 'Righteous', sans-serif; font-size: 1.5rem; color: var(--c-lime);">ACTEA</span>
-                        </div>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--c-white);">Alto Campoo Todo el Año.
-                            Fomentando el turismo sostenible en Cantabria.</p>
+        <!-- 
+        ====================================
+        FOOTER (Carga Dinámica)
+        ====================================
+        Este placeholder será reemplazado por el contenido de
+        components/footer.html mediante JavaScript.
+        
+        Incluye: Logo, enlaces, redes sociales, copyright
+        -->
+        <div id="footer-placeholder"></div>
 
-                        <!-- Social Icons -->
-                        <div class="c-footer__socials" style="margin-top: 1.5rem;">
-                            <a href="#" class="c-footer__social-link" aria-label="Facebook">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
-                                </svg>
-                            </a>
-                            <a href="#" class="c-footer__social-link" aria-label="Instagram">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
-                                </svg>
-                            </a>
-                            <a href="#" class="c-footer__social-link" aria-label="Twitter/X">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Column 2: Quick Links -->
-                    <div class="c-footer__col">
-                        <h4>Enlaces</h4>
-                        <ul>
-                            <li><a href="rutas.html">Rutas</a></li>
-                            <li><a href="novedades.html">Calendario</a></li>
-                            <li><a href="actividades.html">Actividades</a></li>
-                            <li><a href="rutas.html#mapa">Mapa</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Column 3: Info -->
-                    <div class="c-footer__col">
-                        <h4>Información</h4>
-                        <ul>
-                            <li><a href="informacion.html#faq">FAQ</a></li>
-                            <li><a href="informacion.html#contacto">Contacto</a></li>
-                            <li><a href="#">Accesibilidad</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Column 4: Legal -->
-                    <div class="c-footer__col">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacidad</a></li>
-                            <li><a href="#">Términos</a></li>
-                            <li><a href="#">Cookies</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div
-                    style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: rgba(255,255,255,0.6);">
-                    © 2024 ACTEA. Proyecto educativo.
-                </div>
-            </div>
-        </footer>
+        <!-- 
+        ====================================
+        JAVASCRIPT
+        ====================================
+        Cargado al final del body para no bloquear el renderizado.
+        -->
+        <script src="js/components.js"></script>
     </body>
 
 </html>

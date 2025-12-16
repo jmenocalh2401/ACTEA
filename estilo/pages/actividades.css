@@ -1,0 +1,152 @@
+/**
+ * ============================================================================
+ * ACTEA - ACTIVIDADES PAGE CSS
+ * ============================================================================
+ * 
+ * Estilos específicos para la página de actividades (actividades.html).
+ * 
+ * Incluye:
+ * - Cards de actividad con icono circular
+ * - Layout flexible para contenido detallado
+ * 
+ * USADO EN: actividades.html únicamente
+ * ============================================================================
+ */
+
+
+/* ============================================================================
+   GRID DE ACTIVIDADES
+   ============================================================================
+   
+   Layout vertical para mostrar actividades con descripción extensa.
+   
+   USADO EN: Contenedor de artículos en actividades.html
+   ============================================================================ */
+
+/* Grid de actividades */
+/* USADO EN: Contenedor de artículos de actividades */
+.c-activities-grid {
+    display: grid;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+
+/* ============================================================================
+   CARDS DE ACTIVIDAD
+   ============================================================================
+   
+   Tarjetas horizontales con:
+   - Icono circular a la izquierda
+   - Contenido descriptivo a la derecha
+   
+   USADO EN: <article class="c-activity-card">
+   ============================================================================ */
+
+/* Tarjeta de actividad */
+/* USADO EN: <article class="c-activity-card"> */
+.c-activity-card {
+    /* Fondo blanco elevado */
+    background: var(--c-pure-white);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+
+    /* Sombra de elevación */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Layout interno de la tarjeta */
+/* USADO EN: <div class="c-activity-card__inner"> */
+.c-activity-card__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+
+    /* Permite wrap en pantallas pequeñas */
+    flex-wrap: wrap;
+}
+
+
+/* ============================================================================
+   ICONO CIRCULAR DE ACTIVIDAD
+   ============================================================================
+   
+   Icono grande en círculo con fondo teal semi-transparente.
+   Representa visualmente el tipo de actividad.
+   
+   USADO EN: <div class="c-activity-icon">
+   ============================================================================ */
+
+/* Contenedor del icono */
+/* USADO EN: <div class="c-activity-icon"> */
+.c-activity-icon {
+    /* No se encoge en flex */
+    flex-shrink: 0;
+
+    /* Tamaño circular */
+    width: 80px;
+    height: 80px;
+
+    /* Fondo teal con transparencia */
+    background: rgba(0, 66, 63, 0.1);
+    border-radius: 50%;
+
+    /* Centrado del icono */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Color del icono interno */
+    color: var(--c-teal);
+}
+
+/* Icono dentro del círculo */
+.c-activity-icon .material-symbols-outlined {
+    font-size: 2.5rem;
+}
+
+
+/* ============================================================================
+   CONTENIDO DE ACTIVIDAD
+   ============================================================================
+   
+   Área de texto con título, descripción y lista de características.
+   
+   USADO EN: <div class="c-activity-content">
+   ============================================================================ */
+
+/* Contenedor de texto */
+/* USADO EN: <div class="c-activity-content"> */
+.c-activity-content {
+    /* Ocupa espacio restante */
+    flex: 1;
+
+    /* Ancho mínimo antes de wrap */
+    min-width: 250px;
+}
+
+/* Título de la actividad */
+.c-activity-content h2 {
+    margin-bottom: 1rem;
+}
+
+/* Descripción de la actividad */
+.c-activity-content p {
+    color: var(--c-text-light);
+    margin-bottom: 1.5rem;
+}
+
+/* Lista de características */
+/* USADO EN: <ul class="c-activity-features"> */
+.c-activity-features {
+    /* Lista con bullets */
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--c-text-light);
+}
+
+/* Item de característica */
+.c-activity-features li {
+    margin-bottom: 0.5rem;
+}

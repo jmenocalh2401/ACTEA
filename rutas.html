@@ -1,23 +1,59 @@
 <!DOCTYPE html>
+<!--
+============================================================================
+ACTEA - PÁGINA DE RUTAS (rutas.html)
+============================================================================
+
+Página que muestra todas las rutas de senderismo disponibles.
+Incluye mapa interactivo (placeholder) y listado de rutas.
+
+ESTRUCTURA HTML5 SEMÁNTICA:
+- <header>: Cargado dinámicamente desde components/header.html
+- <main>: Contenido principal
+  - <nav class="c-breadcrumbs">: Navegación de migas de pan
+  - <section id="mapa">: Mapa interactivo
+  - <section>: Listado de rutas con <article> para cada ruta
+- <footer>: Cargado dinámicamente desde components/footer.html
+
+ESTILOS:
+- main.css: Estilos base, componentes, layout
+- pages/rutas.css: Estilos específicos (mapa, grid de rutas)
+
+============================================================================
+-->
 <html lang="es-ES">
 
     <head>
+        <!-- 
+        ====================================
+        META TAGS
+        ====================================
+        -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Descubre las mejores rutas de senderismo en el Valle de Campoo. Desde paseos familiares hasta ascensiones técnicas.">
         <title>Rutas - ACTEA</title>
-        <link rel="stylesheet" href="estilo/estilos.css">
+
+        <!-- 
+        ====================================
+        ESTILOS CSS
+        ====================================
+        -->
+        <link rel="stylesheet" href="estilo/main.css">
+        <link rel="stylesheet" href="estilo/pages/rutas.css">
     </head>
 
     <body>
+        <!-- Skip link -->
         <a href="#main-content" class="visually-hidden">Saltar al contenido principal</a>
-
+        <!-- HEADER -->
         <header class="c-header">
             <nav class="u-container c-header__inner">
                 <a href="index.html" class="c-logo" aria-label="ACTEA Inicio">
                     <span class="material-symbols-outlined" style="font-size: 2rem;">landscape</span>
                     <span class="c-logo__text">ACTEA</span>
                 </a>
-
                 <ul class="c-nav">
                     <li class="c-nav__list">
                         <a href="rutas.html" class="c-nav__link c-nav__link--active">Rutas</a>
@@ -26,7 +62,6 @@
                         <a href="rutas.html#mapa" class="c-nav__link">Mapa</a>
                     </li>
                 </ul>
-
                 <div class="c-header-tools">
                     <button class="c-header-tools__btn" aria-label="Cambiar tema">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
@@ -44,7 +79,6 @@
                         <span class="c-header-tools__lang">ES</span>
                     </button>
                 </div>
-
                 <input type="checkbox" id="menu-toggle">
                 <label for="menu-toggle" class="c-menu-btn" aria-label="Abrir menú">
                     <span class="material-symbols-outlined" style="font-size: 2rem;">menu</span>
@@ -54,53 +88,123 @@
                     <a href="novedades.html" class="c-mobile-nav__link">Calendario</a>
                     <a href="actividades.html" class="c-mobile-nav__link">Actividades</a>
                     <a href="rutas.html#mapa" class="c-mobile-nav__link">Mapa</a>
-                    <label for="menu-toggle" class="c-mobile-nav__close"><span class="material-symbols-outlined"
-                            style="font-size: 2rem;">close</span></label>
+                    <label for="menu-toggle" class="c-mobile-nav__close">
+                        <span class="material-symbols-outlined" style="font-size: 2rem;">close</span>
+                    </label>
                 </div>
             </nav>
         </header>
 
+        <!-- 
+        ====================================
+        CONTENIDO PRINCIPAL
+        ====================================
+        -->
         <main id="main-content" class="l-section u-container">
-            <!-- Breadcrumbs -->
+
+            <!-- 
+            ====================================
+            BREADCRUMBS (Migas de pan)
+            ====================================
+            Element: <nav>
+            Clase: .c-breadcrumbs
+            
+            Navegación secundaria que muestra la jerarquía:
+            Inicio > Rutas
+            
+            aria-label describe el propósito para screen readers
+            -->
             <nav class="c-breadcrumbs" aria-label="Migas de pan">
                 <a href="index.html">Inicio</a>
-                <span class="c-breadcrumbs__separator">›</span>
-                <span class="c-breadcrumbs__current">Rutas</span>
+                <span class="c-breadcrumbs__separator" aria-hidden="true">›</span>
+                <span class="c-breadcrumbs__current" aria-current="page">Rutas</span>
             </nav>
 
+            <!-- 
+            Título principal de la página (h1)
+            Único por página según SEO
+            -->
             <h1>Rutas de Montaña</h1>
 
-            <section id="mapa"
-                style="background: linear-gradient(135deg, var(--c-teal), var(--c-green)); min-height: 400px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 4rem; color: var(--c-pure-white);">
-                <span class="material-symbols-outlined" style="font-size: 3rem;">map</span>
-                <p style="margin-top: 1rem; font-weight: 700; font-size: 1.25rem;">Mapa Interactivo (Próximamente)</p>
+            <!-- 
+            ====================================
+            SECCIÓN: MAPA INTERACTIVO
+            ====================================
+            Element: <section>
+            id="mapa" para navegación con ancla
+            
+            Actualmente es un placeholder visual.
+            En producción se integraría Leaflet/Google Maps.
+            -->
+            <section id="mapa" class="c-map-placeholder">
+                <span class="material-symbols-outlined">map</span>
+                <p>Mapa Interactivo (Próximamente)</p>
             </section>
 
+            <!-- 
+            ====================================
+            SECCIÓN: LISTADO DE RUTAS
+            ====================================
+            Element: <section>
+            
+            Grid responsive de tarjetas de rutas.
+            Cada ruta es un <article> autocontenido.
+            -->
             <section>
                 <h2>Listado de Rutas</h2>
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+
+                <!-- Grid responsivo de rutas -->
+                <div class="c-routes-grid">
+
+                    <!-- 
+                    ====================================
+                    TARJETA: Pico Tres Mares
+                    ====================================
+                    Element: <article>
+                    Contenido autocontenido sobre esta ruta
+                    -->
                     <article class="c-card">
+                        <!-- Área de imagen/icono -->
                         <figure class="c-card__img">
                             <span class="material-symbols-outlined">hiking</span>
                         </figure>
+
+                        <!-- Cuerpo de la tarjeta -->
                         <div class="c-card__body">
                             <h3 class="c-card__title">Pico Tres Mares</h3>
+
+                            <!-- Metadata -->
                             <div class="c-card__meta">
-                                <span class="c-card__meta-item c-tooltip" data-tooltip="Distancia"><span
-                                        class="material-symbols-outlined"
-                                        style="font-size:1.25rem; color: var(--c-green);">location_on</span> 8 km</span>
-                                <span class="c-card__meta-item c-tooltip" data-tooltip="Duración"><span
-                                        class="material-symbols-outlined"
-                                        style="font-size:1.25rem; color: var(--c-green);">schedule</span> 4h</span>
+                                <span class="c-card__meta-item c-tooltip" data-tooltip="Distancia">
+                                    <span class="material-symbols-outlined"
+                                        style="font-size:1.25rem; color: var(--c-green);">location_on</span>
+                                    8 km
+                                </span>
+                                <span class="c-card__meta-item c-tooltip" data-tooltip="Duración">
+                                    <span class="material-symbols-outlined"
+                                        style="font-size:1.25rem; color: var(--c-green);">schedule</span>
+                                    4h
+                                </span>
                             </div>
-                            <p style="margin-top: 1rem; color: var(--c-text-light);">La cumbre que domina todo el valle.
-                                Vistas espectaculares.</p>
+
+                            <!-- Descripción -->
+                            <p style="margin-top: 1rem; color: var(--c-text-light);">
+                                La cumbre que domina todo el valle. Vistas espectaculares.
+                            </p>
+
+                            <!-- CTA -->
                             <a href="#" class="c-btn-primary"
-                                style="margin-top: 1.5rem; display: block; text-align: center;">Ver Ruta</a>
+                                style="margin-top: 1.5rem; display: block; text-align: center;">
+                                Ver Ruta
+                            </a>
                         </div>
                     </article>
 
+                    <!-- 
+                    ====================================
+                    TARJETA: Nacimiento del Ebro
+                    ====================================
+                    -->
                     <article class="c-card">
                         <figure class="c-card__img">
                             <span class="material-symbols-outlined">water</span>
@@ -108,78 +212,39 @@
                         <div class="c-card__body">
                             <h3 class="c-card__title">Nacimiento del Ebro</h3>
                             <div class="c-card__meta">
-                                <span class="c-card__meta-item c-tooltip" data-tooltip="Distancia"><span
-                                        class="material-symbols-outlined"
-                                        style="font-size:1.25rem; color: var(--c-green);">location_on</span> 2 km</span>
-                                <span class="c-card__meta-item c-tooltip" data-tooltip="Duración"><span
-                                        class="material-symbols-outlined"
-                                        style="font-size:1.25rem; color: var(--c-green);">schedule</span> 1h</span>
+                                <span class="c-card__meta-item c-tooltip" data-tooltip="Distancia">
+                                    <span class="material-symbols-outlined"
+                                        style="font-size:1.25rem; color: var(--c-green);">location_on</span>
+                                    2 km
+                                </span>
+                                <span class="c-card__meta-item c-tooltip" data-tooltip="Duración">
+                                    <span class="material-symbols-outlined"
+                                        style="font-size:1.25rem; color: var(--c-green);">schedule</span>
+                                    1h
+                                </span>
                             </div>
-                            <p style="margin-top: 1rem; color: var(--c-text-light);">Paseo junto al nacimiento del río
-                                más caudaloso de España.</p>
+                            <p style="margin-top: 1rem; color: var(--c-text-light);">
+                                Paseo junto al nacimiento del río más caudaloso de España.
+                            </p>
                             <a href="#" class="c-btn-primary"
-                                style="margin-top: 1.5rem; display: block; text-align: center;">Ver Ruta</a>
+                                style="margin-top: 1.5rem; display: block; text-align: center;">
+                                Ver Ruta
+                            </a>
                         </div>
                     </article>
                 </div>
             </section>
         </main>
 
-        <footer class="c-footer">
-            <div class="u-container">
-                <div class="c-footer__grid">
-                    <div class="c-footer__col">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                            <span class="material-symbols-outlined"
-                                style="font-size: 2rem; color: var(--c-lime);">landscape</span>
-                            <span
-                                style="font-family: 'Righteous', sans-serif; font-size: 1.5rem; color: var(--c-lime);">ACTEA</span>
-                        </div>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--c-white);">Alto Campoo Todo el Año.
-                        </p>
-                        <div class="c-footer__socials" style="margin-top: 1.5rem;">
-                            <a href="#" class="c-footer__social-link" aria-label="Facebook"><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
-                                </svg></a>
-                            <a href="#" class="c-footer__social-link" aria-label="Instagram"><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
-                                </svg></a>
-                        </div>
-                    </div>
-                    <div class="c-footer__col">
-                        <h4>Enlaces</h4>
-                        <ul>
-                            <li><a href="rutas.html">Rutas</a></li>
-                            <li><a href="novedades.html">Calendario</a></li>
-                            <li><a href="actividades.html">Actividades</a></li>
-                        </ul>
-                    </div>
-                    <div class="c-footer__col">
-                        <h4>Info</h4>
-                        <ul>
-                            <li><a href="informacion.html#faq">FAQ</a></li>
-                            <li><a href="informacion.html#contacto">Contacto</a></li>
-                        </ul>
-                    </div>
-                    <div class="c-footer__col">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacidad</a></li>
-                            <li><a href="#">Términos</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div
-                    style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: rgba(255,255,255,0.6);">
-                    © 2024 ACTEA</div>
-            </div>
-        </footer>
+        <!-- 
+        ====================================
+        FOOTER (Carga Dinámica)
+        ====================================
+        -->
+        <div id="footer-placeholder"></div>
+
+        <!-- JavaScript -->
+        <script src="js/components.js"></script>
     </body>
 
 </html>

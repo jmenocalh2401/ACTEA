@@ -1,0 +1,373 @@
+/**
+ * ============================================================================
+ * ACTEA - BASE CSS
+ * ============================================================================
+ * 
+ * Archivo base que contiene:
+ * - Importación de fuentes (Google Fonts)
+ * - Variables CSS (Custom Properties)
+ * - Reset CSS
+ * - Estilos base de tipografía
+ * - Clases de utilidad globales
+ * 
+ * USADO EN: Todas las páginas del sitio (importado vía main.css)
+ * ============================================================================
+ */
+
+/* ============================================================================
+   IMPORTACIÓN DE FUENTES
+   ============================================================================
+   
+   Fuentes utilizadas según la Guía de Estilos de Cantur:
+   - Righteous: Para títulos h1-h4 (fuente display decorativa)
+   - Roboto: Para cuerpo de texto y h5-h6 (fuente sans-serif legible)
+   - Material Symbols: Iconografía de Google (estilo outlined)
+   ============================================================================ */
+
+/* Righteous y Roboto - Tipografías principales del sitio */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@300;400;700&display=swap');
+
+/* Material Symbols Outlined - Sistema de iconos vectoriales SVG */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+
+/* ============================================================================
+   VARIABLES CSS (CUSTOM PROPERTIES)
+   ============================================================================
+   
+   Definidas en :root para acceso global.
+   Nomenclatura:
+   - --c-* : Colores
+   - --s-* : Espaciado (spacing)
+   - --max-*, --radius-*, --header-* : Layout y dimensiones
+   ============================================================================ */
+
+:root {
+    /* -------------------------------------------------------------------------
+       PALETA DE COLORES OFICIAL CANTUR
+       ------------------------------------------------------------------------- 
+       Colores corporativos de Cantur (turismo de Cantabria)
+       Optimizados para contraste WCAG AAA
+    */
+
+    /* Negro principal - Usado para texto body y fondos oscuros */
+    --c-black: #161616;
+
+    /* Teal/Verde azulado oscuro - Color primario de marca */
+    /* Usado en: headers, títulos, enlaces, elementos destacados */
+    --c-teal: #00423F;
+
+    /* Verde medio - Color secundario */
+    /* Usado en: hover states, acentos, iconos */
+    --c-green: #3B8F4C;
+
+    /* Verde lima - Color de acento/CTA */
+    /* Usado en: botones primarios, highlights, badges */
+    --c-lime: #8EB856;
+
+    /* Blanco hueso - Fondo principal claro */
+    /* Usado en: background del body, secciones alternas */
+    --c-white: #F0F0F0;
+
+    /* Blanco puro - Para contraste máximo */
+    /* Usado en: cards, modales, elementos sobre fondos de color */
+    --c-pure-white: #FFFFFF;
+
+    /* -------------------------------------------------------------------------
+       COLORES SEMÁNTICOS (Accesibilidad AAA)
+       ------------------------------------------------------------------------- 
+       Colores asignados por función para mantener consistencia
+       y garantizar ratio de contraste mínimo 7:1 (AAA)
+    */
+
+    /* Color de títulos - #00423F sobre #F0F0F0 = 9.1:1 (AAA) */
+    --c-text-headings: var(--c-teal);
+
+    /* Color de texto body - #161616 sobre #F0F0F0 = 14.8:1 (AAA) */
+    --c-text-body: var(--c-black);
+
+    /* Color de texto secundario/muted */
+    --c-text-light: #4A4A4A;
+
+    /* Color de texto sobre fondos oscuros */
+    --c-text-inverse: var(--c-white);
+
+    /* -------------------------------------------------------------------------
+       SISTEMA DE ESPACIADO
+       ------------------------------------------------------------------------- 
+       Escala consistente basada en rem (1rem = 16px)
+       Progresión: sm < md < lg < xl
+    */
+
+    /* Espaciado pequeño - Gaps internos, padding de elementos inline */
+    --s-sm: 0.5rem;
+    /* 8px */
+
+    /* Espaciado medio - Padding de contenedores, gaps de grid */
+    --s-md: 1.5rem;
+    /* 24px */
+
+    /* Espaciado grande - Padding de secciones */
+    --s-lg: 3rem;
+    /* 48px */
+
+    /* Espaciado extra grande - Separación entre secciones principales */
+    --s-xl: 5rem;
+    /* 80px */
+
+    /* -------------------------------------------------------------------------
+       LAYOUT Y DIMENSIONES
+       ------------------------------------------------------------------------- */
+
+    /* Ancho máximo del contenedor principal */
+    --max-width: 1200px;
+
+    /* Altura fija del header sticky */
+    --header-height: 80px;
+
+    /* Radio de borde medio - Botones, inputs, cards pequeñas */
+    --radius-md: 8px;
+
+    /* Radio de borde grande - Cards, modales, secciones */
+    --radius-lg: 16px;
+}
+
+
+/* ============================================================================
+   RESET CSS
+   ============================================================================
+   
+   Normalización de estilos por defecto del navegador.
+   Asegura consistencia cross-browser.
+   ============================================================================ */
+
+/* Reset universal - Aplica box-sizing border-box a todos los elementos */
+*,
+*::before,
+*::after {
+    /* border-box: padding y border se incluyen en width/height */
+    box-sizing: border-box;
+
+    /* Elimina márgenes y padding por defecto */
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ============================================================================
+   ESTILOS BASE HTML Y BODY
+   ============================================================================ */
+
+/* Elemento raíz HTML */
+html {
+    /* Tamaño base de fuente (1rem = 16px) */
+    font-size: 16px;
+
+    /* Scroll suave para navegación con anclas (#section) */
+    scroll-behavior: smooth;
+}
+
+/* Body - Contenedor principal de toda la página */
+body {
+    /* Familia tipográfica principal con fallbacks */
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+    /* Color de texto por defecto */
+    color: var(--c-text-body);
+
+    /* Fondo principal del sitio */
+    background-color: var(--c-white);
+
+    /* Altura de línea para legibilidad óptima (1.5-1.7 recomendado) */
+    line-height: 1.6;
+
+    /* Suavizado de fuentes para mejor renderizado en macOS/iOS */
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* ============================================================================
+   TIPOGRAFÍA - ENCABEZADOS
+   ============================================================================
+   
+   Jerarquía visual según Guía de Estilos Cantur:
+   - h1-h4: Fuente Righteous (display)
+   - h5-h6: Fuente Roboto (body)
+   
+   Escala tipográfica: 2.5rem > 2rem > 1.75rem > 1.5rem > 1.25rem > 1.1rem
+   ============================================================================ */
+
+/* Título principal de página - Solo uno por página (SEO) */
+h1 {
+    font-family: 'Righteous', 'Tahoma', Arial, sans-serif;
+    font-size: 2.5rem;
+    /* 40px */
+    color: var(--c-text-headings);
+    font-weight: 700;
+}
+
+/* Títulos de sección principal */
+h2 {
+    font-family: 'Righteous', 'Tahoma', Arial, sans-serif;
+    font-size: 2rem;
+    /* 32px */
+    color: var(--c-text-headings);
+    font-weight: 700;
+}
+
+/* Subtítulos y títulos de cards */
+h3 {
+    font-family: 'Righteous', 'Tahoma', Arial, sans-serif;
+    font-size: 1.75rem;
+    /* 28px */
+    color: var(--c-text-headings);
+    font-weight: 700;
+}
+
+/* Títulos terciarios - Widgets, sidebar */
+h4 {
+    font-family: 'Righteous', 'Tahoma', Arial, sans-serif;
+    font-size: 1.5rem;
+    /* 24px */
+    color: var(--c-text-headings);
+    font-weight: 700;
+}
+
+/* Títulos menores - Usados con fuente body para menor énfasis */
+h5 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    /* 20px */
+    color: var(--c-black);
+    font-weight: 700;
+}
+
+/* Títulos mínimos - Etiquetas, captions */
+h6 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    /* 17.6px */
+    color: var(--c-black);
+    font-weight: 700;
+}
+
+
+/* ============================================================================
+   TIPOGRAFÍA - TEXTO Y ENLACES
+   ============================================================================ */
+
+/* Párrafos - Texto de cuerpo principal */
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    /* 16px */
+    color: var(--c-black);
+    font-weight: 400;
+    /* Peso regular */
+}
+
+/* Enlaces - Estilos base */
+a {
+    /* Color corporativo teal */
+    color: var(--c-teal);
+
+    /* Sin subrayado por defecto (diseño limpio) */
+    text-decoration: none;
+
+    /* Transición suave para hover */
+    transition: color 0.2s;
+}
+
+/* Enlaces - Estado hover */
+a:hover {
+    /* Cambia a verde secundario al pasar el mouse */
+    color: var(--c-green);
+}
+
+
+/* ============================================================================
+   CLASES DE UTILIDAD GLOBALES
+   ============================================================================
+   
+   Clases reutilizables para layout y accesibilidad.
+   Prefijo: u-* (utility) o sin prefijo para helpers especiales.
+   ============================================================================ */
+
+/* Contenedor centrado con ancho máximo */
+/* USADO EN: Header, footer, secciones de contenido */
+.u-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    /* Centrado horizontal */
+    padding: 0 var(--s-md);
+    /* Padding lateral en móvil */
+}
+
+/* Responsive: Mayor padding en pantallas medianas+ */
+@media (min-width: 768px) {
+    .u-container {
+        padding: 0 var(--s-lg);
+        /* 48px en desktop */
+    }
+}
+
+/* Clase para ocultar visualmente pero mantener accesibilidad */
+/* USADO EN: Skip links, labels para screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Skip link visible al recibir foco (accesibilidad teclado) */
+/* USADO EN: Link "Saltar al contenido principal" */
+.visually-hidden:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 1rem 2rem;
+    background: var(--c-teal);
+    color: var(--c-pure-white);
+    font-weight: 700;
+    z-index: 1000;
+    clip: auto;
+    margin: 0;
+}
+
+/* Configuración base para Material Symbols (iconos) */
+/* USADO EN: Todos los iconos <span class="material-symbols-outlined"> */
+.material-symbols-outlined {
+    /* Alineación vertical con texto adyacente */
+    vertical-align: middle;
+
+    /* Configuración del icono: sin relleno, peso 400, sin gradiente */
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+
+/* ============================================================================
+   ESTILOS DE FOCO GLOBAL (Accesibilidad AAA)
+   ============================================================================
+   
+   Indicador visual claro para navegación por teclado.
+   Cumple con WCAG 2.1 criterio 2.4.7 (Focus Visible)
+   ============================================================================ */
+
+/* Foco visible para elementos interactivos */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    /* Outline de alto contraste con color de acento */
+    outline: 3px solid var(--c-lime);
+
+    /* Separación del outline del borde del elemento */
+    outline-offset: 2px;
+}
