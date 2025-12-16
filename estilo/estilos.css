@@ -11,17 +11,25 @@
     /* Primary Brand Color */
     --c-green: #3B8F4C;
     --c-lime: #8EB856;
-    --c-white: #F0F0F0;
-    /* Light Background */
-    --c-pure-white: #FFFFFF;
 
-    /* Semantic Colors (for AAA Contrast) */
+    /* Semantic Colors (Restricted Palette for Contrast) */
+    --bg-main: #FFFFFF;
+    --bg-surface: #F5F5F5;
+    --bg-dark: #161616;
+
+    --text-main: #161616;
+    --text-muted: #4A4A4A;
+    --text-inverse: #FFFFFF;
+
+    --c-pure-white: #FFFFFF;
+    /* Compatibilidad */
+    --c-white: #F0F0F0;
+    /* Compatibilidad */
+
+    /* Mapping to old variables to prevent breakage but enforcing new values */
     --c-text-headings: var(--c-teal);
-    /* #00423F on #F0F0F0 = 9.1:1 (AAA) */
-    --c-text-body: var(--c-black);
-    /* #161616 on #F0F0F0 = 14.8:1 (AAA) */
-    --c-text-light: #4A4A4A;
-    --c-text-inverse: var(--c-white);
+    --c-text-body: var(--text-main);
+    --c-text-light: var(--text-muted);
 
     /* Spacing */
     --s-sm: 0.5rem;
@@ -34,6 +42,9 @@
     --header-height: 80px;
     --radius-md: 8px;
     --radius-lg: 16px;
+
+    /* Fonts */
+    --fuente-texto: 'Roboto', sans-serif;
 }
 
 /* Base Reset */
@@ -53,7 +64,7 @@ html {
 body {
     font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     color: var(--c-text-body);
-    background-color: var(--c-white);
+    background-color: var(--bg-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
@@ -149,7 +160,7 @@ a:hover {
 
 /* HEADER */
 .c-header {
-    background: var(--c-pure-white);
+    background: var(--bg-main);
     height: var(--header-height);
     position: sticky;
     top: 0;
@@ -223,7 +234,13 @@ a:hover {
     gap: 1rem;
 }
 
-.c-header-tools__btn {
+/* CSS-Only Details/Summary Menu */
+.c-lang-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.c-lang-btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -231,7 +248,75 @@ a:hover {
     padding: 0.5rem;
     display: flex;
     align-items: center;
+    list-style: none;
+    /* Hide default triangle */
 }
+
+/* Hide default marker in Safari/Chrome */
+.c-lang-btn::-webkit-details-marker {
+    display: none;
+}
+
+.c-lang-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+/* Rotate icon when open */
+.c-lang-dropdown[open] .c-lang-icon {
+    transform: rotate(180deg);
+}
+
+.c-lang-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 150px;
+    background: var(--bg-main);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-md);
+    padding: 0.5rem 0;
+    list-style: none;
+    z-index: 200;
+    /* Animation */
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: menuFadeIn 0.2s forwards;
+}
+
+@keyframes menuFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.c-lang-menu li {
+    display: block;
+}
+
+.c-lang-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.c-lang-menu a:hover,
+.c-lang-menu a:focus {
+    background-color: var(--bg-surface);
+    color: var(--c-teal);
+}
+
+/* Close interaction:
+   Native <details> only closes on click.
+   To simulate "click outside" strictly with CSS is not possible without hacks.
+   The user asked for a "CSS Only" solution that works well, native behavior is the best baseline.
+   We add a full-screen overlay when open to catch clicks outside? No, that interferes with the summary.
+   We accept native toggle behavior.
+*/
 
 .c-header-tools__lang {
     font-family: 'Roboto', sans-serif;
@@ -369,7 +454,7 @@ a:hover {
 .c-card {
     flex: 0 0 300px;
     scroll-snap-align: center;
-    background: var(--c-pure-white);
+    background: var(--bg-surface);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -426,7 +511,7 @@ a:hover {
 
 /* EVENTS SECTION (Stacked) */
 .c-events {
-    background: var(--c-pure-white);
+    background: var(--bg-surface);
     padding: var(--s-lg) 0;
 }
 
@@ -465,7 +550,7 @@ a:hover {
 }
 
 .c-newsletter p {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-inverse);
     margin-bottom: 1.5rem;
 }
 
@@ -538,7 +623,7 @@ a:hover {
 
 /* FOOTER - WCAG AAA Compliant */
 .c-footer {
-    background: var(--c-black);
+    background: var(--bg-dark);
     color: var(--c-white);
     padding: var(--s-xl) 0 var(--s-lg);
 }
@@ -691,7 +776,7 @@ textarea:focus-visible {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--c-pure-white);
+    background: var(--bg-main);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     width: 44px;
@@ -796,6 +881,7 @@ textarea:focus-visible {
     background: rgba(211, 47, 47, 0.05);
 }
 
+
 .c-form-message {
     padding: 1rem;
     border-radius: var(--radius-md);
@@ -805,6 +891,34 @@ textarea:focus-visible {
     align-items: center;
     gap: 0.5rem;
 }
+
+/* WEATHER WIDGET */
+.weather-widget {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--fuente-texto);
+    /* Tu variable de fuente */
+    font-size: 0.9rem;
+    background: rgba(22, 22, 22, 0.05);
+    /* Ligeramente oscuro para contraste en header blanco */
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-right: 1rem;
+    /* Separación de las otras herramientas */
+    transition: all 0.3s ease;
+}
+
+.weather-widget:hover {
+    background: rgba(59, 143, 76, 0.1);
+    cursor: default;
+}
+
+.weather-icon {
+    font-size: 1.5rem;
+    /* Tamaño del emoji/icono */
+}
+
 
 .c-form-message--success {
     background: rgba(59, 143, 76, 0.1);
