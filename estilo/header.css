@@ -3,397 +3,422 @@
  * ACTEA - HEADER CSS
  * ============================================================================
  * 
- * Estilos del encabezado principal del sitio.
- * Incluye:
- * - Header sticky con sombra
- * - Logo con icono y texto
- * - Navegación desktop
- * - Herramientas (tema, idioma)
- * - Menú móvil (hamburguesa) con CSS only
+ * Estilos del header sticky con navegación desktop/móvil
  * 
- * USADO EN: Todas las páginas (componente header.html)
  * ============================================================================
  */
-
 
 /* ============================================================================
    HEADER PRINCIPAL
    ============================================================================ */
 
-/* Contenedor principal del header */
-/* USADO EN: <header class="c-header"> */
+.header,
 .c-header {
-    /* Fondo blanco sólido para contraste con contenido */
-    background: var(--c-pure-white);
-
-    /* Altura fija definida en variables (80px) */
-    height: var(--header-height);
-
-    /* -------------------------------------------------------------------------
-       POSICIONAMIENTO STICKY
-       El header se mantiene fijo en la parte superior al hacer scroll.
-       - position: sticky requiere top para funcionar
-       - z-index alto para estar sobre el contenido
-    ------------------------------------------------------------------------- */
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
-
-    /* Sombra sutil para separación visual del contenido */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-
-    /* Flexbox para centrar verticalmente el contenido */
-    display: flex;
-    align-items: center;
-}
-
-/* Contenedor interno del header (hijo de u-container) */
-/* USADO EN: <nav class="u-container c-header__inner"> */
-.c-header__inner {
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     width: 100%;
-    display: flex;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
 
-    /* Distribuye espacio: logo a la izquierda, nav y tools a la derecha */
+.header-container,
+.c-header__inner {
+    display: flex;
     justify-content: space-between;
-
-    /* Alineación vertical centrada */
     align-items: center;
+    min-height: var(--header-height);
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    gap: 1rem;
 }
 
+.u-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
 
-/* ============================================================================
-   LOGO
-   ============================================================================ */
-
-/* Contenedor del logo (enlace a home) */
-/* USADO EN: <a href="index.html" class="c-logo"> */
+.logo,
 .c-logo {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--color-primary);
     display: flex;
     align-items: center;
-
-    /* Color corporativo teal */
-    color: var(--c-teal);
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    position: relative;
+    z-index: 1002;
+    flex-shrink: 0;
 }
 
-/* Texto del logo junto al icono */
-/* USADO EN: <span class="c-logo__text">ACTEA</span> */
-.c-logo__text {
-    /* Fuente display para branding */
-    font-family: 'Righteous', sans-serif;
+.fonts-loaded .logo,
+.fonts-loaded .c-logo {
+    font-family: var(--font-display);
+}
+
+.logo:hover,
+.c-logo:hover {
+    opacity: 0.8;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-primary);
+    min-width: 80px;
+    height: 60px;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    font-family: var(--font-display);
+    font-weight: 700;
     font-size: 1.5rem;
-
-    /* Separación del icono */
+    color: var(--color-primary);
+    letter-spacing: 1px;
     margin-left: 0.5rem;
+}
 
-    /* Espaciado entre letras para estilo display */
+.logo i,
+.c-logo i,
+.c-logo .material-symbols-outlined,
+.logo .material-symbols-outlined {
+    color: var(--color-secondary);
+    font-size: 1.8rem;
+}
+
+.c-logo__text {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
     letter-spacing: 1px;
 }
 
 
 /* ============================================================================
    NAVEGACIÓN DESKTOP
-   ============================================================================
-   
-   Visible solo en pantallas >= 768px.
-   Oculta en móvil donde se usa c-mobile-nav.
    ============================================================================ */
 
-/* Contenedor de navegación principal */
-/* USADO EN: <ul class="c-nav"> */
+.nav-desktop,
 .c-nav {
-    /* Oculto por defecto (móvil) */
     display: none;
 }
 
-/* Responsive: Mostrar navegación en tablets/desktop */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
+
+    .nav-desktop,
     .c-nav {
-        display: flex;
-        align-items: center;
+        display: block;
     }
+}
 
-    /* Lista de enlaces de navegación */
-    /* USADO EN: <li class="c-nav__list"> */
-    .c-nav__list {
-        display: flex;
+.nav-list,
+.c-nav__list {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    list-style: none;
+}
 
-        /* Elimina bullets de la lista */
-        list-style: none;
+.nav-link,
+.c-nav__link {
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text-main);
+    position: relative;
+    font-family: var(--font-body);
+    transition: color 0.3s ease;
+    text-decoration: none;
+    padding: 0.5rem 0;
+}
 
-        /* Espaciado entre items */
-        gap: 1.5rem;
-    }
+.nav-link:hover,
+.nav-link.active,
+.c-nav__link:hover,
+.c-nav__link--active {
+    color: var(--color-primary);
+    font-weight: 700;
+}
 
-    /* Enlaces individuales de navegación */
-    /* USADO EN: <a href="..." class="c-nav__link"> */
-    .c-nav__link {
-        font-family: 'Roboto', sans-serif;
-        font-weight: 700;
-        font-size: 0.9rem;
-        color: var(--c-text-body);
+.nav-link::after,
+.c-nav__link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-secondary);
+    transition: width 0.3s ease;
+}
 
-        /* Texto en mayúsculas para estilo nav */
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-
-        /* Padding vertical para área de click */
-        padding: 0.5rem 0;
-
-        /* -------------------------------------------------------------------------
-           INDICADOR DE PÁGINA ACTIVA
-           Borde inferior transparente por defecto, visible en hover/active.
-           Transición suave para el efecto.
-        ------------------------------------------------------------------------- */
-        border-bottom: 2px solid transparent;
-        transition: all 0.2s;
-    }
-
-    /* Estados hover y página activa */
-    .c-nav__link:hover,
-    .c-nav__link--active {
-        /* Cambia color a teal corporativo */
-        color: var(--c-teal);
-
-        /* Muestra indicador verde lima */
-        border-bottom-color: var(--c-lime);
-    }
+.nav-link:hover::after,
+.nav-link.active::after,
+.c-nav__link:hover::after,
+.c-nav__link--active::after {
+    width: 100%;
 }
 
 
 /* ============================================================================
-   HERRAMIENTAS DEL HEADER (Tema, Idioma)
+   WIDGETS DEL HEADER (Clima & Idioma)
    ============================================================================ */
 
-/* Contenedor de botones de herramientas */
-/* USADO EN: <div class="c-header-tools"> */
+.header-widgets,
 .c-header-tools {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-/* Botones de herramientas (tema oscuro, selector idioma) */
-/* USADO EN: <button class="c-header-tools__btn"> */
-.c-header-tools__btn {
-    /* Reset de estilos de botón */
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    /* Color y padding */
-    color: var(--c-teal);
-    padding: 0.5rem;
-
-    /* Flexbox para centrar icono SVG */
-    display: flex;
-    align-items: center;
-}
-
-/* Texto indicador de idioma actual */
-/* USADO EN: <span class="c-header-tools__lang">ES</span> */
-.c-header-tools__lang {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    color: var(--c-teal);
-}
-
-/* Mobile Header Adjustments (Ported from estilos.css) */
-@media (max-width: 480px) {
-    .c-header-tools {
-        gap: 0.25rem;
-    }
-
-    .c-header-tools__lang {
-        font-size: 0.85rem;
-    }
-
-    .u-container {
-        padding: 0 1rem;
-    }
-}
-
-
-/* ============================================================================
-   MENÚ DE IDIOMA (Drop-down)
-   ============================================================================ */
-.c-lang-dropdown {
     position: relative;
-    display: inline-block;
+    z-index: 1000;
+    flex-shrink: 0;
 }
 
-.c-lang-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--c-teal);
-    padding: 0.5rem;
+.weather-widget {
     display: flex;
     align-items: center;
-    list-style: none;
-}
-
-/* Hide default marker in Safari/Chrome */
-.c-lang-btn::-webkit-details-marker {
-    display: none;
-}
-
-.c-lang-icon {
-    font-size: 1.2rem;
-    transition: transform 0.3s;
-}
-
-/* Rotate icon when open */
-.c-lang-dropdown[open] .c-lang-icon {
-    transform: rotate(180deg);
-}
-
-.c-lang-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 150px;
-    background: var(--c-pure-white);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: var(--radius-md);
-    padding: 0.5rem 0;
-    list-style: none;
-    z-index: 200;
-    opacity: 0;
-    transform: translateY(-10px);
-    animation: menuFadeIn 0.2s forwards;
-}
-
-@keyframes menuFadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.c-lang-menu li {
-    display: block;
-}
-
-.c-lang-menu a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: var(--c-text-body);
+    gap: 0.5rem;
+    background: rgba(0, 66, 63, 0.05);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-pill);
     font-size: 0.9rem;
-    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-family: var(--font-body);
 }
 
-.c-lang-menu a:hover,
-.c-lang-menu a:focus {
-    background-color: var(--c-white);
-    color: var(--c-teal);
+.weather-temp {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.lang-selector select {
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    color: var(--color-text-main);
+    cursor: pointer;
+    padding: 0.25rem;
+    font-family: var(--font-body);
+    transition: background-color 0.3s ease;
+}
+
+.lang-selector select:focus {
+    outline: none;
 }
 
 
 /* ============================================================================
-   MENÚ MÓVIL (CSS ONLY - Sin JavaScript)
-   ============================================================================
-   
-   Sistema de menú hamburguesa usando el "checkbox hack":
-   - Input checkbox oculto controla el estado
-   - Label actúa como botón visible
-   - Selector :checked activa/desactiva el menú
-   
-   Ventaja: Funciona sin JavaScript
+   MENÚ MÓVIL (Hamburguesa)
    ============================================================================ */
 
-/* Input checkbox oculto (controlador del menú) */
-/* USADO EN: <input type="checkbox" id="menu-toggle"> */
-#menu-toggle {
-    display: none;
-}
-
-/* Botón hamburguesa visible por defecto en móvil */
-/* USADO EN: <label for="menu-toggle" class="c-menu-btn"> */
+.hamburger,
 .c-menu-btn {
-    cursor: pointer;
-    color: var(--c-teal);
     display: flex;
-    align-items: center;
-
-    /* Asegurar visibilidad con padding y dimensiones mínimas */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-primary);
+    z-index: 1001;
     padding: 0.5rem;
     min-width: 44px;
     min-height: 44px;
-    justify-content: center;
-}
-
-/* Panel del menú móvil (fullscreen overlay) */
-/* USADO EN: <div class="c-mobile-nav"> */
-.c-mobile-nav {
-    /* Posición fija cubriendo toda la pantalla bajo el header */
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - var(--header-height));
-
-    /* Fondo blanco sólido */
-    background: var(--c-pure-white);
-
-    /* -------------------------------------------------------------------------
-       ESTADO CERRADO (por defecto)
-       El menú está fuera de pantalla a la derecha.
-       transform: translateX(100%) lo mueve completamente fuera.
-    ------------------------------------------------------------------------- */
-    transform: translateX(100%);
-
-    /* Transición suave para apertura/cierre */
-    transition: transform 0.3s ease-in-out;
-
-    /* Layout centrado para los enlaces */
-    display: flex;
-    flex-direction: column;
+    max-width: 44px;
+    max-height: 44px;
     align-items: center;
     justify-content: center;
-
-    /* z-index menor que header para que quede debajo */
-    z-index: 99;
-
-    /* Espaciado entre enlaces */
-    gap: 2rem;
+    transition: color 0.3s ease;
+    position: relative;
+    flex-shrink: 0;
 }
 
-/* Estado abierto del menú (cuando checkbox está checked) */
-/* El selector hermano ~ conecta el checkbox con el menú */
-#menu-toggle:checked~.c-mobile-nav {
-    /* Vuelve a posición visible (translateX(0)) */
+@media (min-width: 992px) {
+
+    .hamburger,
+    .c-menu-btn {
+        display: none;
+    }
+}
+
+.hamburger svg,
+.c-menu-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.hamburger .material-symbols-outlined {
+    font-size: 28px;
+}
+
+.hamburger:hover,
+.c-menu-btn:hover {
+    color: var(--color-primary-dark);
+}
+
+.hamburger:focus,
+.c-menu-btn:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+.mobile-menu,
+.c-mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(360px, 92vw);
+    height: 100vh;
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    z-index: 1000;
+    padding: 1.25rem;
+    overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.open {
     transform: translateX(0);
 }
 
-/* Enlaces del menú móvil */
-/* USADO EN: <a href="..." class="c-mobile-nav__link"> */
-.c-mobile-nav__link {
-    /* Fuente display grande para fácil tap */
-    font-family: 'Righteous', sans-serif;
-    font-size: 1.75rem;
-    color: var(--c-teal);
+.mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(3px);
 }
 
-/* Botón cerrar menú móvil */
-/* USADO EN: <label for="menu-toggle" class="c-mobile-nav__close"> */
+.mobile-menu-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav-list li {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.mobile-nav-list a,
+.c-mobile-nav__link {
+    color: var(--color-text-inverse);
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: block;
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+    font-family: var(--font-body);
+}
+
+.mobile-nav-list a:hover,
+.mobile-nav-list a:focus-visible,
+.c-mobile-nav__link:hover {
+    color: var(--color-secondary);
+    transform: translateX(5px);
+    outline: none;
+}
+
+.mobile-nav-list a:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
 .c-mobile-nav__close {
     position: absolute;
     top: 2rem;
     right: 2rem;
     cursor: pointer;
+    z-index: 1;
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--color-primary);
 }
 
-/* Responsive: Ocultar menú móvil en desktop */
-@media (min-width: 768px) {
+.c-mobile-nav__close:hover {
+    color: var(--color-primary-dark);
+}
 
-    /* Ocultar botón hamburguesa */
-    .c-menu-btn {
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .weather-widget {
         display: none;
     }
 
-    /* Ocultar panel móvil completamente */
-    .c-mobile-nav {
-        display: none;
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .header-container {
+        min-height: 70px;
+        padding: 0 1rem;
+    }
+
+    .logo-brand {
+        min-width: 60px;
+        height: 50px;
+        padding: 0.4rem;
+    }
+
+    .logo-img {
+        height: 45px;
     }
 }

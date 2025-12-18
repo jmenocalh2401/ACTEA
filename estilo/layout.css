@@ -3,216 +3,319 @@
  * ACTEA - LAYOUT CSS
  * ============================================================================
  * 
- * Estilos de estructura y disposición de elementos.
- * Incluye:
- * - Secciones genéricas
- * - Sistema de grid
- * - Carrusel con navegación
- * - Sección events (wrapper)
+ * Estilos de estructura: hero, carrusel, secciones
  * 
- * USADO EN: Todas las páginas para estructurar contenido
  * ============================================================================
  */
 
-
 /* ============================================================================
-   SECCIONES
-   ============================================================================
-   
-   Contenedores de sección con padding vertical.
-   Variantes para fondos alternos.
-   
-   USADO EN: Envolver bloques de contenido temático
+   HERO SECTION
    ============================================================================ */
 
-/* Sección genérica con padding */
-/* USADO EN: <section class="l-section"> */
-.l-section {
-    /* Padding vertical definido en variables */
-    padding: var(--s-lg) 0;
+.hero {
+    height: 75vh;
+    min-height: 500px;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-inverse);
+    text-align: center;
+    padding: 0 1rem;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: var(--color-primary);
 }
 
-/* Sección con fondo alternativo (blanco puro) */
-/* USADO EN: <section class="l-section l-section--alt"> */
-.l-section--alt {
-    background: var(--c-pure-white);
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
-
-/* ============================================================================
-   SECCIÓN DE EVENTOS
-   ============================================================================
-   
-   Wrapper específico para la sección de eventos.
-   Fondo blanco con padding.
-   
-   USADO EN: Sección "Próximos Eventos" en index.html
-   ============================================================================ */
-
-/* Contenedor de eventos */
-/* USADO EN: <section class="c-events"> */
-.c-events {
-    background: var(--c-pure-white);
-    padding: var(--s-lg) 0;
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 66, 63, 0.3), rgba(0, 66, 63, 0.7) 90%);
+    z-index: 1;
 }
 
-
-/* ============================================================================
-   SISTEMA DE GRID
-   ============================================================================
-   
-   Grids predefinidos para layouts comunes.
-   Responsive: menos columnas en móvil.
-   ============================================================================ */
-
-/* Grid de 4 columnas (2 en móvil) */
-/* USADO EN: Grid de actividades/categorías */
-.l-grid-4 {
-    display: grid;
-
-    /* Mobile: 2 columnas */
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 1rem;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 0.2s forwards;
 }
 
-/* Responsive: 4 columnas en tablets/desktop */
-@media (min-width: 768px) {
-    .l-grid-4 {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
+.hero-content h1 {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: white;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 3.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.1;
+    min-height: 3.85em;
+}
+
+.hero-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.hero-title-secondary {
+    color: var(--color-secondary);
+}
+
+.btn-icon {
+    margin-left: 8px;
+}
+
+.newsletter-wrapper {
+    padding: 2rem 0;
+}
+
+.newsletter-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-secondary);
+}
+
+.newsletter-title-text {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.newsletter-description-text {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.svg-inline {
+    vertical-align: middle;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh;
+        min-height: 400px;
+        aspect-ratio: 16 / 9;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+        min-height: 3.08em;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-content h1 {
+        font-size: 5rem;
     }
 }
 
 
 /* ============================================================================
-   CARRUSEL
-   ============================================================================
-   
-   Sistema de carrusel horizontal con scroll snap.
-   Incluye dots de navegación y flechas.
-   
-   USADO EN: Carrusel de rutas destacadas en index.html
+   CARRUSEL DE RUTAS
    ============================================================================ */
 
-/* Contenedor wrapper del carrusel (para posicionar flechas) */
-/* USADO EN: <div class="c-carousel-wrapper"> */
-.c-carousel-wrapper {
+.carousel-container {
     position: relative;
+    padding: 2rem 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
 }
 
-/* Contenedor scrollable del carrusel */
-/* USADO EN: <div class="c-carousel"> */
-.c-carousel {
-    display: flex;
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 60px;
+}
 
-    /* Scroll horizontal habilitado */
+.carousel-track {
+    display: flex;
+    gap: 16px;
     overflow-x: auto;
-
-    /* Espaciado entre cards */
-    gap: 1.5rem;
-
-    /* Padding para scroll suave */
-    padding: 1rem 0 2rem;
-
-    /* -------------------------------------------------------------------------
-       SCROLL SNAP
-       Hace que el scroll se "enganche" a cada tarjeta.
-       scroll-snap-type: x mandatory - snap horizontal obligatorio
-       Los hijos necesitan scroll-snap-align: center
-    ------------------------------------------------------------------------- */
     scroll-snap-type: x mandatory;
+    padding: 0;
+    margin: 0;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
 }
 
-/* Indicadores de posición (dots) */
-/* USADO EN: <div class="c-carousel-dots"> */
-.c-carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
+.carousel-track::-webkit-scrollbar {
+    display: none;
 }
 
-/* Dot individual */
-/* USADO EN: <button class="c-carousel-dot"> */
-.c-carousel-dot {
-    /* Forma circular pequeña */
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-
-    /* Color inactivo (gris) */
-    background: rgba(0, 0, 0, 0.2);
-
-    /* Reset de button */
-    border: none;
-    cursor: pointer;
-
-    transition: background 0.3s;
+.carousel-track .route-card {
+    flex: 0 0 300px;
+    scroll-snap-align: center;
+    min-width: 0;
 }
 
-/* Dot activo o en hover */
-.c-carousel-dot--active,
-.c-carousel-dot:hover {
-    /* Color activo (teal) */
-    background: var(--c-teal);
-}
-
-/* Flechas de navegación del carrusel */
-/* USADO EN: <button class="c-carousel-arrow"> */
-.c-carousel-arrow {
-    /* Posicionamiento absoluto sobre el carrusel */
+/* Controles del carrusel */
+.carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-
-    /* Estilo del botón */
-    background: var(--c-pure-white);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-
-    /* Tamaño circular */
     width: 44px;
-    height: 44px;
-
-    /* Centrado del icono */
+    height: 420px;
+    border-radius: 0;
+    background: white;
+    box-shadow: var(--shadow-md);
+    color: var(--color-primary);
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    transition: all 0.2s ease;
     cursor: pointer;
-
-    /* Sombra para elevación */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-    transition: all 0.2s;
-
-    /* Color del icono */
-    color: var(--c-teal);
+    border: none;
 }
 
-/* Hover en flechas */
-.c-carousel-arrow:hover {
-    /* Inversión de colores */
-    background: var(--c-teal);
-    color: var(--c-pure-white);
+.carousel-btn.prev {
+    display: none;
 }
 
-/* Flecha izquierda (anterior) */
-/* USADO EN: <button class="c-carousel-arrow c-carousel-arrow--left"> */
-.c-carousel-arrow--left {
-    /* Posición fuera del contenedor (overflow visible) */
-    left: -22px;
+.carousel-btn.next {
+    display: flex;
 }
 
-/* Flecha derecha (siguiente) */
-/* USADO EN: <button class="c-carousel-arrow c-carousel-arrow--right"> */
-.c-carousel-arrow--right {
-    right: -22px;
+.carousel-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: var(--shadow-lg);
 }
 
-/* Responsive: Ocultar flechas en móvil (usar swipe) */
+.carousel-btn:hover {
+    background: var(--color-white);
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.carousel-btn.prev {
+    left: 0;
+}
+
+.carousel-btn.next {
+    right: 0;
+}
+
+.carousel-btn .material-symbols-outlined {
+    font-size: 28px;
+    font-weight: 600;
+}
+
 @media (max-width: 768px) {
-    .c-carousel-arrow {
+    .carousel-wrapper {
+        padding: 0 1rem;
+    }
+
+    .carousel-btn {
         display: none;
+    }
+
+    .carousel-track .route-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+    .carousel-wrapper {
+        padding: 0 50px;
+    }
+
+    .carousel-track .route-card {
+        flex: 0 0 260px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel-track .route-card {
+        flex: 0 0 300px;
+    }
+}
+
+
+/* ============================================================================
+   PAGE SECTIONS (Para navegación SPA-style)
+   ============================================================================ */
+
+.page-section {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.page-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ============================================================================
+   SECCIONES Y LAYOUT
+   ============================================================================ */
+
+.l-section {
+    padding: var(--spacing-lg) 0;
+}
+
+@media (max-width: 768px) {
+
+    .section-padding,
+    .l-section {
+        padding: var(--spacing-md) 0;
     }
 }

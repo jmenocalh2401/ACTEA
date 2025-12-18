@@ -3,632 +3,925 @@
  * ACTEA - COMPONENTS CSS
  * ============================================================================
  * 
- * Componentes UI reutilizables del sitio.
- * Cada componente es modular e independiente.
+ * Componentes UI reutilizables: botones, cards, formularios, etc.
  * 
- * Incluye:
- * - Cards (tarjetas de rutas/eventos)
- * - Botones (primario con efecto ripple)
- * - Formularios (inputs, mensajes de feedback)
- * - Icon boxes (cajas con iconos)
- * - Event items (items de eventos)
- * - Newsletter (sección suscripción)
- * - Breadcrumbs (migas de pan)
- * - Tooltips (información emergente)
- * - Skeleton loading (estados de carga)
- * 
- * USADO EN: Todas las páginas según necesidad
  * ============================================================================
  */
 
-
 /* ============================================================================
-   CARDS (TARJETAS)
-   ============================================================================
-   
-   Tarjetas para mostrar rutas, eventos, actividades.
-   Estructura: imagen + cuerpo con título y metadata.
-   Incluye efecto hover de elevación.
-   
-   USADO EN: Carrusel de rutas, listado de rutas, novedades
+   BOTONES
    ============================================================================ */
 
-/* Contenedor principal de la tarjeta */
-/* USADO EN: <article class="c-card"> */
-.c-card {
-    /* Ancho fijo para carrusel horizontal */
-    flex: 0 0 300px;
-
-    /* Snap para carrusel con scroll */
-    scroll-snap-align: center;
-
-    /* Fondo y bordes */
-    background: var(--c-pure-white);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-
-    /* Sombra suave para elevación */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-
-    /* Transición para efecto hover */
-    transition: transform 0.3s, box-shadow 0.3s;
-
-    /* Borde sutil */
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Efecto hover: Elevación de la tarjeta */
-.c-card:hover {
-    /* Mueve la tarjeta hacia arriba */
-    transform: translateY(-8px);
-
-    /* Aumenta la sombra para efecto de profundidad */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Contenedor de imagen/icono de la tarjeta */
-/* USADO EN: <figure class="c-card__img"> */
-.c-card__img {
-    /* Altura fija para consistencia */
-    height: 200px;
-
-    /* Gradiente de fondo cuando no hay imagen */
-    background: linear-gradient(135deg, var(--c-teal), var(--c-green));
-
-    /* Centrado del icono */
-    display: flex;
+.btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
-/* Icono dentro del placeholder de imagen */
-.c-card__img .material-symbols-outlined {
-    font-size: 4rem;
-    color: var(--c-pure-white);
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    box-shadow: none;
 }
 
-/* Cuerpo de la tarjeta (contenido textual) */
-/* USADO EN: <div class="c-card__body"> */
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-3px);
+    box-shadow: none;
+}
+
+.btn-primary.filter-btn:hover {
+    transform: none;
+}
+
+.btn-outline {
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+}
+
+.btn-outline.filter-btn:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+
+.btn-primary:focus-visible,
+.btn-outline:focus-visible,
+.filter-btn:focus-visible,
+.btn-card:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.filter-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .btn {
+        font-size: 1rem;
+        padding: 0.625rem 1.25rem;
+    }
+}
+
+
+/* ============================================================================
+   CARDS (Tarjetas)
+   ============================================================================ */
+
+.route-card,
+.c-card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    overflow: visible;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    scroll-snap-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.route-card:hover,
+.c-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-float);
+}
+
+.card-img-wrapper {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    aspect-ratio: 2 / 1;
+}
+
+.card-img,
+.c-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+    background-color: #eee;
+}
+
+.route-card:hover .card-img {
+    transform: scale(1.1);
+    will-change: transform;
+}
+
+.btn-card {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.6rem;
+    border-color: #e5e7eb;
+    color: var(--color-text-light);
+}
+
+.btn-card:hover {
+    border-color: var(--color-primary);
+    color: white;
+    background: var(--color-primary);
+}
+
+.card-img img,
+.c-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-body,
 .c-card__body {
-    padding: 1.5rem;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-/* Título de la tarjeta */
-/* USADO EN: <h3 class="c-card__title"> */
 .c-card__title {
-    font-family: 'Righteous', sans-serif;
-    font-size: 1.25rem;
-    color: var(--c-teal);
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--color-primary-dark);
     margin-bottom: 1rem;
+    text-transform: uppercase;
 }
 
-/* Contenedor de metadata (distancia, tiempo, dificultad) */
-/* USADO EN: <div class="c-card__meta"> */
 .c-card__meta {
     display: flex;
-    gap: 1.5rem;
-    font-size: 0.85rem;
-    color: var(--c-text-light);
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin: 1rem 0;
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-/* Item individual de metadata */
-/* USADO EN: <span class="c-card__meta-item"> */
 .c-card__meta-item {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.25rem;
 }
 
-/* Icono dentro de metadata */
-.c-card__meta-item .material-symbols-outlined {
+.c-card__meta-item i,
+.c-card__meta-item svg {
+    margin-right: 5px;
+    color: var(--color-primary);
+}
+
+.card-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
+    z-index: 2;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f3f4f6;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    position: relative;
+    overflow: visible;
+}
+
+.card-meta>div,
+.card-meta>button,
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    cursor: help;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+}
+
+.meta-item span {
+    font-weight: 500;
+}
+
+.route-card[data-difficulty="Fácil"] .card-meta>div:first-child svg,
+.route-card[data-difficulty="Fácil"] .card-meta>button:first-child svg {
+    color: var(--diff-easy);
+    fill: var(--diff-easy);
+}
+
+.route-card[data-difficulty="Moderada"] .card-meta>div:first-child svg,
+.route-card[data-difficulty="Moderada"] .card-meta>button:first-child svg {
+    color: var(--diff-mod);
+    fill: var(--diff-mod);
+}
+
+.route-card[data-difficulty="Difícil"] .card-meta>div:first-child svg,
+.route-card[data-difficulty="Difícil"] .card-meta>button:first-child svg {
+    color: var(--diff-hard);
+    fill: var(--diff-hard);
+}
+
+.card-meta i,
+.card-meta .material-symbols-outlined,
+.card-meta svg,
+.svg-inline {
+    color: var(--color-primary);
+    font-size: 16px;
+    vertical-align: middle;
+    fill: currentColor;
+}
+
+/* ============================================================================
+   TOOLTIPS PERSONALIZADOS (CSS-only con accesibilidad)
+   ============================================================================ */
+
+.tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 10px;
+    background-color: #161616;
+    color: var(--color-text-inverse);
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: normal;
+    text-align: center;
+    max-width: 240px;
+    overflow-wrap: break-word;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.1s ease, visibility 0.1s ease;
+    z-index: 100;
+    font-family: var(--font-body);
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #161616;
+}
+
+.card-meta>div:hover .tooltip,
+.card-meta>div:focus .tooltip,
+.card-meta>button:hover .tooltip,
+.card-meta>button:focus .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card-meta>div:focus-visible,
+.card-meta>button:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .tooltip {
+        display: none;
+    }
+}
+
+
+
+.news-card {
+    display: flex;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--color-secondary);
+}
+
+.news-date {
+    background: var(--color-primary);
+    color: white;
+    min-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.news-date .day {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    line-height: 1;
+}
+
+.news-date .month {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--font-body);
+}
+
+.news-content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.news-content h4 {
+    font-family: var(--font-display);
     font-size: 1.25rem;
-    color: var(--c-green);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.news-content p {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 0;
 }
 
 
 /* ============================================================================
-   BOTÓN PRIMARIO
-   ============================================================================
-   
-   Botón de llamada a la acción (CTA) principal.
-   Incluye efecto ripple en click.
-   
-   USADO EN: Hero, cards, formularios, secciones CTA
+   ACTIVITY CARDS (Tarjetas de actividades)
    ============================================================================ */
 
-/* Botón primario base */
-/* USADO EN: <button class="c-btn-primary"> o <a class="c-btn-primary"> */
-.c-btn-primary {
-    /* Display inline-block para compatibilidad con enlaces */
-    display: inline-block;
-
-    /* Color de fondo lima (color de acento) */
-    background: var(--c-lime);
-
-    /* Texto oscuro para contraste */
-    color: var(--c-black);
-
-    /* Tipografía */
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-
-    /* Padding generoso para área de click */
-    padding: 1rem 2.5rem;
-
-    /* Forma de píldora */
-    border-radius: 50px;
-
-    /* Sin borde por defecto */
-    border: none;
-    cursor: pointer;
-
-    /* Estilo de texto */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-
-    /* Transiciones para hover */
-    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
-
-    /* -------------------------------------------------------------------------
-       EFECTO RIPPLE (Preparación)
-       position: relative y overflow: hidden son necesarios para
-       el pseudo-elemento ::after que crea el efecto ripple.
-    ------------------------------------------------------------------------- */
+.activity-card {
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border-radius: var(--radius-md);
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-/* Estado hover del botón primario */
-.c-btn-primary:hover {
-    /* Cambia a verde más oscuro */
-    background: var(--c-green);
-
-    /* Texto blanco para contraste */
-    color: var(--c-pure-white);
-
-    /* Elevación con movimiento hacia arriba */
-    transform: translateY(-3px);
-
-    /* Sombra más pronunciada */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+.activity-card:hover {
+    transform: scale(1.02);
 }
 
-/* Pseudo-elemento para efecto ripple */
-.c-btn-primary::after {
-    content: '';
-    position: absolute;
-
-    /* Centrado */
-    top: 50%;
-    left: 50%;
-
-    /* Tamaño inicial cero */
-    width: 0;
-    height: 0;
-
-    /* Círculo semi-transparente */
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-
-    /* Centrado del círculo */
-    transform: translate(-50%, -50%);
-
-    /* Transición para expansión */
-    transition: width 0.4s, height 0.4s;
+.activity-overlay {
+    background: linear-gradient(to top, rgba(22, 22, 22, 0.9), transparent);
+    width: 100%;
+    padding: 2rem;
+    color: var(--color-text-inverse);
+    transform: translateY(0);
+    transition: all 0.3s ease;
 }
 
-/* Efecto ripple al hacer click (estado :active) */
-.c-btn-primary:active::after {
-    /* Expande el círculo */
-    width: 300px;
-    height: 300px;
+.activity-card:hover .activity-overlay {
+    background: linear-gradient(to top, rgba(0, 66, 63, 0.95), rgba(0, 66, 63, 0.4));
+    padding-bottom: 3rem;
+}
+
+.activity-card-1 {
+    background-image: url('../img/WhatsApp%20Image%202025-12-01%20at%2020.07.48.jpeg');
+}
+
+.activity-card-2 {
+    background-image: url('../img/WhatsApp%20Image%202025-12-01%20at%2020.07.482.jpeg');
+}
+
+.activity-card-3 {
+    background-image: url('../img/WhatsApp%20Image%202025-12-01%20at%2020.07.483.jpeg');
+}
+
+.activity-title {
+    color: white;
+    margin-bottom: 0.25rem;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+}
+
+.activity-overlay p {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 0;
 }
 
 
 /* ============================================================================
    FORMULARIOS
-   ============================================================================
-   
-   Estilos para inputs y mensajes de feedback.
-   
-   USADO EN: Newsletter, formulario de contacto
    ============================================================================ */
 
-/* Input de texto/email genérico */
-/* USADO EN: <input class="c-input"> o <textarea class="c-input"> */
-.c-input {
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-family: var(--font-body);
+}
+
+.form-control {
     width: 100%;
-    padding: 1rem;
-
-    /* Sin borde por defecto (se añade en contextos específicos) */
-    border: none;
-    border-radius: var(--radius-md);
-
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
     font-size: 1rem;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Estados de validación de inputs */
-
-/* Estado de éxito (input válido) */
-.c-input--success {
-    /* Borde verde con !important para sobrescribir otros estilos */
-    border: 2px solid var(--c-green) !important;
-
-    /* Fondo con tinte verde muy suave */
-    background: rgba(59, 143, 76, 0.05);
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 66, 63, 0.1);
 }
 
-/* Estado de error (input inválido) */
-.c-input--error {
-    /* Borde rojo */
-    border: 2px solid #D32F2F !important;
-
-    /* Fondo con tinte rojo muy suave */
-    background: rgba(211, 47, 47, 0.05);
+.form-control:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
-/* Mensajes de feedback del formulario */
-/* USADO EN: <div class="c-form-message"> */
-.c-form-message {
-    padding: 1rem;
-    border-radius: var(--radius-md);
+.form-message {
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
     margin-top: 1rem;
-    font-weight: 600;
-
-    /* Layout con icono */
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: none;
 }
 
-/* Mensaje de éxito */
-.c-form-message--success {
-    background: rgba(59, 143, 76, 0.1);
-    color: var(--c-green);
-    border: 1px solid var(--c-green);
+.form-message--success {
+    background-color: rgba(39, 174, 96, 0.1);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+    display: block;
 }
 
-/* Mensaje de error */
-.c-form-message--error {
-    background: rgba(211, 47, 47, 0.1);
-    color: #D32F2F;
-    border: 1px solid #D32F2F;
+.form-message--error {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: var(--color-alert);
+    border: 1px solid var(--color-alert);
+    display: block;
 }
 
 
 /* ============================================================================
-   ICON BOXES (CAJAS CON ICONOS)
-   ============================================================================
-   
-   Cajas cuadradas con icono y texto.
-   Usadas para categorías de actividades.
-   Incluye efecto hover de inversión de colores.
-   
-   USADO EN: Grid de actividades en index.html
+   GRID LAYOUT
    ============================================================================ */
 
-/* Contenedor de icon box */
-/* USADO EN: <a class="c-icon-box"> */
-.c-icon-box {
-    /* Proporción cuadrada 1:1 */
-    aspect-ratio: 1;
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+    gap: 2rem;
+    justify-content: center;
+}
 
-    /* Fondo y bordes */
-    background: var(--c-pure-white);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        justify-content: stretch;
+    }
+
+    .route-card,
+    .c-card {
+        max-width: 100%;
+    }
+}
+
+/* Filtros de rutas */
+.route-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--radius-pill);
+    border: 2px solid var(--color-primary);
+    font-weight: 500;
+    color: var(--color-primary);
+    transition: all 0.2s ease;
+    background: transparent;
+    font-family: var(--font-body);
+}
+
+.filter-btn:not(.active):hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 66, 63, 0.15);
+}
+
+.filter-btn.active:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary-dark);
+}
+
+.filter-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+}
+
+.route-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.route-item[style*="display: none"] {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+details {
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius-sm);
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+summary {
+    padding: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    list-style: none;
+}
+
+summary:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-content {
+    padding: 1rem;
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+}
+
+/* ============================================================================
+   UTILIDADES Y CLASES AUXILIARES
+   ============================================================================ */
+
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.news-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.cta-section {
+    background-color: #e8ecef;
+}
+
+.cta-grid {
+    align-items: center;
+}
+
+.cta-description {
+    margin-bottom: 2rem;
+}
+
+.cta-image {
     border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-float);
+    width: 100%;
+    height: auto;
+    background-color: #eee;
+}
 
-    /* Centrado del contenido */
+.newsletter-section {
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+    border-radius: var(--radius-lg);
+    margin: 2rem auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 20px solid rgba(255, 255, 255, 0.05);
+}
+
+.newsletter-container {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.newsletter-container-narrow {
+    max-width: 600px;
+}
+
+.newsletter-title {
+    color: var(--color-text-inverse);
+    margin-bottom: 1rem;
+}
+
+.newsletter-description {
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.newsletter-input {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-pill);
+    border: none;
+    width: 100%;
+    max-width: 350px;
+    font-size: 1rem;
+}
+
+.newsletter-input:focus,
+.newsletter-input:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+.btn-newsletter {
+    background: var(--color-secondary);
+    color: var(--color-primary-dark);
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+}
+
+.btn-newsletter:hover {
+    background: white;
+}
+
+.newsletter-message {
+    margin-top: 1rem;
+    display: none;
+    color: var(--color-secondary);
+    font-weight: 500;
+}
+
+.newsletter-message:not(:empty) {
+    display: block;
+}
+
+.info-grid {
+    align-items: start;
+}
+
+.contact-card,
+.contact-form-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.contact-list {
+    margin-bottom: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.contact-item {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-icon {
+    color: var(--color-primary);
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+
+.form-title {
+    margin-bottom: 1.5rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mobile-logo-img {
+    height: 40px;
+}
+
+.hamburger-close {
+    color: #FFFFFF !important;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    max-width: 44px;
+    max-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.hamburger-close:hover,
+.hamburger-close:focus-visible {
+    color: var(--color-secondary) !important;
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.hamburger-close .material-symbols-outlined {
+    font-size: 28px;
+    color: inherit !important;
+}
+
+.route-filters {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* ============================================================================
+   BREADCRUMBS (Migas de pan)
+   ============================================================================ */
+
+.c-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+}
+
+.c-breadcrumbs a {
+    color: var(--color-text-light);
+    transition: color 0.3s ease;
+}
+
+.c-breadcrumbs a:hover {
+    color: var(--color-primary);
+}
+
+.c-breadcrumbs__separator {
+    color: var(--color-text-light);
+}
+
+.c-breadcrumbs__current {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+
+/* ============================================================================
+   MAPA PLACEHOLDER
+   ============================================================================ */
+
+.c-map-placeholder {
+    background: var(--color-bg-light);
+    border-radius: var(--radius-md);
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-
-    /* Transición para hover */
-    transition: all 0.3s;
+    gap: 1rem;
+    min-height: 400px;
 }
 
-/* Estado hover: Inversión de colores */
-.c-icon-box:hover {
-    /* Fondo teal */
-    background: var(--c-teal);
-    border-color: var(--c-teal);
+.c-map-placeholder .material-symbols-outlined {
+    font-size: 4rem;
+    color: var(--color-text-light);
 }
 
-/* Cambio de color de icono y texto en hover */
-.c-icon-box:hover .material-symbols-outlined,
-.c-icon-box:hover h4 {
-    color: var(--c-pure-white);
-}
-
-/* Icono dentro de icon box */
-.c-icon-box .material-symbols-outlined {
-    font-size: 2.5rem;
-    color: var(--c-teal);
-    transition: color 0.3s;
-}
-
-/* Título dentro de icon box */
-.c-icon-box h4 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--c-black);
-    transition: color 0.3s;
+.c-map-placeholder p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
     margin: 0;
 }
 
 
 /* ============================================================================
-   EVENT ITEMS (ITEMS DE EVENTOS)
-   ============================================================================
-   
-   Componente para listar eventos con fecha y descripción.
-   Incluye indicador visual lateral (borde izquierdo).
-   
-   USADO EN: Sección "Próximos Eventos" en index.html
+   ROUTES GRID
    ============================================================================ */
 
-/* Item individual de evento */
-/* USADO EN: <article class="c-event-item"> */
-.c-event-item {
-    /* Indicador visual: borde izquierdo verde lima */
-    border-left: 4px solid var(--c-lime);
-
-    /* Padding izquierdo para separar del borde */
-    padding-left: 1.5rem;
-
-    /* Espaciado entre eventos */
+.c-routes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
     margin-top: 2rem;
 }
 
-/* Fecha del evento */
-/* USADO EN: <span class="c-event-item__date"> */
-.c-event-item__date {
-    font-size: 0.85rem;
-
-    /* Mayúsculas para fechas */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-
-    color: var(--c-text-light);
-}
-
-/* Título del evento */
-/* USADO EN: <h3 class="c-event-item__title"> */
-.c-event-item__title {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 1.25rem;
-    margin: 0.5rem 0;
-    color: var(--c-black);
-}
-
-
-/* ============================================================================
-   NEWSLETTER (SECCIÓN DE SUSCRIPCIÓN)
-   ============================================================================
-   
-   Bloque para capturar emails de suscriptores.
-   Fondo oscuro (teal) con texto claro.
-   
-   USADO EN: index.html antes del footer
-   ============================================================================ */
-
-/* Contenedor de newsletter */
-/* USADO EN: <aside class="c-newsletter"> */
-.c-newsletter {
-    /* Fondo teal corporativo */
-    background: var(--c-teal);
-
-    /* Texto claro */
-    color: var(--c-pure-white);
-
-    /* Espaciado interno */
-    padding: var(--s-lg);
-    border-radius: var(--radius-lg);
-
-    /* Separación del contenido anterior */
-    margin-top: var(--s-lg);
-}
-
-/* Título de newsletter - Override de color */
-.c-newsletter h3 {
-    color: var(--c-pure-white);
-}
-
-/* Párrafo de newsletter */
-.c-newsletter p {
-    /* Blanco con transparencia para jerarquía visual */
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 1.5rem;
-}
-
-/* Botón dentro de newsletter */
-.c-newsletter .c-btn-primary {
-    width: 100%;
-    margin-top: 1rem;
-
-    /* Colores adaptados al fondo oscuro */
-    background: var(--c-lime);
-    color: var(--c-black);
-}
-
-
-/* ============================================================================
-   BREADCRUMBS (MIGAS DE PAN)
-   ============================================================================
-   
-   Navegación secundaria que muestra la ruta jerárquica.
-   Mejora la orientación del usuario y el SEO.
-   
-   USADO EN: Páginas internas (rutas, novedades, actividades, información)
-   ============================================================================ */
-
-/* Contenedor de breadcrumbs */
-/* USADO EN: <nav class="c-breadcrumbs"> */
-.c-breadcrumbs {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    color: var(--c-text-light);
-    margin-bottom: 1.5rem;
-
-    /* Permite wrap en pantallas pequeñas */
-    flex-wrap: wrap;
-}
-
-/* Enlaces de breadcrumbs */
-.c-breadcrumbs a {
-    color: var(--c-teal);
-}
-
-/* Hover en enlaces */
-.c-breadcrumbs a:hover {
-    text-decoration: underline;
-}
-
-/* Separador entre niveles (›) */
-/* USADO EN: <span class="c-breadcrumbs__separator"> */
-.c-breadcrumbs__separator {
-    color: rgba(0, 0, 0, 0.3);
-}
-
-/* Página actual (último elemento, sin enlace) */
-/* USADO EN: <span class="c-breadcrumbs__current"> */
-.c-breadcrumbs__current {
-    color: var(--c-black);
-    font-weight: 600;
-}
-
-
-/* ============================================================================
-   TOOLTIPS (INFORMACIÓN EMERGENTE)
-   ============================================================================
-   
-   Mostrar información adicional al hacer hover.
-   Implementado con CSS puro usando ::before/::after.
-   
-   USADO EN: Metadata de cards (distancia, duración, dificultad)
-   ============================================================================ */
-
-/* Elemento con tooltip */
-/* USADO EN: <span class="c-tooltip" data-tooltip="Texto del tooltip"> */
-.c-tooltip {
-    position: relative;
-
-    /* Cursor de ayuda indica información disponible */
-    cursor: help;
-}
-
-/* Caja del tooltip (pseudo-elemento) */
-.c-tooltip::after {
-    /* Contenido desde atributo data-tooltip */
-    content: attr(data-tooltip);
-
-    /* Posicionamiento sobre el elemento */
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-
-    /* Estilo del tooltip */
-    background: var(--c-black);
-    color: var(--c-white);
-    padding: 0.5rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    white-space: nowrap;
-
-    /* Oculto por defecto */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s, visibility 0.2s;
-
-    z-index: 10;
-    margin-bottom: 5px;
-}
-
-/* Flecha del tooltip (triángulo apuntando hacia abajo) */
-.c-tooltip::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-
-    /* Triángulo CSS usando bordes */
-    border: 5px solid transparent;
-    border-top-color: var(--c-black);
-
-    /* Oculto por defecto */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s, visibility 0.2s;
-
-    /* Ajuste de posición para conectar con la caja */
-    margin-bottom: -5px;
-}
-
-/* Mostrar tooltip en hover */
-.c-tooltip:hover::after,
-.c-tooltip:hover::before {
-    opacity: 1;
-    visibility: visible;
-}
-
-
-/* ============================================================================
-   SKELETON LOADING (ESTADOS DE CARGA)
-   ============================================================================
-   
-   Placeholders animados mientras se carga el contenido.
-   Mejora la percepción de rendimiento.
-   
-   USADO EN: Carga inicial de cards, imágenes, texto
-   ============================================================================ */
-
-/* Clase base para skeleton */
-/* USADO EN: <div class="skeleton skeleton-text"> */
-.skeleton {
-    /* Gradiente animado que simula carga */
-    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
-    background-size: 200% 100%;
-
-    /* Animación de barrido */
-    animation: skeleton-loading 1.5s infinite;
-
-    border-radius: var(--radius-md);
-}
-
-/* Animación de skeleton */
-@keyframes skeleton-loading {
-    0% {
-        background-position: 200% 0;
+@media (max-width: 768px) {
+    .c-routes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
-
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-/* Variante para líneas de texto */
-.skeleton-text {
-    height: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Variante para títulos */
-.skeleton-title {
-    height: 1.5rem;
-    width: 60%;
-    margin-bottom: 1rem;
-}
-
-/* Variante para imágenes */
-.skeleton-img {
-    height: 200px;
 }

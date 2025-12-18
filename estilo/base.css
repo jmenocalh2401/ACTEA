@@ -1,318 +1,238 @@
 /**
  * ============================================================================
- * ACTEA - BASE CSS
+ * ACTEA - BASE CSS (Variables, Reset, Tipografía)
  * ============================================================================
  * 
- * Archivo base que contiene:
- * - Importación de fuentes (Google Fonts)
- * - Variables CSS (Custom Properties)
- * - Reset CSS
- * - Estilos base de tipografía
- * - Clases de utilidad globales
+ * Archivo base con variables CSS, reset y tipografía base.
+ * Inspirado en diseño moderno con Alumni Sans y Roboto.
  * 
- * USADO EN: Todas las páginas del sitio (importado vía main.css)
  * ============================================================================
  */
 
 /* ============================================================================
    IMPORTACIÓN DE FUENTES
-   ============================================================================
-   
-   Fuentes utilizadas según la Guía de Estilos de Cantur:
-   - Righteous: Para títulos h1-h4 (fuente display decorativa)
-   - Roboto: Para cuerpo de texto y h5-h6 (fuente sans-serif legible)
-   - Material Symbols: Iconografía de Google (estilo outlined)
    ============================================================================ */
 
-/* Righteous y Roboto - Tipografías principales del sitio */
-@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@300;400;700&display=swap');
-
-/* Material Symbols Outlined - Sistema de iconos vectoriales SVG */
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
 
 /* ============================================================================
    VARIABLES CSS (CUSTOM PROPERTIES)
-   ============================================================================
-   
-   Definidas en :root para acceso global.
-   Nomenclatura:
-   - --c-* : Colores
-   - --s-* : Espaciado (spacing)
-   - --max-*, --radius-*, --header-* : Layout y dimensiones
    ============================================================================ */
 
 :root {
-    /* -------------------------------------------------------------------------
-       PALETA DE COLORES OFICIAL CANTUR
-       ------------------------------------------------------------------------- 
-       Colores corporativos de Cantur (turismo de Cantabria)
-       Optimizados para contraste WCAG AAA
-    */
-
-    /* Negro principal - Usado para texto body y fondos oscuros */
-    --c-black: #161616;
-
-    /* Teal/Verde azulado oscuro - Color primario de marca */
-    /* Usado en: headers, títulos, enlaces, elementos destacados */
-    --c-teal: #00423F;
-
-    /* Verde medio - Color secundario */
-    /* Usado en: hover states, acentos, iconos */
-    --c-green: #3B8F4C;
-
-    /* Verde lima - Color de acento/CTA */
-    /* Usado en: botones primarios, highlights, badges */
-    --c-lime: #8EB856;
-
-    /* Blanco hueso - Fondo principal claro */
-    /* Usado en: background del body, secciones alternas */
-    --c-white: #F0F0F0;
-
-    /* Blanco puro - Para contraste máximo */
-    /* Usado en: cards, modales, elementos sobre fondos de color */
-    --c-pure-white: #FFFFFF;
+    --color-primary: #00423F;
+    --color-primary-dark: #002e2c;
+    --color-secondary: #C4E86B;
+    --color-secondary-dark: #a8cf50;
+    --color-text-main: #1f2937;
+    --color-text-inverse: #FFFFFF;
+    --color-text-light: #4b5563;
+    --color-bg-body: #F3F4F6;
+    --color-bg-light: #f8f9fa;
+    --color-white: #FFFFFF;
+    --diff-easy: #10B981;
+    --diff-mod: #F59E0B;
+    --diff-hard: #EF4444;
+    --color-alert: #e74c3c;
+    --color-success: #27ae60;
+    --font-display: 'Alumni Sans', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
 
     /* -------------------------------------------------------------------------
-       COLORES SEMÁNTICOS (Accesibilidad AAA)
-       ------------------------------------------------------------------------- 
-       Colores asignados por función para mantener consistencia
-       y garantizar ratio de contraste mínimo 7:1 (AAA)
-    */
-
-    /* Color de títulos - #00423F sobre #F0F0F0 = 9.1:1 (AAA) */
-    --c-text-headings: var(--c-teal);
-
-    /* Color de texto body - #161616 sobre #F0F0F0 = 14.8:1 (AAA) */
-    --c-text-body: var(--c-black);
-
-    /* Color de texto secundario/muted */
-    --c-text-light: #4A4A4A;
-
-    /* Color de texto sobre fondos oscuros */
-    --c-text-inverse: var(--c-white);
-
-    /* -------------------------------------------------------------------------
-       SISTEMA DE ESPACIADO
-       ------------------------------------------------------------------------- 
-       Escala consistente basada en rem (1rem = 16px)
-       Progresión: sm < md < lg < xl
-    */
-
-    /* Espaciado pequeño - Gaps internos, padding de elementos inline */
-    --s-sm: 0.5rem;
-    /* 8px */
-
-    /* Espaciado medio - Padding de contenedores, gaps de grid */
-    --s-md: 1.5rem;
-    /* 24px */
-
-    /* Espaciado grande - Padding de secciones */
-    --s-lg: 3rem;
-    /* 48px */
-
-    /* Espaciado extra grande - Separación entre secciones principales */
-    --s-xl: 5rem;
-    /* 80px */
-
-    /* -------------------------------------------------------------------------
-       LAYOUT Y DIMENSIONES
+       UI ELEMENTS
        ------------------------------------------------------------------------- */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 24px;
+    --radius-pill: 50px;
 
-    /* Ancho máximo del contenedor principal */
-    --max-width: 1200px;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-float: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-btn: 0 4px 15px rgba(196, 232, 107, 0.4);
 
-    /* Altura fija del header sticky */
-    --header-height: 80px;
-
-    /* Radio de borde medio - Botones, inputs, cards pequeñas */
-    --radius-md: 8px;
-
-    /* Radio de borde grande - Cards, modales, secciones */
-    --radius-lg: 16px;
+    /* -------------------------------------------------------------------------
+       LAYOUT
+       ------------------------------------------------------------------------- */
+    --header-height: 90px;
+    --max-width: 1280px;
 }
 
 
 /* ============================================================================
    RESET CSS
-   ============================================================================
-   
-   Normalización de estilos por defecto del navegador.
-   Asegura consistencia cross-browser.
    ============================================================================ */
 
-/* Reset universal - Aplica box-sizing border-box a todos los elementos */
 *,
 *::before,
 *::after {
-    /* border-box: padding y border se incluyen en width/height */
     box-sizing: border-box;
-
-    /* Elimina márgenes y padding por defecto */
     margin: 0;
     padding: 0;
 }
 
-
-/* ============================================================================
-   ESTILOS BASE HTML Y BODY
-   ============================================================================ */
-
-/* Elemento raíz HTML */
 html {
-    /* Tamaño base de fuente (1rem = 16px) */
-    font-size: 16px;
-
-    /* Scroll suave para navegación con anclas (#section) */
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
 
-/* Body - Contenedor principal de toda la página */
 body {
-    /* Familia tipográfica principal con fallbacks */
-    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-
-    /* Color de texto por defecto */
-    color: var(--c-text-body);
-
-    /* Fondo principal del sitio */
-    background-color: var(--c-white);
-
-    /* Altura de línea para legibilidad óptima (1.5-1.7 recomendado) */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--color-text-main);
     line-height: 1.6;
+    background-color: var(--color-bg-body);
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-top: var(--header-height);
+    font-size-adjust: 0.5;
+}
 
-    /* Suavizado de fuentes para mejor renderizado en macOS/iOS */
-    -webkit-font-smoothing: antialiased;
+.fonts-loaded body {
+    font-family: var(--font-body);
+}
+
+main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 
 /* ============================================================================
-   TIPOGRAFÍA - ENCABEZADOS
-   ============================================================================
-   
-   Jerarquía visual según Guía de Estilos Cantur:
-   - h1-h4: Fuente Righteous (display)
-   - h5-h6: Fuente Roboto (body)
-   
-   Escala tipográfica: 2.5rem > 2rem > 1.75rem > 1.5rem > 1.25rem > 1.1rem
+   TIPOGRAFÍA BASE
    ============================================================================ */
 
-/* Título principal de página - Solo uno por página (SEO) */
-h1 {
-    font-family: 'Righteous', 'Tahoma', Arial, sans-serif;
-    font-size: 2.5rem;
-    /* 40px */
-    color: var(--c-text-headings);
-    font-weight: 700;
-}
-
-/* Títulos de sección principal */
-h2 {
-    font-family: 'Righteous', 'Tahoma', Arial, sans-serif;
-    font-size: 2rem;
-    /* 32px */
-    color: var(--c-text-headings);
-    font-weight: 700;
-}
-
-/* Subtítulos y títulos de cards */
-h3 {
-    font-family: 'Righteous', 'Tahoma', Arial, sans-serif;
-    font-size: 1.75rem;
-    /* 28px */
-    color: var(--c-text-headings);
-    font-weight: 700;
-}
-
-/* Títulos terciarios - Widgets, sidebar */
-h4 {
-    font-family: 'Righteous', 'Tahoma', Arial, sans-serif;
-    font-size: 1.5rem;
-    /* 24px */
-    color: var(--c-text-headings);
-    font-weight: 700;
-}
-
-/* Títulos menores - Usados con fuente body para menor énfasis */
-h5 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.25rem;
-    /* 20px */
-    color: var(--c-black);
-    font-weight: 700;
-}
-
-/* Títulos mínimos - Etiquetas, captions */
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.1rem;
-    /* 17.6px */
-    color: var(--c-black);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-sm);
+    font-size-adjust: 0.5;
 }
 
+.fonts-loaded h1,
+.fonts-loaded h2,
+.fonts-loaded h3,
+.fonts-loaded h4,
+.fonts-loaded h5,
+.fonts-loaded h6 {
+    font-family: var(--font-display);
+}
 
-/* ============================================================================
-   TIPOGRAFÍA - TEXTO Y ENLACES
-   ============================================================================ */
+h1 {
+    font-size: 3.5rem;
+}
 
-/* Párrafos - Texto de cuerpo principal */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+h3 {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1.1rem;
+}
+
 p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    /* 16px */
-    color: var(--c-black);
-    font-weight: 400;
-    /* Peso regular */
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-main);
 }
 
-/* Enlaces - Estilos base */
 a {
-    /* Color corporativo teal */
-    color: var(--c-teal);
-
-    /* Sin subrayado por defecto (diseño limpio) */
     text-decoration: none;
-
-    /* Transición suave para hover */
-    transition: color 0.2s;
+    color: inherit;
+    transition: color 0.3s ease;
 }
 
-/* Enlaces - Estado hover */
-a:hover {
-    /* Cambia a verde secundario al pasar el mouse */
-    color: var(--c-green);
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 
 /* ============================================================================
-   CLASES DE UTILIDAD GLOBALES
-   ============================================================================
-   
-   Clases reutilizables para layout y accesibilidad.
-   Prefijo: u-* (utility) o sin prefijo para helpers especiales.
+   UTILIDADES GLOBALES
    ============================================================================ */
 
-/* Contenedor centrado con ancho máximo */
-/* USADO EN: Header, footer, secciones de contenido */
-.u-container {
+.container {
+    width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
-    /* Centrado horizontal */
-    padding: 0 var(--s-md);
-    /* Padding lateral en móvil */
+    padding: 0 var(--spacing-sm);
 }
 
-/* Responsive: Mayor padding en pantallas medianas+ */
-@media (min-width: 768px) {
-    .u-container {
-        padding: 0 var(--s-lg);
-        /* 48px en desktop */
-    }
+.text-center {
+    text-align: center;
 }
 
-/* Clase para ocultar visualmente pero mantener accesibilidad */
-/* USADO EN: Skip links, labels para screen readers */
+.hidden {
+    display: none;
+}
+
+.section-padding {
+    padding: var(--spacing-lg) 0;
+}
+
+.icon-lg {
+    font-size: 1.5rem;
+}
+
+.icon-xl {
+    font-size: 2rem;
+}
+
+.mt-1 {
+    margin-top: var(--spacing-sm);
+}
+
+.mt-1-5 {
+    margin-top: 1.5rem;
+}
+
+.mt-2 {
+    margin-top: var(--spacing-md);
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -321,11 +241,10 @@ a:hover {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
     border: 0;
 }
 
-/* Skip link visible al recibir foco (accesibilidad teclado) */
-/* USADO EN: Link "Saltar al contenido principal" */
 .visually-hidden:focus {
     position: fixed;
     top: 0;
@@ -333,41 +252,10 @@ a:hover {
     width: auto;
     height: auto;
     padding: 1rem 2rem;
-    background: var(--c-teal);
-    color: var(--c-pure-white);
+    background: var(--color-primary);
+    color: var(--color-white);
     font-weight: 700;
-    z-index: 1000;
+    z-index: 1001;
     clip: auto;
     margin: 0;
-}
-
-/* Configuración base para Material Symbols (iconos) */
-/* USADO EN: Todos los iconos <span class="material-symbols-outlined"> */
-.material-symbols-outlined {
-    /* Alineación vertical con texto adyacente */
-    vertical-align: middle;
-
-    /* Configuración del icono: sin relleno, peso 400, sin gradiente */
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-
-/* ============================================================================
-   ESTILOS DE FOCO GLOBAL (Accesibilidad AAA)
-   ============================================================================
-   
-   Indicador visual claro para navegación por teclado.
-   Cumple con WCAG 2.1 criterio 2.4.7 (Focus Visible)
-   ============================================================================ */
-
-/* Foco visible para elementos interactivos */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-    /* Outline de alto contraste con color de acento */
-    outline: 3px solid var(--c-lime);
-
-    /* Separación del outline del borde del elemento */
-    outline-offset: 2px;
 }

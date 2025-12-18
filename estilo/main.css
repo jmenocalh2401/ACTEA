@@ -8,78 +8,35 @@
  * 
  * ESTRUCTURA DE IMPORTACIÓN:
  * 1. Base: Variables, reset, tipografía, utilidades
- * 2. Layout: Estructuras de sección y grids
- * 3. Componentes: Header, footer, UI components
- * 4. Animaciones: Keyframes y transiciones
+ * 2. Layout: Estructuras de sección, hero, carrusel
+ * 3. Componentes: Botones, cards, formularios, grids
+ * 4. Header: Header sticky y navegación
+ * 5. Footer: Footer con grid
  * 
- * NOTA: Los estilos específicos de página se importan en cada HTML
- * para evitar cargar CSS innecesario.
- * 
- * USADO EN: Todos los archivos HTML (enlace principal de estilos)
  * ============================================================================
  */
 
-
 /* ============================================================================
    1. BASE
-   ============================================================================
-   Contiene: fuentes, variables, reset, tipografía, utilidades globales
    ============================================================================ */
 @import url('base.css');
 
-
 /* ============================================================================
    2. LAYOUT
-   ============================================================================
-   Contiene: secciones, grids, contenedores de carrusel
    ============================================================================ */
 @import url('layout.css');
 
-
 /* ============================================================================
    3. COMPONENTES
-   ============================================================================
-   Contiene: cards, botones, formularios, breadcrumbs, tooltips, etc.
    ============================================================================ */
 @import url('components.css');
 
-
 /* ============================================================================
    4. HEADER
-   ============================================================================
-   Contiene: header sticky, logo, navegación desktop, menú móvil
    ============================================================================ */
 @import url('header.css');
 
-
 /* ============================================================================
    5. FOOTER
-   ============================================================================
-   Contiene: footer con grid de columnas, redes sociales
    ============================================================================ */
 @import url('footer.css');
-
-
-/* ============================================================================
-   6. ANIMACIONES
-   ============================================================================
-   Contiene: keyframes, clases de animación, transiciones
-   ============================================================================ */
-@import url('animations.css');
-
-
-/* ============================================================================
-   NOTA SOBRE ESTILOS DE PÁGINA
-   ============================================================================
-   
-   Los estilos específicos de cada página (hero, mapa, FAQ, etc.) se
-   importan directamente en cada HTML para optimizar la carga:
-   
-   - index.html    → estilo/pages/index.css
-   - rutas.html    → estilo/pages/rutas.css
-   - novedades.html → estilo/pages/novedades.css
-   - actividades.html → estilo/pages/actividades.css
-   - informacion.html → estilo/pages/informacion.css
-   
-   Esta estrategia reduce el CSS inicial cargado en cada página.
-   ============================================================================ */

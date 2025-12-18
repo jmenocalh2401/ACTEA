@@ -1,73 +1,69 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="ACTEA: Proyecto de reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza.">
-    <title>Rutas | ACTEA - Alto Campoo Todo El Año</title>
+        content="ACTEA: Tourism reactivation project for Alto Campoo year-round. Hiking, culture and nature.">
+    <title>Routes | ACTEA - Alto Campoo All Year Round</title>
 
     <!-- Preconnect para Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    
     <!-- Google Fonts con display=swap -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="estilo/main.css">
+    <link rel="stylesheet" href="../estilo/main.css">
 
     <!-- JavaScript -->
-    <script defer src="js/rutas.js"></script>
-    <script defer src="js/main.js"></script>
+    <script defer src="../js/rutas.js"></script>
+    <script defer src="../js/main.js"></script>
 </head>
 
 <body>
     <!-- Skip link -->
-    <a href="#main-content" class="visually-hidden">Saltar al contenido principal</a>
+    <a href="#main-content" class="visually-hidden">Skip to main content</a>
 
     <!-- Header -->
     <header class="header">
         <div class="container header-container">
             <a href="index.html" class="logo">
                 <div class="logo-brand">
-                    <img src="img/logo_blanco.png" alt="Alto Campoo" class="logo-img" width="150" height="50">
+                    <img src="../img/logo_blanco.png" alt="Alto Campoo" class="logo-img" width="150" height="50">
                 </div>
             </a>
 
             <!-- Navegación Desktop -->
-            <nav class="nav-desktop" aria-label="Navegación principal">
+            <nav class="nav-desktop" aria-label="Main navigation">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="rutas.html" class="nav-link active">Rutas</a></li>
-                    <li><a href="novedades.html" class="nav-link">Novedades</a></li>
-                    <li><a href="actividades.html" class="nav-link">Actividades</a></li>
-                    <li><a href="informacion.html" class="nav-link">Información</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="rutas.html" class="nav-link active">Routes</a></li>
+                    <li><a href="novedades.html" class="nav-link">News</a></li>
+                    <li><a href="actividades.html" class="nav-link">Activities</a></li>
+                    <li><a href="informacion.html" class="nav-link">Information</a></li>
                 </ul>
             </nav>
 
             <!-- Widgets -->
             <div class="header-widgets">
-                <div class="weather-widget" id="weather-widget" title="Clima en Alto Campoo">
+                <div class="weather-widget" id="weather-widget" title="Weather in Alto Campoo">
                     <span class="material-symbols-outlined">wb_cloudy</span>
                     <span class="weather-temp">--°C</span>
                 </div>
 
                 <div class="lang-selector">
-                    <select id="lang-select" aria-label="Seleccionar idioma"
-                        onchange="const file = window.location.pathname.split('/').pop() || 'index.html'; window.location.href = this.value === 'en' ? `/en/${file}` : `/${file}`;">
-                        <option value="es" selected>ES</option>
-                        <option value="en">EN</option>
+                    <select id="lang-select" aria-label="Select language" 
+                            onchange="const file = window.location.pathname.split('/en/').pop() || window.location.pathname.split('/').pop() || 'index.html'; window.location.href = this.value === 'en' ? `/en/${file}` : `/${file}`;">
+                        <option value="es">ES</option>
+                        <option value="en" selected>EN</option>
                     </select>
                 </div>
 
-                <button class="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false"
+                <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false"
                     aria-controls="mobile-menu">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
@@ -77,53 +73,52 @@
 
     <!-- Menú Móvil Overlay -->
     <div class="mobile-menu-overlay"></div>
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación"
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu"
         aria-hidden="true">
         <div class="mobile-menu-header">
             <a href="index.html" class="logo mobile-logo">
                 <div class="logo-brand">
-                    <img src="img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150"
-                        height="50">
+                    <img src="../img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150" height="50">
                 </div>
             </a>
-            <button class="hamburger hamburger-close" aria-label="Cerrar menú">
+            <button class="hamburger hamburger-close" aria-label="Close menu">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
-        <nav aria-label="Navegación móvil">
+        <nav aria-label="Mobile navigation">
             <ul class="mobile-nav-list">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="rutas.html">Rutas</a></li>
-                <li><a href="novedades.html">Novedades</a></li>
-                <li><a href="actividades.html">Actividades</a></li>
-                <li><a href="informacion.html">Información</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rutas.html">Routes</a></li>
+                <li><a href="novedades.html">News</a></li>
+                <li><a href="actividades.html">Activities</a></li>
+                <li><a href="informacion.html">Information</a></li>
             </ul>
         </nav>
     </div>
 
     <!-- MAIN CONTENT AREA -->
     <main id="main-content">
-        <section class="section-padding container" aria-label="Catálogo de rutas">
+        <section class="section-padding container" aria-label="Routes catalog">
             <div class="text-center section-header">
-                <h1>Catálogo de Rutas</h1>
-                <p>Encuentra tu camino ideal filtrando por dificultad y duración.</p>
+                <h1>Routes Catalog</h1>
+                <p>Find your ideal path by filtering by difficulty and duration.</p>
             </div>
 
             <!-- Filtros -->
-            <div class="route-filters" role="group" aria-label="Filtrar rutas por dificultad">
-                <button class="btn btn-primary filter-btn active" data-filter="all" aria-pressed="true">Todas</button>
-                <button class="btn btn-outline filter-btn" data-filter="Fácil" aria-pressed="false">Fácil</button>
-                <button class="btn btn-outline filter-btn" data-filter="Moderada" aria-pressed="false">Moderado</button>
-                <button class="btn btn-outline filter-btn" data-filter="Difícil" aria-pressed="false">Difícil</button>
+            <div class="route-filters" role="group" aria-label="Filter routes by difficulty">
+                <button class="btn btn-primary filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                <button class="btn btn-outline filter-btn" data-filter="Fácil" aria-pressed="false">Easy</button>
+                <button class="btn btn-outline filter-btn" data-filter="Moderada" aria-pressed="false">Moderate</button>
+                <button class="btn btn-outline filter-btn" data-filter="Difícil" aria-pressed="false">Difficult</button>
             </div>
 
-            <div class="grid-layout" id="routes-grid" aria-label="Lista de rutas de senderismo">
+            <div class="grid-layout" id="routes-grid" aria-label="Hiking routes list">
                 <!-- Pico Tres Mares -->
                 <article class="route-card route-item" data-difficulty="Moderada">
                     <div class="card-img-wrapper">
-                        <span class="card-tag">Montaña</span>
-                        <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.482.jpeg"
-                            alt="Imagen de la ruta Pico Tres Mares" class="card-img" loading="lazy">
+                        <span class="card-tag">Mountain</span>
+                        <img src="../img/WhatsApp%20Image%202025-12-01%20at%2020.07.482.jpeg"
+                            alt="Pico Tres Mares route image" class="card-img" loading="lazy">
                     </div>
                     <div class="card-body">
                         <h3>Pico Tres Mares</h3>
@@ -134,8 +129,8 @@
                                     <path
                                         d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
                                 </svg>
-                                <span>Moderada</span>
-                                <span class="tooltip" role="tooltip" id="tt-diff-1">Dificultad</span>
+                                <span>Moderate</span>
+                                <span class="tooltip" role="tooltip" id="tt-diff-1">Difficulty</span>
                             </button>
                             <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-time-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16"
@@ -144,7 +139,7 @@
                                         d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
                                 </svg>
                                 <span>3h 30m</span>
-                                <span class="tooltip" role="tooltip" id="tt-time-1">Tiempo estimado</span>
+                                <span class="tooltip" role="tooltip" id="tt-time-1">Estimated time</span>
                             </button>
                             <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-dist-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16"
@@ -153,19 +148,19 @@
                                         d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
                                 </svg>
                                 <span>8.5 km</span>
-                                <span class="tooltip" role="tooltip" id="tt-dist-1">Distancia</span>
+                                <span class="tooltip" role="tooltip" id="tt-dist-1">Distance</span>
                             </button>
                         </div>
-                        <button class="btn btn-outline btn-card">Ver Detalle</button>
+                        <button class="btn btn-outline btn-card">View Details</button>
                     </div>
                 </article>
 
                 <!-- Nacimiento del Ebro -->
                 <article class="route-card route-item" data-difficulty="Fácil">
                     <div class="card-img-wrapper">
-                        <span class="card-tag">Familiar</span>
-                        <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.484.jpeg"
-                            alt="Imagen de la ruta Nacimiento del Ebro" class="card-img" loading="lazy">
+                        <span class="card-tag">Family</span>
+                        <img src="../img/WhatsApp%20Image%202025-12-01%20at%2020.07.484.jpeg"
+                            alt="Nacimiento del Ebro route image" class="card-img" loading="lazy">
                     </div>
                     <div class="card-body">
                         <h3>Nacimiento del Ebro</h3>
@@ -176,8 +171,8 @@
                                     <path
                                         d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
                                 </svg>
-                                <span>Fácil</span>
-                                <span class="tooltip" role="tooltip" id="tt-diff-2">Dificultad</span>
+                                <span>Easy</span>
+                                <span class="tooltip" role="tooltip" id="tt-diff-2">Difficulty</span>
                             </button>
                             <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-time-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16"
@@ -186,7 +181,7 @@
                                         d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
                                 </svg>
                                 <span>1h 15m</span>
-                                <span class="tooltip" role="tooltip" id="tt-time-2">Tiempo estimado</span>
+                                <span class="tooltip" role="tooltip" id="tt-time-2">Estimated time</span>
                             </button>
                             <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-dist-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16"
@@ -195,19 +190,19 @@
                                         d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
                                 </svg>
                                 <span>3.2 km</span>
-                                <span class="tooltip" role="tooltip" id="tt-dist-2">Distancia</span>
+                                <span class="tooltip" role="tooltip" id="tt-dist-2">Distance</span>
                             </button>
                         </div>
-                        <button class="btn btn-outline btn-card">Ver Detalle</button>
+                        <button class="btn btn-outline btn-card">View Details</button>
                     </div>
                 </article>
 
                 <!-- Cueto de la Horcada -->
                 <article class="route-card route-item" data-difficulty="Difícil">
                     <div class="card-img-wrapper">
-                        <span class="card-tag">Experto</span>
-                        <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.483.jpeg"
-                            alt="Imagen de la ruta Cueto de la Horcada" class="card-img" loading="lazy">
+                        <span class="card-tag">Expert</span>
+                        <img src="../img/WhatsApp%20Image%202025-12-01%20at%2020.07.483.jpeg"
+                            alt="Cueto de la Horcada route image" class="card-img" loading="lazy">
                     </div>
                     <div class="card-body">
                         <h3>Cueto de la Horcada</h3>
@@ -218,8 +213,8 @@
                                     <path
                                         d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
                                 </svg>
-                                <span>Difícil</span>
-                                <span class="tooltip" role="tooltip" id="tt-diff-3">Dificultad</span>
+                                <span>Difficult</span>
+                                <span class="tooltip" role="tooltip" id="tt-diff-3">Difficulty</span>
                             </button>
                             <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-time-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16"
@@ -228,7 +223,7 @@
                                         d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
                                 </svg>
                                 <span>5h 00m</span>
-                                <span class="tooltip" role="tooltip" id="tt-time-3">Tiempo estimado</span>
+                                <span class="tooltip" role="tooltip" id="tt-time-3">Estimated time</span>
                             </button>
                             <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-dist-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16"
@@ -237,19 +232,19 @@
                                         d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
                                 </svg>
                                 <span>12 km</span>
-                                <span class="tooltip" role="tooltip" id="tt-dist-3">Distancia</span>
+                                <span class="tooltip" role="tooltip" id="tt-dist-3">Distance</span>
                             </button>
                         </div>
-                        <button class="btn btn-outline btn-card">Ver Detalle</button>
+                        <button class="btn btn-outline btn-card">View Details</button>
                     </div>
                 </article>
 
                 <!-- Brañavieja Circular -->
                 <article class="route-card route-item" data-difficulty="Moderada">
                     <div class="card-img-wrapper">
-                        <span class="card-tag">Panorámica</span>
-                        <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.48.jpeg"
-                            alt="Imagen de la ruta Brañavieja Circular" class="card-img" loading="lazy">
+                        <span class="card-tag">Panoramic</span>
+                        <img src="../img/WhatsApp%20Image%202025-12-01%20at%2020.07.48.jpeg"
+                            alt="Brañavieja Circular route image" class="card-img" loading="lazy">
                     </div>
                     <div class="card-body">
                         <h3>Brañavieja Circular</h3>
@@ -260,8 +255,8 @@
                                     <path
                                         d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
                                 </svg>
-                                <span>Moderada</span>
-                                <span class="tooltip" role="tooltip" id="tt-diff-4">Dificultad</span>
+                                <span>Moderate</span>
+                                <span class="tooltip" role="tooltip" id="tt-diff-4">Difficulty</span>
                             </button>
                             <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-time-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16"
@@ -270,7 +265,7 @@
                                         d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
                                 </svg>
                                 <span>2h 45m</span>
-                                <span class="tooltip" role="tooltip" id="tt-time-4">Tiempo estimado</span>
+                                <span class="tooltip" role="tooltip" id="tt-time-4">Estimated time</span>
                             </button>
                             <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-dist-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16"
@@ -279,10 +274,10 @@
                                         d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
                                 </svg>
                                 <span>6 km</span>
-                                <span class="tooltip" role="tooltip" id="tt-dist-4">Distancia</span>
+                                <span class="tooltip" role="tooltip" id="tt-dist-4">Distance</span>
                             </button>
                         </div>
-                        <button class="btn btn-outline btn-card">Ver Detalle</button>
+                        <button class="btn btn-outline btn-card">View Details</button>
                     </div>
                 </article>
             </div>
@@ -295,8 +290,8 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>ACTEA</h3>
-                    <p class="footer-description">Proyecto de dinamización turística y conservación
-                        ambiental de Alto Campoo.</p>
+                    <p class="footer-description">Tourism development and environmental conservation
+                        project for Alto Campoo.</p>
                     <div class="social-icons">
                         <a href="#" class="social-icon" aria-label="Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
@@ -322,28 +317,29 @@
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h3>Enlaces Rápidos</h3>
+                    <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="rutas.html">Rutas</a></li>
-                        <li><a href="novedades.html">Eventos</a></li>
-                        <li><a href="informacion.html">Contacto</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rutas.html">Routes</a></li>
+                        <li><a href="novedades.html">Events</a></li>
+                        <li><a href="informacion.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Aviso Legal</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Política de Cookies</a></li>
+                        <li><a href="#">Legal Notice</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2025 ACTEA - Alto Campoo Todo El Año. IES Augusto González de Linares.
+                &copy; 2025 ACTEA - Alto Campoo All Year Round. IES Augusto González de Linares.
             </div>
         </div>
     </footer>
 </body>
 
 </html>
+
