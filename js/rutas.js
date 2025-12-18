@@ -51,4 +51,3 @@ function initRouteFilters() {
 document.addEventListener('DOMContentLoaded', () => {
     initRouteFilters();
 });
-
