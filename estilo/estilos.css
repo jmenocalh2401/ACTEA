@@ -67,6 +67,7 @@ body {
     background-color: var(--bg-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 /* Typography (Cantur Style Guide) */
@@ -232,6 +233,33 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+/* Mobile Header Adjustments */
+@media (max-width: 480px) {
+    .c-header-tools {
+        gap: 0.25rem;
+    }
+
+    .weather-widget {
+        font-size: 0.75rem;
+    }
+
+    .weather-widget span[style*="font-size:1.5rem"] {
+        font-size: 1rem !important;
+    }
+
+    .c-logo__text {
+        font-size: 1.2rem;
+    }
+
+    .c-lang-btn {
+        padding: 0.25rem;
+    }
+
+    .u-container {
+        padding: 0 0.75rem;
+    }
 }
 
 /* CSS-Only Details/Summary Menu */
@@ -438,75 +466,144 @@ a:hover {
     padding: var(--s-lg) 0;
 }
 
+.l-section h2 {
+    margin-bottom: 4rem;
+}
+
 .l-section--alt {
     background: var(--bg-surface);
 }
 
-/* CAROUSEL (Route Cards) */
+/* ============================================
+   CAROUSEL - NATURE CARD DESIGN
+   ============================================ */
+
+/* --- Nature Card CSS Variables --- */
+:root {
+    --card-bg: #FFFFFF;
+    --card-radius: 32px;
+    --img-radius: 24px;
+    --shadow-soft: 0 10px 30px -10px rgba(59, 143, 76, 0.15);
+    --shadow-hover: 0 20px 40px -12px rgba(59, 143, 76, 0.25);
+    --pill-bg: #F0F5F1;
+}
+
+/* Carousel Container */
 .c-carousel {
     display: flex;
     overflow-x: auto;
     gap: 1.5rem;
-    padding: 1rem 0 2rem;
+    padding: 1.5rem 0.5rem 2.5rem;
     scroll-snap-type: x mandatory;
+    /* Hide scrollbar for clean look */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
+/* Tablet: Increase gap */
+@media (min-width: 768px) {
+    .c-carousel {
+        gap: 2rem;
+    }
+}
+
+/* Desktop: Maximum gap */
+@media (min-width: 1024px) {
+    .c-carousel {
+        gap: 2.5rem;
+    }
+}
+
+.c-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Card (Nature Card Style) */
 .c-card {
-    flex: 0 0 300px;
+    flex: 0 0 320px;
     scroll-snap-align: center;
-    background: var(--bg-surface);
-    border-radius: var(--radius-lg);
+    background: var(--card-bg);
+    border-radius: var(--card-radius);
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    padding: 0.75rem;
 }
 
 .c-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-hover);
 }
 
+.c-card:focus-visible {
+    outline: 3px solid var(--c-lime);
+    outline-offset: 4px;
+}
+
+/* Card Image Area */
 .c-card__img {
-    height: 200px;
-    background: linear-gradient(135deg, var(--c-teal), var(--c-green));
+    height: 180px;
+    background: linear-gradient(145deg, #161616 0%, var(--c-teal) 100%);
+    border-radius: var(--img-radius);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    transition: transform 0.35s ease;
+}
+
+.c-card:hover .c-card__img {
+    transform: scale(1.03);
 }
 
 .c-card__img .material-symbols-outlined {
     font-size: 4rem;
     color: var(--c-pure-white);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.25));
+    transition: transform 0.35s ease;
 }
 
+.c-card:hover .c-card__img .material-symbols-outlined {
+    transform: scale(1.1);
+}
+
+/* Card Body */
 .c-card__body {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem 1rem;
+    text-align: center;
 }
 
 .c-card__title {
     font-family: 'Righteous', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: var(--c-teal);
     margin-bottom: 1rem;
 }
 
+/* Metadata Pills */
 .c-card__meta {
     display: flex;
-    gap: 1.5rem;
-    font-size: 0.85rem;
-    color: var(--c-text-light);
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .c-card__meta-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+    background: var(--pill-bg);
+    color: var(--c-green);
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
-.c-card__meta-item .material-symbols-outlined {
-    font-size: 1.25rem;
+.c-card__meta-item svg {
     color: var(--c-green);
+    width: 18px;
+    height: 18px;
 }
 
 /* EVENTS SECTION (Stacked) */
@@ -745,11 +842,13 @@ textarea:focus-visible {
     height: 300px;
 }
 
-/* 2. CAROUSEL INDICATORS */
+/* 2. CAROUSEL NAVIGATION - NATURE CARD STYLE */
 .c-carousel-wrapper {
     position: relative;
+    padding: 0 2rem;
 }
 
+/* Dots → Bars */
 .c-carousel-dots {
     display: flex;
     justify-content: center;
@@ -757,55 +856,91 @@ textarea:focus-visible {
     margin-top: 1.5rem;
 }
 
-.c-carousel-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.2);
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
+/* Hide dots on large desktop where all 4 cards fit */
+@media (min-width: 1200px) {
+    .c-carousel-dots {
+        display: none;
+    }
 }
 
-.c-carousel-dot--active,
+.c-carousel-dot {
+    width: 16px;
+    height: 4px;
+    border-radius: 100px;
+    background: #E0E0E0;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.c-carousel-dot--active {
+    background: var(--c-green);
+    width: 48px;
+}
+
 .c-carousel-dot:hover {
     background: var(--c-teal);
 }
 
+/* Arrows → Circular Elevated Buttons */
 .c-carousel-arrow {
     position: absolute;
-    top: 50%;
+    top: 35%;
     transform: translateY(-50%);
-    background: var(--bg-main);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
+    border: none;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
+    cursor: pointer;
+    color: var(--c-teal);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s;
-    color: var(--c-teal);
+    z-index: 10;
+}
+
+.c-carousel-arrow svg {
+    width: 24px;
+    height: 24px;
 }
 
 .c-carousel-arrow:hover {
-    background: var(--c-teal);
-    color: var(--c-pure-white);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    color: var(--c-green);
+    transform: translateY(-50%) scale(1.05);
 }
 
 .c-carousel-arrow--left {
-    left: -22px;
+    left: -24px;
 }
 
 .c-carousel-arrow--right {
-    right: -22px;
+    right: -24px;
 }
 
-@media (max-width: 768px) {
+/* Tablet: Adjust arrow position */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .c-carousel-arrow--left {
+        left: -16px;
+    }
+
+    .c-carousel-arrow--right {
+        right: -16px;
+    }
+}
+
+/* Mobile: Hide arrows */
+@media (max-width: 480px) {
     .c-carousel-arrow {
         display: none;
+    }
+
+    .c-carousel-wrapper {
+        padding: 0;
     }
 }
 
@@ -1046,4 +1181,41 @@ textarea:focus-visible {
 .c-tooltip:hover::before {
     opacity: 1;
     visibility: visible;
+}
+
+/* ============================================
+   UI/UX IMPROVEMENTS - ACTION REPORT
+   ============================================ */
+
+/* Feedback tactil para botones secundarios */
+.c-btn-secondary:active {
+    transform: scale(0.97) translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Resaltado de foco para fondos oscuros (Footer) */
+.c-footer a:focus-visible,
+.c-footer button:focus-visible {
+    outline: 3px solid var(--c-lime);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Estados de error y exito para formularios */
+.c-form-error {
+    display: block;
+    color: #D32F2F;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    min-height: 1.2em;
+}
+
+.c-input--error {
+    border: 2px solid #D32F2F !important;
+    background: rgba(211, 47, 47, 0.05);
+}
+
+.c-input--success {
+    border: 2px solid var(--c-green) !important;
+    background: rgba(59, 143, 76, 0.05);
 }
