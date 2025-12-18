@@ -3,11 +3,15 @@
  * Funcionalidades: menú móvil, clima, carrusel
  */
 
-
+// Variables globales del menú móvil
 let hamburgerBtn = null;
 let mobileMenu = null;
 let overlay = null;
 let menuOpenBtn = null;
+
+// ============================================================================
+// MENÚ MÓVIL
+// ============================================================================
 
 function toggleMenu() {
     const isOpen = mobileMenu && mobileMenu.classList.contains('open');
@@ -117,6 +121,10 @@ function initMobileMenu() {
     initFocusTrap();
 }
 
+// ============================================================================
+// WIDGET DEL CLIMA
+// ============================================================================
+
 async function fetchWeather() {
     const weatherWidget = document.getElementById('weather-widget');
     if (!weatherWidget) return;
@@ -138,6 +146,9 @@ async function fetchWeather() {
     }
 }
 
+// ============================================================================
+// CARRUSEL DE RUTAS DESTACADAS
+// ============================================================================
 
 function initCarousel() {
     const track = document.getElementById('featured-routes');
@@ -245,6 +256,10 @@ function initCarousel() {
     }
 }
 
+// ============================================================================
+// CARGA DE FUENTES
+// ============================================================================
+
 function loadFonts() {
     if ('fonts' in document) {
         Promise.all([
@@ -257,6 +272,10 @@ function loadFonts() {
         document.documentElement.classList.add('fonts-loaded');
     }
 }
+
+// ============================================================================
+// INICIALIZACIÓN
+// ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     loadFonts();

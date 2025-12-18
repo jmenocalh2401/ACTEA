@@ -3,6 +3,10 @@
  * Filtrado de rutas por dificultad
  */
 
+// ============================================================================
+// FILTROS DE RUTAS
+// ============================================================================
+
 function initRouteFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const routesGrid = document.getElementById('routes-grid');
@@ -39,6 +43,10 @@ function initRouteFilters() {
         });
     });
 }
+
+// ============================================================================
+// INICIALIZACIÓN
+// ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     initRouteFilters();
