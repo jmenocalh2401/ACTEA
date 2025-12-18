@@ -197,6 +197,98 @@
     color: var(--c-teal);
 }
 
+/* Mobile Header Adjustments (Ported from estilos.css) */
+@media (max-width: 480px) {
+    .c-header-tools {
+        gap: 0.25rem;
+    }
+
+    .c-header-tools__lang {
+        font-size: 0.85rem;
+    }
+
+    .u-container {
+        padding: 0 1rem;
+    }
+}
+
+
+/* ============================================================================
+   MENÚ DE IDIOMA (Drop-down)
+   ============================================================================ */
+.c-lang-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.c-lang-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--c-teal);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+/* Hide default marker in Safari/Chrome */
+.c-lang-btn::-webkit-details-marker {
+    display: none;
+}
+
+.c-lang-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+/* Rotate icon when open */
+.c-lang-dropdown[open] .c-lang-icon {
+    transform: rotate(180deg);
+}
+
+.c-lang-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 150px;
+    background: var(--c-pure-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-md);
+    padding: 0.5rem 0;
+    list-style: none;
+    z-index: 200;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: menuFadeIn 0.2s forwards;
+}
+
+@keyframes menuFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.c-lang-menu li {
+    display: block;
+}
+
+.c-lang-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--c-text-body);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.c-lang-menu a:hover,
+.c-lang-menu a:focus {
+    background-color: var(--c-white);
+    color: var(--c-teal);
+}
+
 
 /* ============================================================================
    MENÚ MÓVIL (CSS ONLY - Sin JavaScript)

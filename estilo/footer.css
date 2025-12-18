@@ -33,6 +33,9 @@
 
     /* Espaciado generoso arriba, menor abajo */
     padding: var(--s-xl) 0 var(--s-lg);
+
+    /* Línea separadora superior */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 
@@ -121,9 +124,9 @@
 .c-footer__grid {
     display: grid;
 
-    /* Mobile: Una columna */
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    /* Mobile: 2 columnas para Enlaces/Info */
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1.5rem;
 
     /* Texto centrado en móvil */
     text-align: center;
@@ -137,6 +140,46 @@
 
         /* Texto alineado a la izquierda */
         text-align: left;
+        gap: 3rem;
+    }
+}
+
+/* Primera columna (logo/socials) ocupa todo el ancho en móvil */
+.c-footer__col:first-child {
+    grid-column: 1 / -1;
+}
+
+/* Última columna (Legal) también ocupa todo el ancho en móvil */
+.c-footer__col:last-child {
+    grid-column: 1 / -1;
+}
+
+/* En desktop, cada columna ocupa su espacio normal */
+@media (min-width: 768px) {
+
+    .c-footer__col:first-child,
+    .c-footer__col:last-child {
+        grid-column: auto;
+    }
+}
+
+/* Mobile: Legal Section Horizontal (Row) */
+@media (max-width: 767px) {
+    .c-footer__col:last-child ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .c-footer__col:last-child li {
+        width: auto;
+    }
+
+    /* Reduce top margin for Legal header to tighten layout */
+    .c-footer__col:last-child h4 {
+        margin-bottom: 0.75rem;
     }
 }
 
@@ -146,13 +189,13 @@
     /* Color de acento para títulos de columna */
     color: var(--c-lime);
 
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-family: 'Righteous', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
 
     /* Estilo mayúsculas para encabezados */
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 /* Lista de enlaces dentro de columnas */
@@ -160,21 +203,32 @@
     list-style: none;
 }
 
-/* Items de lista con espaciado */
+/* Items de lista sin margen propio */
 .c-footer__col li {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0;
 }
 
 /* Enlaces dentro de las columnas */
 .c-footer__col a {
-    color: var(--c-white);
-    font-size: 0.9rem;
-    transition: color 0.2s;
+    color: #E5E5E5;
+    font-size: 0.95rem;
+    transition: color 0.25s ease;
+    display: inline-block;
+    padding: 0.5rem 0;
+    min-height: 44px;
+    line-height: 1.8;
 }
 
 /* Hover en enlaces de columnas */
 .c-footer__col a:hover {
-    color: var(--c-lime);
+    color: var(--c-pure-white);
+}
+
+/* Estado focus para accesibilidad */
+.c-footer__col a:focus-visible {
+    outline: 3px solid var(--c-lime);
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 
@@ -199,16 +253,17 @@
     }
 }
 
-/* Botones/enlaces de redes sociales */
+/* Botones/enlaces de redes sociales - 3 Estados */
 /* USADO EN: <a href="#" class="c-footer__social-link"> */
-.c-footer__social-link {
-    /* Forma circular */
-    width: 40px;
-    height: 40px;
+.c-footer__socials .c-footer__social-link {
+    /* Forma circular más grande */
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
 
-    /* Fondo semi-transparente */
-    background: rgba(255, 255, 255, 0.1);
+    /* Fondo transparente con borde ghost */
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
 
     /* Centrado del icono SVG */
     display: flex;
@@ -216,15 +271,32 @@
     justify-content: center;
 
     /* Color del icono */
-    color: var(--c-white);
+    color: var(--c-pure-white);
 
-    /* Transición para hover */
-    transition: all 0.2s;
+    /* Transición suave */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Reset styles inherited from .c-footer__col a */
+    padding: 0;
+    margin: 0;
 }
 
-/* Hover en iconos sociales */
+/* Estado Hover: Elevación + Color de Marca */
 .c-footer__social-link:hover {
-    /* Fondo lime con icono negro */
     background: var(--c-lime);
-    color: var(--c-black);
+    color: var(--bg-dark);
+    border-color: var(--c-lime);
+}
+
+/* Estado Active: Feedback de Presión */
+.c-footer__social-link:active {
+    transform: scale(0.92);
+    /* Shadow removed as per user request */
+    background: #B8C600;
+}
+
+/* Estado Focus para Accesibilidad */
+.c-footer__social-link:focus-visible {
+    outline: 3px solid var(--c-lime);
+    outline-offset: 3px;
 }

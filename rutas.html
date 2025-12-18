@@ -42,6 +42,10 @@ ESTILOS:
         -->
     <link rel="stylesheet" href="estilo/main.css">
     <link rel="stylesheet" href="estilo/pages/rutas.css">
+
+    <!-- JavaScript con defer -->
+    <script defer src="js/translations.js"></script>
+    <script defer src="js/main.js"></script>
 </head>
 
 <body>
@@ -56,10 +60,10 @@ ESTILOS:
             </a>
             <ul class="c-nav">
                 <li class="c-nav__list">
-                    <a href="rutas.html" class="c-nav__link c-nav__link--active">Rutas</a>
-                    <a href="novedades.html" class="c-nav__link">Calendario</a>
-                    <a href="actividades.html" class="c-nav__link">Actividades</a>
-                    <a href="rutas.html#mapa" class="c-nav__link">Mapa</a>
+                    <a href="rutas.html" class="c-nav__link c-nav__link--active" data-i18n="nav.rutas">Rutas</a>
+                    <a href="novedades.html" class="c-nav__link" data-i18n="nav.calendario">Calendario</a>
+                    <a href="actividades.html" class="c-nav__link" data-i18n="nav.actividades">Actividades</a>
+                    <a href="rutas.html#mapa" class="c-nav__link" data-i18n="nav.mapa">Mapa</a>
                 </li>
             </ul>
             <div class="c-header-tools">
@@ -73,10 +77,10 @@ ESTILOS:
                         <span class="material-symbols-outlined c-lang-icon">expand_more</span>
                     </summary>
                     <ul class="c-lang-menu">
-                        <li><a href="?lang=es" lang="es">Espanol</a></li>
+                        <li><a href="?lang=es" lang="es">Español</a></li>
                         <li><a href="?lang=en" lang="en">English</a></li>
                         <li><a href="?lang=de" lang="de">Deutsch</a></li>
-                        <li><a href="?lang=fr" lang="fr">Francais</a></li>
+                        <li><a href="?lang=fr" lang="fr">Français</a></li>
                     </ul>
                 </details>
             </div>
@@ -85,10 +89,10 @@ ESTILOS:
                 <span class="material-symbols-outlined" style="font-size: 2rem;">menu</span>
             </label>
             <div class="c-mobile-nav">
-                <a href="rutas.html" class="c-mobile-nav__link">Rutas</a>
-                <a href="novedades.html" class="c-mobile-nav__link">Calendario</a>
-                <a href="actividades.html" class="c-mobile-nav__link">Actividades</a>
-                <a href="rutas.html#mapa" class="c-mobile-nav__link">Mapa</a>
+                <a href="rutas.html" class="c-mobile-nav__link" data-i18n="nav.rutas">Rutas</a>
+                <a href="novedades.html" class="c-mobile-nav__link" data-i18n="nav.calendario">Calendario</a>
+                <a href="actividades.html" class="c-mobile-nav__link" data-i18n="nav.actividades">Actividades</a>
+                <a href="rutas.html#mapa" class="c-mobile-nav__link" data-i18n="nav.mapa">Mapa</a>
                 <label for="menu-toggle" class="c-mobile-nav__close">
                     <span class="material-symbols-outlined" style="font-size: 2rem;">close</span>
                 </label>
@@ -116,16 +120,16 @@ ESTILOS:
             aria-label describe el propósito para screen readers
             -->
         <nav class="c-breadcrumbs" aria-label="Migas de pan">
-            <a href="index.html">Inicio</a>
+            <a href="index.html" data-i18n="breadcrumb.inicio">Inicio</a>
             <span class="c-breadcrumbs__separator" aria-hidden="true">›</span>
-            <span class="c-breadcrumbs__current" aria-current="page">Rutas</span>
+            <span class="c-breadcrumbs__current" aria-current="page" data-i18n="breadcrumb.rutas">Rutas</span>
         </nav>
 
         <!-- 
             Título principal de la página (h1)
             Único por página según SEO
             -->
-        <h1>Rutas de Montaña</h1>
+        <h1 data-i18n="rutas.page.title">Rutas de Montaña</h1>
 
         <!-- 
             ====================================
@@ -139,7 +143,7 @@ ESTILOS:
             -->
         <section id="mapa" class="c-map-placeholder">
             <span class="material-symbols-outlined">map</span>
-            <p>Mapa Interactivo (Próximamente)</p>
+            <p data-i18n="rutas.map.placeholder">Mapa Interactivo (Próximamente)</p>
         </section>
 
         <!-- 
@@ -152,7 +156,7 @@ ESTILOS:
             Cada ruta es un <article> autocontenido.
             -->
         <section>
-            <h2>Listado de Rutas</h2>
+            <h2 data-i18n="rutas.list.title">Listado de Rutas</h2>
 
             <!-- Grid responsivo de rutas -->
             <div class="c-routes-grid">
@@ -165,150 +169,199 @@ ESTILOS:
                     Contenido autocontenido sobre esta ruta
                     -->
                 <article class="c-card">
-                    <!-- Área de imagen/icono -->
                     <figure class="c-card__img">
                         <span class="material-symbols-outlined">hiking</span>
                     </figure>
-
-                    <!-- Cuerpo de la tarjeta -->
                     <div class="c-card__body">
-                        <h3 class="c-card__title">Pico Tres Mares</h3>
-
-                        <!-- Metadata -->
+                        <h3 class="c-card__title" data-i18n="rutas.card.tresmares.title">Pico Tres Mares</h3>
                         <div class="c-card__meta">
                             <span class="c-card__meta-item c-tooltip" data-tooltip="Distancia">
-                                <span class="material-symbols-outlined"
-                                    style="font-size:1.25rem; color: var(--c-green);">location_on</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z" />
+                                </svg>
                                 8 km
                             </span>
                             <span class="c-card__meta-item c-tooltip" data-tooltip="Duración">
-                                <span class="material-symbols-outlined"
-                                    style="font-size:1.25rem; color: var(--c-green);">schedule</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                                    fill="currentColor">
+                                    <path
+                                        d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+                                </svg>
                                 4h
                             </span>
+                            <span class="c-card__meta-item c-tooltip" data-tooltip="Nivel de dificultad">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M120-120v-80l80-80v160h-80Zm160 0v-240l80-80v320h-80Zm160 0v-320l80 81v239h-80Zm160 0v-239l80-80v319h-80Zm160 0v-400l80-80v480h-80ZM120-327v-113l280-280 160 160 280-280v113L560-447 400-607 120-327Z" />
+                                </svg>
+                                <span data-i18n="diff.media">Media</span>
+                            </span>
                         </div>
-
-                        <!-- Descripción -->
-                        <p style="margin-top: 1rem; color: var(--c-text-light);">
-                            La cumbre que domina todo el valle. Vistas espectaculares.
-                        </p>
-
-                        <!-- CTA -->
-                        <a href="#" class="c-btn-primary"
-                            style="margin-top: 1.5rem; display: block; text-align: center;">
-                            Ver Ruta
-                        </a>
                     </div>
                 </article>
 
-                <!-- 
-                    ====================================
-                    TARJETA: Nacimiento del Ebro
-                    ====================================
-                    -->
+                <!-- Card 2: Nacimiento del Ebro -->
                 <article class="c-card">
                     <figure class="c-card__img">
-                        <span class="material-symbols-outlined">water</span>
+                        <span class="material-symbols-outlined">waves</span>
                     </figure>
                     <div class="c-card__body">
-                        <h3 class="c-card__title">Nacimiento del Ebro</h3>
+                        <h3 class="c-card__title" data-i18n="rutas.card.ebro.title">Nacimiento del Ebro</h3>
                         <div class="c-card__meta">
                             <span class="c-card__meta-item c-tooltip" data-tooltip="Distancia">
-                                <span class="material-symbols-outlined"
-                                    style="font-size:1.25rem; color: var(--c-green);">location_on</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z" />
+                                </svg>
                                 2 km
                             </span>
                             <span class="c-card__meta-item c-tooltip" data-tooltip="Duración">
-                                <span class="material-symbols-outlined"
-                                    style="font-size:1.25rem; color: var(--c-green);">schedule</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                                    fill="currentColor">
+                                    <path
+                                        d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+                                </svg>
                                 1h
                             </span>
+                            <span class="c-card__meta-item c-tooltip" data-tooltip="Nivel de dificultad">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M120-120v-80l80-80v160h-80Zm160 0v-240l80-80v320h-80Zm160 0v-320l80 81v239h-80Zm160 0v-239l80-80v319h-80Zm160 0v-400l80-80v480h-80ZM120-327v-113l280-280 160 160 280-280v113L560-447 400-607 120-327Z" />
+                                </svg>
+                                <span data-i18n="diff.facil">Fácil</span>
+                            </span>
                         </div>
-                        <p style="margin-top: 1rem; color: var(--c-text-light);">
-                            Paseo junto al nacimiento del río más caudaloso de España.
-                        </p>
-                        <a href="#" class="c-btn-primary"
-                            style="margin-top: 1.5rem; display: block; text-align: center;">
-                            Ver Ruta
-                        </a>
                     </div>
                 </article>
+
+                <!-- Card 3: Bosque de Saja -->
+                <article class="c-card">
+                    <figure class="c-card__img">
+                        <span class="material-symbols-outlined">forest</span>
+                    </figure>
+                    <div class="c-card__body">
+                        <h3 class="c-card__title" data-i18n="rutas.card.saja.title">Bosque de Saja</h3>
+                        <div class="c-card__meta">
+                            <span class="c-card__meta-item c-tooltip" data-tooltip="Distancia">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z" />
+                                </svg>
+                                12 km
+                            </span>
+                            <span class="c-card__meta-item c-tooltip" data-tooltip="Duración">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                                    fill="currentColor">
+                                    <path
+                                        d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+                                </svg>
+                                5h
+                            </span>
+                            <span class="c-card__meta-item c-tooltip" data-tooltip="Nivel de dificultad">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M120-120v-80l80-80v160h-80Zm160 0v-240l80-80v320h-80Zm160 0v-320l80 81v239h-80Zm160 0v-239l80-80v319h-80Zm160 0v-400l80-80v480h-80ZM120-327v-113l280-280 160 160 280-280v113L560-447 400-607 120-327Z" />
+                                </svg>
+                                <span data-i18n="diff.media">Media</span>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </section>
+
     </main>
 
-    <!-- FOOTER -->
+    <!-- IMPROVED FOOTER (Columns + Social) -->
     <footer class="c-footer">
         <div class="u-container">
             <div class="c-footer__grid">
+                <!-- Column 1: About -->
                 <div class="c-footer__col">
                     <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
-                        <span class="material-symbols-outlined"
-                            style="font-size: 2rem; color: var(--c-lime);">landscape</span>
+                        <span class="material-symbols-outlined" style="font-size: 2rem; color: var(--c-lime);"
+                            aria-hidden="true">landscape</span>
                         <span
                             style="font-family: 'Righteous', sans-serif; font-size: 1.5rem; color: var(--c-lime);">ACTEA</span>
                     </div>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--c-white);">Alto Campoo Todo el Ano.
+                    <p style="margin-top: 1rem; font-size: 0.95rem; color: #E5E5E5; font-style: italic; line-height: 1.6;"
+                        data-i18n="footer.desc">Alto
+                        Campoo Todo el Año.
                         Fomentando el turismo sostenible en Cantabria.</p>
+
+                    <!-- Social Icons -->
                     <div class="c-footer__socials" style="margin-top: 1.5rem;">
-                        <a href="#" class="c-footer__social-link" aria-label="Facebook">
+                        <a href="#" class="c-footer__social-link" aria-label="Visitar Facebook de ACTEA">
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor">
+                                fill="currentColor" aria-hidden="true">
                                 <path
                                     d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
                             </svg>
                         </a>
-                        <a href="#" class="c-footer__social-link" aria-label="Instagram">
+                        <a href="#" class="c-footer__social-link" aria-label="Visitar Instagram de ACTEA">
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor">
+                                fill="currentColor" aria-hidden="true">
                                 <path
                                     d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
                             </svg>
                         </a>
-                        <a href="#" class="c-footer__social-link" aria-label="Twitter/X">
+                        <a href="#" class="c-footer__social-link" aria-label="Visitar Twitter/X de ACTEA">
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor">
+                                fill="currentColor" aria-hidden="true">
                                 <path
                                     d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                             </svg>
                         </a>
                     </div>
                 </div>
+
+                <!-- Column 2: Quick Links -->
                 <div class="c-footer__col">
-                    <h4>Enlaces</h4>
+                    <h4 data-i18n="footer.links">Enlaces</h4>
                     <ul>
-                        <li><a href="rutas.html">Rutas</a></li>
-                        <li><a href="novedades.html">Calendario</a></li>
-                        <li><a href="actividades.html">Actividades</a></li>
-                        <li><a href="rutas.html#mapa">Mapa</a></li>
+                        <li><a href="rutas.html" data-i18n="nav.rutas">Rutas</a></li>
+                        <li><a href="novedades.html" data-i18n="nav.calendario">Calendario</a></li>
+                        <li><a href="actividades.html" data-i18n="nav.actividades">Actividades</a></li>
+                        <li><a href="rutas.html#mapa" data-i18n="nav.mapa">Mapa</a></li>
                     </ul>
                 </div>
+
+                <!-- Column 3: Info -->
                 <div class="c-footer__col">
-                    <h4>Informacion</h4>
+                    <h4 data-i18n="footer.info">Información</h4>
                     <ul>
-                        <li><a href="informacion.html#faq">FAQ</a></li>
-                        <li><a href="informacion.html#contacto">Contacto</a></li>
-                        <li><a href="#">Accesibilidad</a></li>
+                        <li><a href="informacion.html#faq" data-i18n="footer.link.faq">FAQ</a></li>
+                        <li><a href="informacion.html#contacto" data-i18n="footer.link.contact">Contacto</a></li>
+                        <li><a href="#" data-i18n="footer.link.accessibility">Accesibilidad</a></li>
                     </ul>
                 </div>
+
+                <!-- Column 4: Legal -->
                 <div class="c-footer__col">
-                    <h4>Legal</h4>
+                    <h4 data-i18n="footer.legal">Legal</h4>
                     <ul>
-                        <li><a href="#">Privacidad</a></li>
-                        <li><a href="#">Terminos</a></li>
-                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#" data-i18n="footer.link.privacy">Privacidad</a></li>
+                        <li><a href="#" data-i18n="footer.link.terms">Términos</a></li>
+                        <li><a href="#" data-i18n="footer.link.cookies">Cookies</a></li>
                     </ul>
                 </div>
             </div>
+
             <div
                 style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: rgba(255,255,255,0.6);">
-                2024 ACTEA. Proyecto educativo.
+                © 2024 ACTEA. Proyecto educativo.
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
 </body>
 
 </html>
