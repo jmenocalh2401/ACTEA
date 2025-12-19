@@ -625,13 +625,18 @@
                         <span class="material-symbols-outlined newsletter-icon">mail</span>
                         <h2 class="newsletter-title newsletter-title-text">Suscríbete a nuestro
                             Newsletter</h2>
-                        <p class="newsletter-description newsletter-description-text">Recibe las últimas noticias
-                            y rutas en tu email.</p>
-                        <form id="newsletter-form" class="newsletter-form" action="informacion.html#contacto"
-                            method="get">
-                            <input type="email" id="newsletter-email" class="newsletter-input" required name="email"
-                                placeholder="tu@email.com">
-                            <button type="submit" class="btn btn-newsletter">Suscribirse</button>
+                        <form id="newsletter-form" action="informacion.html#contacto" method="get">
+                            <label for="newsletter-email" class="newsletter-description newsletter-description-text">
+                                Recibe las últimas noticias y rutas en tu email.
+                            </label>
+                            <br /><br />
+                            <div class="newsletter-group">
+                                <input type="email" id="newsletter-email" name="email" class="newsletter-input"
+                                    placeholder="tu@email.com" required>
+                                <button type="submit" class="btn btn-newsletter">
+                                    Suscribirse
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
