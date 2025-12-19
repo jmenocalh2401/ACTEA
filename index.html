@@ -1,673 +1,689 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="ACTEA: Proyecto de reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza.">
-    <title>ACTEA | Alto Campoo Todo El Año</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="ACTEA: Proyecto de reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza.">
+        <title>ACTEA | Alto Campoo Todo El Año</title>
 
-    <!-- Preconnect para Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- Preconnect para Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Preload imágenes críticas -->
-    <link rel="preload" as="image" href="img/hero.webp" type="image/webp" fetchpriority="high">
-    <link rel="preload" as="image" href="img/logo_blanco.png">
+        <!-- Preload imágenes críticas -->
+        <link rel="preload" as="image" href="img/hero.webp" type="image/webp" fetchpriority="high">
+        <link rel="preload" as="image" href="img/logo_blanco.png">
 
-    <!-- CSS crítico inline (solo hero y header para móvil) -->
-    <style>
-        :root {
-            --header-height: 90px;
-            --color-primary: #00423F;
-            --color-text-inverse: #FFFFFF;
-            --color-secondary: #C4E86B;
-            --color-bg-body: #F3F4F6
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        html {
-            overflow-x: hidden;
-            width: 100%;
-            max-width: 100vw
-        }
-
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            color: #1f2937;
-            line-height: 1.6;
-            background-color: #F3F4F6;
-            overflow-x: hidden;
-            width: 100%;
-            max-width: 100vw;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            padding-top: 90px
-        }
-
-        main {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-            overflow-x: hidden
-        }
-
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05)
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 90px;
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            gap: 1rem
-        }
-
-        .logo-img {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
-            display: block
-        }
-
-        .hero {
-            height: 75vh;
-            min-height: 500px;
-            aspect-ratio: 16 / 9;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 0 1rem;
-            margin: 0;
-            width: 100%;
-            box-sizing: border-box;
-            overflow: hidden;
-            background-color: #00423F
-        }
-
-        .hero-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(0, 66, 63, 0.3), rgba(0, 66, 63, 0.7) 90%);
-            z-index: 1
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 1rem;
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out 0.2s forwards
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0
+        <!-- CSS crítico inline (solo hero y header para móvil) -->
+        <style>
+            :root {
+                --header-height: 90px;
+                --color-primary: #00423F;
+                --color-text-inverse: #FFFFFF;
+                --color-secondary: #C4E86B;
+                --color-bg-body: #F3F4F6
             }
 
-            to {
-                opacity: 1
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0
             }
-        }
 
-        .hero-content h1 {
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            color: white;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            font-size: 3.5rem;
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.1;
-            min-height: 3.85em
-        }
+            html {
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw
+            }
 
-        .hero-content p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            font-weight: 300;
-            line-height: 1.5
-        }
+            body {
+                font-family: system-ui, -apple-system, sans-serif;
+                color: #1f2937;
+                line-height: 1.6;
+                background-color: #F3F4F6;
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                padding-top: 90px
+            }
 
-        @media (max-width:768px) {
+            main {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                overflow-x: hidden
+            }
+
+            .header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05)
+            }
+
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 90px;
+                width: 100%;
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+                gap: 1rem
+            }
+
+            .logo-img {
+                height: 60px;
+                width: auto;
+                object-fit: contain;
+                display: block
+            }
+
             .hero {
-                height: 60vh;
-                min-height: 400px;
-                aspect-ratio: 16 / 9
+                height: 75vh;
+                min-height: 500px;
+                aspect-ratio: 16 / 9;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #FFFFFF;
+                text-align: center;
+                padding: 0 1rem;
+                margin: 0;
+                width: 100%;
+                box-sizing: border-box;
+                overflow: hidden;
+                background-color: #00423F
+            }
+
+            .hero-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 0
+            }
+
+            .hero-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to bottom, rgba(0, 66, 63, 0.3), rgba(0, 66, 63, 0.7) 90%);
+                z-index: 1
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 2;
+                max-width: 800px;
+                padding: 0 1rem;
+                opacity: 0;
+                animation: fadeIn 0.5s ease-out 0.2s forwards
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0
+                }
+
+                to {
+                    opacity: 1
+                }
             }
 
             .hero-content h1 {
-                font-size: 2.8rem;
-                min-height: 3.08em
+                text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                color: white;
+                margin-bottom: 1.5rem;
+                /* Añadido Margen superior para evitar que al ir a Incio#top no haya margen espaciado arriba */
+                margin-top: 1rem;
+                font-weight: 700;
+                font-size: 3.5rem;
+                font-family: system-ui, -apple-system, sans-serif;
+                line-height: 1.1;
+                min-height: 3.85em
             }
 
             .hero-content p {
-                font-size: 1.1rem
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 1.25rem;
+                margin-bottom: 2.5rem;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                font-weight: 300;
+                line-height: 1.5
             }
-        }
 
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: min(360px, 92vw);
-            height: 100vh;
-            background: #00423F;
-            transform: translateX(100%);
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            visibility: hidden
-        }
+            @media (max-width:768px) {
+                .hero {
+                    height: 60vh;
+                    min-height: 400px;
+                    aspect-ratio: 16 / 9
+                }
 
-        .mobile-menu.open {
-            transform: translateX(0);
-            opacity: 1;
-            pointer-events: auto;
-            visibility: visible
-        }
+                .hero-content h1 {
+                    font-size: 2.8rem;
+                    min-height: 3.08em
+                }
 
-        .mobile-menu-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            visibility: hidden;
-            transition: opacity 0.3s ease
-        }
+                .hero-content p {
+                    font-size: 1.1rem
+                }
+            }
 
-        .mobile-menu-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-            visibility: visible
-        }
-    </style>
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: min(360px, 92vw);
+                height: 100vh;
+                background: #00423F;
+                transform: translateX(100%);
+                z-index: 1000;
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden
+            }
 
-    <!-- Estilos principales (cargados de forma asíncrona en móvil) -->
-    <link rel="stylesheet" href="estilo/main.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="estilo/main.css">
-    </noscript>
+            .mobile-menu.open {
+                transform: translateX(0);
+                opacity: 1;
+                pointer-events: auto;
+                visibility: visible
+            }
 
-    <!-- Google Fonts cargadas de forma asíncrona -->
-    <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap">
-    <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
+            .mobile-menu-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+                transition: opacity 0.3s ease
+            }
+
+            .mobile-menu-overlay.open {
+                opacity: 1;
+                pointer-events: auto;
+                visibility: visible
+            }
+        </style>
+
+        <!-- Estilos principales (cargados de forma asíncrona en móvil) -->
+        <link rel="stylesheet" href="estilo/main.css" media="print" onload="this.media='all'">
+        <noscript>
+            <link rel="stylesheet" href="estilo/main.css">
+        </noscript>
+
+        <!-- Google Fonts cargadas de forma asíncrona -->
+        <link rel="preload" as="style"
+            href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap">
+        <link rel="preload" as="style"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
         <link
             href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap"
-            rel="stylesheet">
+            rel="stylesheet" media="print" onload="this.media='all'">
         <link
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-            rel="stylesheet">
-    </noscript>
+            rel="stylesheet" media="print" onload="this.media='all'">
+        <noscript>
+            <link
+                href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap"
+                rel="stylesheet">
+            <link
+                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+                rel="stylesheet">
+        </noscript>
 
-    <!-- JavaScript -->
-    <script defer src="js/main.js"></script>
-</head>
+        <!-- JavaScript -->
+        <script defer src="js/main.js"></script>
+    </head>
 
-<body>
-    <!-- Skip link -->
-    <a href="#main-content" class="visually-hidden">Saltar al contenido principal</a>
-    <a id="top" class="visually-hidden" aria-hidden="true"></a>
+    <body>
+        <!-- Skip link -->
+        <a href="#main-content" class="visually-hidden">Saltar al contenido principal</a>
+        <a id="top" class="visually-hidden" aria-hidden="true"></a>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container header-container">
-            <a href="index.html#top" class="logo">
-                <div class="logo-brand">
-                    <img src="img/logo_blanco.png" alt="Alto Campoo" class="logo-img" width="150" height="50">
+        <!-- Header -->
+        <header class="header">
+            <div class="container header-container">
+                <a href="index.html#top" class="logo">
+                    <div class="logo-brand">
+                        <img src="img/logo_blanco.png" alt="Alto Campoo" class="logo-img" width="150" height="50">
+                    </div>
+                </a>
+
+                <!-- Navegación Desktop -->
+                <nav class="nav-desktop" aria-label="Navegación principal">
+                    <ul class="nav-list">
+                        <li><a href="index.html#top" class="nav-link active">Inicio</a></li>
+                        <li><a href="rutas.html" class="nav-link">Rutas</a></li>
+                        <li><a href="novedades.html" class="nav-link">Novedades</a></li>
+                        <li><a href="actividades.html" class="nav-link">Actividades</a></li>
+                        <li><a href="informacion.html" class="nav-link">Información</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Widgets -->
+                <div class="header-widgets">
+                    <div class="weather-widget" id="weather-widget" title="Clima en Alto Campoo">
+                        <span class="material-symbols-outlined">wb_cloudy</span>
+                        <span class="weather-temp">--°C</span>
+                    </div>
+
+                    <div class="lang-selector">
+                        <select id="lang-select" aria-label="Seleccionar idioma"
+                            onchange="const file = window.location.pathname.split('/').pop() || 'index.html'; window.location.href = this.value === 'en' ? `/en/${file}` : `/${file}`;">
+                            <option value="es" selected>ES</option>
+                            <option value="en">EN</option>
+                        </select>
+                    </div>
+
+                    <button class="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false"
+                        aria-controls="mobile-menu">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
                 </div>
-            </a>
+            </div>
+        </header>
 
-            <!-- Navegación Desktop -->
-            <nav class="nav-desktop" aria-label="Navegación principal">
-                <ul class="nav-list">
-                    <li><a href="index.html#top" class="nav-link active">Inicio</a></li>
-                    <li><a href="rutas.html" class="nav-link">Rutas</a></li>
-                    <li><a href="novedades.html" class="nav-link">Novedades</a></li>
-                    <li><a href="actividades.html" class="nav-link">Actividades</a></li>
-                    <li><a href="informacion.html" class="nav-link">Información</a></li>
-                </ul>
-            </nav>
-
-            <!-- Widgets -->
-            <div class="header-widgets">
-                <div class="weather-widget" id="weather-widget" title="Clima en Alto Campoo">
-                    <span class="material-symbols-outlined">wb_cloudy</span>
-                    <span class="weather-temp">--°C</span>
-                </div>
-
-                <div class="lang-selector">
-                    <select id="lang-select" aria-label="Seleccionar idioma"
-                        onchange="const file = window.location.pathname.split('/').pop() || 'index.html'; window.location.href = this.value === 'en' ? `/en/${file}` : `/${file}`;">
-                        <option value="es" selected>ES</option>
-                        <option value="en">EN</option>
-                    </select>
-                </div>
-
-                <button class="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false"
-                    aria-controls="mobile-menu">
-                    <span class="material-symbols-outlined">menu</span>
+        <!-- Menú Móvil Overlay -->
+        <div class="mobile-menu-overlay"></div>
+        <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación"
+            aria-hidden="true">
+            <div class="mobile-menu-header">
+                <a href="index.html#top" class="logo mobile-logo">
+                    <div class="logo-brand">
+                        <img src="img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150"
+                            height="50">
+                    </div>
+                </a>
+                <button class="hamburger hamburger-close" aria-label="Cerrar menú">
+                    <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
+            <nav aria-label="Navegación móvil">
+                <ul class="mobile-nav-list">
+                    <li><a href="index.html#top">Inicio</a></li>
+                    <li><a href="rutas.html">Rutas</a></li>
+                    <li><a href="novedades.html">Novedades</a></li>
+                    <li><a href="actividades.html">Actividades</a></li>
+                    <li><a href="informacion.html">Información</a></li>
+                </ul>
+            </nav>
         </div>
-    </header>
 
-    <!-- Menú Móvil Overlay -->
-    <div class="mobile-menu-overlay"></div>
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación"
-        aria-hidden="true">
-        <div class="mobile-menu-header">
-            <a href="index.html#top" class="logo mobile-logo">
-                <div class="logo-brand">
-                    <img src="img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150"
-                        height="50">
+        <!-- MAIN CONTENT AREA -->
+        <main id="main-content">
+            <!-- Hero -->
+            <section class="hero">
+                <picture>
+                    <source srcset="img/hero.webp" type="image/webp">
+                    <img src="img/hero.jpg" alt="Paisaje de Alto Campoo" class="hero-image" width="1920" height="1080"
+                        loading="eager" fetchpriority="high">
+                </picture>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 id="hero-title">Alto Campoo <br> <span class="hero-title-secondary">Todo El Año</span>
+                    </h1>
+                    <p id="hero-subtitle">Descubre un paraíso natural más allá de la nieve.
+                        Senderismo, cultura y vida salvaje en el corazón de Cantabria.</p>
+                    <a href="rutas.html" class="btn btn-primary" id="hero-cta"
+                        aria-label="Explorar rutas de senderismo">
+                        Explorar Rutas <span class="material-symbols-outlined btn-icon"
+                            aria-hidden="true">arrow_forward</span>
+                    </a>
                 </div>
-            </a>
-            <button class="hamburger hamburger-close" aria-label="Cerrar menú">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-        <nav aria-label="Navegación móvil">
-            <ul class="mobile-nav-list">
-                <li><a href="index.html#top">Inicio</a></li>
-                <li><a href="rutas.html">Rutas</a></li>
-                <li><a href="novedades.html">Novedades</a></li>
-                <li><a href="actividades.html">Actividades</a></li>
-                <li><a href="informacion.html">Información</a></li>
-            </ul>
-        </nav>
-    </div>
+            </section>
 
-    <!-- MAIN CONTENT AREA -->
-    <main id="main-content">
-        <!-- Hero -->
-        <section class="hero">
-            <picture>
-                <source srcset="img/hero.webp" type="image/webp">
-                <img src="img/hero.jpg" alt="Paisaje de Alto Campoo" class="hero-image" width="1920" height="1080"
-                    loading="eager" fetchpriority="high">
-            </picture>
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 id="hero-title">Alto Campoo <br> <span class="hero-title-secondary">Todo El Año</span>
-                </h1>
-                <p id="hero-subtitle">Descubre un paraíso natural más allá de la nieve.
-                    Senderismo, cultura y vida salvaje en el corazón de Cantabria.</p>
-                <a href="rutas.html" class="btn btn-primary" id="hero-cta" aria-label="Explorar rutas de senderismo">
-                    Explorar Rutas <span class="material-symbols-outlined btn-icon"
-                        aria-hidden="true">arrow_forward</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- Carrusel Rutas Destacadas -->
-        <section class="section-padding container">
-            <div class="text-center section-header">
-                <h2 class="routes-title">Rutas Destacadas</h2>
-                <p class="routes-subtitle">Nuestra selección de senderos para esta
-                    temporada</p>
-            </div>
-            <div class="carousel-container">
-                <div class="carousel-wrapper">
-                    <button class="carousel-btn prev" aria-label="Rutas anteriores">
-                        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
-                    </button>
-                    <div class="carousel-track" id="featured-routes" aria-label="Rutas destacadas">
-                        <article class="route-card route-item" data-difficulty="Moderada">
-                            <div class="card-img-wrapper">
-                                <span class="card-tag">Montaña</span>
-                                <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.482.jpeg"
-                                    alt="Imagen de la ruta Pico Tres Mares" class="card-img" width="400" height="200"
-                                    loading="lazy">
-                            </div>
-                            <div class="card-body">
-                                <h3>Pico Tres Mares</h3>
-                                <div class="card-meta">
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-diff-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
-                                        </svg>
-                                        <span>Moderada</span>
-                                        <span class="tooltip" role="tooltip" id="tt-diff-1">Dificultad</span>
-                                    </button>
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-time-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
-                                        </svg>
-                                        <span>3h 30m</span>
-                                        <span class="tooltip" role="tooltip" id="tt-time-1">Tiempo estimado</span>
-                                    </button>
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-dist-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
-                                        </svg>
-                                        <span>8.5 km</span>
-                                        <span class="tooltip" role="tooltip" id="tt-dist-1">Distancia</span>
-                                    </button>
-                                </div>
-                                <button class="btn btn-outline btn-card">Ver Detalle</button>
-                            </div>
-                        </article>
-                        <article class="route-card route-item" data-difficulty="Fácil">
-                            <div class="card-img-wrapper">
-                                <span class="card-tag">Familiar</span>
-                                <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.484.jpeg"
-                                    alt="Imagen de la ruta Nacimiento del Ebro" class="card-img" width="400"
-                                    height="200" loading="lazy">
-                            </div>
-                            <div class="card-body">
-                                <h3>Nacimiento del Ebro</h3>
-                                <div class="card-meta">
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-diff-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
-                                        </svg>
-                                        <span>Fácil</span>
-                                        <span class="tooltip" role="tooltip" id="tt-diff-2">Dificultad</span>
-                                    </button>
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-time-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
-                                        </svg>
-                                        <span>1h 15m</span>
-                                        <span class="tooltip" role="tooltip" id="tt-time-2">Tiempo estimado</span>
-                                    </button>
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-dist-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
-                                        </svg>
-                                        <span>3.2 km</span>
-                                        <span class="tooltip" role="tooltip" id="tt-dist-2">Distancia</span>
-                                    </button>
-                                </div>
-                                <button class="btn btn-outline btn-card">Ver Detalle</button>
-                            </div>
-                        </article>
-                        <article class="route-card route-item" data-difficulty="Difícil">
-                            <div class="card-img-wrapper">
-                                <span class="card-tag">Experto</span>
-                                <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.483.jpeg"
-                                    alt="Imagen de la ruta Cueto de la Horcada" class="card-img" width="400"
-                                    height="200" loading="lazy">
-                            </div>
-                            <div class="card-body">
-                                <h3>Cueto de la Horcada</h3>
-                                <div class="card-meta">
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-diff-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
-                                        </svg>
-                                        <span>Difícil</span>
-                                        <span class="tooltip" role="tooltip" id="tt-diff-3">Dificultad</span>
-                                    </button>
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-time-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
-                                        </svg>
-                                        <span>5h 00m</span>
-                                        <span class="tooltip" role="tooltip" id="tt-time-3">Tiempo estimado</span>
-                                    </button>
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-dist-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
-                                        </svg>
-                                        <span>12 km</span>
-                                        <span class="tooltip" role="tooltip" id="tt-dist-3">Distancia</span>
-                                    </button>
-                                </div>
-                                <button class="btn btn-outline btn-card">Ver Detalle</button>
-                            </div>
-                        </article>
-                        <article class="route-card route-item" data-difficulty="Moderada">
-                            <div class="card-img-wrapper">
-                                <span class="card-tag">Panorámica</span>
-                                <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.48.jpeg"
-                                    alt="Imagen de la ruta Brañavieja Circular" class="card-img" width="400"
-                                    height="200" loading="lazy">
-                            </div>
-                            <div class="card-body">
-                                <h3>Brañavieja Circular</h3>
-                                <div class="card-meta">
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-diff-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
-                                        </svg>
-                                        <span>Moderada</span>
-                                        <span class="tooltip" role="tooltip" id="tt-diff-4">Dificultad</span>
-                                    </button>
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-time-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
-                                        </svg>
-                                        <span>2h 45m</span>
-                                        <span class="tooltip" role="tooltip" id="tt-time-4">Tiempo estimado</span>
-                                    </button>
-                                    <button type="button" class="meta-item" tabindex="0" aria-describedby="tt-dist-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
-                                            width="16" fill="currentColor" class="svg-inline">
-                                            <path
-                                                d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
-                                        </svg>
-                                        <span>6 km</span>
-                                        <span class="tooltip" role="tooltip" id="tt-dist-4">Distancia</span>
-                                    </button>
-                                </div>
-                                <button class="btn btn-outline btn-card">Ver Detalle</button>
-                            </div>
-                        </article>
-                    </div>
-                    <button class="carousel-btn next" aria-label="Siguientes rutas">
-                        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
-                    </button>
+            <!-- Carrusel Rutas Destacadas -->
+            <section class="section-padding container">
+                <div class="text-center section-header">
+                    <h2 class="routes-title">Rutas Destacadas</h2>
+                    <p class="routes-subtitle">Nuestra selección de senderos para esta
+                        temporada</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Últimas Novedades -->
-        <section class="section-padding container">
-            <div class="text-center section-header">
-                <h2 class="news-title">Últimas Novedades</h2>
-                <p class="news-subtitle">Mantente informado sobre los eventos y noticias
-                    de Alto Campoo</p>
-            </div>
-            <div class="news-container">
-                <article class="news-card">
-                    <div class="news-date">
-                        <span class="day">15</span>
-                        <span class="month">Dic</span>
+                <div class="carousel-container">
+                    <div class="carousel-wrapper">
+                        <button class="carousel-btn prev" aria-label="Rutas anteriores">
+                            <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+                        </button>
+                        <div class="carousel-track" id="featured-routes" aria-label="Rutas destacadas">
+                            <article class="route-card route-item" data-difficulty="Moderada">
+                                <div class="card-img-wrapper">
+                                    <span class="card-tag">Montaña</span>
+                                    <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.482.jpeg"
+                                        alt="Imagen de la ruta Pico Tres Mares" class="card-img" width="400"
+                                        height="200" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h3>Pico Tres Mares</h3>
+                                    <div class="card-meta">
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-diff-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
+                                            </svg>
+                                            <span>Moderada</span>
+                                            <span class="tooltip" role="tooltip" id="tt-diff-1">Dificultad</span>
+                                        </button>
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-time-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
+                                            </svg>
+                                            <span>3h 30m</span>
+                                            <span class="tooltip" role="tooltip" id="tt-time-1">Tiempo estimado</span>
+                                        </button>
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-dist-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
+                                            </svg>
+                                            <span>8.5 km</span>
+                                            <span class="tooltip" role="tooltip" id="tt-dist-1">Distancia</span>
+                                        </button>
+                                    </div>
+                                    <button class="btn btn-outline btn-card">Ver Detalle</button>
+                                </div>
+                            </article>
+                            <article class="route-card route-item" data-difficulty="Fácil">
+                                <div class="card-img-wrapper">
+                                    <span class="card-tag">Familiar</span>
+                                    <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.484.jpeg"
+                                        alt="Imagen de la ruta Nacimiento del Ebro" class="card-img" width="400"
+                                        height="200" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h3>Nacimiento del Ebro</h3>
+                                    <div class="card-meta">
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-diff-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
+                                            </svg>
+                                            <span>Fácil</span>
+                                            <span class="tooltip" role="tooltip" id="tt-diff-2">Dificultad</span>
+                                        </button>
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-time-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
+                                            </svg>
+                                            <span>1h 15m</span>
+                                            <span class="tooltip" role="tooltip" id="tt-time-2">Tiempo estimado</span>
+                                        </button>
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-dist-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
+                                            </svg>
+                                            <span>3.2 km</span>
+                                            <span class="tooltip" role="tooltip" id="tt-dist-2">Distancia</span>
+                                        </button>
+                                    </div>
+                                    <button class="btn btn-outline btn-card">Ver Detalle</button>
+                                </div>
+                            </article>
+                            <article class="route-card route-item" data-difficulty="Difícil">
+                                <div class="card-img-wrapper">
+                                    <span class="card-tag">Experto</span>
+                                    <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.483.jpeg"
+                                        alt="Imagen de la ruta Cueto de la Horcada" class="card-img" width="400"
+                                        height="200" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h3>Cueto de la Horcada</h3>
+                                    <div class="card-meta">
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-diff-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
+                                            </svg>
+                                            <span>Difícil</span>
+                                            <span class="tooltip" role="tooltip" id="tt-diff-3">Dificultad</span>
+                                        </button>
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-time-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
+                                            </svg>
+                                            <span>5h 00m</span>
+                                            <span class="tooltip" role="tooltip" id="tt-time-3">Tiempo estimado</span>
+                                        </button>
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-dist-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
+                                            </svg>
+                                            <span>12 km</span>
+                                            <span class="tooltip" role="tooltip" id="tt-dist-3">Distancia</span>
+                                        </button>
+                                    </div>
+                                    <button class="btn btn-outline btn-card">Ver Detalle</button>
+                                </div>
+                            </article>
+                            <article class="route-card route-item" data-difficulty="Moderada">
+                                <div class="card-img-wrapper">
+                                    <span class="card-tag">Panorámica</span>
+                                    <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.48.jpeg"
+                                        alt="Imagen de la ruta Brañavieja Circular" class="card-img" width="400"
+                                        height="200" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h3>Brañavieja Circular</h3>
+                                    <div class="card-meta">
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-diff-4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M120-240q-33 0-56.5-23.5T40-320q0-33 23.5-56.5T120-400h10.5q4.5 0 9.5 2l182-182q-2-5-2-9.5V-600q0-33 23.5-56.5T400-680q33 0 56.5 23.5T480-600q0 2-2 20l102 102q5-2 9.5-2h21q4.5 0 9.5 2l142-142q-2-5-2-9.5V-640q0-33 23.5-56.5T840-720q33 0 56.5 23.5T920-640q0 33-23.5 56.5T840-560h-10.5q-4.5 0-9.5-2L678-420q2 5 2 9.5v10.5q0 33-23.5 56.5T600-320q-33 0-56.5-23.5T520-400v-10.5q0-4.5 2-9.5L420-522q-5 2-9.5 2H400q-2 0-20-2L198-340q2 5 2 9.5v10.5q0 33-23.5 56.5T120-240Z" />
+                                            </svg>
+                                            <span>Moderada</span>
+                                            <span class="tooltip" role="tooltip" id="tt-diff-4">Dificultad</span>
+                                        </button>
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-time-4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M480-120q-74 0-139.5-28.5T226-226q-49-49-77.5-114.5T120-480q0-44 10-85.5t29-78q19-36.5 45.5-68T264-768l272 272-56 56-216-216q-30 36-47 80.5T200-480q0 116 82 198t198 82q116 0 198-82t82-198q0-107-68.5-184.5T520-756v76h-80v-160h40q74 0 139.5 28.5T734-734q49 49 77.5 114.5T840-480q0 74-28.5 139.5T734-226q-49 49-114.5 77.5T480-120ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520q17 0 28.5 11.5T320-480q0 17-11.5 28.5T280-440Zm200 200q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm200-200q-17 0-28.5-11.5T640-480q0-17 11.5-28.5T680-520q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440Z" />
+                                            </svg>
+                                            <span>2h 45m</span>
+                                            <span class="tooltip" role="tooltip" id="tt-time-4">Tiempo estimado</span>
+                                        </button>
+                                        <button type="button" class="meta-item" tabindex="0"
+                                            aria-describedby="tt-dist-4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960"
+                                                width="16" fill="currentColor" class="svg-inline">
+                                                <path
+                                                    d="M480-80q-106 0-173-33.5T240-200q0-24 14.5-44.5T295-280l63 59q-9 4-19.5 9T322-200q13 16 60 28t98 12q51 0 98.5-12t60.5-28q-7-8-18-13t-21-9l62-60q28 16 43 36.5t15 45.5q0 53-67 86.5T480-80Zm1-220q99-73 149-146.5T680-594q0-102-65-154t-135-52q-70 0-135 52t-65 154q0 67 49 139.5T481-300Zm-1 100Q339-304 269.5-402T200-594q0-71 25.5-124.5T291-808q40-36 90-54t99-18q49 0 99 18t90 54q40 36 65.5 89.5T760-594q0 94-69.5 192T480-200Zm0-320q33 0 56.5-23.5T560-600q0-33-23.5-56.5T480-680q-33 0-56.5 23.5T400-600q0 33 23.5 56.5T480-520Zm0-80Z" />
+                                            </svg>
+                                            <span>6 km</span>
+                                            <span class="tooltip" role="tooltip" id="tt-dist-4">Distancia</span>
+                                        </button>
+                                    </div>
+                                    <button class="btn btn-outline btn-card">Ver Detalle</button>
+                                </div>
+                            </article>
+                        </div>
+                        <button class="carousel-btn next" aria-label="Siguientes rutas">
+                            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                        </button>
                     </div>
-                    <div class="news-content">
-                        <h3>Apertura de Rutas Invernales</h3>
-                        <p>Las condiciones son perfectas para las raquetas de nieve en la zona de Calgosa. Recuerda
-                            revisar el parte meteorológico.</p>
-                    </div>
-                </article>
-                <article class="news-card">
-                    <div class="news-date">
-                        <span class="day">22</span>
-                        <span class="month">Dic</span>
-                    </div>
-                    <div class="news-content">
-                        <h3>Taller de Fotografía Nocturna</h3>
-                        <p>Aprende a capturar la Vía Láctea desde el mirador de la Fuente del Chivo. Plazas
-                            limitadas.</p>
-                    </div>
-                </article>
-            </div>
-            <div class="text-center mt-2">
-                <a href="novedades.html" class="btn btn-outline">Ver Todas las
-                    Novedades</a>
-            </div>
-        </section>
-
-        <!-- Newsletter -->
-        <section class="container newsletter-wrapper">
-            <div class="newsletter-section section-padding">
-                <div class="container newsletter-container-narrow">
-                    <span class="material-symbols-outlined newsletter-icon">mail</span>
-                    <h2 class="newsletter-title newsletter-title-text">Suscríbete a nuestro
-                        Newsletter</h2>
-                    <p class="newsletter-description newsletter-description-text">Recibe las últimas noticias
-                        y rutas en tu email.</p>
-                    <form id="newsletter-form" class="newsletter-form" action="informacion.html#contacto" method="get">
-                        <input type="email" id="newsletter-email" class="newsletter-input" required name="email"
-                            placeholder="tu@email.com">
-                        <button type="submit" class="btn btn-newsletter">Suscribirse</button>
-                    </form>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- CTA Actividades -->
-        <section class="section-padding cta-section">
+            <!-- Últimas Novedades -->
+            <section class="section-padding container">
+                <div class="text-center section-header">
+                    <h2 class="news-title">Últimas Novedades</h2>
+                    <p class="news-subtitle">Mantente informado sobre los eventos y noticias
+                        de Alto Campoo</p>
+                </div>
+                <div class="news-container">
+                    <article class="news-card">
+                        <div class="news-date">
+                            <span class="day">15</span>
+                            <span class="month">Dic</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Apertura de Rutas Invernales</h3>
+                            <p>Las condiciones son perfectas para las raquetas de nieve en la zona de Calgosa. Recuerda
+                                revisar el parte meteorológico.</p>
+                        </div>
+                    </article>
+                    <article class="news-card">
+                        <div class="news-date">
+                            <span class="day">22</span>
+                            <span class="month">Dic</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Taller de Fotografía Nocturna</h3>
+                            <p>Aprende a capturar la Vía Láctea desde el mirador de la Fuente del Chivo. Plazas
+                                limitadas.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="text-center mt-2">
+                    <a href="novedades.html" class="btn btn-outline">Ver Todas las
+                        Novedades</a>
+                </div>
+            </section>
+
+            <!-- Newsletter -->
+            <section class="container newsletter-wrapper">
+                <div class="newsletter-section section-padding">
+                    <div class="container newsletter-container-narrow">
+                        <span class="material-symbols-outlined newsletter-icon">mail</span>
+                        <h2 class="newsletter-title newsletter-title-text">Suscríbete a nuestro
+                            Newsletter</h2>
+                        <p class="newsletter-description newsletter-description-text">Recibe las últimas noticias
+                            y rutas en tu email.</p>
+                        <form id="newsletter-form" class="newsletter-form" action="informacion.html#contacto"
+                            method="get">
+                            <input type="email" id="newsletter-email" class="newsletter-input" required name="email"
+                                placeholder="tu@email.com">
+                            <button type="submit" class="btn btn-newsletter">Suscribirse</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Actividades -->
+            <section class="section-padding cta-section">
+                <div class="container">
+                    <div class="grid-layout cta-grid">
+                        <div>
+                            <h2 class="activities-title">Experiencias Únicas</h2>
+                            <p class="cta-description activities-subtitle">La comarca de
+                                Campoo ofrece mucho más que senderos. Descubre la fotografía de naturaleza, el
+                                cicloturismo de montaña y la rica gastronomía local.</p>
+                            <a href="actividades.html" class="btn btn-outline activities-cta">Ver Actividades</a>
+                        </div>
+                        <div>
+                            <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.48.jpeg"
+                                alt="Ciclista de montaña en Alto Campoo" class="cta-image" width="800" height="600"
+                                loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
             <div class="container">
-                <div class="grid-layout cta-grid">
-                    <div>
-                        <h2 class="activities-title">Experiencias Únicas</h2>
-                        <p class="cta-description activities-subtitle">La comarca de
-                            Campoo ofrece mucho más que senderos. Descubre la fotografía de naturaleza, el
-                            cicloturismo de montaña y la rica gastronomía local.</p>
-                        <a href="actividades.html" class="btn btn-outline activities-cta">Ver Actividades</a>
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>ACTEA</h3>
+                        <p class="footer-description">Proyecto de dinamización turística y conservación
+                            ambiental de Alto Campoo.</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon" aria-label="Facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Twitter/X">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div>
-                        <img src="img/WhatsApp%20Image%202025-12-01%20at%2020.07.48.jpeg"
-                            alt="Ciclista de montaña en Alto Campoo" class="cta-image" width="800" height="600"
-                            loading="lazy">
+                    <div class="footer-col">
+                        <h3>Enlaces Rápidos</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html#top">Inicio</a></li>
+                            <li><a href="rutas.html">Rutas</a></li>
+                            <li><a href="novedades.html">Eventos</a></li>
+                            <li><a href="informacion.html">Contacto</a></li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>ACTEA</h3>
-                    <p class="footer-description">Proyecto de dinamización turística y conservación
-                        ambiental de Alto Campoo.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon" aria-label="Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="Twitter/X">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                            </svg>
-                        </a>
+                    <div class="footer-col">
+                        <h3>Legal</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Aviso Legal</a></li>
+                            <li><a href="#">Política de Privacidad</a></li>
+                            <li><a href="#">Política de Cookies</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html#top">Inicio</a></li>
-                        <li><a href="rutas.html">Rutas</a></li>
-                        <li><a href="novedades.html">Eventos</a></li>
-                        <li><a href="informacion.html">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Aviso Legal</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Política de Cookies</a></li>
-                    </ul>
+                <div class="copyright">
+                    &copy; 2025 ACTEA - Alto Campoo Todo El Año. IES Augusto González de Linares.
                 </div>
             </div>
-            <div class="copyright">
-                &copy; 2025 ACTEA - Alto Campoo Todo El Año. IES Augusto González de Linares.
-            </div>
-        </div>
-    </footer>
-</body>
+        </footer>
+    </body>
 
 </html>
