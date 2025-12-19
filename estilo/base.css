@@ -66,6 +66,31 @@
    RESET CSS
    ============================================================================ */
 
+/* Reset Semántico */
+.carousel-track {
+    list-style: none;
+    /* Quita los puntos del ul */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* Alinea los li en horizontal */
+}
+
+.route-item {
+    padding: 0;
+    margin: 0;
+    flex: 0 0 auto;
+    /* Evita que las tarjetas se deformen */
+}
+
+.card-img-wrapper {
+    margin: 0;
+    /* Quita el margen por defecto de <figure> */
+    padding: 0;
+    position: relative;
+}
+
+
 *,
 *::before,
 *::after {

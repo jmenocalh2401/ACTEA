@@ -154,6 +154,17 @@
     overflow: visible;
 }
 
+.card-header {
+    display: block;
+}
+
+.card-header h3 {
+    margin: 1rem 1.5rem 0.5rem;
+    /* Ajusta los márgenes para que se vea igual que antes */
+    color: #004d40;
+    /* Tu color de títulos */
+}
+
 .carousel-wrapper {
     position: relative;
     width: 100%;
@@ -171,6 +182,16 @@
     scrollbar-color: transparent transparent;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
+    /* Limpieza de la lista del carrusel */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Evitar que los li hereden márgenes de lista */
+.route-item {
+    margin: 0;
+    padding: 0;
 }
 
 .carousel-track::-webkit-scrollbar {
