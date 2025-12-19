@@ -29,12 +29,14 @@
     --diff-hard: #EF4444;
     --color-alert: #e74c3c;
     --color-success: #27ae60;
-    --font-display: 'Alumni Sans', sans-serif;
-    --font-body: 'Roboto', sans-serif;
+    --font-display: 'Harabara-Bold', system-ui, -apple-system, BlinkMacSystemFont, ' Segoe UI', ' Helvetica Neue', 'Arial', sans-serif;
+    /* --font-display: 'Alumni Sans', sans-serif; */
+    --font-body: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
+    letter-spacing: 0.10rem;
 
     /* -------------------------------------------------------------------------
        UI ELEMENTS
@@ -112,13 +114,26 @@ main {
    TIPOGRAFÍA BASE
    ============================================================================ */
 
+/* PRUEBA HARABARA BOLD */
+@font-face {
+    font-family: 'Harabara-Bold';
+    font-style: normal;
+    font-weight: 800;
+    src: local('Harabara-Bold'), url(/estilo/Harabara-Bold.woff) format('woff');
+    /* unicode-range: U + 0000-00FF, U + 0131, U + 0152-0153, U + 02C6, U + 02DA, U + 02DC, U + 2000-206F, U + 2074, U + 20AC, U + 2212, U + 2215; */
+    font-display: swap;
+    letter-spacing: 1.5rem;
+}
+
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Harabara-Bold', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; */
     font-weight: 700;
     line-height: 1.1;
     color: var(--color-primary);
