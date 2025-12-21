@@ -258,9 +258,17 @@
     display: none;
 }
 
-/* MOSTRAR CUANDO ES EL TARGET */
+/* Asegura que el menú de idiomas se abra al hacer clic */
 #lang-menu:target {
-    display: block;
+    display: block !important;
+}
+
+/* Estilo para que el overlay de cierre del idioma funcione */
+.lang-close-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    cursor: default;
 }
 
 /* Lista de idiomas */
@@ -339,23 +347,6 @@
    CONTROL DE VISIBILIDAD Y FOCO POR DISPOSITIVO
    ============================================================================ */
 
-/* 1. TRAMPA DE FOCO: Solo activa en móviles (Ancho < 992px) */
-@media (max-width: 991px) {
-
-    body:has(#mobile-menu:target) #main-content,
-    body:has(#mobile-menu:target) .footer {
-        visibility: hidden !important;
-        pointer-events: none;
-        aria-hidden: true;
-    }
-
-    /* Aseguramos que el menú sea visible en móvil cuando es el target */
-    #mobile-menu:target {
-        visibility: visible !important;
-        transform: translateX(0);
-    }
-}
-
 /* 2. LIMPIEZA TOTAL EN PC: Forzamos que todo vuelva a la normalidad */
 @media (min-width: 992px) {
 
@@ -380,9 +371,84 @@
 }
 
 /* ============================================================================
-   MENÚ MÓVIL (TARGET HACK)
+   MENÚ MÓVIL
    ============================================================================ */
 
+/* 1. El Checkbox debe ser navegable pero invisible */
+.menu-logic-check {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    z-index: -1;
+}
+
+/* 1.1 Ocultar texto para validación y accesibilidad */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 2. Lógica de Apertura (Basada en Checkbox, no en URL) */
+.menu-logic-check:checked~.mobile-menu {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.menu-logic-check:checked~.mobile-menu-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* 3. TRAMPA DE FOCO (Sincronizada con el Checkbox) */
+@media (max-width: 991px) {
+
+    /* Bloqueamos el fondo SOLO cuando la casilla está marcada */
+    body:has(.menu-logic-check:checked) #main-content,
+    body:has(.menu-logic-check:checked) .footer {
+        visibility: hidden !important;
+        pointer-events: none;
+        aria-hidden: true;
+    }
+
+    /* Cuando el menú está abierto, ocultamos los widgets hermanos */
+    body:has(.menu-logic-check:checked) .weather-widget,
+    body:has(.menu-logic-check:checked) .lang-dropdown {
+        visibility: hidden !important;
+        pointer-events: none;
+        aria-hidden: true;
+    }
+
+    /* Nos aseguramos de que el botón de cerrar y el menú SÍ sean visibles */
+    body:has(.menu-logic-check:checked) .mobile-menu,
+    body:has(.menu-logic-check:checked) .close-trigger {
+        visibility: visible !important;
+    }
+
+
+    /* Al usar display:none, el navegador elimina el logo y widgets del orden de Tab */
+    body:has(.menu-logic-check:checked) .weather-widget,
+    body:has(.menu-logic-check:checked) .lang-dropdown,
+    body:has(.menu-logic-check:checked) .visually-hidden:not(.mobile-menu *) {
+        display: none !important;
+    }
+}
+
+
+/* Nos aseguramos de que el header y el menú sigan siendo navegables */
+body:has(.menu-logic-check:checked) .header {
+    visibility: visible !important;
+}
+
+/* 4. Evitar el "Ghost Scrolling" */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -391,44 +457,23 @@
     height: 100dvh;
     background-color: #004441;
     z-index: 10000;
-    /* PROPIEDAD CLAVE: Reserva espacio para que los elementos enfocados 
-       no queden debajo de la "X" al subir con el teclado */
-    scroll-padding-top: 80px;
-    /* Suaviza el movimiento para que el usuario no pierda la orientación */
-    scroll-behavior: smooth;
-    /* Aseguramos que el scroll sea interno */
     overflow-y: auto;
-    /* Mejora el scroll en dispositivos iOS */
-    -webkit-overflow-scrolling: touch;
-    /* Evita que el fondo de la web se mueva al llegar al final del menú */
+    /* Evita que el scroll traspase al body */
     overscroll-behavior: contain;
-    display: flex;
-    flex-direction: column;
+
     transform: translateX(100%);
     visibility: hidden;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
 }
 
-/* ACTIVACIÓN: Cuando la URL termina en #mobile-menu */
-#mobile-menu:target {
-    transform: translateX(0);
-    visibility: visible;
-}
-
-/* CAPA OSCURA (Overlay) */
+/* 5. Overlay de cierre */
 .mobile-menu-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 9999;
-    opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s;
-}
-
-#mobile-menu:target~.mobile-menu-overlay {
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
 }
 
 /* CABECERA Y BOTÓN "X" */
@@ -474,11 +519,30 @@
 /* FOCO PARA TECLADO */
 .hamburger:focus,
 .close-trigger:focus,
-.mobile-nav-list a:focus {
+.mobile-nav-list a:focus,
+.close-trigger:hover {
     outline: 3px solid #ff9800;
-    outline-offset: 2px;
+    outline-offset: 3px;
+    border-radius: 8px;
     color: var(--color-black);
     background-color: var(--color-secondary);
+}
+
+/* 2. Soporte para navegadores modernos (Evita el foco al hacer clic con ratón) */
+/* El foco solo se verá si el usuario utiliza realmente el teclado */
+.hamburger:focus:not(:focus-visible),
+.close-trigger:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* 3. Refuerzo de accesibilidad para el checkbox oculto */
+/* Si el usuario tabula y llega al checkbox (aunque sea invisible), resaltamos el botón */
+/* ESTILO DE FOCO: Cuando tabulas al checkbox, resaltamos el label */
+.menu-logic-check:focus-visible+.hamburger,
+.menu-logic-check:focus-visible~.mobile-menu .close-trigger {
+    outline: 3px solid #ff9800;
+    outline-offset: 3px;
+    border-radius: 8px;
 }
 
 /* LISTA DE ENLACES */
@@ -512,7 +576,8 @@
 }
 
 /* Foco de Icono Hamburguesa sin Fondo Verde, solo Color de Icono a Verde */
-.hamburger:focus {
+.hamburger:focus,
+.hamburger:hover {
     background-color: transparent;
     color: var(--color-secondary);
 }

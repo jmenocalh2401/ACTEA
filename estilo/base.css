@@ -203,7 +203,7 @@ h6 {
     font-kerning: normal;
     text-rendering: optimizeLegibility;
     /* Ayuda a que el kerning sea más preciso */
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15rem;
     color: var(--color-primary);
     text-transform: uppercase;
     margin-bottom: var(--spacing-sm);
