@@ -169,6 +169,11 @@
     max-width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    /* Revertido a hidden para mantener estructura y flechas quietas */
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
 }
 
 .card-header {
@@ -182,7 +187,16 @@
 
 .carousel-wrapper {
     width: 100%;
-    overflow: hidden;
+    /* Habilitar scroll en el wrapper */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 /* Track del carrusel - usa transform para moverse */
@@ -202,6 +216,7 @@
     padding: 0;
     flex: 0 0 300px;
     min-width: 100%;
+    scroll-snap-align: center;
 }
 
 .carousel-track .route-card {
@@ -312,14 +327,16 @@
         padding: 1rem 0;
         width: 100vw;
         /* Asegurar ancho total */
-        overflow: hidden;
+        /* overflow: hidden; */
         /* Evitar scroll horizontal de página */
     }
 
     .carousel-wrapper {
         width: 100%;
         padding: 0;
-        overflow: visible;
+        overflow-x: auto;
+        /* Permitir deslizamiento */
+        overflow-y: hidden;
         /* Permitir ver las tarjetas de los lados */
     }
 
@@ -439,7 +456,9 @@
         max-width: 100%;
         /* Reducido para que navegar tenga sentido y no sobre espacio */
         margin: 0 auto;
-        overflow: hidden;
+        overflow-x: auto;
+        /* Permitir deslizamiento */
+        overflow-y: hidden;
     }
 
     .carousel-track {
