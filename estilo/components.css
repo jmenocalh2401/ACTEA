@@ -264,6 +264,24 @@
     /* fill: var(--diff-hard); */
 }
 
+/* Soporte para valores en inglés */
+.route-card[data-difficulty="Easy"] .card-meta>div:first-child svg,
+.route-card[data-difficulty="Easy"] .card-meta>button:first-child svg {
+    color: var(--diff-easy);
+}
+
+.route-card[data-difficulty="Moderate"] .card-meta>div:first-child svg,
+.route-card[data-difficulty="Moderate"] .card-meta>button:first-child svg {
+    color: var(--diff-mod);
+}
+
+.route-card[data-difficulty="Hard"] .card-meta>div:first-child svg,
+.route-card[data-difficulty="Hard"] .card-meta>button:first-child svg,
+.route-card[data-difficulty="Difficult"] .card-meta>div:first-child svg,
+.route-card[data-difficulty="Difficult"] .card-meta>button:first-child svg {
+    color: var(--diff-hard);
+}
+
 .card-meta i,
 .card-meta .material-symbols-outlined,
 .card-meta svg,

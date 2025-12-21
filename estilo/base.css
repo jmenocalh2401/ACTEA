@@ -27,8 +27,11 @@
     --color-white: #FFF;
     --color-black: #000;
     --diff-easy: #10B981;
+    /* Verde - Fácil */
     --diff-mod: #F59E0B;
+    /* Naranja - Moderada */
     --diff-hard: #EF4444;
+    /* Amarillo - Difícil */
     --color-alert: #e74c3c;
     --color-success: #27ae60;
     --font-display: 'Harabara-Bold', system-ui, 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
@@ -178,17 +181,6 @@ main {
     -webkit-font-smoothing: antialiased;
 }
 
-.card-meta .material-symbols-outlined.green {
-    color: green;
-}
-
-.card-meta .orange.material-symbols-outlined {
-    color: #8F0000;
-}
-
-.card-meta .material-symbols-outlined.red {
-    color: #2B00FF;
-}
 
 h1,
 h2,

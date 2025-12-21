@@ -72,6 +72,8 @@
 
                 <div class="header-widgets">
                     <div class="weather-widget" id="weather-widget" title="Clima en Alto Campoo">
+                        <span class="material-symbols-outlined">wb_cloudy</span>
+                        <span class="weather-temp">--°C</span>
                     </div>
 
                     <div class="lang-dropdown">
@@ -105,18 +107,25 @@
 
                     <nav class="mobile-menu">
                         <div class="mobile-menu-header">
+                            <a href="index.html#top" class="logo mobile-logo">
+                                <div class="logo-brand">
+                                    <img src="img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150" height="50">
+                                </div>
+                            </a>
                             <label for="menu-logic-state" class="close-trigger">
                                 <span class="material-symbols-outlined" aria-hidden="true">close</span>
                                 <span class="visually-hidden">Cerrar menú de navegación</span>
                             </label>
                         </div>
-                        <ul class="mobile-nav-list">
-                            <li><a href="index.html">Inicio</a></li>
-                            <li><a href="rutas.html">Rutas</a></li>
-                            <li><a href="novedades.html">Novedades</a></li>
-                            <li><a href="actividades.html">Actividades</a></li>
-                            <li><a href="informacion.html">Información</a></li>
-                        </ul>
+                        <nav aria-label="Navegación móvil">
+                            <ul class="mobile-nav-list">
+                                <li><a href="index.html#top">Inicio</a></li>
+                                <li><a href="rutas.html">Rutas</a></li>
+                                <li><a href="novedades.html">Novedades</a></li>
+                                <li><a href="actividades.html">Actividades</a></li>
+                                <li><a href="informacion.html">Información</a></li>
+                            </ul>
+                        </nav>
                     </nav>
                 </div>
             </div>
