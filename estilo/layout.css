@@ -13,7 +13,7 @@
    ============================================================================ */
 
 .hero {
-    height: 75vh;
+    height: 85vh;
     min-height: 500px;
     aspect-ratio: 16 / 9;
     position: relative;
@@ -373,8 +373,6 @@
     }
 
     .card-img-wrapper img {
-        width: 100%;
-        height: auto;
         display: block;
         object-fit: cover;
     }
@@ -472,6 +470,10 @@
         min-width: 400px;
         padding: 0 10px;
         box-sizing: border-box;
+    }
+
+    .route-item.rutas {
+        padding: 0;
     }
 
     /* TRANSFORMS EN PC (Contenido total = 1280px | Wrapper = 850px)

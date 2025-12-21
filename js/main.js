@@ -1,6 +1,6 @@
 /**
  * ACTEA - MAIN JAVASCRIPT
- * Funcionalidades: clima
+ * Funcionalidades: clima, filtros de rutas
  */
 
 // ============================================================================
@@ -28,22 +28,31 @@ async function fetchWeather() {
     }
 }
 
-
 // ============================================================================
-// CARGA DE FUENTES
+// FILTROS DE RUTAS
 // ============================================================================
 
-function loadFonts() {
-    if ('fonts' in document) {
-        Promise.all([
-            document.fonts.load('400 1em Roboto'),
-            document.fonts.load('700 1em Alumni Sans')
-        ]).then(() => {
-            document.documentElement.classList.add('fonts-loaded');
-        });
-    } else {
-        document.documentElement.classList.add('fonts-loaded');
-    }
+async function filtroRutas() {
+    // 1. Seleccionamos el contenedor
+    const container = document.getElementById('filter-container');
+    if (!container) return;
+
+    // 2. Definimos el HTML de los filtros
+    const filtrosHTML = `
+    <div class="route-filters" role="group" aria-label="Filtrar rutas por dificultad">
+        <button class="btn btn-primary filter-btn active" data-filter="all"
+            aria-pressed="true">Todas</button>
+        <button class="btn btn-outline filter-btn" data-filter="Fácil" 
+            aria-pressed="false">Fácil</button>
+        <button class="btn btn-outline filter-btn" data-filter="Moderada"
+            aria-pressed="false">Moderado</button>
+        <button class="btn btn-outline filter-btn" data-filter="Difícil"
+            aria-pressed="false">Difícil</button>
+    </div>
+`;
+
+    // 3. Inyectamos el contenido
+    container.innerHTML = filtrosHTML;
 }
 
 // ============================================================================
@@ -51,6 +60,12 @@ function loadFonts() {
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadFonts();
     fetchWeather();
+    // Solo se ejecuta si el Contenedor de Filtros existe en el DOM
+    if (document.getElementById('filter-container')) {
+        // Solo existe en la Página de Rutas = solo ahí se cargará
+        // Así se oculta el Contenido a quien NO tenga JS activado en su Navegador
+        filtroRutas();
+    }
+    // Carrusel ahora funciona con CSS puro - no necesita JavaScript
 });

@@ -14,12 +14,13 @@
    ============================================================================ */
 
 :root {
-    --color-primary: #00423F;
-    --color-primary-dark: #002e2c;
-    --color-secondary: #C4E86B;
-    --color-secondary-dark: #a8cf50;
-    --color-text-main: #1f2937;
-    --color-text-inverse: #FFFFFF;
+    --color-primary: #004441;
+    /* Antiguo: 002e2c */
+    --color-primary-dark: #004441;
+    --color-secondary: #91c24e;
+    --color-secondary-dark: #008071;
+    --color-text-main: #004441;
+    --color-text-inverse: #FFF;
     --color-text-light: #4b5563;
     --color-bg-body: #F3F4F6;
     --color-bg-light: #f8f9fa;
@@ -30,9 +31,8 @@
     --diff-hard: #EF4444;
     --color-alert: #e74c3c;
     --color-success: #27ae60;
-    --font-display: 'Harabara-Bold', system-ui, -apple-system, BlinkMacSystemFont, ' Segoe UI', ' Helvetica Neue', 'Arial', sans-serif;
-    /* --font-display: 'Alumni Sans', sans-serif; */
-    --font-body: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    --font-display: 'Harabara-Bold', system-ui, 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+    --font-body: 'Roboto', system-ui, Arial, sans-serif;
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
@@ -208,6 +208,8 @@ h6 {
     text-transform: uppercase;
     margin-bottom: var(--spacing-sm);
     font-size-adjust: 0.5;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .fonts-loaded h1,
@@ -217,6 +219,8 @@ h6 {
 .fonts-loaded h5,
 .fonts-loaded h6 {
     font-family: var(--font-display);
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 h1 {
@@ -248,12 +252,16 @@ h6 {
 p {
     margin-bottom: var(--spacing-sm);
     color: var(--color-text-main);
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 a {
     text-decoration: none;
     color: inherit;
     transition: color 0.3s ease;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 ul {
