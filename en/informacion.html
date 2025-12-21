@@ -1,233 +1,1129 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- HTML5 Dirección Texto de Izquierda a Derecha en Español de ESPAÑA-->
+<html dir="ltr" lang="es-ES">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="ACTEA: Tourism reactivation project for Alto Campoo year-round. Hiking, culture and nature.">
-    <title>Information | ACTEA - Alto Campoo All Year Round</title>
+    <head>
+        <!-- Codificación UTF-8 Estandarizada Unicode Completo -->
+        <meta charset="UTF-8">
+        <!-- Estilos Responsive para Móviles, Escala y Ancho Inicial 100% -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Meta Descripción del Sitio para SEO -->
+        <meta name="description"
+            content="Tourism reactivation project for Alto Campoo year-round. Hiking, culture and nature.">
+        <!-- Meta Color del Sitio para SEO -->
+        <meta name="theme-color" content="#004441">
+        <!-- Meta Robots para Buscadores y Rastreadores de IA -->
+        <meta name="robots" content="index, follow">
+        <!-- Icono del Sitio Web -->
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <!-- Autor del Sitio Web -->
+        <meta name="author" content="CANTUR">
+        <!-- Palabras Clave para Posicionamiento SEO -->
+        <meta name="keywords" content="ACTEA, Alto Campoo, Senderismo, Cultura, Naturaleza">
+        <!-- Título del Sitio Web -->
+        <title>Information | Alto Campoo All Year Round</title>
 
-    <!-- Preconnect para Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Google Fonts con display=swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+        <!-- Precarga de Imágenes Críticas -->
+        <link rel="preload" as="image" href="../img/hero.webp" type="image/webp" fetchpriority="high">
+        <link rel="preload" as="image" href="../img/logotipo.png">
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="../estilo/main.css">
+        <!-- Estilos para todo, Carga lenta para que priorice primero el HTML -->
+        <link rel="stylesheet" href="../estilo/main.css" fetchpriority="low">
 
-    <!-- JavaScript -->
-    <script defer src="../js/main.js"></script>
-</head>
+        <!-- JavaScript en Diferido (No es Prioritaria su Carga: HTML renderiza primero) -->
+        <script defer src="../js/main.js"></script>
+        <!-- Meta Etiquetas para Redes Sociales -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:image" content="../img/logotipo.png">
+        <meta name="DC.Title" content="Information | Alto Campoo All Year Round">
+        <meta property="og:site_name" content="Alto Campoo All Year Round">
+        <meta property="og:title" content="Information | Alto Campoo All Year Round">
+        <meta property="og:description"
+            content="ACTEA: Tourism reactivation project for Alto Campoo year-round. Hiking, culture and nature..">
+        <meta property="og:url" content="https://proyectoactea.com/informacion.html">
+        <meta property="og:image" content="../img/isotipo.png">
+    </head>
 
-<body>
-    <!-- Skip link -->
-    <a href="#main-content" class="visually-hidden">Skip to main content</a>
+    <body>
+        <!-- Skip link -->
+        <a href="#main-content" class="visually-hidden">Skip to content</a>
+        <a id="top" class="visually-hidden" aria-hidden="true"></a>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container header-container">
-            <a href="index.html#top" class="logo">
-                <div class="logo-brand">
-                    <img src="../img/logo_blanco.png" alt="Alto Campoo" class="logo-img">
+        <!-- Header -->
+        <header class="header">
+            <div class="container header-container">
+                <a href="index.html#top" class="logo">
+                    <div class="logo-brand">
+                        <img src="../img/logotipo.png" alt="Alto Campoo" class="logo-img" width="150" height="50">
+                    </div>
+                </a>
+
+                <nav class="nav-desktop" aria-label="Navegación principal">
+                    <ul class="nav-list">
+                        <li><a href="index.html#top" class="nav-link">Home</a></li>
+                        <li><a href="rutas.html" class="nav-link">Routes</a></li>
+                        <li><a href="novedades.html" class="nav-link">News</a></li>
+                        <li><a href="actividades.html" class="nav-link">Activities</a></li>
+                        <li><a href="informacion.html" class="nav-link active">Information</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-widgets">
+                    <div class="weather-widget" id="weather-widget" title="Clima en Alto Campoo">
+                    </div>
+
+                    <div class="lang-dropdown">
+                        <a href="#lang-menu" class="lang-trigger" aria-label="Change language">
+                            ES <span class="material-symbols-outlined">expand_more</span>
+                        </a>
+
+                        <nav id="lang-menu" class="lang-menu-content">
+                            <ul class="lang-list">
+                                <li>
+                                    <a href="informacion.html" class="lang-item active">
+                                        <span class="material-symbols-outlined check-icon">check</span>
+                                        Español
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="en/informacion.html" class="lang-item">
+                                        English
+                                    </a>
+                                </li>
+                            </ul>
+                            <a href="#" class="lang-close-overlay">Close languages list</a>
+                        </nav>
+                    </div>
+                    <input type="checkbox" id="menu-logic-state" class="menu-logic-check" aria-label="Navigation menu">
+
+                    <label for="menu-logic-state" class="menu-toggle hamburger">
+                        <span class="icon-open material-symbols-outlined">menu</span>
+                    </label>
+
+                    <nav class="mobile-menu">
+                        <div class="mobile-menu-header">
+                            <label for="menu-logic-state" class="close-trigger">
+                                <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                                <span class="visually-hidden">Close navigation menu</span>
+                            </label>
+                        </div>
+                        <ul class="mobile-nav-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="rutas.html">Routes</a></li>
+                            <li><a href="novedades.html">News</a></li>
+                            <li><a href="actividades.html">Activities</a></li>
+                            <li><a href="informacion.html">Information</a></li>
+                        </ul>
+                    </nav>
                 </div>
-            </a>
-
-            <!-- Navegación Desktop -->
-            <nav class="nav-desktop" aria-label="Main navigation">
-                <ul class="nav-list">
-                    <li><a href="index.html#top" class="nav-link">Home</a></li>
-                    <li><a href="rutas.html" class="nav-link">Routes</a></li>
-                    <li><a href="novedades.html" class="nav-link">News</a></li>
-                    <li><a href="actividades.html" class="nav-link">Activities</a></li>
-                    <li><a href="informacion.html" class="nav-link active">Information</a></li>
-                </ul>
-            </nav>
-
-            <!-- Widgets -->
-            <div class="header-widgets">
-                <div class="weather-widget" id="weather-widget" title="Weather in Alto Campoo">
-                    <span class="material-symbols-outlined">wb_cloudy</span>
-                    <span class="weather-temp">--°C</span>
-                </div>
-
-                <div class="lang-selector">
-                    <select id="lang-select" aria-label="Select language" 
-                            onchange="const file = window.location.pathname.split('/en/').pop() || window.location.pathname.split('/').pop() || 'index.html'; window.location.href = this.value === 'en' ? `/en/${file}` : `/${file}`;">
-                        <option value="es">ES</option>
-                        <option value="en" selected>EN</option>
-                    </select>
-                </div>
-
-                <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false"
-                    aria-controls="mobile-menu">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Menú Móvil Overlay -->
-    <div class="mobile-menu-overlay"></div>
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu"
-        aria-hidden="true">
-        <div class="mobile-menu-header">
-            <a href="index.html#top" class="logo mobile-logo">
-                <div class="logo-brand">
-                    <img src="../img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150" height="50">
+        <!-- MAIN CONTENT AREA -->
+        <main id="main-content">
+            <section class="section-padding container" aria-label="Information and contact">
+                <div class="text-center section-header">
+                    <h1 class="info-title">Information and Help</h1>
+                    <p class="info-subtitle">Everything you need to know to plan your visit.</p>
                 </div>
-            </a>
-            <button class="hamburger hamburger-close" aria-label="Close menu">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-        <nav aria-label="Mobile navigation">
-            <ul class="mobile-nav-list">
-                <li><a href="index.html#top">Home</a></li>
-                <li><a href="rutas.html">Routes</a></li>
-                <li><a href="novedades.html">News</a></li>
-                <li><a href="actividades.html">Activities</a></li>
-                <li><a href="informacion.html">Information</a></li>
-            </ul>
-        </nav>
-    </div>
+                <div class="grid-layout info-grid">
+                    <div>
+                        <h2>Contact and Location</h2>
+                        <div class="contact-card">
+                            <ul class="contact-list">
+                                <li class="contact-item">
+                                    <span class="material-symbols-outlined contact-icon">location_on</span>
+                                    <span>Edificio Multiusos, Alto Campoo, Cantabria</span>
+                                </li>
+                                <li class="contact-item">
+                                    <span class="material-symbols-outlined contact-icon">phone</span>
+                                    <a target="_blank" href="tel:942318950" rel="noopener" class="w-iconbox-link"
+                                        aria-label="Call us">
+                                        <span class="w-iconbox-title" style="font-size:32px; font-weight: bold;">+34 942
+                                            31 89 50</span>
+                                    </a>
+                                </li>
+                                <li class="contact-item">
+                                    <span class="material-symbols-outlined contact-icon">email</span>
+                                    <a target="_blank" href="mailto:info@proyectoactea.com" rel="noopener"
+                                        class="w-iconbox-link" aria-label="Call us">
+                                        <span class="w-iconbox-title">info@proyectoactea.com</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <br><br>
+                        <h2>Frequently Asked Questions</h2>
+                        <details>
+                            <summary>Do I need to book?</summary>
+                            <div class="faq-content">
+                                <p>Although it is not mandatory for free routes, we recommend booking for guided
+                                    activities and specific workshops.</p>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>Can I bring my dog?</summary>
+                            <div class="faq-content">
+                                <p>Yes, as long as it is tied and under control. It is fundamental to respect the local
+                                    fauna and livestock, as well as domestic animals.</p>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>Where can I park?</summary>
+                            <div class="faq-content">
+                                <p>There are enabled parking lots in Brañavieja and at the start of the main routes.
+                                    Avoid parking in the arcades and unauthorized areas.</p>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>What should I bring?</summary>
+                            <div class="faq-content">
+                                <p>For free routes, the only thing you need is a pair of comfortable shoes and an
+                                    umbrella. For guided activities, you need a pair of comfortable shoes, an umbrella
+                                    and a pair of comfortable shoes.</p>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>What rating can I give to this Web?</summary>
+                            <div class="faq-content">
+                                <p>We know that nothing is perfect, that everything has room for improvement, but
+                                    we consider that we have carried out the Project as well as possible.
+                                    You can consult us any doubt regarding this Web.</p>
+                            </div>
+                        </details>
+                    </div>
 
-    <!-- MAIN CONTENT AREA -->
-    <main id="main-content">
-        <section class="section-padding container" aria-label="Information and contact">
-            <div class="text-center section-header">
-                <h1 class="info-title">Information and Help</h1>
-                <p class="info-subtitle">Everything you need to know to plan your
-                    visit.</p>
-            </div>
-            <div class="grid-layout info-grid">
-                <div>
-                    <h3>Contact and Location</h3>
-                    <div class="contact-card">
-                        <ul class="contact-list">
-                            <li class="contact-item">
-                                <span class="material-symbols-outlined contact-icon">location_on</span>
-                                <span>Multipurpose Building, Alto Campoo, Cantabria</span>
+                    <div class="contact-form-card" id="contacto">
+                        <h2 class="form-title">Send us a message</h2>
+                        <form id="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" required placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="4" required
+                                    placeholder="Write your message here"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Send
+                                Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <a target="_blank" href="https://cantur.com/" rel="noopener" aria-label="Cantur">
+                    <picture class="text-center" style="display: flex; justify-content: center;">
+                        <source srcset="../img/cantur-logo-white.png" type="image/png">
+                        <img src="../img/cantur-logo-white.png" alt="Logotipo de Cantur" width="200" height="200"
+                            loading="lazy" fetchpriority="low">
+                    </picture>
+                </a>
+                <br><br>
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <a target="_blank" href="https://turismodecantabria.com/" rel="noopener"
+                            aria-label="Turismo de Cantabria">
+                            <picture class="text-center" style="display: flex; justify-content: center;">
+                                <source srcset="../img/cantabria-infinita.png" type="image/png">
+                                <img width="200" height="69" src="../img/cantabria-infinita.png"
+                                    class="attachment-full size-full" alt="" decoding="async" loading="lazy">
+                            </picture>
+                        </a>
+
+                    </div>
+                    <div class="footer-col">
+                        <a target="_blank" href="https://www.cantabria.es/" rel="noopener"
+                            aria-label="Gobierno de Cantabria">
+                            <picture class="text-center" style="display: flex; justify-content: center;">
+                                <source srcset="../img/gobierno-cantabria.webp" type="image/webp">
+                                <img width="170" height="87" src="../img/gobierno-cantabria.webp"
+                                    class="attachment-full size-full" alt="" decoding="async" loading="lazy">
+                            </picture>
+                        </a>
+
+                    </div>
+                    <div class="footer-col">
+                        <a target="_blank" href="https://cruisesantander.es/" rel=" noopener"
+                            aria-label="Santander Cruise Deluxe">
+                            <picture class="text-center" style="display: flex; justify-content: center;">
+                                <source srcset="../img/santandercruise.png" type="image/png">
+                                <img width="170" height="87" src="../img/santandercruise.png"
+                                    class="attachment-full size-full" alt="" decoding="async" loading="lazy">
+                            </picture>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>ACTEA</h3>
+                        <p class="footer-description">Proyecto de dinamización turística y conservación
+                            ambiental de Alto Campoo.</p>
+                        <div class="social-icons">
+                            <a target="_blank" href="https://www.facebook.com/AltoCampoo" rel="noopener"
+                                aria-label="Perfil de Facebook" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+                                </svg>
+                            </a>
+                            <a target="_blank" href="https://www.instagram.com/esquialtocampoo/" rel="noopener"
+                                aria-label="Perfil de Instagram" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
+                                </svg>
+                            </a>
+                            <a target="_blank" href="https://twitter.com/Alto_Campoo" rel="noopener"
+                                aria-label="Perfil de Twitter" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Enlaces Rápidos</h3>
+                        <ul class="footer-links">
+                            <li><a target="_blank" href="index.html" rel="noopener" aria-label="Inicio">Inicio</a>
                             </li>
-                            <li class="contact-item">
-                                <span class="material-symbols-outlined contact-icon">phone</span>
-                                <span>+34 942 77 92 23</span>
-                            </li>
-                            <li class="contact-item">
-                                <span class="material-symbols-outlined contact-icon">email</span>
-                                <span>info@actea.com</span>
-                            </li>
+                            <li><a target="_blank" href="rutas.html" rel="noopener" aria-label="Rutas">Rutas</a></li>
+                            <li><a target="_blank" href="novedades.html" rel="noopener"
+                                    aria-label="Novedades">Novedades</a></li>
+                            <li><a target="_blank" href="actividades.html" rel="noopener"
+                                    aria-label="Actividades">Actividades</a></li>
                         </ul>
                     </div>
-
-                    <h3>Frequently Asked Questions</h3>
-                    <details>
-                        <summary>Do I need to make a reservation?</summary>
-                        <div class="faq-content">
-                            <p>Not for free routes, but we do recommend making reservations for guided activities and
-                                specific workshops.</p>
-                        </div>
-                    </details>
-                    <details>
-                        <summary>Can I bring my dog?</summary>
-                        <div class="faq-content">
-                            <p>Yes, as long as it is leashed and under control. It is essential to respect local wildlife and
-                                livestock.</p>
-                        </div>
-                    </details>
-                    <details>
-                        <summary>Where can I park?</summary>
-                        <div class="faq-content">
-                            <p>There are parking facilities in Brañavieja and at the start of the main routes.
-                                Avoid parking on the shoulders.</p>
-                        </div>
-                    </details>
-                </div>
-
-                <div class="contact-form-card" id="contacto">
-                    <h3 class="form-title">Send us a message</h3>
-                    <form id="contact-form"
-                        onsubmit="event.preventDefault(); alert('Message sent successfully (simulated)');">
-                        <div class="form-group">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control" required placeholder="Your name">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" required placeholder="your@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="4" required
-                                placeholder="How can we help you?"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send
-                            Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>ACTEA</h3>
-                    <p class="footer-description">Tourism development and environmental conservation
-                        project for Alto Campoo.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon" aria-label="Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="Twitter/X">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                            </svg>
-                        </a>
+                    <div class="footer-col">
+                        <h3>Legal</h3>
+                        <ul class="footer-links">
+                            <li><a target="_blank" href="informacion.html" rel="noopener"
+                                    aria-label="Contacto">Contacto</a></li>
+                            <li><a target="_blank" href="https://cantur.com/aviso-legal/" rel="noopener"
+                                    aria-label="Aviso Legal">Aviso Legal</a></li>
+                            <li><a target="_blank"
+                                    href="https://cantur.com/wp-content/uploads/2023/10/10387-politica-de-calidad-firma-ines-mier-maza-signed.pdf"
+                                    rel="noopener" aria-label="Política de Calidad">Política
+                                    de Calidad</a></li>
+                            <li><a target="_blank" href="https://cantur.com/politica-de-privacidad/" rel="noopener"
+                                    aria-label="Política de Privacidad">Política de
+                                    Privacidad</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html#top">Home</a></li>
-                        <li><a href="rutas.html">Routes</a></li>
-                        <li><a href="novedades.html">Events</a></li>
-                        <li><a href="informacion.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Legal Notice</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                    </ul>
+                <div class="copyright">
+                    <p>
+                        <a target="_blank"
+                            href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fproyectoactea.com/informacion.html&amp;profile=css3svg&amp;usermedium=all&amp;warning=1&amp;vextwarning="
+                            title="CSS3 Validado">
+                            <svg viewBox="0 0 88 31" width="95" height="50" aria-label="CSS3 Validado">
+                                <g shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
+                                    image-rendering="optimizeQuality">
+                                    <g shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
+                                        image-rendering="optimizeQuality">
+                                        <g id="Background"></g>
+                                        <g id="Guides"></g>
+                                        <g id="Foreground">
+                                            <g>
+                                                <polygon points="0,0 88,0 88,31 0,31 0,0" fill="none"></polygon>
+                                                <path d="M44,15.5" fill="none"></path>
+                                            </g>
+                                            <g>
+                                                <polygon points="0,0 83,0 83,31 0,31 0,0" fill="#B3CEE1"></polygon>
+                                                <path d="M41.5,15.5" fill="#B3CEE1"></path>
+                                            </g>
+                                            <g>
+                                                <polygon points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                    fill="#FFFFFF"></polygon>
+                                                <path d="M18.587,15.5" fill="#FFFFFF"></path>
+                                            </g>
+                                            <g>
+                                                <polygon
+                                                    points="4.692,2.291 44.697,2.291 44.697,26.897 4.692,26.897 4.692,2.291"
+                                                    fill="none"></polygon>
+                                                <path d="M24.695,14.594" fill="none"></path>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <defs>
+                                                        <polygon points="0,30 83,30 83,31 0,31 0,30" id="XMLID_640_">
+                                                        </polygon>
+                                                    </defs>
+                                                    <use xlink:href="#XMLID_640_" fill="#504D4C"></use>
+                                                    <clipPath id="XMLID_666_">
+                                                        <use xlink:href="#XMLID_640_"></use>
+                                                    </clipPath>
+                                                    <g clip-path="url(#XMLID_666_)">
+                                                        <g>
+                                                            <polygon points="0,0 88,0 88,31 0,31 0,0" fill="none">
+                                                            </polygon>
+                                                            <path d="M44,15.5" fill="none"></path>
+                                                        </g>
+                                                        <g>
+                                                            <polygon points="0,0 83,0 83,31 0,31 0,0" fill="#48494B">
+                                                            </polygon>
+                                                            <path d="M41.5,15.5" fill="#48494B"></path>
+                                                        </g>
+                                                        <g>
+                                                            <polygon
+                                                                points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                                fill="#4F4F4F"></polygon>
+                                                            <path d="M18.587,15.5" fill="#4F4F4F"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <defs>
+                                                        <polygon points="82,0 83,0 83,31 82,31 82,0" id="XMLID_642_">
+                                                        </polygon>
+                                                    </defs>
+                                                    <use xlink:href="#XMLID_642_" fill="#504D4C"></use>
+                                                    <clipPath id="XMLID_667_">
+                                                        <use xlink:href="#XMLID_642_"></use>
+                                                    </clipPath>
+                                                    <g clip-path="url(#XMLID_667_)">
+                                                        <g>
+                                                            <polygon points="0,0 88,0 88,31 0,31 0,0" fill="none">
+                                                            </polygon>
+                                                            <path d="M44,15.5" fill="none"></path>
+                                                        </g>
+                                                        <g>
+                                                            <polygon points="0,0 83,0 83,31 0,31 0,0" fill="#48494B">
+                                                            </polygon>
+                                                            <path d="M41.5,15.5" fill="#48494B"></path>
+                                                        </g>
+                                                        <g>
+                                                            <g>
+                                                                <defs>
+                                                                    <polygon points="0,30 83,30 83,31 0,31 0,30"
+                                                                        id="XMLID_644_"></polygon>
+                                                                </defs>
+                                                                <use xlink:href="#XMLID_644_" fill="#191919"></use>
+                                                                <clipPath id="XMLID_668_">
+                                                                    <use xlink:href="#XMLID_644_"></use>
+                                                                </clipPath>
+                                                                <g clip-path="url(#XMLID_668_)">
+                                                                    <g>
+                                                                        <polygon points="0,0 88,0 88,31 0,31 0,0"
+                                                                            fill="none"></polygon>
+                                                                        <path d="M44,15.5" fill="none"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <polygon points="0,0 83,0 83,31 0,31 0,0"
+                                                                            fill="#181818"></polygon>
+                                                                        <path d="M41.5,15.5" fill="#181818"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <polygon
+                                                                            points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                                            fill="#191919"></polygon>
+                                                                        <path d="M18.587,15.5" fill="#191919"></path>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <polygon points="0,0 1,0 1,31 0,31 0,0" fill="#CCCCCC"></polygon>
+                                                <path d="M0.5,15.5" fill="#CCCCCC"></path>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <defs>
+                                                        <polygon
+                                                            points="2.16,29.005 82.16,29.005 82.16,30.005 2.16,30.005 2.16,29.005"
+                                                            id="XMLID_646_"></polygon>
+                                                    </defs>
+                                                    <use xlink:href="#XMLID_646_" fill="#9E9C9C"></use>
+                                                    <clipPath id="XMLID_669_">
+                                                        <use xlink:href="#XMLID_646_"></use>
+                                                    </clipPath>
+                                                    <g clip-path="url(#XMLID_669_)">
+                                                        <g>
+                                                            <polygon points="0,0 88,0 88,31 0,31 0,0" fill="none">
+                                                            </polygon>
+                                                            <path d="M44,15.5" fill="none"></path>
+                                                        </g>
+                                                        <g>
+                                                            <polygon points="0,0 83,0 83,31 0,31 0,0" fill="#9097A0">
+                                                            </polygon>
+                                                            <path d="M41.5,15.5" fill="#9097A0"></path>
+                                                        </g>
+                                                        <g>
+                                                            <polygon
+                                                                points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                                fill="#B5B5B5"></polygon>
+                                                            <path d="M18.587,15.5" fill="#B5B5B5"></path>
+                                                        </g>
+                                                        <g>
+                                                            <g>
+                                                                <defs>
+                                                                    <polygon points="0,30 83,30 83,31 0,31 0,30"
+                                                                        id="XMLID_648_"></polygon>
+                                                                </defs>
+                                                                <use xlink:href="#XMLID_648_" fill="#383838"></use>
+                                                                <clipPath id="XMLID_670_">
+                                                                    <use xlink:href="#XMLID_648_"></use>
+                                                                </clipPath>
+                                                                <g clip-path="url(#XMLID_670_)">
+                                                                    <g>
+                                                                        <polygon points="0,0 88,0 88,31 0,31 0,0"
+                                                                            fill="none"></polygon>
+                                                                        <path d="M44,15.5" fill="none"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <polygon points="0,0 83,0 83,31 0,31 0,0"
+                                                                            fill="#343536"></polygon>
+                                                                        <path d="M41.5,15.5" fill="#343536"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <polygon
+                                                                            points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                                            fill="#383838"></polygon>
+                                                                        <path d="M18.587,15.5" fill="#383838"></path>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                        <g>
+                                                            <g>
+                                                                <defs>
+                                                                    <polygon points="82,0 83,0 83,31 82,31 82,0"
+                                                                        id="XMLID_650_"></polygon>
+                                                                </defs>
+                                                                <use xlink:href="#XMLID_650_" fill="#383838"></use>
+                                                                <clipPath id="XMLID_671_">
+                                                                    <use xlink:href="#XMLID_650_"></use>
+                                                                </clipPath>
+                                                                <g clip-path="url(#XMLID_671_)">
+                                                                    <g>
+                                                                        <polygon points="0,0 88,0 88,31 0,31 0,0"
+                                                                            fill="none"></polygon>
+                                                                        <path d="M44,15.5" fill="none"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <polygon points="0,0 83,0 83,31 0,31 0,0"
+                                                                            fill="#343536"></polygon>
+                                                                        <path d="M41.5,15.5" fill="#343536"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <defs>
+                                                                                <polygon
+                                                                                    points="0,30 83,30 83,31 0,31 0,30"
+                                                                                    id="XMLID_652_"></polygon>
+                                                                            </defs>
+                                                                            <use xlink:href="#XMLID_652_"
+                                                                                fill="#131313"></use>
+                                                                            <clipPath id="XMLID_672_">
+                                                                                <use xlink:href="#XMLID_652_"></use>
+                                                                            </clipPath>
+                                                                            <g clip-path="url(#XMLID_672_)">
+                                                                                <g>
+                                                                                    <polygon
+                                                                                        points="0,0 88,0 88,31 0,31 0,0"
+                                                                                        fill="none"></polygon>
+                                                                                    <path d="M44,15.5" fill="none">
+                                                                                    </path>
+                                                                                </g>
+                                                                                <g>
+                                                                                    <polygon
+                                                                                        points="0,0 83,0 83,31 0,31 0,0"
+                                                                                        fill="#131313"></polygon>
+                                                                                    <path d="M41.5,15.5" fill="#131313">
+                                                                                    </path>
+                                                                                </g>
+                                                                                <g>
+                                                                                    <polygon
+                                                                                        points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                                                        fill="#131313"></polygon>
+                                                                                    <path d="M18.587,15.5"
+                                                                                        fill="#131313"></path>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <defs>
+                                                        <polygon points="80.806,1 81.806,1 81.806,31 80.806,31 80.806,1"
+                                                            id="XMLID_654_"></polygon>
+                                                    </defs>
+                                                    <use xlink:href="#XMLID_654_" fill="#9E9C9C"></use>
+                                                    <clipPath id="XMLID_673_">
+                                                        <use xlink:href="#XMLID_654_"></use>
+                                                    </clipPath>
+                                                    <g clip-path="url(#XMLID_673_)">
+                                                        <g>
+                                                            <polygon points="0,0 88,0 88,31 0,31 0,0" fill="none">
+                                                            </polygon>
+                                                            <path d="M44,15.5" fill="none"></path>
+                                                        </g>
+                                                        <g>
+                                                            <polygon points="0,0 83,0 83,31 0,31 0,0" fill="#9097A0">
+                                                            </polygon>
+                                                            <path d="M41.5,15.5" fill="#9097A0"></path>
+                                                        </g>
+                                                        <g>
+                                                            <g>
+                                                                <defs>
+                                                                    <polygon points="0,30 83,30 83,31 0,31 0,30"
+                                                                        id="XMLID_656_"></polygon>
+                                                                </defs>
+                                                                <use xlink:href="#XMLID_656_" fill="#383838"></use>
+                                                                <clipPath id="XMLID_674_">
+                                                                    <use xlink:href="#XMLID_656_"></use>
+                                                                </clipPath>
+                                                                <g clip-path="url(#XMLID_674_)">
+                                                                    <g>
+                                                                        <polygon points="0,0 88,0 88,31 0,31 0,0"
+                                                                            fill="none"></polygon>
+                                                                        <path d="M44,15.5" fill="none"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <polygon points="0,0 83,0 83,31 0,31 0,0"
+                                                                            fill="#343536"></polygon>
+                                                                        <path d="M41.5,15.5" fill="#343536"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <polygon
+                                                                            points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                                            fill="#383838"></polygon>
+                                                                        <path d="M18.587,15.5" fill="#383838"></path>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                        <g>
+                                                            <g>
+                                                                <defs>
+                                                                    <polygon
+                                                                        points="2.16,29.005 82.16,29.005 82.16,30.005 2.16,30.005 2.16,29.005"
+                                                                        id="XMLID_658_"></polygon>
+                                                                </defs>
+                                                                <use xlink:href="#XMLID_658_" fill="#818181"></use>
+                                                                <clipPath id="XMLID_675_">
+                                                                    <use xlink:href="#XMLID_658_"></use>
+                                                                </clipPath>
+                                                                <g clip-path="url(#XMLID_675_)">
+                                                                    <g>
+                                                                        <polygon points="0,0 88,0 88,31 0,31 0,0"
+                                                                            fill="none"></polygon>
+                                                                        <path d="M44,15.5" fill="none"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <polygon points="0,0 83,0 83,31 0,31 0,0"
+                                                                            fill="#6E7176"></polygon>
+                                                                        <path d="M41.5,15.5" fill="#6E7176"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <polygon
+                                                                            points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                                            fill="#818181"></polygon>
+                                                                        <path d="M18.587,15.5" fill="#818181"></path>
+                                                                    </g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <defs>
+                                                                                <polygon
+                                                                                    points="0,30 83,30 83,31 0,31 0,30"
+                                                                                    id="XMLID_660_"></polygon>
+                                                                            </defs>
+                                                                            <use xlink:href="#XMLID_660_"
+                                                                                fill="#272727"></use>
+                                                                            <clipPath id="XMLID_676_">
+                                                                                <use xlink:href="#XMLID_660_"></use>
+                                                                            </clipPath>
+                                                                            <g clip-path="url(#XMLID_676_)">
+                                                                                <g>
+                                                                                    <polygon
+                                                                                        points="0,0 88,0 88,31 0,31 0,0"
+                                                                                        fill="none"></polygon>
+                                                                                    <path d="M44,15.5" fill="none">
+                                                                                    </path>
+                                                                                </g>
+                                                                                <g>
+                                                                                    <polygon
+                                                                                        points="0,0 83,0 83,31 0,31 0,0"
+                                                                                        fill="#252626"></polygon>
+                                                                                    <path d="M41.5,15.5" fill="#252626">
+                                                                                    </path>
+                                                                                </g>
+                                                                                <g>
+                                                                                    <polygon
+                                                                                        points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                                                        fill="#272727"></polygon>
+                                                                                    <path d="M18.587,15.5"
+                                                                                        fill="#272727"></path>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <defs>
+                                                                                <polygon
+                                                                                    points="82,0 83,0 83,31 82,31 82,0"
+                                                                                    id="XMLID_662_"></polygon>
+                                                                            </defs>
+                                                                            <use xlink:href="#XMLID_662_"
+                                                                                fill="#272727"></use>
+                                                                            <clipPath id="XMLID_677_">
+                                                                                <use xlink:href="#XMLID_662_"></use>
+                                                                            </clipPath>
+                                                                            <g clip-path="url(#XMLID_677_)">
+                                                                                <g>
+                                                                                    <polygon
+                                                                                        points="0,0 88,0 88,31 0,31 0,0"
+                                                                                        fill="none"></polygon>
+                                                                                    <path d="M44,15.5" fill="none">
+                                                                                    </path>
+                                                                                </g>
+                                                                                <g>
+                                                                                    <polygon
+                                                                                        points="0,0 83,0 83,31 0,31 0,0"
+                                                                                        fill="#252626"></polygon>
+                                                                                    <path d="M41.5,15.5" fill="#252626">
+                                                                                    </path>
+                                                                                </g>
+                                                                                <g>
+                                                                                    <g>
+                                                                                        <defs>
+                                                                                            <polygon
+                                                                                                points="0,30 83,30 83,31 0,31 0,30"
+                                                                                                id="XMLID_664_">
+                                                                                            </polygon>
+                                                                                        </defs>
+                                                                                        <use xlink:href="#XMLID_664_"
+                                                                                            fill="#101010"></use>
+                                                                                        <clipPath id="XMLID_678_">
+                                                                                            <use
+                                                                                                xlink:href="#XMLID_664_">
+                                                                                            </use>
+                                                                                        </clipPath>
+                                                                                        <g clip-path="url(#XMLID_678_)">
+                                                                                            <g>
+                                                                                                <polygon
+                                                                                                    points="0,0 88,0 88,31 0,31 0,0"
+                                                                                                    fill="none">
+                                                                                                </polygon>
+                                                                                                <path d="M44,15.5"
+                                                                                                    fill="none"></path>
+                                                                                            </g>
+                                                                                            <g>
+                                                                                                <polygon
+                                                                                                    points="0,0 83,0 83,31 0,31 0,0"
+                                                                                                    fill="#101010">
+                                                                                                </polygon>
+                                                                                                <path d="M41.5,15.5"
+                                                                                                    fill="#101010">
+                                                                                                </path>
+                                                                                            </g>
+                                                                                            <g>
+                                                                                                <polygon
+                                                                                                    points="0.365,0 36.809,0 36.809,31 0.365,31 0.365,0"
+                                                                                                    fill="#101010">
+                                                                                                </polygon>
+                                                                                                <path d="M18.587,15.5"
+                                                                                                    fill="#101010">
+                                                                                                </path>
+                                                                                            </g>
+                                                                                        </g>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <polygon points="0,0 83,0 83,1 0,1 0,0   " fill="#CCCCCC"></polygon>
+                                                <path d="M41.5,0.5" fill="#CCCCCC"></path>
+                                            </g>
+                                            <g>
+                                                <polyline fill-rule="evenodd" stroke="#005A9C"
+                                                    points="    68.273,18.844 74.291,24.348 86.001,12.637"
+                                                    clip-rule="evenodd" stroke-miterlimit="3.8637" stroke-width="4.8117"
+                                                    fill="none"></polyline>
+                                            </g>
+                                            <g>
+                                                <path clip-rule="evenodd"
+                                                    d="M45.772,18.318c-0.345,0.179-0.705,0.314-1.079,0.406 c-0.375,0.091-0.765,0.136-1.172,0.136c-1.214,0-2.176-0.338-2.886-1.015c-0.71-0.681-1.064-1.602-1.064-2.764 c0-1.165,0.354-2.086,1.064-2.763c0.709-0.681,1.671-1.021,2.886-1.021c0.407,0,0.797,0.045,1.172,0.137 c0.374,0.091,0.734,0.226,1.079,0.405v1.508c-0.349-0.237-0.692-0.412-1.03-0.522c-0.339-0.111-0.695-0.166-1.069-0.166 c-0.671,0-1.198,0.215-1.582,0.645c-0.384,0.43-0.576,1.022-0.576,1.777c0,0.752,0.192,1.343,0.576,1.773 c0.384,0.43,0.911,0.644,1.582,0.644c0.374,0,0.73-0.055,1.069-0.166c0.338-0.111,0.682-0.285,1.03-0.522V18.318z"
+                                                    fill-rule="evenodd"></path>
+                                                <path clip-rule="evenodd"
+                                                    d="M52.502,11.658v1.543c-0.4-0.179-0.791-0.314-1.172-0.405 c-0.381-0.091-0.741-0.137-1.079-0.137c-0.449,0-0.781,0.062-0.996,0.186c-0.215,0.124-0.322,0.315-0.322,0.576    c0,0.195,0.072,0.348,0.215,0.459c0.146,0.107,0.41,0.2,0.791,0.278l0.801,0.161c0.811,0.163,1.387,0.41,1.729,0.742 c0.342,0.332,0.513,0.804,0.513,1.416c0,0.804-0.239,1.403-0.718,1.797c-0.475,0.391-1.203,0.585-2.183,0.585    c-0.462,0-0.926-0.043-1.392-0.131c-0.465-0.088-0.931-0.218-1.396-0.391v-1.587c0.466,0.247,0.915,0.434,1.348,0.562 c0.437,0.124,0.856,0.185,1.26,0.185c0.41,0,0.725-0.068,0.942-0.205c0.218-0.137,0.327-0.332,0.327-0.586 c0-0.228-0.075-0.404-0.225-0.527c-0.146-0.124-0.441-0.234-0.884-0.333l-0.728-0.161c-0.729-0.156-1.263-0.406-1.602-0.748 c-0.335-0.342-0.503-0.802-0.503-1.381c0-0.726,0.234-1.284,0.703-1.675s1.143-0.586,2.021-0.586c0.4,0,0.813,0.031,1.235,0.093 C51.612,11.448,52.05,11.538,52.502,11.658z"
+                                                    fill-rule="evenodd"></path>
+                                                <path clip-rule="evenodd"
+                                                    d="M59.805,11.658v1.543c-0.4-0.179-0.791-0.314-1.172-0.405 c-0.381-0.091-0.741-0.137-1.079-0.137c-0.449,0-0.781,0.062-0.996,0.186c-0.215,0.124-0.322,0.315-0.322,0.576 c0,0.195,0.072,0.348,0.215,0.459c0.146,0.107,0.41,0.2,0.791,0.278l0.801,0.161c0.811,0.163,1.387,0.41,1.729,0.742 c0.342,0.332,0.513,0.804,0.513,1.416c0,0.804-0.239,1.403-0.718,1.797c-0.475,0.391-1.203,0.585-2.183,0.585 c-0.462,0-0.926-0.043-1.392-0.131s-0.931-0.218-1.396-0.391v-1.587c0.465,0.247,0.915,0.434,1.348,0.562 c0.436,0.124,0.856,0.185,1.26,0.185c0.41,0,0.724-0.068,0.942-0.205c0.218-0.137,0.327-0.332,0.327-0.586 c0-0.228-0.075-0.404-0.225-0.527c-0.146-0.124-0.441-0.234-0.884-0.333l-0.728-0.161c-0.729-0.156-1.263-0.406-1.602-0.748 c-0.335-0.342-0.503-0.802-0.503-1.381c0-0.726,0.234-1.284,0.703-1.675s1.143-0.586,2.021-0.586c0.4,0,0.812,0.031,1.235,0.093 C58.915,11.448,59.352,11.538,59.805,11.658z"
+                                                    fill-rule="evenodd"></path>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path
+                                                        d="M33.077,7.037l0.334,2.034l-1.185,2.266c0,0-0.455-0.961-1.21-1.493c-0.636-0.449-1.051-0.546-1.699-0.412 c-0.833,0.171-1.777,1.167-2.189,2.395c-0.493,1.469-0.498,2.179-0.515,2.833c-0.027,1.046,0.137,1.665,0.137,1.665 s-0.719-1.331-0.712-3.279c0.005-1.391,0.223-2.652,0.867-3.896c0.566-1.094,1.408-1.751,2.154-1.828 c0.772-0.08,1.382,0.292,1.854,0.695c0.495,0.423,0.996,1.347,0.996,1.347L33.077,7.037z">
+                                                    </path>
+                                                    <path
+                                                        d="M33.222,18.546c0,0-0.523,0.936-0.85,1.296c-0.326,0.36-0.91,0.996-1.631,1.313c-0.721,0.317-1.099,0.377-1.811,0.309 c-0.712-0.069-1.374-0.481-1.605-0.652c-0.232-0.172-0.824-0.678-1.159-1.15c-0.335-0.472-0.858-1.417-0.858-1.417 s0.292,0.946,0.474,1.348c0.105,0.231,0.428,0.938,0.886,1.553c0.427,0.574,1.257,1.562,2.519,1.786 c1.262,0.223,2.128-0.344,2.343-0.481c0.214-0.137,0.667-0.516,0.953-0.822c0.299-0.32,0.582-0.728,0.738-0.972 c0.114-0.178,0.301-0.541,0.301-0.541L33.222,18.546z">
+                                                    </path>
+                                                </g>
+                                                <g>
+                                                    <path
+                                                        d="M11.437,7.127l2.852,9.698l2.852-9.698h2.065L14.486,23.06h-0.197l-2.951-9.875L8.388,23.06H8.191 L3.47,7.127h2.065l2.852,9.698l1.928-6.531L9.372,7.127H11.437z"
+                                                        fill="#005A9C"></path>
+                                                    <path
+                                                        d="M25.072,17.946c0,1.443-0.384,2.656-1.151,3.64c-0.767,0.983-1.76,1.475-2.98,1.475 c-0.918,0-1.718-0.292-2.4-0.875c-0.682-0.583-1.187-1.374-1.515-2.371l1.613-0.668c0.236,0.604,0.548,1.079,0.935,1.426 c0.387,0.348,0.843,0.521,1.367,0.521c0.551,0,1.016-0.308,1.397-0.924s0.571-1.357,0.571-2.223c0-0.957-0.204-1.698-0.61-2.223 c-0.472-0.616-1.214-0.924-2.223-0.924h-0.787v-0.944l2.754-4.761h-3.325l-0.925,1.574h-0.59V7.127h7.672v0.964l-2.912,5.016 c1.023,0.328,1.797,0.925,2.321,1.791C24.809,15.763,25.072,16.779,25.072,17.946z"
+                                                        fill="#005A9C"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+
+                        <a target="_blank"
+                            href="https://validator.w3.org/nu/?showsource=yes&amp;showoutline=yes&amp;showimagereport=yes&amp;checkerrorpages=yes&amp;useragent=Validator.nu%2FLV+http%3A%2F%2Fvalidator.w3.org%2Fservices&amp;acceptlanguage=&amp;doc=https%3A%2F%2Fproyectoactea.com/informacion.html"
+                            title="HTML5 Validado">
+                            <svg viewBox="0 0 512 512" width="30" height="50" aria-label="HTML5 Validado">
+                                <polygon fill="#E44D26"
+                                    points="107.644,470.877 74.633,100.62 437.367,100.62 404.321,470.819 255.778,512">
+                                </polygon>
+                                <polygon fill="#F16529" points="256,480.523 376.03,447.246 404.27,130.894 256,130.894">
+                                </polygon>
+                                <polygon fill="#EBEBEB"
+                                    points="256,268.217 195.91,268.217 191.76,221.716 256,221.716 256,176.305 255.843,176.305 142.132,176.305 143.219,188.488 154.38,313.627 256,313.627">
+                                </polygon>
+                                <polygon fill="#EBEBEB"
+                                    points="256,386.153 255.801,386.206 205.227,372.55 201.994,336.333 177.419,336.333 156.409,336.333 162.771,407.634 255.791,433.457 256,433.399">
+                                </polygon>
+                                <path
+                                    d="M108.382,0h23.077v22.8h21.11V0h23.078v69.044H152.57v-23.12h-21.11v23.12h-23.077V0z"
+                                    fill="#ffffff"></path>
+                                <path d="M205.994,22.896h-20.316V0h63.72v22.896h-20.325v46.148h-23.078V22.896z"
+                                    fill="#ffffff"></path>
+                                <path
+                                    d="M259.511,0h24.063l14.802,24.26L313.163,0h24.072v69.044h-22.982V34.822l-15.877,24.549h-0.397l-15.888-24.549v34.222h-22.58V0z"
+                                    fill="#ffffff"></path>
+                                <path d="M348.72,0h23.084v46.222h32.453v22.822H348.72V0z" fill="#ffffff"></path>
+                                <polygon fill="#FFFFFF"
+                                    points="255.843,268.217 255.843,313.627 311.761,313.627 306.49,372.521 255.843,386.191 255.843,433.435 348.937,407.634 349.62,399.962 360.291,280.411 361.399,268.217 349.162,268.217">
+                                </polygon>
+                                <polygon fill="#FFFFFF"
+                                    points="255.843,176.305 255.843,204.509 255.843,221.605 255.843,221.716 365.385,221.716 365.385,221.716 365.531,221.716 366.442,211.509 368.511,188.488 369.597,176.305">
+                                </polygon>
+                            </svg></a>
+
+                        <a target="_blank"
+                            href="https://wave.webaim.org/report#/https%3A%2F%2Fproyectoactea.com/informacion.html"
+                            title="Accesibilidad WCAG 2.1 WAI-AAA Validado">
+                            <svg viewBox="0 0 88 31" height="50" width="95"
+                                aria-label="Accesibilidad WCAG 2.1 WAI-AAA Validado">
+                                <defs>
+                                    <style>
+                                        .cls-1,
+                                        .cls-7 {
+                                            fill: #727271;
+                                        }
+
+                                        .cls-1,
+                                        .cls-3,
+                                        .cls-4 {
+                                            clip-rule: evenodd;
+                                        }
+
+                                        .cls-2,
+                                        .cls-4 {
+                                            fill: none;
+                                        }
+
+                                        .cls-15,
+                                        .cls-3 {
+                                            fill: #c8c8c8;
+                                        }
+
+                                        .cls-5 {
+                                            fill: #ffe19e;
+                                        }
+
+                                        .cls-11,
+                                        .cls-13,
+                                        .cls-14,
+                                        .cls-15,
+                                        .cls-17,
+                                        .cls-18,
+                                        .cls-20,
+                                        .cls-23,
+                                        .cls-25,
+                                        .cls-5,
+                                        .cls-6,
+                                        .cls-7,
+                                        .cls-9 {
+                                            fill-rule: evenodd;
+                                        }
+
+                                        .cls-6 {
+                                            fill: #fff;
+                                        }
+
+                                        .cls-8 {
+                                            clip-path: url(#clip-path);
+                                        }
+
+                                        .cls-9 {
+                                            fill: #6a6c6e;
+                                        }
+
+                                        .cls-10 {
+                                            clip-path: url(#clip-path-2);
+                                        }
+
+                                        .cls-11 {
+                                            fill: #3b3b3a;
+                                        }
+
+                                        .cls-12 {
+                                            clip-path: url(#clip-path-3);
+                                        }
+
+                                        .cls-13 {
+                                            fill: #3a3a3a;
+                                        }
+
+                                        .cls-14 {
+                                            fill: #dadada;
+                                        }
+
+                                        .cls-16 {
+                                            clip-path: url(#clip-path-4);
+                                        }
+
+                                        .cls-17 {
+                                            fill: #c7af81;
+                                        }
+
+                                        .cls-18 {
+                                            fill: #5c5c5b;
+                                        }
+
+                                        .cls-19 {
+                                            clip-path: url(#clip-path-5);
+                                        }
+
+                                        .cls-20 {
+                                            fill: #57585a;
+                                        }
+
+                                        .cls-21 {
+                                            clip-path: url(#clip-path-6);
+                                        }
+
+                                        .cls-22 {
+                                            clip-path: url(#clip-path-7);
+                                        }
+
+                                        .cls-23 {
+                                            fill: #333332;
+                                        }
+
+                                        .cls-24 {
+                                            clip-path: url(#clip-path-8);
+                                        }
+
+                                        .cls-25 {
+                                            fill: #323232;
+                                        }
+
+                                        .cls-26 {
+                                            clip-path: url(#clip-path-9);
+                                        }
+
+                                        .cls-27 {
+                                            fill: #1d1d1b;
+                                        }
+
+                                        .cls-28 {
+                                            fill: #0b5196;
+                                        }
+
+                                        .cls-29 {
+                                            fill: #901a16;
+                                        }
+                                    </style>
+                                    <clipPath id="clip-path" transform="translate(-262 -381)">
+                                        <polygon class="cls-1" points="262 411 350 411 350 412 262 412 262 411 262 411">
+                                        </polygon>
+                                    </clipPath>
+                                    <clipPath id="clip-path-2" transform="translate(-262 -381)">
+                                        <polygon class="cls-1" points="349 381 350 381 350 411 349 411 349 381 349 381">
+                                        </polygon>
+                                    </clipPath>
+                                    <clipPath id="clip-path-3" transform="translate(-262 -381)">
+                                        <polygon class="cls-2" points="349 411 350 411 350 411 349 411 349 411">
+                                        </polygon>
+                                    </clipPath>
+                                    <clipPath id="clip-path-4" transform="translate(-262 -381)">
+                                        <polygon class="cls-3"
+                                            points="264.16 410 349.16 410 349.16 411 264.16 411 264.16 410 264.16 410">
+                                        </polygon>
+                                    </clipPath>
+                                    <clipPath id="clip-path-5" transform="translate(-262 -381)">
+                                        <rect class="cls-2" x="264.16" y="411" width="85" height="45"></rect>
+                                    </clipPath>
+                                    <clipPath id="clip-path-6" transform="translate(-262 -381)">
+                                        <polygon class="cls-4"
+                                            points="264.16 410 349.16 410 349.16 411 264.16 411 264.16 410 264.16 410">
+                                        </polygon>
+                                    </clipPath>
+                                    <clipPath id="clip-path-7" transform="translate(-262 -381)">
+                                        <rect class="cls-2" x="349" y="410" width="0.16" height="1"></rect>
+                                    </clipPath>
+                                    <clipPath id="clip-path-8" transform="translate(-262 -381)">
+                                        <polygon class="cls-2" points="349 411 349.16 411 349.16 411 349 411 349 411">
+                                        </polygon>
+                                    </clipPath>
+                                    <clipPath id="clip-path-9" transform="translate(-262 -381)">
+                                        <polygon class="cls-3"
+                                            points="347.96 381 348.96 381 348.96 410 347.96 410 347.96 381 347.96 381">
+                                        </polygon>
+                                    </clipPath>
+                                </defs>
+                                <polygon class="cls-5" points="0 0 88 0 88 31 0 31 0 0 0 0"></polygon>
+                                <polygon class="cls-6" points="0.37 0 30.37 0 30.37 31 0.37 31 0.37 0 0.37 0"></polygon>
+                                <polygon class="cls-7" points="0 30 88 30 88 31 0 31 0 30 0 30"></polygon>
+                                <g class="cls-8">
+                                    <polygon class="cls-9" points="0 0 88 0 88 31 0 31 0 0 0 0"></polygon>
+                                    <polygon class="cls-7" points="0.37 0 30.37 0 30.37 31 0.37 31 0.37 0 0.37 0">
+                                    </polygon>
+                                </g>
+                                <polygon class="cls-7" points="87 0 88 0 88 30 87 30 87 0 87 0"></polygon>
+                                <g class="cls-10">
+                                    <polygon class="cls-9" points="0 0 88 0 88 31 0 31 0 0 0 0"></polygon>
+                                    <polygon class="cls-11" points="0 30 88 30 88 31 0 31 0 30 0 30"></polygon>
+                                </g>
+                                <g class="cls-12">
+                                    <polygon class="cls-13" points="0 0 88 0 88 31 0 31 0 0 0 0"></polygon>
+                                </g>
+                                <polygon class="cls-14" points="0 0 1 0 1 31 0 31 0 0 0 0"></polygon>
+                                <polygon class="cls-15" points="2.16 29 87.16 29 87.16 30 2.16 30 2.16 29 2.16 29">
+                                </polygon>
+                                <g class="cls-16">
+                                    <polygon class="cls-17" points="0 0 88 0 88 31 0 31 0 0 0 0"></polygon>
+                                    <polygon class="cls-15" points="0.37 0 30.37 0 30.37 31 0.37 31 0.37 0 0.37 0">
+                                    </polygon>
+                                    <polygon class="cls-18" points="0 30 88 30 88 31 0 31 0 30 0 30"></polygon>
+                                </g>
+                                <g class="cls-19">
+                                    <polygon class="cls-20" points="0 0 88 0 88 31 0 31 0 0 0 0"></polygon>
+                                    <polygon class="cls-18" points="0.37 0 30.37 0 30.37 31 0.37 31 0.37 0 0.37 0">
+                                    </polygon>
+                                </g>
+                                <g class="cls-21">
+                                    <polygon class="cls-18" points="87 0 88 0 88 30 87 30 87 0 87 0"></polygon>
+                                </g>
+                                <g class="cls-22">
+                                    <polygon class="cls-20" points="0 0 88 0 88 31 0 31 0 0 0 0"></polygon>
+                                    <polygon class="cls-23" points="0 30 88 30 88 31 0 31 0 30 0 30"></polygon>
+                                </g>
+                                <g class="cls-24">
+                                    <polygon class="cls-25" points="0 0 88 0 88 31 0 31 0 0 0 0"></polygon>
+                                </g>
+                                <polygon class="cls-15" points="85.96 0 86.96 0 86.96 29 85.96 29 85.96 0 85.96 0">
+                                </polygon>
+                                <g class="cls-26">
+                                    <polygon class="cls-17" points="0 0 88 0 88 31 0 31 0 0 0 0"></polygon>
+                                </g>
+                                <polygon class="cls-14" points="0 0 88 0 88 1 0 1 0 0 0 0"></polygon>
+                                <path class="cls-27"
+                                    d="M288.71,390.83l.27,1.64-1,1.83a3.52,3.52,0,0,0-1-1.21,1.53,1.53,0,0,0-1.37-.33,2.89,2.89,0,0,0-1.77,1.93,6.61,6.61,0,0,0-.42,2.29,5.19,5.19,0,0,0,.11,1.34,6,6,0,0,1-.58-2.65,6.64,6.64,0,0,1,.7-3.14,2.5,2.5,0,0,1,1.74-1.48,2,2,0,0,1,1.5.56,4.76,4.76,0,0,1,.8,1.09l.94-1.88Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M288.83,400.11a8.16,8.16,0,0,1-.69,1,4.22,4.22,0,0,1-1.32,1.06,2.45,2.45,0,0,1-1.46.25,2.9,2.9,0,0,1-1.29-.53,5.07,5.07,0,0,1-.94-.93c-.27-.38-.69-1.14-.69-1.14s.24.76.38,1.09a7.08,7.08,0,0,0,.72,1.25,3.41,3.41,0,0,0,2,1.44,2.59,2.59,0,0,0,1.89-.39,5.26,5.26,0,0,0,.77-.66,5.87,5.87,0,0,0,.6-.79c.09-.14.24-.44.24-.44l-.24-1.27Z"
+                                    transform="translate(-262 -381)"></path>
+                                <polygon class="cls-28"
+                                    points="9.25 9.9 11.55 17.72 13.85 9.9 15.52 9.9 11.71 22.75 11.55 22.75 9.17 14.79 6.79 22.75 6.63 22.75 2.82 9.9 4.49 9.9 6.79 17.72 8.35 12.45 7.58 9.9 9.25 9.9 9.25 9.9">
+                                </polygon>
+                                <path class="cls-28"
+                                    d="M282.25,399.63a4.63,4.63,0,0,1-.93,2.94A3,3,0,0,1,277,403a4.15,4.15,0,0,1-1.22-1.91l1.3-.54a3,3,0,0,0,.75,1.15,1.6,1.6,0,0,0,1.1.42,1.33,1.33,0,0,0,1.13-.75,3.35,3.35,0,0,0,.46-1.79,2.87,2.87,0,0,0-.49-1.79,2.12,2.12,0,0,0-1.79-.75h-.63v-.76l2.22-3.84h-2.68l-.75,1.27h-.48V390.9h6.19v.78l-2.35,4a3.27,3.27,0,0,1,1.87,1.44,4.66,4.66,0,0,1,.63,2.46Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M306.1,395.83h-1.79l-1-3.89q-.06-.21-.19-.86t-.15-.87q0,.27-.15.88t-.19.86l-1,3.88h-1.78L298,388.42h1.54l.95,4q.25,1.12.36,1.94,0-.29.14-.89c.07-.4.14-.72.2-.94l1.08-4.15h1.48l1.08,4.15q.07.28.18.85t.16,1q.05-.4.16-1t.2-1l.94-4H308Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M313,395.84l-.54-1.76h-2.7l-.54,1.76h-1.69l2.61-7.44h1.92l2.62,7.44Zm-.91-3.08-.84-2.71c-.06-.21-.11-.37-.13-.5q-.17.65-1,3.21Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M319.17,395.84H315.8v-.89l.9-.42v-4.79l-.9-.42v-.89h3.37v.89l-.9.42v4.79l.9.42Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27" d="M320.78,393.32v-1.27h2.72v1.27Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-29"
+                                    d="M329.3,395.84l-.54-1.76h-2.7l-.54,1.76h-1.69l2.61-7.44h1.92l2.62,7.44Zm-.91-3.08-.84-2.71c-.06-.21-.11-.37-.13-.5q-.17.65-1,3.21Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-29"
+                                    d="M336.66,395.83l-.54-1.76h-2.7l-.54,1.76h-1.69l2.61-7.44h1.92l2.62,7.44Zm-.91-3.08-.84-2.71c-.06-.21-.11-.37-.13-.5q-.17.65-1,3.21Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-29"
+                                    d="M344,395.83l-.54-1.76h-2.7l-.54,1.76h-1.69l2.61-7.44h1.92l2.62,7.44Zm-.91-3.08-.84-2.71c-.06-.21-.11-.37-.13-.5q-.17.65-1,3.21Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M309.05,407.47h-1.72l-1-3.75c0-.13-.1-.41-.18-.83s-.14-.7-.15-.84q0,.26-.15.85t-.18.83l-1,3.74H303l-1.82-7.14h1.49l.91,3.9q.24,1.08.35,1.87,0-.28.13-.86t.2-.91l1-4h1.43l1,4c0,.18.1.45.17.82s.12.68.16.95q0-.38.16-.95t.2-.92l.91-3.9h1.49Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M314.35,401.49a1.54,1.54,0,0,0-1.32.64,3,3,0,0,0-.47,1.79q0,2.39,1.79,2.39a5.65,5.65,0,0,0,1.82-.38v1.27a5.06,5.06,0,0,1-2,.37,3,3,0,0,1-2.38-.94,4,4,0,0,1-.83-2.71,4.43,4.43,0,0,1,.41-2,2.93,2.93,0,0,1,1.17-1.28,3.44,3.44,0,0,1,1.78-.45,4.81,4.81,0,0,1,2.09.5L316,402a8.1,8.1,0,0,0-.81-.33A2.42,2.42,0,0,0,314.35,401.49Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M321.91,407.47l-.52-1.7h-2.6l-.52,1.7h-1.63l2.52-7.17H321l2.53,7.17Zm-.88-3-.81-2.61c-.06-.2-.1-.36-.13-.48q-.16.63-.92,3.09Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M326.65,403.46h2.83v3.7a8,8,0,0,1-1.3.32,8.53,8.53,0,0,1-1.24.09,3.15,3.15,0,0,1-2.47-.95,4,4,0,0,1-.85-2.73,3.6,3.6,0,0,1,1-2.7,3.76,3.76,0,0,1,2.74-1,5.31,5.31,0,0,1,2.12.44l-.5,1.21a3.6,3.6,0,0,0-1.63-.39,2,2,0,0,0-1.57.66,2.55,2.55,0,0,0-.59,1.77,2.85,2.85,0,0,0,.48,1.78,1.65,1.65,0,0,0,1.38.61,4.88,4.88,0,0,0,1-.1v-1.49h-1.35Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M339.28,407.47h-4.79v-1l1.68-1.81.58-.63a5.33,5.33,0,0,0,.44-.56,2.52,2.52,0,0,0,.29-.56,1.78,1.78,0,0,0,.1-.61.72.72,0,0,0-.22-.56.83.83,0,0,0-.58-.2,1.55,1.55,0,0,0-.74.19,3.82,3.82,0,0,0-.75.54l-.82-1c.15-.13.3-.26.46-.38a3.09,3.09,0,0,1,1.16-.55,3.21,3.21,0,0,1,.78-.09,2.81,2.81,0,0,1,.92.14,2,2,0,0,1,.7.4,1.75,1.75,0,0,1,.44.63,2.17,2.17,0,0,1,.15.83,2.23,2.23,0,0,1-.15.8,3.62,3.62,0,0,1-.4.75,6.84,6.84,0,0,1-.59.73q-.33.36-.71.74l-.86.86v.07h2.91Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M340.76,406.77a1,1,0,0,1,.07-.39.65.65,0,0,1,.18-.26.74.74,0,0,1,.27-.14,1.24,1.24,0,0,1,.34,0,1.18,1.18,0,0,1,.33,0,.74.74,0,0,1,.27.14.67.67,0,0,1,.19.26,1,1,0,0,1,.07.39.93.93,0,0,1-.07.38.71.71,0,0,1-.19.26.73.73,0,0,1-.27.15,1.14,1.14,0,0,1-.33,0,1.21,1.21,0,0,1-.34,0,.73.73,0,0,1-.27-.15.69.69,0,0,1-.18-.26A1,1,0,0,1,340.76,406.77Z"
+                                    transform="translate(-262 -381)"></path>
+                                <path class="cls-27"
+                                    d="M345.63,407.47h-1.51v-4.13c0-.08,0-.19,0-.3s0-.24,0-.37v-.75l-.08.09-.13.13-.15.14-.15.13-.82.66-.73-.91,2.3-1.83h1.24Z"
+                                    transform="translate(-262 -381)"></path>
+                            </svg></a>
+
+                    </p>
+                    &copy; <time datetime="2025">2025</time> ACTEA - Alto Campoo Todo El Año. Un Proyecto del <a
+                        target="_blank" href="https://iesaglinares.com/">IES
+                        Augusto González de Linares.</a>
                 </div>
             </div>
-            <div class="copyright">
-                &copy; 2025 ACTEA - Alto Campoo All Year Round. IES Augusto González de Linares.
-            </div>
-        </div>
-    </footer>
-</body>
+        </footer>
+    </body>
 
 </html>
-
