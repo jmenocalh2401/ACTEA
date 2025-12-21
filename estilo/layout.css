@@ -504,25 +504,25 @@
         height: 50px;
         background: white;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        border-radius: 50%;
+        border-radius: 0;
         /* Redondas */
         transition: all 0.3s ease;
         z-index: 20;
+        height: 100%;
     }
 
     .carousel-btn:hover {
         background: var(--color-primary);
         color: white;
-        transform: scale(1.1);
     }
 
-    .carousel-btn.prev {
+    /* .carousel-btn.prev {
         left: -15px;
     }
 
     .carousel-btn.next {
         right: -15px;
-    }
+    } */
 }
 
 /* ============================================================================
