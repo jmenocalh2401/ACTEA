@@ -181,6 +181,18 @@ main {
     -webkit-font-smoothing: antialiased;
 }
 
+.card-meta .material-symbols-outlined.green {
+    color: green;
+}
+
+.card-meta .orange.material-symbols-outlined {
+    color: orange;
+}
+
+.card-meta .material-symbols-outlined.red {
+    color: red;
+}
+
 h1,
 h2,
 h3,
