@@ -410,11 +410,6 @@ body:has(#mobile-menu:target) .header {
         font-size: 1.2rem;
     }
 
-    .header-container {
-        min-height: 70px;
-        padding: 0 1rem;
-    }
-
     .logo-brand {
         min-width: 60px;
         height: 50px;
