@@ -13,7 +13,7 @@
         <!-- Meta Color del Sitio para SEO -->
         <meta name="theme-color" content="#004441">
         <!-- Meta Robots para Buscadores y Rastreadores de IA -->
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow">
         <!-- Icono del Sitio Web -->
         <link rel="shortcut icon" href="multimedia/favicon.ico" type="image/x-icon">
         <!-- Autor del Sitio Web -->
@@ -34,14 +34,14 @@
         <script defer src="js/main.js"></script>
         <!-- Meta Etiquetas para Redes Sociales -->
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:image" content="img/hero.jpg" />
-        <meta name="DC.Title" content="Proyecto ACTEA" />
-        <meta property="og:site_name" content="Alto Campoo Todo El Año" />
-        <meta property="og:title" content="Proyecto ACTEA" />
+        <meta name="twitter:image" content="img/hero.jpg">
+        <meta name="DC.Title" content="Proyecto ACTEA">
+        <meta property="og:site_name" content="Alto Campoo Todo El Año">
+        <meta property="og:title" content="Proyecto ACTEA">
         <meta property="og:description"
-            content="Reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza." />
+            content="Reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza.">
         <meta property="og:url" content="https://proyectoactea.com/">
-        <meta property="og:image" content="img/hero.jpg" />
+        <meta property="og:image" content="img/hero.jpg">
     </head>
 
     <body>
@@ -58,7 +58,6 @@
                     </div>
                 </a>
 
-                <!-- Navegación Desktop -->
                 <nav class="nav-desktop" aria-label="Navegación principal">
                     <ul class="nav-list">
                         <li><a href="index.html#top" class="nav-link active">Inicio</a></li>
@@ -69,7 +68,6 @@
                     </ul>
                 </nav>
 
-                <!-- Widgets -->
                 <div class="header-widgets">
                     <div class="weather-widget" id="weather-widget" title="Clima en Alto Campoo">
                         <span class="material-symbols-outlined">wb_cloudy</span>
@@ -84,39 +82,29 @@
                         </select>
                     </div>
 
-                    <button class="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false"
-                        aria-controls="mobile-menu">
+                    <a href="#mobile-menu" class="hamburger" aria-label="Abrir menú de navegación">
                         <span class="material-symbols-outlined">menu</span>
-                    </button>
+                    </a>
+
+                    <nav id="mobile-menu" class="mobile-menu" aria-label="Navegación móvil">
+                        <div class="mobile-menu-header">
+                            <a href="#" class="close-trigger" aria-label="Cerrar menú">
+                                <span class="material-symbols-outlined">close</span>
+                            </a>
+                        </div>
+                        <ul class="mobile-nav-list">
+                            <li><a href="index.html#top">Inicio</a></li>
+                            <li><a href="rutas.html">Rutas</a></li>
+                            <li><a href="novedades.html">Novedades</a></li>
+                            <li><a href="actividades.html">Actividades</a></li>
+                            <li><a href="informacion.html">Información</a></li>
+                        </ul>
+                    </nav>
+
+                    <a href="#" class="mobile-menu-overlay" aria-hidden="true"></a>
                 </div>
             </div>
         </header>
-
-        <!-- Menú Móvil Overlay -->
-        <div class="mobile-menu-overlay"></div>
-        <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación"
-            aria-hidden="true">
-            <div class="mobile-menu-header">
-                <a href="index.html#top" class="logo mobile-logo">
-                    <div class="logo-brand">
-                        <img src="img/logotipo.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150"
-                            height="50">
-                    </div>
-                </a>
-                <button class="hamburger hamburger-close" aria-label="Cerrar menú">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-            </div>
-            <nav aria-label="Navegación móvil">
-                <ul class="mobile-nav-list">
-                    <li><a href="index.html#top">Inicio</a></li>
-                    <li><a href="rutas.html">Rutas</a></li>
-                    <li><a href="novedades.html">Novedades</a></li>
-                    <li><a href="actividades.html">Actividades</a></li>
-                    <li><a href="informacion.html">Información</a></li>
-                </ul>
-            </nav>
-        </div>
 
         <!-- MAIN CONTENT AREA -->
         <main id="main-content">
