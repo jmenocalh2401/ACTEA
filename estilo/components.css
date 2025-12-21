@@ -434,15 +434,15 @@
 }
 
 .activity-card-1 {
-    background-image: url('../img/WhatsApp%20Image%202025-12-01%20at%2020.07.48.jpeg');
+    background-image: url('../img/foto2.jpeg');
 }
 
 .activity-card-2 {
-    background-image: url('../img/WhatsApp%20Image%202025-12-01%20at%2020.07.482.jpeg');
+    background-image: url('../img/foto4.jpeg');
 }
 
 .activity-card-3 {
-    background-image: url('../img/WhatsApp%20Image%202025-12-01%20at%2020.07.483.jpeg');
+    background-image: url('../img/foto5.jpeg');
 }
 
 .activity-title {
@@ -525,7 +525,8 @@
 
 .grid-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+    grid-template-columns: auto auto;
+    /* grid-template-columns: repeat(auto-fill, minmax(300px, 400px)); */
     gap: 2rem;
     justify-content: center;
 }
@@ -603,7 +604,7 @@ summary {
     font-weight: 700;
     cursor: pointer;
     color: var(--color-primary);
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     list-style: none;
 }
 
@@ -749,6 +750,7 @@ summary::-webkit-details-marker {
 
 .info-grid {
     align-items: start;
+    padding: 30px;
 }
 
 .contact-card,

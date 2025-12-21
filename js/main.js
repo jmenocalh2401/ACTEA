@@ -1,131 +1,25 @@
 /**
  * ACTEA - MAIN JAVASCRIPT
- * Funcionalidades: menú móvil, clima, carrusel
+ * Funcionalidades: Clima Widget Tiempo
  */
-
-// Variables globales del menú móvil
-let hamburgerBtn = null;
-let mobileMenu = null;
-let overlay = null;
-let menuOpenBtn = null;
-
-// ============================================================================
-// MENÚ MÓVIL
-// ============================================================================
-
-function toggleMenu() {
-    const isOpen = mobileMenu && mobileMenu.classList.contains('open');
-    if (isOpen) {
-        closeMenu();
-    } else {
-        openMenu();
-    }
-}
-
-function openMenu() {
-    if (!mobileMenu || !overlay || !hamburgerBtn) return;
-
-    if (mobileMenu.classList.contains('open')) return;
-
-    menuOpenBtn = document.activeElement;
-    mobileMenu.classList.add('open');
-    overlay.classList.add('open');
-    mobileMenu.setAttribute('aria-hidden', 'false');
-    hamburgerBtn.setAttribute('aria-expanded', 'true');
-    document.documentElement.style.overflow = 'hidden';
-
-    const first = mobileMenu.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
-    if (first) {
-        first.focus();
-    }
-}
-
-function closeMenu() {
-    if (!mobileMenu || !overlay || !hamburgerBtn) return;
-
-    if (!mobileMenu.classList.contains('open')) return;
-
-    mobileMenu.classList.remove('open');
-    overlay.classList.remove('open');
-    mobileMenu.setAttribute('aria-hidden', 'true');
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-    document.documentElement.style.overflow = '';
-
-    if (menuOpenBtn) {
-        menuOpenBtn.focus();
-        menuOpenBtn = null;
-    }
-}
-
-function initFocusTrap() {
-    if (!mobileMenu) return;
-
-    const focusableElements = mobileMenu.querySelectorAll(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-    );
-    if (focusableElements.length === 0) return;
-
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-
-    mobileMenu.addEventListener('keydown', (e) => {
-        if (!mobileMenu.classList.contains('open')) return;
-
-        if (e.key === 'Tab') {
-            if (e.shiftKey) {
-                if (document.activeElement === firstElement) {
-                    e.preventDefault();
-                    lastElement.focus();
-                }
-            } else {
-                if (document.activeElement === lastElement) {
-                    e.preventDefault();
-                    firstElement.focus();
-                }
-            }
-        }
-    });
-}
-
-function initMobileMenu() {
-    hamburgerBtn = document.querySelector('.hamburger:not(.hamburger-close)');
-    mobileMenu = document.querySelector('.mobile-menu');
-    overlay = document.querySelector('.mobile-menu-overlay');
-
-    if (hamburgerBtn) {
-        hamburgerBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMenu();
-        });
-    }
-
-    const closeBtn = document.querySelector('.hamburger-close');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            closeMenu();
-        });
-    }
-
-    if (overlay) {
-        overlay.addEventListener('click', closeMenu);
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) {
-            closeMenu();
-        }
-    });
-
-    initFocusTrap();
-}
 
 // ============================================================================
 // WIDGET DEL CLIMA
 // ============================================================================
 
 async function fetchWeather() {
+    // 1. Seleccionamos el contenedor
+    const container = document.getElementById('weather-widget');
+
+    // 2. Definimos el HTML de los filtros
+    const IconoYTemperatura = `
+                        <span class="material-symbols-outlined">wb_cloudy</span>
+                        <span class="weather-temp"></span>
+`;
+
+    // 3. Inyectamos el contenido
+    container.innerHTML = IconoYTemperatura;
+
     const weatherWidget = document.getElementById('weather-widget');
     if (!weatherWidget) return;
 
@@ -146,131 +40,26 @@ async function fetchWeather() {
     }
 }
 
-// ============================================================================
-// CARRUSEL DE RUTAS DESTACADAS
-// ============================================================================
+async function filtroRutas() {
+    // 1. Seleccionamos el contenedor
+    const container = document.getElementById('filter-container');
 
-function initCarousel() {
-    const track = document.getElementById('featured-routes');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
+    // 2. Definimos el HTML de los filtros
+    const filtrosHTML = `
+    <div class="route-filters" role="group" aria-label="Filtrar rutas por dificultad">
+        <button class="btn btn-primary filter-btn active" data-filter="all"
+            aria-pressed="true">Todas</button>
+        <button class="btn btn-outline filter-btn" data-filter="Fácil" 
+            aria-pressed="false">Fácil</button>
+        <button class="btn btn-outline filter-btn" data-filter="Moderada"
+            aria-pressed="false">Moderado</button>
+        <button class="btn btn-outline filter-btn" data-filter="Difícil"
+            aria-pressed="false">Difícil</button>
+    </div>
+`;
 
-    if (!track || !prevBtn || !nextBtn) return;
-
-    const GAP = 16;
-
-    const getCardStep = () => {
-        const card = track.querySelector('.route-card');
-        if (!card) return 316;
-        return card.getBoundingClientRect().width + GAP;
-    };
-
-    function updateArrowVisibility() {
-        const scrollLeft = track.scrollLeft;
-        const scrollWidth = track.scrollWidth;
-        const clientWidth = track.clientWidth;
-
-        const threshold = 1;
-
-        if (scrollLeft <= threshold) {
-            prevBtn.style.display = 'none';
-        } else {
-            prevBtn.style.display = 'flex';
-        }
-
-        if (scrollLeft + clientWidth >= scrollWidth - threshold) {
-            nextBtn.style.display = 'none';
-        } else {
-            nextBtn.style.display = 'flex';
-        }
-    }
-
-    nextBtn.addEventListener('click', () => {
-        track.scrollBy({ left: getCardStep(), behavior: 'smooth' });
-    });
-
-    prevBtn.addEventListener('click', () => {
-        track.scrollBy({ left: -getCardStep(), behavior: 'smooth' });
-    });
-
-    let rafId = 0;
-    track.addEventListener('scroll', () => {
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(updateArrowVisibility);
-    }, { passive: true });
-
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            updateArrowVisibility();
-        }, 150);
-    });
-
-    function initializeVisibility() {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                updateArrowVisibility();
-            });
-        });
-    }
-
-    const images = track.querySelectorAll('img');
-    if (images.length > 0) {
-        let loadedCount = 0;
-        const totalImages = images.length;
-        let initialized = false;
-
-        const checkAndInit = () => {
-            if (!initialized && loadedCount === totalImages) {
-                initialized = true;
-                initializeVisibility();
-            }
-        };
-
-        images.forEach(img => {
-            if (img.complete) {
-                loadedCount++;
-            } else {
-                img.addEventListener('load', () => {
-                    loadedCount++;
-                    checkAndInit();
-                }, { once: true });
-                img.addEventListener('error', () => {
-                    loadedCount++;
-                    checkAndInit();
-                }, { once: true });
-            }
-        });
-
-        checkAndInit();
-
-        setTimeout(() => {
-            if (!initialized) {
-                initialized = true;
-                initializeVisibility();
-            }
-        }, 1000);
-    } else {
-        initializeVisibility();
-    }
-}
-
-// ============================================================================
-// CARGA DE FUENTES
-// ============================================================================
-
-function loadFonts() {
-    if ('fonts' in document) {
-        Promise.all([
-            document.fonts.load('400 1em Roboto'),
-            document.fonts.load('700 1em Alumni Sans')
-        ]).then(() => {
-            document.documentElement.classList.add('fonts-loaded');
-        });
-    } else {
-        document.documentElement.classList.add('fonts-loaded');
-    }
+    // 3. Inyectamos el contenido
+    container.innerHTML = filtrosHTML;
 }
 
 // ============================================================================
@@ -278,8 +67,12 @@ function loadFonts() {
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadFonts();
     fetchWeather();
-    initMobileMenu();
+    // Solo se ejecuta si el Contenedor de Filtros existe en el DOM
+    if (document.getElementById('filter-container')) {
+        // Solo existe en la Página de Rutas = solo ahí se cargará
+        // Así se oculta el Contenido a quien NO tenga JS activado en su Navegador
+        filtroRutas();
+    }
     // Carrusel ahora funciona con CSS puro - no necesita JavaScript
 });
