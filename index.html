@@ -1,261 +1,41 @@
 <!DOCTYPE html>
-<html lang="es">
+<!-- HTML5 en Español de ESPAÑA-->
+<html lang="es-ES">
 
     <head>
+        <!-- Codificación UTF-8 Estandarizada Unicode Completo -->
         <meta charset="UTF-8">
+        <!-- Estilos Responsive para Móviles, Escala y Ancho Inicial 100% -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description"
             content="ACTEA: Proyecto de reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza.">
-        <title>ACTEA | Alto Campoo Todo El Año</title>
+        <title>Proyecto ACTEA | Alto Campoo Todo El Año</title>
 
-        <!-- Preconnect para Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-        <!-- Preload imágenes críticas -->
+        <!-- Precarga de Imágenes Críticas -->
         <link rel="preload" as="image" href="img/hero.webp" type="image/webp" fetchpriority="high">
         <link rel="preload" as="image" href="img/logotipo.png">
 
-        <!-- CSS crítico inline (solo hero y header para móvil) -->
-        <style>
-            :root {
-                --header-height: 90px;
-                --color-primary: #00423F;
-                --color-text-inverse: #FFFFFF;
-                --color-secondary: #C4E86B;
-                --color-bg-body: #F3F4F6
-            }
-
-            * {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0
-            }
-
-            html {
-                overflow-x: hidden;
-                width: 100%;
-                max-width: 100vw
-            }
-
-            body {
-                font-family: system-ui, -apple-system, sans-serif;
-                color: #1f2937;
-                line-height: 1.6;
-                background-color: #F3F4F6;
-                overflow-x: hidden;
-                width: 100%;
-                max-width: 100vw;
-                margin: 0;
-                padding: 0;
-                position: relative;
-                padding-top: 90px
-            }
-
-            main {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                max-width: 100%;
-                box-sizing: border-box;
-                overflow-x: hidden
-            }
-
-            .header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 1000;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                width: 100%;
-                margin: 0;
-                padding: 0;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.05)
-            }
-
-            .header-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                min-height: 90px;
-                width: 100%;
-                max-width: 1280px;
-                margin: 0 auto;
-                padding: 0 1.5rem;
-                gap: 1rem
-            }
-
-            .logo-img {
-                height: 60px;
-                width: auto;
-                object-fit: contain;
-                display: block
-            }
-
-            .hero {
-                height: 75vh;
-                min-height: 500px;
-                aspect-ratio: 16 / 9;
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #FFFFFF;
-                text-align: center;
-                padding: 0 1rem;
-                margin: 0;
-                width: 100%;
-                box-sizing: border-box;
-                overflow: hidden;
-                background-color: #00423F
-            }
-
-            .hero-image {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                z-index: 0
-            }
-
-            .hero-overlay {
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(to bottom, rgba(0, 66, 63, 0.3), rgba(0, 66, 63, 0.7) 90%);
-                z-index: 1
-            }
-
-            .hero-content {
-                position: relative;
-                z-index: 2;
-                max-width: 800px;
-                padding: 0 1rem;
-                opacity: 0;
-                animation: fadeIn 0.5s ease-out 0.2s forwards
-            }
-
-            @keyframes fadeIn {
-                from {
-                    opacity: 0
-                }
-
-                to {
-                    opacity: 1
-                }
-            }
-
-            .hero-content h1 {
-                text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                color: white;
-                margin-bottom: 1.5rem;
-                /* Añadido Margen superior para evitar que al ir a Incio#top no haya margen espaciado arriba */
-                margin-top: 1rem;
-                font-weight: 700;
-                font-size: 3.5rem;
-                font-family: system-ui, -apple-system, sans-serif;
-                line-height: 1.1;
-                min-height: 3.85em
-            }
-
-            .hero-content p {
-                color: rgba(255, 255, 255, 0.9);
-                font-size: 1.25rem;
-                margin-bottom: 2.5rem;
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-                font-weight: 300;
-                line-height: 1.5
-            }
-
-            @media (max-width:768px) {
-                .hero {
-                    height: 60vh;
-                    min-height: 400px;
-                    aspect-ratio: 16 / 9
-                }
-
-                .hero-content h1 {
-                    font-size: 2.8rem;
-                    min-height: 3.08em
-                }
-
-                .hero-content p {
-                    font-size: 1.1rem
-                }
-            }
-
-            .mobile-menu {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: min(360px, 92vw);
-                height: 100vh;
-                background: #00423F;
-                transform: translateX(100%);
-                z-index: 1000;
-                opacity: 0;
-                pointer-events: none;
-                visibility: hidden
-            }
-
-            .mobile-menu.open {
-                transform: translateX(0);
-                opacity: 1;
-                pointer-events: auto;
-                visibility: visible
-            }
-
-            .mobile-menu-overlay {
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 999;
-                opacity: 0;
-                pointer-events: none;
-                visibility: hidden;
-                transition: opacity 0.3s ease
-            }
-
-            .mobile-menu-overlay.open {
-                opacity: 1;
-                pointer-events: auto;
-                visibility: visible
-            }
-        </style>
-
-        <!-- Estilos principales (cargados de forma asíncrona en móvil) -->
-        <link rel="stylesheet" href="estilo/main.css" media="print" onload="this.media='all'">
+        <!-- Estilos Principales con JS (Cargados de forma asíncrona en Móviles) -->
+        <!-- <link rel="stylesheet" href="estilo/main.css" media="print" onload="this.media='all'">
         <noscript>
             <link rel="stylesheet" href="estilo/main.css">
-        </noscript>
+        </noscript> -->
+        <!-- Estilos para todo, Carga lenta para que priorice primero el HTML -->
+        <link rel="stylesheet" href="estilo/main.css" fetchpriority="low">
 
-        <!-- Google Fonts cargadas de forma asíncrona -->
-        <link rel="preload" as="style"
-            href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap">
-        <link rel="preload" as="style"
+        <!-- Google Fonts: PENDIENTE ELIMINAR FUENTA MATERIAL SYMBOLS Y PASAR A SVG ESOS ICONOS -->
+        <!-- <link rel="preload" as="style"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap"
-            rel="stylesheet" media="print" onload="this.media='all'">
         <link
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
             rel="stylesheet" media="print" onload="this.media='all'">
         <noscript>
             <link
-                href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap"
-                rel="stylesheet">
-            <link href="../estilo/Harabara-Bold.woff" rel="stylesheet">
-            <link
                 href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
                 rel="stylesheet">
-        </noscript>
+        </noscript> -->
 
-        <!-- JavaScript -->
+        <!-- JavaScript en Diferido (No es Prioritaria su Carga: HTML renderiza primero) -->
         <script defer src="js/main.js"></script>
     </head>
 
@@ -629,7 +409,7 @@
                             <label for="newsletter-email" class="newsletter-description newsletter-description-text">
                                 Recibe las últimas noticias y rutas en tu email.
                             </label>
-                            <br /><br />
+                            <br><br>
                             <div class="newsletter-group">
                                 <input type="email" id="newsletter-email" name="email" class="newsletter-input"
                                     placeholder="tu@email.com" required>

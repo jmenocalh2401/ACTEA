@@ -36,7 +36,10 @@
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
-    letter-spacing: 0.10rem;
+    letter-spacing: 0.10em;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    /* Ayuda a que el kerning sea más preciso */
 
     /* -------------------------------------------------------------------------
        UI ELEMENTS
@@ -147,7 +150,10 @@ main {
     src: local('Harabara-Bold'), url(/estilo/Harabara-Bold.woff) format('woff');
     /* unicode-range: U + 0000-00FF, U + 0131, U + 0152-0153, U + 02C6, U + 02DA, U + 02DC, U + 2000-206F, U + 2074, U + 20AC, U + 2212, U + 2215; */
     font-display: swap;
-    letter-spacing: 1.5rem;
+    letter-spacing: 0.5em;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    /* Ayuda a que el kerning sea más preciso */
 }
 
 

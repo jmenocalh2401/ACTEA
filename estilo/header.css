@@ -89,7 +89,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--color-primary);
+    /* background: var(--color-primary); */
     min-width: 80px;
     height: 60px;
     padding: 0.5rem;
