@@ -1,42 +1,47 @@
 <!DOCTYPE html>
-<!-- HTML5 en Español de ESPAÑA-->
-<html lang="es-ES">
+<!-- HTML5 Dirección Texto de Izquierda a Derecha en Español de ESPAÑA-->
+<html dir="ltr" lang="es-ES">
 
     <head>
         <!-- Codificación UTF-8 Estandarizada Unicode Completo -->
         <meta charset="UTF-8">
         <!-- Estilos Responsive para Móviles, Escala y Ancho Inicial 100% -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Meta Descripción del Sitio para SEO -->
         <meta name="description"
-            content="ACTEA: Proyecto de reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza.">
+            content="Reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza.">
+        <!-- Meta Color del Sitio para SEO -->
+        <meta name="theme-color" content="#004441">
+        <!-- Meta Robots para Buscadores y Rastreadores de IA -->
+        <meta name="robots" content="index, follow" />
+        <!-- Icono del Sitio Web -->
+        <link rel="shortcut icon" href="multimedia/favicon.ico" type="image/x-icon">
+        <!-- Autor del Sitio Web -->
+        <meta name="author" content="CANTUR">
+        <!-- Palabras Clave para Posicionamiento SEO -->
+        <meta name="keywords" content="ACTEA, Alto Campoo, Senderismo, Cultura, Naturaleza">
+        <!-- Título del Sitio Web -->
         <title>Proyecto ACTEA | Alto Campoo Todo El Año</title>
 
         <!-- Precarga de Imágenes Críticas -->
         <link rel="preload" as="image" href="img/hero.webp" type="image/webp" fetchpriority="high">
         <link rel="preload" as="image" href="img/logotipo.png">
 
-        <!-- Estilos Principales con JS (Cargados de forma asíncrona en Móviles) -->
-        <!-- <link rel="stylesheet" href="estilo/main.css" media="print" onload="this.media='all'">
-        <noscript>
-            <link rel="stylesheet" href="estilo/main.css">
-        </noscript> -->
         <!-- Estilos para todo, Carga lenta para que priorice primero el HTML -->
         <link rel="stylesheet" href="estilo/main.css" fetchpriority="low">
 
-        <!-- Google Fonts: ELIMINADO PORQUE CARGA DESDE LOCAL LA FUENTE DESDE BASE.CSS -->
-        <!-- <link rel="preload" as="style"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-            rel="stylesheet" media="print" onload="this.media='all'">
-        <noscript>
-            <link
-                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-                rel="stylesheet">
-        </noscript> -->
-
         <!-- JavaScript en Diferido (No es Prioritaria su Carga: HTML renderiza primero) -->
         <script defer src="js/main.js"></script>
+        <!-- Meta Etiquetas para Redes Sociales -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:image" content="img/hero.jpg" />
+        <meta name="DC.Title" content="Proyecto ACTEA" />
+        <meta property="og:site_name" content="Alto Campoo Todo El Año" />
+        <meta property="og:title" content="Proyecto ACTEA" />
+        <meta property="og:description"
+            content="Reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza." />
+        <meta property="og:url" content="https://proyectoactea.com/">
+        <meta property="og:image" content="img/hero.jpg" />
     </head>
 
     <body>
