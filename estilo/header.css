@@ -417,9 +417,11 @@
         pointer-events: none;
     }
 
-    /* Cuando el menú está abierto, ocultamos los widgets hermanos */
+    /* Cuando el menú está abierto, ocultamos los widgets hermanos y el logo del header */
     body:has(.menu-logic-check:checked) .weather-widget,
-    body:has(.menu-logic-check:checked) .lang-dropdown {
+    body:has(.menu-logic-check:checked) .lang-dropdown,
+    body:has(.menu-logic-check:checked) .lang-selector,
+    body:has(.menu-logic-check:checked) .header .logo {
         visibility: hidden !important;
         pointer-events: none;
     }
@@ -433,7 +435,9 @@
 
     /* Al usar display:none, el navegador elimina el logo y widgets del orden de Tab */
     body:has(.menu-logic-check:checked) .weather-widget,
-    body:has(.menu-logic-check:checked) .lang-dropdown {
+    body:has(.menu-logic-check:checked) .lang-dropdown,
+    body:has(.menu-logic-check:checked) .lang-selector,
+    body:has(.menu-logic-check:checked) .header .logo {
         display: none !important;
     }
 }

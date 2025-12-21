@@ -85,46 +85,63 @@
                     <span class="weather-temp">--°C</span>
                 </div>
 
-                <div class="lang-selector">
-                    <select id="lang-select" aria-label="Select language" 
-                            onchange="const file = window.location.pathname.split('/en/').pop() || window.location.pathname.split('/').pop() || 'index.html'; window.location.href = this.value === 'en' ? `/en/${file}` : `/${file}`;">
-                        <option value="es">ES</option>
-                        <option value="en" selected>EN</option>
-                    </select>
+                <div class="lang-dropdown">
+                    <a href="#lang-menu" class="lang-trigger" aria-label="Change language">
+                        EN <span class="material-symbols-outlined">expand_more</span>
+                    </a>
+
+                    <nav id="lang-menu" class="lang-menu-content">
+                        <ul class="lang-list">
+                            <li>
+                                <a href="../index.html" class="lang-item">
+                                    Español
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html" class="lang-item active">
+                                    <span class="material-symbols-outlined check-icon">check</span>
+                                    English
+                                </a>
+                            </li>
+                        </ul>
+                        <a href="#" class="lang-close-overlay">Close Language List</a>
+                    </nav>
                 </div>
 
-                <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false"
-                    aria-controls="mobile-menu">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
+                <input type="checkbox" id="menu-logic-state" class="menu-logic-check"
+                    aria-label="Navigation menu">
+
+                <label for="menu-logic-state" class="menu-toggle hamburger">
+                    <span class="icon-open material-symbols-outlined">menu</span>
+                </label>
+
+                <nav class="mobile-menu">
+                    <div class="mobile-menu-header">
+                        <a href="index.html#top" class="logo mobile-logo">
+                            <div class="logo-brand">
+                                <img src="../img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150" height="50">
+                            </div>
+                        </a>
+                        <label for="menu-logic-state" class="close-trigger">
+                            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                            <span class="visually-hidden">Close navigation menu</span>
+                        </label>
+                    </div>
+                    <nav aria-label="Mobile navigation">
+                        <ul class="mobile-nav-list">
+                            <li><a href="index.html#top">Home</a></li>
+                            <li><a href="rutas.html">Routes</a></li>
+                            <li><a href="novedades.html">News</a></li>
+                            <li><a href="actividades.html">Activities</a></li>
+                            <li><a href="informacion.html">Information</a></li>
+                        </ul>
+                    </nav>
+                </nav>
+
+                <div class="mobile-menu-overlay"></div>
             </div>
         </div>
     </header>
-
-    <!-- Menú Móvil Overlay -->
-    <div class="mobile-menu-overlay"></div>
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu"
-        aria-hidden="true">
-        <div class="mobile-menu-header">
-            <a href="index.html#top" class="logo mobile-logo">
-                <div class="logo-brand">
-                    <img src="../img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150" height="50">
-                </div>
-            </a>
-            <button class="hamburger hamburger-close" aria-label="Close menu">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-        <nav aria-label="Mobile navigation">
-            <ul class="mobile-nav-list">
-                <li><a href="index.html#top">Home</a></li>
-                <li><a href="rutas.html">Routes</a></li>
-                <li><a href="novedades.html">News</a></li>
-                <li><a href="actividades.html">Activities</a></li>
-                <li><a href="informacion.html">Information</a></li>
-            </ul>
-        </nav>
-    </div>
 
     <!-- MAIN CONTENT AREA -->
     <main id="main-content">
