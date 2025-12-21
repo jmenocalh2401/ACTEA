@@ -355,7 +355,6 @@
     .footer {
         visibility: visible !important;
         pointer-events: auto !important;
-        aria-hidden: false !important;
     }
 
     /* Eliminamos cualquier rastro del menú móvil y sus capas */
@@ -416,7 +415,6 @@
     body:has(.menu-logic-check:checked) .footer {
         visibility: hidden !important;
         pointer-events: none;
-        aria-hidden: true;
     }
 
     /* Cuando el menú está abierto, ocultamos los widgets hermanos */
@@ -424,7 +422,6 @@
     body:has(.menu-logic-check:checked) .lang-dropdown {
         visibility: hidden !important;
         pointer-events: none;
-        aria-hidden: true;
     }
 
     /* Nos aseguramos de que el botón de cerrar y el menú SÍ sean visibles */

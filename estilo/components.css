@@ -715,6 +715,7 @@ summary::-webkit-details-marker {
     width: 100%;
     max-width: 350px;
     font-size: 1rem;
+    margin-bottom: 10px;
 }
 
 .newsletter-input:focus,

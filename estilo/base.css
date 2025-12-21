@@ -183,11 +183,11 @@ main {
 }
 
 .card-meta .orange.material-symbols-outlined {
-    color: orange;
+    color: #8F0000;
 }
 
 .card-meta .material-symbols-outlined.red {
-    color: red;
+    color: #2B00FF;
 }
 
 h1,
