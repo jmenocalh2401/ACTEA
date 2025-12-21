@@ -248,19 +248,19 @@
 .route-card[data-difficulty="Fácil"] .card-meta>div:first-child svg,
 .route-card[data-difficulty="Fácil"] .card-meta>button:first-child svg {
     color: var(--diff-easy);
-    fill: var(--diff-easy);
+    /*  fill: var(--diff-easy); */
 }
 
 .route-card[data-difficulty="Moderada"] .card-meta>div:first-child svg,
 .route-card[data-difficulty="Moderada"] .card-meta>button:first-child svg {
     color: var(--diff-mod);
-    fill: var(--diff-mod);
+    /* fill: var(--diff-mod); */
 }
 
 .route-card[data-difficulty="Difícil"] .card-meta>div:first-child svg,
 .route-card[data-difficulty="Difícil"] .card-meta>button:first-child svg {
     color: var(--diff-hard);
-    fill: var(--diff-hard);
+    /* fill: var(--diff-hard); */
 }
 
 .card-meta i,
@@ -270,7 +270,7 @@
     color: var(--color-primary);
     font-size: 16px;
     vertical-align: middle;
-    fill: currentColor;
+    /* fill: currentColor; */
 }
 
 /* ============================================================================
@@ -294,7 +294,7 @@
     border-radius: 4px;
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
+    /* pointer-events: none; */
     transition: opacity 0.1s ease, visibility 0.1s ease;
     z-index: 100;
     font-family: var(--font-body);

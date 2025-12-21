@@ -23,7 +23,8 @@
     --color-text-light: #4b5563;
     --color-bg-body: #F3F4F6;
     --color-bg-light: #f8f9fa;
-    --color-white: #FFFFFF;
+    --color-white: #FFF;
+    --color-black: #000;
     --diff-easy: #10B981;
     --diff-mod: #F59E0B;
     --diff-hard: #EF4444;
@@ -150,10 +151,6 @@ main {
     src: local('Harabara-Bold'), url(/fuentes/Harabara-Bold.woff) format('woff');
     /* unicode-range: U + 0000-00FF, U + 0131, U + 0152-0153, U + 02C6, U + 02DA, U + 02DC, U + 2000-206F, U + 2074, U + 20AC, U + 2212, U + 2215; */
     font-display: swap;
-    letter-spacing: 0.5em;
-    font-kerning: normal;
-    text-rendering: optimizeLegibility;
-    /* Ayuda a que el kerning sea más preciso */
 }
 
 /* Iconos SVG Google Fonts desde Local */
@@ -199,10 +196,14 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Harabara-Bold', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Harabara-Bold', system-ui, 'Segoe UI', sans-serif;
     /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; */
     font-weight: 700;
     line-height: 1.1;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    /* Ayuda a que el kerning sea más preciso */
+    letter-spacing: 0.1em;
     color: var(--color-primary);
     text-transform: uppercase;
     margin-bottom: var(--spacing-sm);

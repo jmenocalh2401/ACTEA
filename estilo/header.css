@@ -224,38 +224,102 @@
     color: var(--color-white);
 }
 
-.lang-selector select {
-    border: none;
-    background: transparent;
-    font-weight: 600;
-    color: var(--color-white);
-    cursor: pointer;
-    padding: 0.25rem;
-    font-family: var(--font-body);
-    transition: background-color 0.3s ease;
+/* Contenedor relativo */
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
 }
 
-.lang-selector select:focus {
-    outline: none;
+/* Botón disparador */
+.lang-trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 8px 12px;
+}
+
+/* Contenedor del menú (Flotante como Imagen 4) */
+.lang-menu-content {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: #004441;
+    /* Fondo oscuro original */
+    min-width: 160px;
+    border-radius: 12px;
+    /* Bordes redondeados */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+
+    /* Estado inicial: Oculto */
+    display: none;
+}
+
+/* MOSTRAR CUANDO ES EL TARGET */
+#lang-menu:target {
+    display: block;
+}
+
+/* Lista de idiomas */
+.lang-list {
+    list-style: none;
+    padding: 8px;
+    margin: 0;
+    position: relative;
+    z-index: 1001;
+    /* Por encima del overlay de cierre */
+}
+
+/* CADA ITEM DEL MENÚ */
+.lang-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: #e0f2f1;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    /* Bordes internos redondeados */
+    transition: background 0.2s;
+}
+
+/* --- ESTILO IMAGEN 3 (OPCIÓN SELECCIONADA) --- */
+.lang-item.active {
+    background-color: #98c05b;
+    /* Color verde lima de tu imagen */
+    color: #004441;
+    /* Texto oscuro para contraste */
+    font-weight: 700;
+}
+
+.lang-item:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Icono de Check (Solo visible en el activo) */
+.check-icon {
+    font-size: 18px !important;
+}
+
+/* Capa transparente para cerrar al hacer clic fuera */
+.lang-close-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    cursor: default;
 }
 
 
 /* ============================================================================
    MENÚ MÓVIL (Sin JavaScript!)
    ============================================================================ */
-/* ============================================================================
-   LÓGICA DE VISIBILIDAD (PC vs MÓVIL)
-   ============================================================================ */
-
-/* En PC escondemos la hamburguesa y el menú móvil */
-@media (min-width: 992px) {
-
-    .hamburger,
-    .mobile-menu,
-    .mobile-menu-overlay {
-        display: none !important;
-    }
-}
 
 /* En móvil mostramos la hamburguesa */
 @media (max-width: 991px) {
@@ -264,32 +328,55 @@
         color: white;
         text-decoration: none;
     }
+
+    .hamburger .material-symbols-outlined,
+    .close-trigger .material-symbols-outlined {
+        font-size: 44px;
+    }
 }
 
 /* ============================================================================
-   TRAMPA DE FOCO (FOCUS TRAP) - VERSIÓN TARGET
+   CONTROL DE VISIBILIDAD Y FOCO POR DISPOSITIVO
    ============================================================================ */
 
-/* Solo aplicamos la trampa si el menú está activo (#mobile-menu en la URL) */
-body:has(#mobile-menu:target) #main-content,
-body:has(#mobile-menu:target) .footer {
-    visibility: hidden !important;
-    /* Desaparece del orden de tabulación */
-    pointer-events: none;
-    /* Bloquea interacción táctil/ratón */
-    user-select: none;
-    /* Evita selección de texto */
+/* 1. TRAMPA DE FOCO: Solo activa en móviles (Ancho < 992px) */
+@media (max-width: 991px) {
+
+    body:has(#mobile-menu:target) #main-content,
+    body:has(#mobile-menu:target) .footer {
+        visibility: hidden !important;
+        pointer-events: none;
+        aria-hidden: true;
+    }
+
+    /* Aseguramos que el menú sea visible en móvil cuando es el target */
+    #mobile-menu:target {
+        visibility: visible !important;
+        transform: translateX(0);
+    }
 }
 
-/* El Header debe permanecer visible para que el menú y la X funcionen */
-body:has(#mobile-menu:target) .header {
-    visibility: visible !important;
-}
+/* 2. LIMPIEZA TOTAL EN PC: Forzamos que todo vuelva a la normalidad */
+@media (min-width: 992px) {
 
-/* Nos aseguramos de que el menú sea siempre visible cuando es el objetivo */
-#mobile-menu:target {
-    visibility: visible !important;
-    transform: translateX(0);
+    /* Aunque el ID #mobile-menu esté en la URL, en PC el contenido DEBE verse */
+    #main-content,
+    .footer {
+        visibility: visible !important;
+        pointer-events: auto !important;
+        aria-hidden: false !important;
+    }
+
+    /* Eliminamos cualquier rastro del menú móvil y sus capas */
+    .hamburger,
+    .mobile-menu,
+    .mobile-menu-overlay,
+    #mobile-menu {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: none !important;
+    }
 }
 
 /* ============================================================================
@@ -301,15 +388,25 @@ body:has(#mobile-menu:target) .header {
     top: 0;
     right: 0;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     background-color: #004441;
     z-index: 10000;
-    /* Estado inicial: Fuera de pantalla a la derecha */
+    /* PROPIEDAD CLAVE: Reserva espacio para que los elementos enfocados 
+       no queden debajo de la "X" al subir con el teclado */
+    scroll-padding-top: 80px;
+    /* Suaviza el movimiento para que el usuario no pierda la orientación */
+    scroll-behavior: smooth;
+    /* Aseguramos que el scroll sea interno */
+    overflow-y: auto;
+    /* Mejora el scroll en dispositivos iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Evita que el fondo de la web se mueva al llegar al final del menú */
+    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
     transform: translateX(100%);
     visibility: hidden;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
-    display: flex;
-    flex-direction: column;
 }
 
 /* ACTIVACIÓN: Cuando la URL termina en #mobile-menu */
@@ -339,9 +436,25 @@ body:has(#mobile-menu:target) .header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 70px;
+    min-height: 90px;
+    /* Refuerzo para que no colapse */
+    height: 90px;
+    /* 2. LA PROPIEDAD CLAVE: Evita que Flexbox aplaste la cabecera */
+    flex-shrink: 0;
     /* Alineación perfecta con tu header */
     padding: 0 1.5rem;
+    /* Opcional: Mantener la X siempre arriba aunque hagas scroll */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #004441;
+    /* Color sólido idéntico al fondo para ocultar los links que pasan por detrás */
+    z-index: 20;
+    width: 100%;
+    box-sizing: border-box;
+    /* Asegura que el padding no sume altura extra */
+    /* Un pequeño borde inferior ayuda a separar visualmente la zona fija */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .close-trigger {
@@ -354,6 +467,8 @@ body:has(#mobile-menu:target) .header {
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     text-decoration: none;
+    /* Posicionar Icono Cierre a la Altura del Logo */
+    margin-top: 0;
 }
 
 /* FOCO PARA TECLADO */
@@ -362,6 +477,8 @@ body:has(#mobile-menu:target) .header {
 .mobile-nav-list a:focus {
     outline: 3px solid #ff9800;
     outline-offset: 2px;
+    color: var(--color-black);
+    background-color: var(--color-secondary);
 }
 
 /* LISTA DE ENLACES */
@@ -369,6 +486,7 @@ body:has(#mobile-menu:target) .header {
     list-style: none;
     padding: 2rem 1.5rem;
     margin: 0;
+    text-align: center;
 }
 
 .mobile-nav-list li {
@@ -378,10 +496,25 @@ body:has(#mobile-menu:target) .header {
 .mobile-nav-list a {
     display: block;
     padding: 1.2rem 0;
-    color: white;
+    color: var(--color-white);
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 600;
+    /* Refuerzo para navegadores más antiguos: crea un margen invisible 
+       que el navegador respeta al hacer "scroll into view" */
+    scroll-margin-top: 80px;
+}
+
+.mobile-nav-list li a:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+/* Foco de Icono Hamburguesa sin Fondo Verde, solo Color de Icono a Verde */
+.hamburger:focus {
+    background-color: transparent;
+    color: var(--color-secondary);
 }
 
 /* ============================================================================

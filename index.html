@@ -74,12 +74,27 @@
                         <span class="weather-temp">--°C</span>
                     </div>
 
-                    <div class="lang-selector">
-                        <select id="lang-select" aria-label="Seleccionar idioma"
-                            onchange="const file = window.location.pathname.split('/').pop() || 'index.html'; window.location.href = this.value === 'en' ? `/en/${file}` : `/${file}`;">
-                            <option value="es" selected>ES</option>
-                            <option value="en">EN</option>
-                        </select>
+                    <div class="lang-dropdown">
+                        <a href="#lang-menu" class="lang-trigger" aria-label="Cambiar idioma">
+                            ES <span class="material-symbols-outlined">expand_more</span>
+                        </a>
+
+                        <nav id="lang-menu" class="lang-menu-content">
+                            <ul class="lang-list">
+                                <li>
+                                    <a href="index.html" class="lang-item active">
+                                        <span class="material-symbols-outlined check-icon">check</span>
+                                        Español
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="en/index.html" class="lang-item">
+                                        English
+                                    </a>
+                                </li>
+                            </ul>
+                            <a href="#" class="lang-close-overlay"></a>
+                        </nav>
                     </div>
 
                     <a href="#mobile-menu" class="hamburger" aria-label="Abrir menú de navegación">
