@@ -281,9 +281,5 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFonts();
     fetchWeather();
     initMobileMenu();
-
-    const featuredRoutes = document.getElementById('featured-routes');
-    if (featuredRoutes) {
-        initCarousel();
-    }
+    // Carrusel ahora funciona con CSS puro - no necesita JavaScript
 });

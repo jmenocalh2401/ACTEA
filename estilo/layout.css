@@ -144,16 +144,31 @@
 
 
 /* ============================================================================
-   CARRUSEL DE RUTAS
+   CARRUSEL DE RUTAS - CSS ONLY FUNCIONAL
    ============================================================================ */
+
+/* Radio buttons ocultos */
+.carousel-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+}
+
+/* Contenedor principal del carrusel */
+.carousel-section {
+    position: relative;
+}
 
 .carousel-container {
     position: relative;
-    padding: 2rem 0;
+    padding: 2rem 60px;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .card-header {
@@ -162,63 +177,76 @@
 
 .card-header h3 {
     margin: 1rem 1.5rem 0.5rem;
-    /* Ajusta los márgenes para que se vea igual que antes */
     color: #004d40;
-    /* Tu color de títulos */
 }
 
 .carousel-wrapper {
-    position: relative;
     width: 100%;
-    padding: 0 60px;
+    overflow: hidden;
 }
 
+/* Track del carrusel - usa transform para moverse */
 .carousel-track {
     display: flex;
     gap: 16px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
     padding: 0;
     margin: 0;
-    scrollbar-width: none;
-    scrollbar-color: transparent transparent;
-    -ms-overflow-style: none;
-    scroll-behavior: smooth;
-    /* Limpieza de la lista del carrusel */
     list-style: none;
-    padding: 0;
-    margin: 0;
+    transition: transform 0.4s ease-out;
+    will-change: transform;
 }
 
-/* Evitar que los li hereden márgenes de lista */
+/* Tarjetas del carrusel */
 .route-item {
     margin: 0;
     padding: 0;
-}
-
-.carousel-track::-webkit-scrollbar {
-    display: none;
+    flex: 0 0 300px;
+    min-width: 100%;
 }
 
 .carousel-track .route-card {
-    flex: 0 0 300px;
-    scroll-snap-align: center;
-    min-width: 0;
+    width: 100%;
+    max-width: 100%;
 }
 
-/* Controles del carrusel */
+/* === MOVIMIENTO DEL CARRUSEL SEGÚN RADIO SELECCIONADO === */
+/* Cada tarjeta = 300px + 16px gap = 316px */
+
+/* Slide 1 (default) */
+#slide1:checked~.carousel-container .carousel-track {
+    transform: translateX(0);
+}
+
+/* Slide 2 */
+#slide2:checked~.carousel-container .carousel-track {
+    transform: translateX(-316px);
+}
+
+/* Slide 3 */
+#slide3:checked~.carousel-container .carousel-track {
+    transform: translateX(-632px);
+}
+
+/* Slide 4 */
+#slide4:checked~.carousel-container .carousel-track {
+    transform: translateX(-948px);
+}
+
+/* === CONTROLES DEL CARRUSEL (labels como botones) === */
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 420px;
+    width: 48px;
+    height: 100%;
+    max-height: 420px;
     border-radius: 0;
     background: white;
     box-shadow: var(--shadow-md);
     color: var(--color-primary);
     z-index: 10;
-    display: flex;
+    display: none;
+    /* Oculto por defecto */
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
@@ -227,24 +255,17 @@
 }
 
 .carousel-btn.prev {
-    display: none;
+    left: 0;
 }
 
 .carousel-btn.next {
-    display: flex;
+    right: 0;
 }
 
 .carousel-btn:hover {
     background: var(--color-primary);
     color: white;
-    box-shadow: var(--shadow-lg);
-}
-
-.carousel-btn:hover {
-    background: var(--color-white);
-    color: var(--color-primary);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-btn:active {
@@ -256,50 +277,253 @@
     outline-offset: 2px;
 }
 
-.carousel-btn.prev {
-    left: 0;
-}
-
-.carousel-btn.next {
-    right: 0;
-}
-
 .carousel-btn .material-symbols-outlined {
     font-size: 28px;
-    font-weight: 600;
+    /* font-weight: 600; Eliminado para evitar problemas con iconos */
 }
 
+/* === MOSTRAR/OCULTAR FLECHAS SEGÚN EL SLIDE ACTIVO === */
+/* Todas ocultas por defecto - se muestran según el estado */
+
+/* Slide 1 activo: mostrar solo flecha NEXT (show-on-1) */
+#slide1:checked~.carousel-container .show-on-1 {
+    display: flex;
+}
+
+/* Slide 2 activo: mostrar prev (show-on-2) y next (show-on-2) */
+#slide2:checked~.carousel-container .show-on-2 {
+    display: flex;
+}
+
+/* Slide 3 activo: mostrar prev (show-on-3) y next (show-on-3) */
+#slide3:checked~.carousel-container .show-on-3 {
+    display: flex;
+}
+
+/* Slide 4 activo: mostrar solo flecha PREV (show-on-4) */
+#slide4:checked~.carousel-container .show-on-4 {
+    display: flex;
+}
+
+/* === RESPONSIVE === */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
-    .carousel-wrapper {
-        padding: 0 1rem;
+    .carousel-container {
+        padding: 1rem 0;
+        width: 100vw;
+        /* Asegurar ancho total */
+        overflow: hidden;
+        /* Evitar scroll horizontal de página */
     }
 
+    .carousel-wrapper {
+        width: 100%;
+        padding: 0;
+        overflow: visible;
+        /* Permitir ver las tarjetas de los lados */
+    }
+
+    .carousel-track {
+        display: flex;
+        width: 100%;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        /* Movimiento suave */
+        /* Eliminamos gap aquí, lo controlamos con margin en el item para cálculo exacto */
+        gap: 0;
+    }
+
+    .route-item {
+        /* Ancho: 85% de la pantalla */
+        flex: 0 0 85vw;
+        width: 85vw;
+        max-width: 350px;
+        /* Tope para móviles muy anchos */
+
+        /* Gap entre tarjetas: 16px */
+        /* margin-right: 16px; */
+
+        display: block;
+        /* Asegurar comportamiento bloque */
+        box-sizing: border-box;
+    }
+
+    /* Asegurar que la imagen no desborde la tarjeta */
+    .route-card {
+        width: 100%;
+        overflow: hidden;
+        /* Cortar cualquier hijo que sobresalga */
+        border-radius: 12px;
+    }
+
+    .card-img-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    /* === CÁLCULOS DE TRANSFORMACIÓN MÓVIL (VW) === */
+    /*
+       Objetivo: Centrar tarjeta de 85vw.
+       Espacio libre: 100vw - 85vw = 15vw.
+       Margen izquierdo inicial (Start): 7.5vw.
+
+       Avance por slide: (85vw + 16px).
+    */
+
+    /* Slide 1 Centrado: Start en 7.5vw */
+    #slide1:checked~.carousel-container .carousel-track {
+        transform: translateX(0px);
+    }
+
+    /* Slide 2: 7.5vw - (85vw + 16px) */
+    #slide2:checked~.carousel-container .carousel-track {
+        transform: translateX(-100%);
+    }
+
+    /* Slide 3: 7.5vw - 2*(85vw + 16px) */
+    #slide3:checked~.carousel-container .carousel-track {
+        transform: translateX(-200%);
+    }
+
+    /* Slide 4: 7.5vw - 3*(85vw + 16px) */
+    #slide4:checked~.carousel-container .carousel-track {
+        transform: translateX(-300%);
+    }
+
+    /* Flechas Móvil */
     .carousel-btn {
         display: none;
+        /* Se activan con show-on */
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        border: none;
+        border-radius: 50%;
+        z-index: 100;
+        /* Centradas verticalmente respecto a la imagen (aprox) */
+        top: 40%;
     }
 
-    .carousel-track .route-card {
-        flex: 0 0 85%;
-        scroll-snap-align: center;
+    .carousel-btn.prev {
+        left: 8px;
+    }
+
+    .carousel-btn.next {
+        right: 8px;
+    }
+
+    /* Activar flechas */
+    #slide1:checked~.carousel-container .show-on-1 {
+        display: flex !important;
+    }
+
+    #slide2:checked~.carousel-container .show-on-2 {
+        display: flex !important;
+    }
+
+    #slide3:checked~.carousel-container .show-on-3 {
+        display: flex !important;
+    }
+
+    #slide4:checked~.carousel-container .show-on-4 {
+        display: flex !important;
     }
 }
 
-@media (min-width: 769px) and (max-width: 1023px) {
+@media (min-width: 769px) {
+
+    /* En PC usamos un contenedor acotado y centrado */
     .carousel-wrapper {
-        padding: 0 50px;
+        max-width: 100%;
+        /* Reducido para que navegar tenga sentido y no sobre espacio */
+        margin: 0 auto;
+        overflow: hidden;
     }
 
-    .carousel-track .route-card {
-        flex: 0 0 260px;
+    .carousel-track {
+        gap: 0;
+        justify-content: flex-start;
+    }
+
+    .route-item {
+        flex: 0 0 320px;
+        /* Ancho fijo */
+        min-width: 400px;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    /* TRANSFORMS EN PC (Contenido total = 1280px | Wrapper = 850px)
+       Slack (espacio para mover) = 1280 - 850 = 430px.
+       Distribuimos esos 430px entre los estados para que el movimiento sea fluido.
+    */
+
+    /* Slide 1: Inicio absoluto. Vemos [1] [2] [3parcial] */
+    #slide1:checked~.carousel-container .carousel-track {
+        transform: translateX(0);
+    }
+
+    /* Slide 2: Movemos un poco (-140px). Vemos [1parcial] [2] [3] */
+    #slide2:checked~.carousel-container .carousel-track {
+        transform: translateX(-400px);
+    }
+
+    /* Slide 3: Movemos más (-290px). Vemos [2parcial] [3] [4] */
+    #slide3:checked~.carousel-container .carousel-track {
+        transform: translateX(-800px);
+    }
+
+    /* Slide 4: Final absoluto (-430px). Vemos [2parcial] [3] [4parcial] -> alineado derecha.
+       Aseguramos no pasarnos de -430px para no ver hueco. */
+    #slide4:checked~.carousel-container .carousel-track {
+        transform: translateX(-1200px);
+    }
+
+    /* Mostrar flechas bucle en escritorio */
+    #slide1:checked~.carousel-container .show-on-1 {
+        display: flex !important;
+    }
+
+    #slide2:checked~.carousel-container .show-on-2 {
+        display: flex !important;
+    }
+
+    #slide3:checked~.carousel-container .show-on-3 {
+        display: flex !important;
+    }
+
+    #slide4:checked~.carousel-container .show-on-4 {
+        display: flex !important;
+    }
+
+    /* Flechas con estilo Desktop */
+    .carousel-btn {
+        width: 50px;
+        height: 50px;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 50%;
+        /* Redondas */
+        transition: all 0.3s ease;
+        z-index: 20;
+    }
+
+    .carousel-btn:hover {
+        background: var(--color-primary);
+        color: white;
+        transform: scale(1.1);
+    }
+
+    .carousel-btn.prev {
+        left: -15px;
+    }
+
+    .carousel-btn.next {
+        right: -15px;
     }
 }
-
-@media (min-width: 1024px) {
-    .carousel-track .route-card {
-        flex: 0 0 300px;
-    }
-}
-
 
 /* ============================================================================
    PAGE SECTIONS (Para navegación SPA-style)

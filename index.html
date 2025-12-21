@@ -147,22 +147,46 @@
                 </div>
             </section>
 
-            <!-- Carrusel Rutas Destacadas -->
-            <section class="section-padding container" aria-labelledby="carousel-title">
+            <!-- Carrusel Rutas Destacadas - CSS Only Funcional -->
+            <section class="section-padding container carousel-section" aria-labelledby="carousel-title">
                 <header class="text-center section-header">
                     <h2 id="carousel-title" class="routes-title">Rutas Destacadas</h2>
                     <p class="routes-subtitle">Nuestra selección de senderos para esta temporada</p>
                 </header>
 
+                <!-- Radio buttons ocultos ANTES del container (hermanos) -->
+                <input type="radio" name="carousel" id="slide1" class="carousel-radio" checked>
+                <input type="radio" name="carousel" id="slide2" class="carousel-radio">
+                <input type="radio" name="carousel" id="slide3" class="carousel-radio">
+                <input type="radio" name="carousel" id="slide4" class="carousel-radio">
+
                 <div class="carousel-container">
+                    <!-- Flechas PREV -->
+
+                    <!-- Bucle: Estoy en 1, ir a 4 (Final) -->
+                    <label for="slide4" class="carousel-btn prev show-on-1" role="button" tabindex="0"
+                        aria-label="Ir a la última ruta">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+                    </label>
+
+                    <!-- Navegación normal -->
+                    <label for="slide1" class="carousel-btn prev show-on-2" role="button" tabindex="0"
+                        aria-label="Ver ruta anterior: Pico Tres Mares">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+                    </label>
+                    <label for="slide2" class="carousel-btn prev show-on-3" role="button" tabindex="0"
+                        aria-label="Ver ruta anterior: Nacimiento del Ebro">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+                    </label>
+                    <label for="slide3" class="carousel-btn prev show-on-4" role="button" tabindex="0"
+                        aria-label="Ver ruta anterior: Cueto de la Horcada">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+                    </label>
+
                     <div class="carousel-wrapper">
-                        <button class="carousel-btn prev" aria-label="Rutas anteriores" aria-controls="featured-routes">
-                            <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
-                        </button>
-
                         <ul class="carousel-track" id="featured-routes">
-
-                            <li class="route-item">
+                            <!-- Items del carrusel (sin cambios) -->
+                            <li class="route-item" id="ruta-1">
                                 <article class="route-card" data-difficulty="Moderada">
                                     <header class="card-header">
                                         <figure class="card-img-wrapper">
@@ -172,7 +196,6 @@
                                                 loading="lazy">
                                         </figure>
                                     </header>
-
                                     <div class="card-body">
                                         <h3>Pico Tres Mares</h3>
                                         <footer class="card-meta">
@@ -180,20 +203,16 @@
                                                 <span class="orange material-symbols-outlined"
                                                     aria-hidden="true">timeline</span>
                                                 <span>Moderada</span>
-                                                <span class="tooltip" role="tooltip" id="tt-diff-1">Dificultad</span>
                                             </button>
                                             <button type="button" class="meta-item" aria-describedby="tt-time-1">
                                                 <span class="material-symbols-outlined"
                                                     aria-hidden="true">av_timer</span>
                                                 <span>3h 30m</span>
-                                                <span class="tooltip" role="tooltip" id="tt-time-1">Tiempo
-                                                    estimado</span>
                                             </button>
                                             <button type="button" class="meta-item" aria-describedby="tt-dist-1">
                                                 <span class="material-symbols-outlined"
                                                     aria-hidden="true">pin_drop</span>
                                                 <span>8.5 km</span>
-                                                <span class="tooltip" role="tooltip" id="tt-dist-1">Distancia</span>
                                             </button>
                                         </footer>
                                         <button class="btn btn-outline btn-card">Ver Detalle</button>
@@ -201,7 +220,7 @@
                                 </article>
                             </li>
 
-                            <li class="route-item">
+                            <li class="route-item" id="ruta-2">
                                 <article class="route-card" data-difficulty="Fácil">
                                     <header class="card-header">
                                         <figure class="card-img-wrapper">
@@ -218,20 +237,16 @@
                                                 <span class="material-symbols-outlined green"
                                                     aria-hidden="true">timeline</span>
                                                 <span>Fácil</span>
-                                                <span class="tooltip" role="tooltip" id="tt-diff-2">Dificultad</span>
                                             </button>
                                             <button type="button" class="meta-item" aria-describedby="tt-time-2">
                                                 <span class="material-symbols-outlined"
                                                     aria-hidden="true">av_timer</span>
                                                 <span>1h 15m</span>
-                                                <span class="tooltip" role="tooltip" id="tt-time-2">Tiempo
-                                                    estimado</span>
                                             </button>
                                             <button type="button" class="meta-item" aria-describedby="tt-dist-2">
                                                 <span class="material-symbols-outlined"
                                                     aria-hidden="true">pin_drop</span>
                                                 <span>3.2 km</span>
-                                                <span class="tooltip" role="tooltip" id="tt-dist-2">Distancia</span>
                                             </button>
                                         </footer>
                                         <button class="btn btn-outline btn-card">Ver Detalle</button>
@@ -239,7 +254,7 @@
                                 </article>
                             </li>
 
-                            <li class="route-item">
+                            <li class="route-item" id="ruta-3">
                                 <article class="route-card" data-difficulty="Difícil">
                                     <header class="card-header">
                                         <figure class="card-img-wrapper">
@@ -256,20 +271,16 @@
                                                 <span class="material-symbols-outlined red"
                                                     aria-hidden="true">timeline</span>
                                                 <span>Difícil</span>
-                                                <span class="tooltip" role="tooltip" id="tt-diff-3">Dificultad</span>
                                             </button>
                                             <button type="button" class="meta-item" aria-describedby="tt-time-3">
                                                 <span class="material-symbols-outlined"
                                                     aria-hidden="true">av_timer</span>
                                                 <span>5h 00m</span>
-                                                <span class="tooltip" role="tooltip" id="tt-time-3">Tiempo
-                                                    estimado</span>
                                             </button>
                                             <button type="button" class="meta-item" aria-describedby="tt-dist-3">
                                                 <span class="material-symbols-outlined"
                                                     aria-hidden="true">pin_drop</span>
                                                 <span>12 km</span>
-                                                <span class="tooltip" role="tooltip" id="tt-dist-3">Distancia</span>
                                             </button>
                                         </footer>
                                         <button class="btn btn-outline btn-card">Ver Detalle</button>
@@ -277,7 +288,7 @@
                                 </article>
                             </li>
 
-                            <li class="route-item">
+                            <li class="route-item" id="ruta-4">
                                 <article class="route-card" data-difficulty="Moderada">
                                     <header class="card-header">
                                         <figure class="card-img-wrapper">
@@ -294,20 +305,16 @@
                                                 <span class="material-symbols-outlined orange"
                                                     aria-hidden="true">timeline</span>
                                                 <span>Moderada</span>
-                                                <span class="tooltip" role="tooltip" id="tt-diff-4">Dificultad</span>
                                             </button>
                                             <button type="button" class="meta-item" aria-describedby="tt-time-4">
                                                 <span class="material-symbols-outlined"
                                                     aria-hidden="true">av_timer</span>
                                                 <span>2h 45m</span>
-                                                <span class="tooltip" role="tooltip" id="tt-time-4">Tiempo
-                                                    estimado</span>
                                             </button>
                                             <button type="button" class="meta-item" aria-describedby="tt-dist-4">
                                                 <span class="material-symbols-outlined"
                                                     aria-hidden="true">pin_drop</span>
                                                 <span>6 km</span>
-                                                <span class="tooltip" role="tooltip" id="tt-dist-4">Distancia</span>
                                             </button>
                                         </footer>
                                         <button class="btn btn-outline btn-card">Ver Detalle</button>
@@ -316,11 +323,29 @@
                             </li>
 
                         </ul>
-
-                        <button class="carousel-btn next" aria-label="Siguientes rutas" aria-controls="featured-routes">
-                            <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
-                        </button>
                     </div>
+
+                    <!-- Flechas NEXT -->
+
+                    <!-- Navegación normal -->
+                    <label for="slide2" class="carousel-btn next show-on-1" role="button" tabindex="0"
+                        aria-label="Ver siguiente ruta: Nacimiento del Ebro">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                    </label>
+                    <label for="slide3" class="carousel-btn next show-on-2" role="button" tabindex="0"
+                        aria-label="Ver siguiente ruta: Cueto de la Horcada">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                    </label>
+                    <label for="slide4" class="carousel-btn next show-on-3" role="button" tabindex="0"
+                        aria-label="Ver siguiente ruta: Brañavieja Circular">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                    </label>
+
+                    <!-- Bucle: Estoy en 4 (Final), ir a 1 (Inicio) -->
+                    <label for="slide1" class="carousel-btn next show-on-4" role="button" tabindex="0"
+                        aria-label="Volver a la primera ruta">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                    </label>
                 </div>
             </section>
 
