@@ -147,7 +147,7 @@ main {
     font-family: 'Harabara-Bold';
     font-style: normal;
     font-weight: 800;
-    src: local('Harabara-Bold'), url(/estilo/Harabara-Bold.woff) format('woff');
+    src: local('Harabara-Bold'), url(/fuentes/Harabara-Bold.woff) format('woff');
     /* unicode-range: U + 0000-00FF, U + 0131, U + 0152-0153, U + 02C6, U + 02DA, U + 02DC, U + 2000-206F, U + 2074, U + 20AC, U + 2212, U + 2215; */
     font-display: swap;
     letter-spacing: 0.5em;
@@ -156,6 +156,30 @@ main {
     /* Ayuda a que el kerning sea más preciso */
 }
 
+/* Iconos SVG Google Fonts desde Local */
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url(/fuentes/Material-Symbols-Outlined.woff) format('woff');
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
 
 h1,
 h2,
