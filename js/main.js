@@ -8,22 +8,20 @@
 // ============================================================================
 
 async function fetchWeather() {
-    const weatherWidget = document.getElementById('weather-widget');
-    if (!weatherWidget) return;
-
     try {
         const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=43.03&longitude=-4.37&current_weather=true');
         const data = await response.json();
         const temp = Math.round(data.current_weather.temperature);
 
-        const tempElement = weatherWidget.querySelector('.weather-temp');
+        const tempElement = document.getElementById('weather-widget');
         if (tempElement) {
-            tempElement.textContent = `${temp}°C`;
+            tempElement.innerHTML = `<span class="material-symbols-outlined">wb_cloudy</span>
+            <span class="weather-temp">${temp}ºC</span>`;
         }
     } catch (error) {
-        const tempElement = weatherWidget.querySelector('.weather-temp');
+        const tempElement = document.getElementById('weather-widget');
         if (tempElement) {
-            tempElement.textContent = "N/A";
+            tempElement.textContent = "";
         }
     }
 }

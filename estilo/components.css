@@ -955,6 +955,11 @@ summary::-webkit-details-marker {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+
+    .section-header {
+        margin-bottom: 3rem;
+        padding: 15px;
+    }
 }
 
 .material-symbols-outlined.orange {
