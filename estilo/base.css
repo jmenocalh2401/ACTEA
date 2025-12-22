@@ -114,7 +114,7 @@ html {
 }
 
 @media (max-width: 500px) {
-    html {
+    .contact-item a {
         word-break: break-all;
     }
 }
@@ -258,7 +258,7 @@ p {
 a {
     text-decoration: underline;
     color: inherit;
-    transition: color 0.3s ease;
+    transition: color 0.15s ease;
     overflow-wrap: break-word;
 }
 
