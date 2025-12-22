@@ -560,6 +560,10 @@
     .c-card {
         max-width: 100%;
     }
+
+    .contact-list .contact-item a.w-iconbox-link {
+        font-size: 24px;
+    }
 }
 
 /* Filtros de rutas */
