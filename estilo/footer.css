@@ -46,15 +46,16 @@
     margin-bottom: 0.8rem;
 }
 
-.footer-links a {
-    color: #d1d5db;
+.copyright a {
     transition: color 0.3s ease;
     display: inline-block;
+    color: #D9D9D9;
 }
 
-.footer-links a:hover {
-    color: white;
-    text-decoration: underline;
+.copyright a:hover {
+    transition: color 0.3s ease;
+    display: inline-block;
+    color: var(--color-secondary);
 }
 
 .social-icons {

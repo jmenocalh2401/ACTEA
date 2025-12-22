@@ -181,7 +181,6 @@ main {
     -webkit-font-smoothing: antialiased;
 }
 
-
 h1,
 h2,
 h3,
@@ -189,7 +188,6 @@ h4,
 h5,
 h6 {
     font-family: 'Harabara-Bold', system-ui, 'Segoe UI', sans-serif;
-    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; */
     font-weight: 700;
     line-height: 1.1;
     font-kerning: normal;
@@ -201,7 +199,11 @@ h6 {
     margin-bottom: var(--spacing-sm);
     font-size-adjust: 0.5;
     overflow-wrap: break-word;
-    word-break: break-word;
+}
+
+/* Card Body h2 en Rutas */
+.card-body h2 {
+    font-size: 1.75rem;
 }
 
 .fonts-loaded h1,
@@ -212,7 +214,6 @@ h6 {
 .fonts-loaded h6 {
     font-family: var(--font-display);
     overflow-wrap: break-word;
-    word-break: break-word;
 }
 
 h1 {
@@ -245,15 +246,21 @@ p {
     margin-bottom: var(--spacing-sm);
     color: var(--color-text-main);
     overflow-wrap: break-word;
-    word-break: break-word;
 }
 
 a {
-    text-decoration: none;
+    text-decoration: underline;
     color: inherit;
     transition: color 0.3s ease;
     overflow-wrap: break-word;
-    word-break: break-word;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+main a:hover {
+    color: var(--color-secondary-dark);
 }
 
 ul {

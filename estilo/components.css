@@ -27,6 +27,7 @@
     border: 2px solid transparent;
     text-align: center;
     letter-spacing: 1px;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -287,7 +288,6 @@
 .card-meta svg,
 .svg-inline {
     color: var(--color-primary);
-    font-size: 16px;
     vertical-align: middle;
     /* fill: currentColor; */
 }
@@ -785,6 +785,12 @@ summary::-webkit-details-marker {
     padding: 0;
 }
 
+.contact-list a.w-iconbox-link {
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: bold;
+}
+
 .contact-item {
     margin-bottom: 1rem;
     display: flex;
@@ -798,7 +804,6 @@ summary::-webkit-details-marker {
 
 .contact-icon {
     color: var(--color-primary);
-    font-size: 20px;
     flex-shrink: 0;
 }
 
@@ -946,4 +951,16 @@ summary::-webkit-details-marker {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+}
+
+.material-symbols-outlined.orange {
+    color: var(--color-primary);
+}
+
+.material-symbols-outlined.green {
+    color: var(--color-secondary-dark);
+}
+
+.material-symbols-outlined.red {
+    color: #b8001f;
 }

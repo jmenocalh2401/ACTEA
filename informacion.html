@@ -24,7 +24,6 @@
         <title>Proyecto ACTEA | Alto Campoo Todo El Año</title>
 
         <!-- Precarga de Imágenes Críticas -->
-        <link rel="preload" as="image" href="img/hero.webp" type="image/webp" fetchpriority="high">
         <link rel="preload" as="image" href="img/logotipo.png">
 
         <!-- Estilos para todo, Carga lenta para que priorice primero el HTML -->
@@ -41,7 +40,7 @@
         <meta property="og:description"
             content="Reactivación turística de Alto Campoo durante todo el año. Senderismo, cultura y naturaleza.">
         <meta property="og:url" content="https://proyectoactea.com/informacion.html">
-        <meta property="og:image" content="img/isotipo.png">
+        <meta property="og:image" content="img/isotipo.webp">
     </head>
 
     <body>
@@ -52,7 +51,7 @@
         <!-- Header -->
         <header class="header">
             <div class="container header-container">
-                <a href="index.html#top" class="logo">
+                <a href="index.html" class="logo">
                     <div class="logo-brand">
                         <img src="img/logotipo.png" alt="Alto Campoo" class="logo-img" width="150" height="50">
                     </div>
@@ -82,7 +81,7 @@
                         <nav id="lang-menu" class="lang-menu-content">
                             <ul class="lang-list">
                                 <li>
-                                    <a href="informacion.html" class="lang-item active">
+                                    <a href="./informacion.html" class="lang-item active">
                                         <span class="material-symbols-outlined check-icon">check</span>
                                         Español
                                     </a>
@@ -105,9 +104,10 @@
 
                     <nav class="mobile-menu">
                         <div class="mobile-menu-header">
-                            <a href="index.html#top" class="logo mobile-logo">
+                            <a href="index.html" class="logo mobile-logo">
                                 <div class="logo-brand">
-                                    <img src="img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img" width="150" height="50">
+                                    <img src="img/logo_blanco.png" alt="Alto Campoo" class="logo-img mobile-logo-img"
+                                        width="150" height="50">
                                 </div>
                             </a>
                             <label for="menu-logic-state" class="close-trigger">
@@ -129,190 +129,195 @@
             </div>
         </header>
 
-    <!-- MAIN CONTENT AREA -->
-    <main id="main-content">
-        <section class="section-padding container" aria-label="Información y contacto">
-            <div class="text-center section-header">
-                <h1 class="info-title">Información y Ayuda</h1>
-                <p class="info-subtitle">Todo lo que necesitas saber para planificar tu
-                    visita.</p>
-            </div>
-            <div class="grid-layout info-grid">
-                <div>
-                    <h2>Contacto y Localización</h2>
-                    <div class="contact-card">
-                        <ul class="contact-list">
-                            <li class="contact-item">
-                                <span class="material-symbols-outlined contact-icon">location_on</span>
-                                <span>Edificio Multiusos, Alto Campoo, Cantabria</span>
-                            </li>
-                            <li class="contact-item">
-                                <span class="material-symbols-outlined contact-icon">phone</span>
-                                <a target="_blank" href="tel:942318950" rel="noopener" class="w-iconbox-link"
-                                    aria-label="Llámanos">
-                                    <span class="w-iconbox-title" style="font-size:32px; font-weight: bold;">+34 942
-                                        31 89 50</span>
-                                </a>
-                            </li>
-                            <li class="contact-item">
-                                <span class="material-symbols-outlined contact-icon">email</span>
-                                <a target="_blank" href="mailto:info@proyectoactea.com" rel="noopener"
-                                    class="w-iconbox-link" aria-label="Envíanos un email">
-                                    <span class="w-iconbox-title">info@proyectoactea.com</span>
-                                </a>
-                            </li>
-                        </ul>
+        <!-- MAIN CONTENT AREA -->
+        <main id="main-content">
+            <section class="section-padding container" aria-label="Información y contacto">
+                <div class="text-center section-header">
+                    <h1 class="info-title">Información y Ayuda</h1>
+                    <p class="info-subtitle">Todo lo que necesitas saber para planificar tu
+                        visita.</p>
+                </div>
+                <div class="grid-layout info-grid">
+                    <div>
+                        <h2>Contacto y Localización</h2>
+                        <div class="contact-card">
+                            <ul class="contact-list">
+                                <li class="contact-item">
+                                    <span class="material-symbols-outlined contact-icon">location_on</span>
+                                    <span>Edificio Multiusos, Alto Campoo, Cantabria</span>
+                                </li>
+                                <li class="contact-item">
+                                    <span class="material-symbols-outlined contact-icon">phone</span>
+                                    <a target="_blank" href="tel:942318950" rel="noopener" class="w-iconbox-link"
+                                        aria-label="Llámanos">
+                                        <span class="w-iconbox-title">+34 942
+                                            31 89 50</span>
+                                    </a>
+                                </li>
+                                <li class=" contact-item">
+                                    <span class="material-symbols-outlined contact-icon">email</span>
+                                    <a target="_blank" href="mailto:info@proyectoactea.com" rel="noopener"
+                                        class="w-iconbox-link" aria-label="Envíanos un email">
+                                        <span class="w-iconbox-title">info@proyectoactea.com</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <br><br>
+                        <h2>Preguntas Frecuentes</h2>
+                        <details>
+                            <summary>¿Es necesario reservar?</summary>
+                            <div class="faq-content">
+                                <p>Aunque no es obligatorio para las rutas libres, sí recomendamos reservar para
+                                    actividades guiadas y talleres específicos.</p>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>¿Puedo llevar a mi perro?</summary>
+                            <div class="faq-content">
+                                <p>Sí, siempre que vaya atado y bajo control. Es fundamental respetar la fauna local y
+                                    el ganado, así como a los animales domésticos.</p>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>¿Dónde aparcar?</summary>
+                            <div class="faq-content">
+                                <p>Existen aparcamientos habilitados en Brañavieja y en el inicio de las rutas
+                                    principales. Evite aparcar en los arcenes y en zonas no autorizadas.</p>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>¿Qué debo llevar?</summary>
+                            <div class="faq-content">
+                                <p>Para las rutas libres, lo único es que lleves un par de botas cómodas y un
+                                    paraguas. Para las actividades guiadas, se requiere un par de botas cómodas, un
+                                    paraguas y un par de botas cómodas.</p>
+                            </div>
+                        </details>
+                        <details>
+                            <summary>¿Qué valoración puedo darle a esta Web?</summary>
+                            <div class="faq-content">
+                                <p>Sabemos que nada es perfecto, que todo tiene margen de mejora, pero
+                                    consideramos haber realizado el Proyecto lo mejor posible.
+                                    Puedes consultarnos cualquier duda al respecto de esta Web.</p>
+                            </div>
+                        </details>
                     </div>
-                    <br><br>
-                    <h2>Preguntas Frecuentes</h2>
-                    <details>
-                        <summary>¿Es necesario reservar?</summary>
-                        <div class="faq-content">
-                            <p>Aunque no es obligatorio para las rutas libres, sí recomendamos reservar para
-                                actividades guiadas y talleres específicos.</p>
-                        </div>
-                    </details>
-                    <details>
-                        <summary>¿Puedo llevar a mi perro?</summary>
-                        <div class="faq-content">
-                            <p>Sí, siempre que vaya atado y bajo control. Es fundamental respetar la fauna local y
-                                el ganado, así como a los animales domésticos.</p>
-                        </div>
-                    </details>
-                    <details>
-                        <summary>¿Dónde aparcar?</summary>
-                        <div class="faq-content">
-                            <p>Existen aparcamientos habilitados en Brañavieja y en el inicio de las rutas
-                                principales. Evite aparcar en los arcenes y en zonas no autorizadas.</p>
-                        </div>
-                    </details>
-                    <details>
-                        <summary>¿Qué debo llevar?</summary>
-                        <div class="faq-content">
-                            <p>Para las rutas libres, lo único es que lleves un par de botas cómodas y un
-                                paraguas. Para las actividades guiadas, se requiere un par de botas cómodas, un
-                                paraguas y un par de botas cómodas.</p>
-                        </div>
-                    </details>
-                    <details>
-                        <summary>¿Qué valoración puedo darle a esta Web?</summary>
-                        <div class="faq-content">
-                            <p>Sabemos que nada es perfecto, que todo tiene margen de mejora, pero
-                                consideramos haber realizado el Proyecto lo mejor posible.
-                                Puedes consultarnos cualquier duda al respecto de esta Web.</p>
-                        </div>
-                    </details>
-                </div>
 
-                <div class="contact-form-card" id="contacto">
-                    <h2 class="form-title">Envíanos un mensaje</h2>
-                    <form id="contact-form"
-                        onsubmit="event.preventDefault(); alert('Mensaje de Prueba enviado correctamente.');">
-                        <div class="form-group">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" required placeholder="Escribe tu nombre aquí">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" required placeholder="tu@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Mensaje</label>
-                            <textarea class="form-control" rows="4" required
-                                placeholder="¿En qué podemos ayudarte? Escribe tu mensaje en este cuadro de texto."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Enviar
-                            Mensaje</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <a target="_blank" href="https://cantur.com/" rel="noopener" aria-label="Cantur">
-                <picture class="text-center" style="display: flex; justify-content: center;">
-                    <source srcset="img/cantur-logo-white.png" type="image/png">
-                    <img src="img/cantur-logo-white.png" alt="Logotipo de Cantur" width="200" height="200"
-                        loading="lazy" fetchpriority="low">
-                </picture>
-            </a>
-            <br><br>
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a target="_blank" href="https://turismodecantabria.com/" rel="noopener"
-                        aria-label="Turismo de Cantabria">
-                        <picture class="text-center" style="display: flex; justify-content: center;">
-                            <source srcset="img/cantabria-infinita.png" type="image/png">
-                            <img width="200" height="69" src="img/cantabria-infinita.png"
-                                class="attachment-full size-full" alt="" decoding="async" loading="lazy">
-                        </picture>
-                    </a>
-
-                </div>
-                <div class="footer-col">
-                    <a target="_blank" href="https://www.cantabria.es/" rel="noopener"
-                        aria-label="Gobierno de Cantabria">
-                        <picture class="text-center" style="display: flex; justify-content: center;">
-                            <source srcset="img/gobierno-cantabria.webp" type="image/webp">
-                            <img width="170" height="87" src="img/gobierno-cantabria.webp"
-                                class="attachment-full size-full" alt="" decoding="async" loading="lazy">
-                        </picture>
-                    </a>
-
-                </div>
-                <div class="footer-col">
-                    <a target="_blank" href="https://cruisesantander.es/" rel=" noopener"
-                        aria-label="Santander Cruise Deluxe">
-                        <picture class="text-center" style="display: flex; justify-content: center;">
-                            <source srcset="img/santandercruise.png" type="image/png">
-                            <img width="170" height="87" src="img/santandercruise.png"
-                                class="attachment-full size-full" alt="" decoding="async" loading="lazy">
-                        </picture>
-                    </a>
-
-                </div>
-            </div>
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>ACTEA</h3>
-                    <p class="footer-description">Proyecto de dinamización turística y conservación
-                        ambiental de Alto Campoo.</p>
-                    <div class="social-icons">
-                        <a target="_blank" href="https://www.facebook.com/AltoCampoo" rel="noopener"
-                            aria-label="Perfil de Facebook" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
-                            </svg>
-                        </a>
-                        <a target="_blank" href="https://www.instagram.com/esquialtocampoo/" rel="noopener"
-                            aria-label="Perfil de Instagram" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
-                            </svg>
-                        </a>
-                        <a target="_blank" href="https://twitter.com/Alto_Campoo" rel="noopener"
-                            aria-label="Perfil de Twitter" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                            </svg>
-                        </a>
+                    <div class="contact-form-card" id="contacto">
+                        <h2 class="form-title">Envíanos un mensaje</h2>
+                        <form id="contact-form"
+                            onsubmit="event.preventDefault(); alert('Mensaje de Prueba enviado correctamente.');">
+                            <div class="form-group">
+                                <label class="form-label">Nombre
+                                    <input autocomplete="on" name="nombre" type="text" class="form-control" required
+                                        placeholder="Escribe tu nombre aquí">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email
+                                    <input autocomplete="on" name="email" type="email" class="form-control" required
+                                        placeholder="tu@email.com">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mensaje
+                                    <textarea autocomplete="off" name="mensaje" class="form-control" rows="4" required
+                                        placeholder="¿En qué podemos ayudarte? Escribe tu mensaje en este cuadro de texto."></textarea>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Enviar
+                                Mensaje</button>
+                        </form>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a target="_blank" href="index.html" rel="noopener" aria-label="Inicio">Inicio</a>
+            </section>
+        </main>
+
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <a target="_blank" href="https://cantur.com/" rel="noopener" aria-label="Cantur">
+                    <picture class="text-center" style="display: flex; justify-content: center;">
+                        <source srcset="img/cantur-logo-white.png" type="image/png">
+                        <img src="img/cantur-logo-white.png" alt="Logotipo de Cantur" width="200" height="200"
+                            loading="lazy" fetchpriority="low">
+                    </picture>
+                </a>
+                <br><br>
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <a target="_blank" href="https://turismodecantabria.com/" rel="noopener"
+                            aria-label="Turismo de Cantabria">
+                            <picture class="text-center" style="display: flex; justify-content: center;">
+                                <source srcset="img/cantabria-infinita.png" type="image/png">
+                                <img width="200" height="69" src="img/cantabria-infinita.png"
+                                    class="attachment-full size-full" alt="" decoding="async" loading="lazy">
+                            </picture>
+                        </a>
+
+                    </div>
+                    <div class="footer-col">
+                        <a target="_blank" href="https://www.cantabria.es/" rel="noopener"
+                            aria-label="Gobierno de Cantabria">
+                            <picture class="text-center" style="display: flex; justify-content: center;">
+                                <source srcset="img/gobierno-cantabria.webp" type="image/webp">
+                                <img width="170" height="87" src="img/gobierno-cantabria.webp"
+                                    class="attachment-full size-full" alt="" decoding="async" loading="lazy">
+                            </picture>
+                        </a>
+
+                    </div>
+                    <div class="footer-col">
+                        <a target="_blank" href="https://cruisesantander.es/" rel=" noopener"
+                            aria-label="Santander Cruise Deluxe">
+                            <picture class="text-center" style="display: flex; justify-content: center;">
+                                <source srcset="img/santandercruise.png" type="image/png">
+                                <img width="170" height="87" src="img/santandercruise.png"
+                                    class="attachment-full size-full" alt="" decoding="async" loading="lazy">
+                            </picture>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>ACTEA</h3>
+                        <p class="footer-description">Proyecto de dinamización turística y conservación
+                            ambiental de Alto Campoo.</p>
+                        <div class="social-icons">
+                            <a target="_blank" href="https://www.facebook.com/AltoCampoo" rel="noopener"
+                                aria-label="Perfil de Facebook" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+                                </svg>
+                            </a>
+                            <a target="_blank" href="https://www.instagram.com/esquialtocampoo/" rel="noopener"
+                                aria-label="Perfil de Instagram" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
+                                </svg>
+                            </a>
+                            <a target="_blank" href="https://twitter.com/Alto_Campoo" rel="noopener"
+                                aria-label="Perfil de Twitter" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Enlaces Rápidos</h3>
+                        <ul class="footer-links">
+                            <li><a target="_blank" href="index.html" rel="noopener" aria-label="Inicio">Inicio</a>
                             </li>
                             <li><a target="_blank" href="rutas.html" rel="noopener" aria-label="Rutas">Rutas</a></li>
                             <li><a target="_blank" href="novedades.html" rel="noopener"
