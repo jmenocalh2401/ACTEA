@@ -60,7 +60,7 @@
 
                 <nav class="nav-desktop" aria-label="Navegación principal">
                     <ul class="nav-list">
-                        <li><a href="index.html#top" class="nav-link">Home</a></li>
+                        <li><a href="index.html" class="nav-link">Home</a></li>
                         <li><a href="rutas.html" class="nav-link">Routes</a></li>
                         <li><a href="novedades.html" class="nav-link">News</a></li>
                         <li><a href="actividades.html" class="nav-link">Activities</a></li>
@@ -110,7 +110,7 @@
                         </div>
                         <nav aria-label="Mobile navigation">
                             <ul class="mobile-nav-list">
-                                <li><a href="index.html#top">Home</a></li>
+                                <li><a href="index.html">Home</a></li>
                                 <li><a href="rutas.html">Routes</a></li>
                                 <li><a href="novedades.html">News</a></li>
                                 <li><a href="actividades.html">Activities</a></li>
@@ -202,17 +202,22 @@
                         <h2 class="form-title">Send us a message</h2>
                         <form id="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully.');">
                             <div class="form-group">
-                                <label class="form-label">Name</label>
-                                <input type="text" class="form-control" required placeholder="Enter your name">
+                                <label class="form-label" name="nombre">Name
+                                    <input autocomplete="on" type="text" class="form-control" required
+                                        placeholder="Enter your name">
+                                </label>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" required placeholder="Enter your email">
+                                <label class="form-label" name="email">Email
+                                    <input autocomplete="on" type="email" class="form-control" required
+                                        placeholder="Enter your email">
+                                </label>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Message</label>
-                                <textarea class="form-control" rows="4" required
-                                    placeholder="Write your message here"></textarea>
+                                <label class="form-label" name="mensaje">Message
+                                    <textarea autocomplete="off" class="form-control" rows="4" required
+                                        placeholder="Write your message here"></textarea>
+                                </label>
                             </div>
                             <button type="submit" class="btn btn-primary btn-full">Send
                                 Message</button>
